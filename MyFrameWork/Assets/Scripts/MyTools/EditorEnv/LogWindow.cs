@@ -1,7 +1,14 @@
-﻿using UnityEngine;
+﻿/*
+ *  项目名字：MyFrameWork
+ *  创建时间：2019.12.30
+ *  描述信息：Log信息窗口 
+ */
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+/// <summary>
+/// Gui生成的一个可以在App上显示log信息的Window
+/// </summary>
 public class LogWindow : MonoBehaviour
 {
     private bool IsDevelopment;
