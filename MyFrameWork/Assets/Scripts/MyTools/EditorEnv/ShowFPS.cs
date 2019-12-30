@@ -1,15 +1,14 @@
 ﻿/*
- *  项目名字：MyFrameWork
+ *  项目名字：Solitaire
  *  创建时间：2019.12.28
- *  描述信息：显示帧率 
+ *  描述信息：显示帧率
+ *  
  */
  
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-/// <summary>
-/// 显示Fps信息
-/// </summary>
+
 public class ShowFPS : MonoBehaviour 
 {
     private float _UpdateInterval = 0.2f;//更新周期 
