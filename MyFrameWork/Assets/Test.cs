@@ -11,10 +11,9 @@ public class Test : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        string Any = "@EndMark@";
+    
 
-        MyLog.LogWithColor("Sbfdasgdasgdgfdsafdsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",Color.yellow);
-      
+    
     }
 	
 	// Update is called once per frame

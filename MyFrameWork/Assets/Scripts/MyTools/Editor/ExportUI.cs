@@ -1,4 +1,12 @@
-﻿using System.Collections;
+﻿/*
+ *  项目名字：MyFrameWork
+ *  创建时间：2019.12.28
+ *  描述信息：自动生成UI脚本。
+ *  界面拼好后，把需要记下来的控件___点击/右键/自动生成UI/标记类型/XXX___标记好需要的控件。
+ *  在主节点上右键___自动生成UI/生成UI脚本__就可以把界面导出来了
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,11 +14,6 @@ using UnityEditor;
 using System;
 using System.Text;
 using System.IO;
-
-/*
- * 
- * 界面拼好后，把需要记下来的控件___点击/右键/自动生成UI/标记类型/XXX___标记好需要的控件,在主节点上右键___自动生成UI/生成UI脚本__就可以把界面导出来了
- */
 
 public class ExportUI {
     //结束标志
