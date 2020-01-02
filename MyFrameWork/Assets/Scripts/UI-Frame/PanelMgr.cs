@@ -13,38 +13,46 @@ public enum PanelLayer
 public class PanelMgr : MonoBehaviour
 {
     public static PanelMgr instance;
+
     public Transform _canvas;
-    private Dictionary<string, PanelBase> dict;
+ 
+    private Dictionary<string, PanelBase> Paneldict;
+
     private Dictionary<PanelLayer, Transform> layer_dict;
 
     public Transform canvas
     {
         get { return _canvas; }
     }
+
     public void Awake()
     {
         instance = this;
         InitLayer();
-        dict = new Dictionary<string, PanelBase>();
+        Paneldict = new Dictionary<string, PanelBase>();
     }
-
     /// <summary>
     /// 初始化
     /// </summary>
     private void InitLayer()
     {
+        Debug.LogError("初始化layer");
         _canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
         if (_canvas == null)
             Debug.LogError("PanelMgr.InitLayerfail,Canvas is null");
         layer_dict = new Dictionary<PanelLayer, Transform>();
+        //存layer的位置
         foreach (PanelLayer pl in Enum.GetValues(typeof(PanelLayer)))
         {
             string name = pl.ToString();
             Transform transform = _canvas.Find(name);
             layer_dict.Add(pl, transform);
         }
-
     }
+
+    /// <summary>
+    /// 设置层级，当前层没东西恢复到上一层
+    /// </summary>
     private void SettingOrder()
     {
         if (layer_dict[PanelLayer.Tips].childCount > 0)
@@ -67,14 +75,15 @@ public class PanelMgr : MonoBehaviour
     {
         Canvas cvs = _canvas.GetComponent<Canvas>();
         cvs.overrideSorting = true;
-        cvs.sortingOrder = 12;
+        cvs.sortingOrder = 0;
     }
 
     public void OpenPanel<T>(string skinPath = "", params object[] _args) where T : PanelBase
     {
         string name = typeof(T).ToString();
-        if (dict.ContainsKey(name))
+        if (Paneldict.ContainsKey(name))
         {
+            //设置页面在最后面（摄像机最先渲染位置）
             GetPanel(name).skin.transform.SetAsLastSibling();
             if (GetPanel(name).skin.gameObject.activeInHierarchy)
             {
@@ -87,7 +96,7 @@ public class PanelMgr : MonoBehaviour
         }
         PanelBase panel = canvas.gameObject.AddComponent<T>();
         panel.Init(_args);
-        dict.Add(name, panel);
+        Paneldict.Add(name, panel);
         skinPath = (skinPath != "" ? skinPath : panel.skinPath);
         GameObject skin = Resources.Load<GameObject>(skinPath);
         if (skin == null)
@@ -105,7 +114,7 @@ public class PanelMgr : MonoBehaviour
     public void OpenPanel(PanelName panelName, params object[] _args)
     {
         string name = panelName.ToString();
-        if (dict.ContainsKey(name))
+        if (Paneldict.ContainsKey(name))
         {
             GetPanel(name).skin.transform.SetAsLastSibling();
             if (GetPanel(name).skin.gameObject.activeInHierarchy)
@@ -120,10 +129,10 @@ public class PanelMgr : MonoBehaviour
     }
     public void CloseAllPanel(string except = "")
     {
-        if (dict == null)
+        if (Paneldict == null)
             return;
-        string[] key_strs = new string[dict.Count];
-        dict.Keys.CopyTo(key_strs, 0);
+        string[] key_strs = new string[Paneldict.Count];
+        Paneldict.Keys.CopyTo(key_strs, 0);
         for (int i = 0; i < key_strs.Length; i++)
         {
             string s = key_strs[i];
@@ -133,14 +142,24 @@ public class PanelMgr : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 通过枚举获得panel
+    /// </summary>
+    /// <param name="_name"></param>
+    /// <returns></returns>
     public PanelBase GetPanel(PanelName _name)
     {
         return GetPanel(_name.ToString());
     }
+    /// <summary>
+    /// 通过名字获得panel
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
     public PanelBase GetPanel(string name)
     {
         PanelBase panel;
-        if (dict.TryGetValue(name, out panel))
+        if (Paneldict.TryGetValue(name, out panel))
         {
             return panel;
         }
@@ -157,12 +176,11 @@ public class PanelMgr : MonoBehaviour
     public void ClosePanel(string name)
     {
         PanelBase panel;
-        dict.TryGetValue(name, out panel);
-        //PanelBase panel = (PanelBase)dict [name];
+        Paneldict.TryGetValue(name, out panel);
         if (panel == null)
             return;
         panel.OnHide();
-        dict.Remove(name);
+        Paneldict.Remove(name);
         panel.OnClosed();
         panel.skin.transform.SetParent(canvas.transform);
         GameObject.Destroy(panel.skin);

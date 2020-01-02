@@ -23,7 +23,7 @@ public class Test : MonoBehaviour {
     }
     public void back()
     {
-        SceneManager.LoadScene("test_ui");
+        SceneManager.LoadScene("Test_UI");
 
     }
   

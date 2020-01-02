@@ -32,25 +32,25 @@ public class MenuePl : PanelBase
 		overBt.onClick.AddListener(OnOverBtClick);
         settingBt.onClick.AddListener(OnSettingBtClick);
     }
-	private void OnStartBtClick()
-	{
-		PanelMgr.instance.OpenPanel<StartPl>();
-		PanelMgr.instance.HidePanel(PanelName.GamePl);
+    private void OnStartBtClick()
+    {
+        PanelMgr.instance.OpenPanel<StartPl>();
+        PanelMgr.instance.HidePanel(PanelName.GamePl);
         PanelMgr.instance.HidePanel(PanelName.OverPl);
         PanelMgr.instance.HidePanel(PanelName.SettingPl);
     }
-	private void OnGameBtClick()
-	{
-		PanelMgr.instance.OpenPanel<GamePl>();
-		PanelMgr.instance.HidePanel(PanelName.StartPl);
-		PanelMgr.instance.HidePanel(PanelName.OverPl);
+    private void OnGameBtClick()
+    {
+        PanelMgr.instance.OpenPanel<GamePl>();
+        PanelMgr.instance.HidePanel(PanelName.StartPl);
+        PanelMgr.instance.HidePanel(PanelName.OverPl);
         PanelMgr.instance.HidePanel(PanelName.SettingPl);
     }
-	private void OnOverBtClick()
-	{
-		PanelMgr.instance.OpenPanel<OverPl>();
-		PanelMgr.instance.HidePanel(PanelName.GamePl);
-		PanelMgr.instance.HidePanel(PanelName.StartPl);
+    private void OnOverBtClick()
+    {
+        PanelMgr.instance.OpenPanel<OverPl>();
+        PanelMgr.instance.HidePanel(PanelName.GamePl);
+        PanelMgr.instance.HidePanel(PanelName.StartPl);
         PanelMgr.instance.HidePanel(PanelName.SettingPl);
     }
     private void OnSettingBtClick()

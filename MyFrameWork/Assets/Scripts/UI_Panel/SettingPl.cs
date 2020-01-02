@@ -11,6 +11,8 @@ public class SettingPl :PanelBase {
     private Button StopMusicBt;
     private Slider SoundValueBt;
     private Toggle MusicCtrlBt;
+    private Button StopEffect;
+    int count = 0;
     public override void Init(params object[] _args)
     {
         skinPath = "Panel/SettingPl";
@@ -26,11 +28,13 @@ public class SettingPl :PanelBase {
         StopMusicBt = skin.transform.Find("StopMusicBt").GetComponent<Button>();
         SoundValueBt = skin.transform.Find("SoundValueBt").GetComponent<Slider>();
         MusicCtrlBt = skin.transform.Find("MusicCtrlBt").GetComponent<Toggle>();
-
+        StopEffect = skin.transform.Find("StopEffect").GetComponent<Button>();
         PlayMusicBt.onClick.AddListener(OnMusicPlay);
         PlayWinBt.onClick.AddListener(OnMusicWinPlay);
         PlayFailBt.onClick.AddListener(OnMusicFailPlay);
         StopMusicBt.onClick.AddListener(OnMusicStop);
+        StopEffect.onClick.AddListener(OnEffectStop);
+
         SoundValueBt.onValueChanged.AddListener((float Value)=> { QAudioSingleton.Instance._musicSource.volume = Value; });
         MusicCtrlBt.onValueChanged.AddListener((bool isOn) =>
         {
@@ -47,7 +51,16 @@ public class SettingPl :PanelBase {
 
     public void OnMusicPlay()
     {
-        QAudioSingleton.Instance.PlayeMusicAudio(AudioName.BackMusic);
+        count++;
+        if (count % 2 == 0)
+        {
+            QAudioSingleton.Instance.PlayeMusicAudio(AudioName.BackMusic);
+        }
+        else
+        {
+            QAudioSingleton.Instance.PlayeMusicAudio(AudioName.BackMusic2);
+        }
+      
     }
     public void OnMusicWinPlay()
     {
@@ -59,7 +72,29 @@ public class SettingPl :PanelBase {
     }
     public void OnMusicStop()
     {
-        QAudioSingleton.Instance.PlayeMusicAudio(AudioName.BackMusic,0);
+        count++;
+        if (count % 2 == 0)
+        {
+            QAudioSingleton.Instance.IsOpenMusic(false);
+        }
+        else
+        {
+            QAudioSingleton.Instance.IsOpenMusic(true);
+        }
+       
+    }
+    public void OnEffectStop()
+    {
+        count++;
+        if (count % 2 == 0)
+        {
+            QAudioSingleton.Instance.IsOpenEffect(false);
+        }
+        else
+        {
+            QAudioSingleton.Instance.IsOpenEffect(true);
+        }
+       
     }
     public void SoundValueChange()
     {

@@ -21,7 +21,7 @@ public class StartPl : PanelBase {
 	private void OnStartBtClick()
 	{
 		Debug.Log("开始游戏");
-        SceneManager.LoadScene("111");
+        SceneManager.LoadScene("Test_Env");
 	}
 
 }

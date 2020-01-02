@@ -20,14 +20,15 @@ public class IFile : MonoBehaviour {
     //经过测试的StreammingAssets路径
     public static string GetStreammingAssetsFile()
     {
+        string path="";
 #if UNITY_STANDALONE_WIN
-        return "file:///" + Application.streamingAssetsPath;
+        path= "file:///" + Application.streamingAssetsPath;
 #elif UNITY_ANDROID
-        return Application.streamingAssetsPath;
+        path= Application.streamingAssetsPath;
 #elif UNITY_IOS
-        return "file://" + Application.streamingAssetsPath;  //IOS前面加file://
+        path= "file://" + Application.streamingAssetsPath;  //IOS前面加file://
 #endif
-        return "";
+        return path ;
     }
 
 
