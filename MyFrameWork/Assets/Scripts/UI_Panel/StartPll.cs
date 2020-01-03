@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class StartPl : PanelBase {
+public class StartPll : PanelBase {
     private Button startBt;
 	public override void Init(params object[] _args)
 	{
@@ -22,8 +22,17 @@ public class StartPl : PanelBase {
     {
         skin.SetActive(true);
     }
+    public override void Update()
+    {
 
 
+    }
+    public override void OnHide()
+    {
+        skin.SetActive(false);
+    }
+
+ 
     public override void OnClosed()
     {
 

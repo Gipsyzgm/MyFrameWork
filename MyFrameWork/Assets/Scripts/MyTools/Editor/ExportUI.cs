@@ -30,7 +30,7 @@ public class ExportUI {
     static string uiPathName = "PathUI";
     static string itemPathName = "PathItem";
     //继承脚本
-    static string overrideUI = "UIBase";
+    static string overrideUI = "PanelBase";
     static string overrideItem = "MonoBehaviour";
     //导出类型
     static int exportType = 0;
@@ -131,11 +131,30 @@ public class ExportUI {
             string name = path_name_dic[key];
             sb.AppendLine("    public " + type.Name + " " + name + ";");
         }
-        if(exportType == 1)
+        if (exportType == 1)
         {
             sb.AppendLine("    public int index = 0;");
         }
-        sb.AppendLine("    void Awake()");
+        else
+        {   //Split切分如果后面切分符后没字符的话会切分出一个空字符            
+            string[] PathAry = prefabDir.Split('/');
+            string tempPath="";          
+            for (int i = 2; i < PathAry.Length; i++)
+            {                
+                tempPath += PathAry[i] + "/";            
+            }
+            tempPath = tempPath.Substring(0, tempPath.Length - 2);
+
+            sb.AppendLine("    public override void Init(params object[] _args)");
+            sb.AppendLine("    {");           
+            sb.AppendLine("         skinPath="+ '"'+ tempPath + "/" + className + '"' + ";");       
+            sb.AppendLine("        ");
+            sb.AppendLine("    }");
+        }
+      
+
+
+        sb.AppendLine("    public override void OnBeforeShow()");
         sb.AppendLine("    {");
         //查找Ui变量名
         foreach (var key in path_type_dic.Keys)
@@ -158,11 +177,10 @@ public class ExportUI {
         }
         sb.AppendLine("        CustomComponent();");
         sb.AppendLine("    }");
-        sb.AppendLine("    //=======================上面部分自动生成，每次生成都会替换掉,不要手写东西==================");
+        sb.AppendLine("    //====================上面部分自动生成，每次生成都会替换掉,不要手写东西==================");
         sb.AppendLine();
-        sb.AppendLine("    //=====================================手写部分=============================================");
+        sb.AppendLine("    //====================以下为手写部分，初始化补充方法为CustomComponent()==================");
         sb.AppendLine("    //" + replace);
-
 
         string scriptFile = scriptDir + className + ".cs";
         //如果存在脚本（替换操作replace前的代码。）
@@ -193,6 +211,7 @@ public class ExportUI {
                         sb.AppendLine("    {");
                         sb.AppendLine("        ");
                         sb.AppendLine("    }");
+                        sb.AppendLine("        ");
                     }
                 }
             }
@@ -202,6 +221,40 @@ public class ExportUI {
                 sb.AppendLine("    {");
                 sb.AppendLine("        ");
                 sb.AppendLine("    }");
+                sb.AppendLine("        ");
+            }
+            if (!csString.Contains("OnShowed()"))
+            {
+                sb.AppendLine("    public override void OnShowed()");
+                sb.AppendLine("    {");
+                sb.AppendLine("        skin.SetActive(true); ");
+                sb.AppendLine("    }");
+                sb.AppendLine("        ");
+            }
+            if (!csString.Contains("Update()"))
+            {
+                sb.AppendLine("    public override void Update()");
+                sb.AppendLine("    {");
+                sb.AppendLine("        ");
+                sb.AppendLine("    }");
+                sb.AppendLine("        ");
+            }
+            if (!csString.Contains("OnHide()"))
+            {
+                sb.AppendLine("    public override void OnHide()");
+                sb.AppendLine("    {");
+                sb.AppendLine("         skin.SetActive(false);    ");
+                sb.AppendLine("    }");
+                sb.AppendLine("        ");
+            }
+            if (!csString.Contains("OnClosed()"))
+            {
+                sb.AppendLine("    public override void OnClosed()");
+                sb.AppendLine("    {");
+                sb.AppendLine("         Destroy(skin);   ");
+                sb.AppendLine("         Destroy(this);   ");
+                sb.AppendLine("    }");
+                sb.AppendLine("        ");
             }
             csString = "    " + csString.TrimStart();
             sb.Append(csString);
@@ -219,21 +272,38 @@ public class ExportUI {
                     sb.AppendLine("    {");
                     sb.AppendLine("        ");
                     sb.AppendLine("    }");
+                    sb.AppendLine("        ");
                 }
             }
             sb.AppendLine("    public void CustomComponent()");
             sb.AppendLine("    {");
             sb.AppendLine("        ");
             sb.AppendLine("    }");
-            if(exportType == 0)
+            sb.AppendLine("        ");
+            if (exportType == 0)
             {
-                sb.AppendLine("    public override void Open()");
+                sb.AppendLine("    public override void OnShowed()");
+                sb.AppendLine("    {");
+                sb.AppendLine("        skin.SetActive(true); ");
+                sb.AppendLine("    }");
+                sb.AppendLine("        ");
+
+                sb.AppendLine("    public override void Update()");
                 sb.AppendLine("    {");
                 sb.AppendLine("        ");
                 sb.AppendLine("    }");
-                sb.AppendLine("    public override void Close()");
-                sb.AppendLine("    {");
                 sb.AppendLine("        ");
+
+                sb.AppendLine("    public override void OnHide()");
+                sb.AppendLine("    {");
+                sb.AppendLine("         skin.SetActive(false);    ");
+                sb.AppendLine("    }");
+                sb.AppendLine("        ");
+
+                sb.AppendLine("    public override void OnClosed()");
+                sb.AppendLine("    {");
+                sb.AppendLine("         Destroy(skin);   ");
+                sb.AppendLine("         Destroy(this);   ");
                 sb.AppendLine("    }");
             }
             if(exportType == 1)
@@ -254,7 +324,10 @@ public class ExportUI {
         string resPath = "";
         string[] str = prefabDir.Split('/');
         for (int i = 2; i < str.Length; i++)
+        {
             resPath += str[i] + "/";
+        }
+            
         //Substring（int beginIndex，int endIndex） 意思为返回下标从beginIndex开始（包括），到endIndex（不包括）结束的子字符串。
         resPath = resPath.Substring(0, resPath.Length - 2); //剔除后缀名
         DirectoryInfo direction = new DirectoryInfo(prefabDir);

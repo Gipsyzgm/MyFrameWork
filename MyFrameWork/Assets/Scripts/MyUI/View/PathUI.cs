@@ -1,4 +1,5 @@
 ﻿public class PathUI
 {
-    public static string Text111 = "MyUI/View/Text111";
+    public static string StartPl = "MyUI/View/StartPl";
+    public static string Tset111 = "MyUI/View/Tset111";
 }
