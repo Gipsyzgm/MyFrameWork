@@ -19,7 +19,7 @@ public class PanelBase : MonoBehaviour {
 		this.args = _args;
 	}
     /// <summary>
-    /// 必须重写，页面获取组件
+    /// 必须重写，页面获取组件,首次打开页面必须调用
     /// </summary>
     public virtual void OnBeforeShow(){
 

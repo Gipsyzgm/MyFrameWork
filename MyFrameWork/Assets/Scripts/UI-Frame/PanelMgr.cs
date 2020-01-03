@@ -18,6 +18,11 @@ public class PanelMgr : MonoBehaviour
     private Dictionary<string, PanelBase> Paneldict;
     private Dictionary<PanelLayer, Transform> layer_dict;
 
+    /// <summary>
+    /// 用于记录当前页面显示顺序并实现关闭当前页面功能。
+    /// </summary>
+    private List<string> ExictPanel;
+
 
     public Transform canvas
     {
@@ -28,7 +33,7 @@ public class PanelMgr : MonoBehaviour
         instance = this;
         InitLayer();
         Paneldict = new Dictionary<string, PanelBase>();
-      
+        ExictPanel = new List<string>();
     }
     /// <summary>
     /// 初始化
@@ -63,10 +68,12 @@ public class PanelMgr : MonoBehaviour
             GetPanel(name).skin.transform.SetAsLastSibling();
             if (GetPanel(name).skin.gameObject.activeInHierarchy)
             {
+                AddToListLast(name);
                 return;
             }
             GetPanel(name).args = _args;
-            GetPanel(name).OnShowed();
+            AddToList(name);
+            GetPanel(name).OnShowed();           
             return;
         }
         PanelBase panel = canvas.gameObject.AddComponent<T>();
@@ -91,13 +98,13 @@ public class PanelMgr : MonoBehaviour
         }       
         Transform parent = layer_dict[layer];
         skinTrans.SetParent(parent, false);
-        //每个脚本第一次打开必须执行OnBeforeShow
-        panel.OnBeforeShow();
+        AddToList(name);
+        panel.OnBeforeShow();        
         panel.OnShowed();
     }
 
     /// <summary>
-    /// 用于打开已经打开过的页面
+    /// 用于打开已经打开过的页面隐藏显示或者靠后页面置顶
     /// </summary>
     /// <param name="panelName"></param>
     /// <param name="_args"></param>
@@ -122,23 +129,52 @@ public class PanelMgr : MonoBehaviour
     }
 
     /// <summary>
-    /// 谨慎使用，会关闭所有UI
+    /// 依次关闭最上层的panel
     /// </summary>
-    /// <param name="except"></param>
-    public void CloseAllPanel(string except = "")
+    public void CloseCurrentPanel()
     {
-        if (Paneldict == null)
-            return;
-        string[] key_strs = new string[Paneldict.Count];
-        Paneldict.Keys.CopyTo(key_strs, 0);
-        for (int i = 0; i < key_strs.Length; i++)
+        if (ExictPanel== null)
         {
-            string s = key_strs[i];
-            if (s == except)
-                continue;
-            ClosePanel(s);
+            MyLog.LogError("所有页面关闭或ExictPanelList异常");
+        }
+        if (ExictPanel.Count==1)
+        {
+            MyLog.LogWithColor("除主页面和隐藏页面外已经全部关闭", Color.green);
+            return;
+        }
+        string name = ExictPanel[ExictPanel.Count - 1];
+        ClosePanel(name);    
+    }
+    /// <summary>
+    /// 关闭页面
+    /// </summary>
+    /// <param name="name"></param>
+    public void ClosePanel(string name)
+    {
+        PanelBase panel;
+        Paneldict.TryGetValue(name, out panel);
+        if (panel == null)
+            return;
+        Paneldict.Remove(name);
+        RomoveToList(name);
+        panel.OnClosed();      
+    }
+    /// <summary>
+    /// 隐藏页面
+    /// </summary>
+    /// <param name="panelName"></param>
+    public void HidePanel(PanelName panelName)
+    {
+        PanelBase panel = GetPanel(panelName);
+        if (panel != null)
+        {
+            if (!panel.skin.activeInHierarchy)
+                return;           
+            RomoveToList(panelName.ToString());
+            panel.OnHide();      
         }
     }
+
 
     /// <summary>
     /// 通过枚举获得panel
@@ -172,36 +208,32 @@ public class PanelMgr : MonoBehaviour
     {
         ClosePanel(_name.ToString());
     }
-    /// <summary>
-    /// 关闭页面
-    /// </summary>
-    /// <param name="name"></param>
-    public void ClosePanel(string name)
-    {
-        PanelBase panel;
-        Paneldict.TryGetValue(name, out panel);
-        if (panel == null)
-            return;
-        Paneldict.Remove(name);
-        panel.OnClosed();
-       
-    }
-    /// <summary>
-    /// 隐藏页面
-    /// </summary>
-    /// <param name="panelName"></param>
-    public void HidePanel(PanelName panelName)
-    {
-        PanelBase panel = GetPanel(panelName);
-        if (panel != null)
-        {
-            if (!panel.skin.activeInHierarchy)
-                return;
-            Debug.LogError("隐藏物体名?"+panelName.ToString());
-            panel.OnHide();      
-        }
-    }
 
+    /// <summary>
+    /// 每次未关闭页面置顶的时候放到最后面
+    /// </summary>
+    /// <param name="item"></param>
+    private void AddToListLast(string item)
+    {
+        ExictPanel.Remove(item);
+        ExictPanel.Add(item);
+    }
+    /// <summary>
+    /// 每次打开页面或者隐藏页面显示时Add一次
+    /// </summary>
+    /// <param name="item"></param>
+    private void AddToList(string item)
+    {
+        ExictPanel.Add(item);
+    }
+    /// <summary>
+    /// 每次隐藏或者关闭Romove掉
+    /// </summary>
+    /// <param name="item"></param>
+    private void RomoveToList(string item)
+    {
+        ExictPanel.Remove(item);     
+    }
 
 }
 

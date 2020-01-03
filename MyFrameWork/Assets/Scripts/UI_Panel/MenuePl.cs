@@ -35,7 +35,7 @@ public class MenuePl : PanelBase
     {
         MyLog.LogWithColor("点击Start",Color.red);
         PanelMgr.instance.OpenPanel<StartPl>();
-        //PanelMgr.instance.HidePanel(PanelName.GamePl);
+        PanelMgr.instance.HidePanel(PanelName.GamePl);
         //PanelMgr.instance.HidePanel(PanelName.OverPl);
         //PanelMgr.instance.HidePanel(PanelName.SettingPl);
     }
@@ -57,7 +57,7 @@ public class MenuePl : PanelBase
     {
 
 
-        PanelMgr.instance.ClosePanel(PanelName.StartPl);
+        PanelMgr.instance.CloseCurrentPanel();
         //PanelMgr.instance.OpenPanel<SettingPl>();
         //PanelMgr.instance.HidePanel(PanelName.GamePl);
         //PanelMgr.instance.HidePanel(PanelName.StartPl);
