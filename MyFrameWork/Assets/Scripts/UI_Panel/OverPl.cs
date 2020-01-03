@@ -11,7 +11,7 @@ public class OverPl : PanelBase {
 		layer=PanelLayer.Panel;
 	}
 
-	public override void OnShowed()
+	public override void OnBeforeShow()
     {
 		overBt=skin.transform.Find("overBt").GetComponent<Button>();
 	    overBt.onClick.AddListener(OnOverBtClick);

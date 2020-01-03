@@ -6,30 +6,29 @@ using UnityEngine.UI;
 
 public enum PanelLayer
 {
+    Null = 0,
     Start = 8,
     Panel = 10,
-    Tips = 12,
+    Tips = 12   
 }
 public class PanelMgr : MonoBehaviour
 {
     public static PanelMgr instance;
-
     public Transform _canvas;
- 
     private Dictionary<string, PanelBase> Paneldict;
-
     private Dictionary<PanelLayer, Transform> layer_dict;
+
 
     public Transform canvas
     {
         get { return _canvas; }
     }
-
     public void Awake()
     {
         instance = this;
         InitLayer();
         Paneldict = new Dictionary<string, PanelBase>();
+      
     }
     /// <summary>
     /// 初始化
@@ -49,35 +48,12 @@ public class PanelMgr : MonoBehaviour
             layer_dict.Add(pl, transform);
         }
     }
-
     /// <summary>
-    /// 设置层级，当前层没东西恢复到上一层
+    /// 首次打开必须根据类型打开页面
     /// </summary>
-    private void SettingOrder()
-    {
-        if (layer_dict[PanelLayer.Tips].childCount > 0)
-        {
-            InitOrder(PanelLayer.Tips);
-        }
-        else
-        {
-            if (layer_dict[PanelLayer.Panel].childCount > 0)
-            {
-                InitOrder(PanelLayer.Panel);
-            }
-            else
-            {
-                InitOrder(PanelLayer.Start);
-            }
-        }
-    }
-    private void InitOrder(PanelLayer layer)
-    {
-        Canvas cvs = _canvas.GetComponent<Canvas>();
-        cvs.overrideSorting = true;
-        cvs.sortingOrder = 0;
-    }
-
+    /// <typeparam name="T"></typeparam>
+    /// <param name="skinPath"></param>
+    /// <param name="_args"></param>
     public void OpenPanel<T>(string skinPath = "", params object[] _args) where T : PanelBase
     {
         string name = typeof(T).ToString();
@@ -89,9 +65,8 @@ public class PanelMgr : MonoBehaviour
             {
                 return;
             }
-            GetPanel(name).skin.SetActive(true);
             GetPanel(name).args = _args;
-            GetPanel(name).OnOpen();
+            GetPanel(name).OnShowed();
             return;
         }
         PanelBase panel = canvas.gameObject.AddComponent<T>();
@@ -104,14 +79,29 @@ public class PanelMgr : MonoBehaviour
         panel.skin = (GameObject)Instantiate(skin);
         panel.skin.transform.SetAsLastSibling();
         Transform skinTrans = panel.skin.transform;
-        PanelLayer layer = panel.layer;
+        PanelLayer layer;
+        if (panel.layer == PanelLayer.Null)
+        {
+            MyLog.LogError(panel.skin.name + "未设置PanelLayer,默认放在最后");
+            layer = PanelLayer.Tips;
+        }
+        else
+        {
+            layer = panel.layer;
+        }       
         Transform parent = layer_dict[layer];
         skinTrans.SetParent(parent, false);
-        InitOrder(layer);
+        //每个脚本第一次打开必须执行OnBeforeShow
+        panel.OnBeforeShow();
         panel.OnShowed();
-        panel.OnOpen();
     }
-    public void OpenPanel(PanelName panelName, params object[] _args)
+
+    /// <summary>
+    /// 用于打开已经打开过的页面
+    /// </summary>
+    /// <param name="panelName"></param>
+    /// <param name="_args"></param>
+    public void OpenHidePanel(PanelName panelName, params object[] _args)
     {
         string name = panelName.ToString();
         if (Paneldict.ContainsKey(name))
@@ -121,12 +111,20 @@ public class PanelMgr : MonoBehaviour
             {
                 return;
             }
-            GetPanel(name).skin.SetActive(true);
             GetPanel(name).args = _args;
-            GetPanel(name).OnOpen();
+            GetPanel(name).OnShowed();
             return;
         }
+        else
+        {
+            MyLog.LogError(panelName.ToString()+ ":页面打开失败，页面不存在。尝试使用OpenPanel<T>打开页面");
+        }
     }
+
+    /// <summary>
+    /// 谨慎使用，会关闭所有UI
+    /// </summary>
+    /// <param name="except"></param>
     public void CloseAllPanel(string except = "")
     {
         if (Paneldict == null)
@@ -169,24 +167,29 @@ public class PanelMgr : MonoBehaviour
     {
         return GetPanel(_name) as T;
     }
+
     public void ClosePanel(PanelName _name)
     {
         ClosePanel(_name.ToString());
     }
+    /// <summary>
+    /// 关闭页面
+    /// </summary>
+    /// <param name="name"></param>
     public void ClosePanel(string name)
     {
         PanelBase panel;
         Paneldict.TryGetValue(name, out panel);
         if (panel == null)
             return;
-        panel.OnHide();
         Paneldict.Remove(name);
         panel.OnClosed();
-        panel.skin.transform.SetParent(canvas.transform);
-        GameObject.Destroy(panel.skin);
-        SettingOrder();
-        Component.Destroy(panel);
+       
     }
+    /// <summary>
+    /// 隐藏页面
+    /// </summary>
+    /// <param name="panelName"></param>
     public void HidePanel(PanelName panelName)
     {
         PanelBase panel = GetPanel(panelName);
@@ -194,10 +197,11 @@ public class PanelMgr : MonoBehaviour
         {
             if (!panel.skin.activeInHierarchy)
                 return;
-            panel.skin.SetActive(false);
+            Debug.LogError("隐藏物体名?"+panelName.ToString());
             panel.OnHide();      
         }
     }
+
 
 }
 

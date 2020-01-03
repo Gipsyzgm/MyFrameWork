@@ -20,7 +20,7 @@ public class SettingPl :PanelBase {
    
     }
 
-    public override void OnShowed()
+    public override void OnBeforeShow()
     {
         PlayMusicBt = skin.transform.Find("PlayMusicBt").GetComponent<Button>();
         PlayWinBt = skin.transform.Find("PlayWinBt").GetComponent<Button>();

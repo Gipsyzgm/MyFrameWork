@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class launch : MonoBehaviour
+public class Launcher : MonoBehaviour
 {
 
     // Use this for initialization

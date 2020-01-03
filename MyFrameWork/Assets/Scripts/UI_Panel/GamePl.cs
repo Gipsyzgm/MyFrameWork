@@ -11,7 +11,7 @@ public class GamePl : PanelBase {
 		layer=PanelLayer.Panel;
 	}
 
-	public override void OnShowed()
+	public override void OnBeforeShow()
 	{
 		gameBt=skin.transform.Find("gameBt").GetComponent<Button>();
 	    gameBt.onClick.AddListener(OnGameBtClick);
