@@ -4,6 +4,7 @@
  *  描述信息：自动生成UI脚本。
  *  界面拼好后，把需要记下来的控件__点击/右键/自动生成UI/标记类型/XXX__标记好需要的控件。
  *  在主节点上右键__自动生成UI/生成UI脚本__/选择对应Layer就可以把代码导出来了
+ *  页面的枚举自动生成在的PathUi，删除会导致引用报错。
  */
 
 using System.Collections;
@@ -374,6 +375,7 @@ public class ExportUI {
         File.WriteAllText(scriptFile, sb.ToString(), Encoding.UTF8);
 
         StringBuilder sbPath = new StringBuilder();
+        sbPath.AppendLine("//每次都会重新生成的脚本，不要删，覆盖就行了");
         sbPath.AppendLine("public class " + pathName);
         sbPath.AppendLine("{");
         string resPath = "";

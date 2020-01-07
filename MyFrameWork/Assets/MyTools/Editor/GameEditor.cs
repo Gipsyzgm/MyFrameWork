@@ -75,6 +75,12 @@ public class GameEditor : MonoBehaviour {
         MyLog.LogWithColor("切换至正式模式", Color.red);
     }
 
+    [MenuItem("我的工具/导入声音")]
+    public static void EasyAudio()
+    {
+        ExportAudio.Export();
+    }
+
 
 
 }

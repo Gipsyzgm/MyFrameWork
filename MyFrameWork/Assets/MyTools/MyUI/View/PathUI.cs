@@ -1,4 +1,5 @@
-﻿public class PathUI
+﻿//每次都会重新生成的脚本，不要删，覆盖就行了
+public class PathUI
 {
     public static string GamePl = "MyUI/View/GamePl";
     public static string MenuePl = "MyUI/View/MenuePl";

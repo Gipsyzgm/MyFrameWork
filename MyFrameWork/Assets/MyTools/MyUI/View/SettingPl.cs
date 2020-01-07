@@ -45,22 +45,22 @@ public class SettingPl : PanelBase {
         count++;
         if (count % 2 == 0)
         {
-            QAudioSingleton.Instance.PlayeMusicAudio(AudioName.BackMusic);
+            MyAudioMgr.Instance.PlayeMusicAudio(MyAudioName.BackMusic);
         }
         else
         {
-            QAudioSingleton.Instance.PlayeMusicAudio(AudioName.BackMusic2);
+            MyAudioMgr.Instance.PlayeMusicAudio(MyAudioName.欢快渐进BG);
         }
     }
         
     public void PlayWinBtOnClick()
     {
-        QAudioSingleton.Instance.PlayerEffectAudio(AudioName.Win);
+        MyAudioMgr.Instance.PlayerEffectAudio(MyAudioName.Win);
     }
         
     public void PlayFailBtOnClick()
     {
-        QAudioSingleton.Instance.PlayerEffectAudio(AudioName.Fail);
+        MyAudioMgr.Instance.PlayerEffectAudio(MyAudioName.Fail);
     }
         
     public void StopMusicBtOnClick()
@@ -68,11 +68,11 @@ public class SettingPl : PanelBase {
         count++;
         if (count % 2 == 0)
         {
-            QAudioSingleton.Instance.OpenMusic();
+            MyAudioMgr.Instance.OpenMusic();
         }
         else
         {
-            QAudioSingleton.Instance.CloseMusic();
+            MyAudioMgr.Instance.CloseMusic();
         }
     }
         
@@ -81,11 +81,11 @@ public class SettingPl : PanelBase {
         count++;
         if (count % 2 == 0)
         {
-            QAudioSingleton.Instance.OpenEffect();
+            MyAudioMgr.Instance.OpenEffect();
         }
         else
         {
-            QAudioSingleton.Instance.CloseEffect();
+            MyAudioMgr.Instance.CloseEffect();
         }
 
     }
@@ -94,20 +94,20 @@ public class SettingPl : PanelBase {
     {
         SoundValueBt.onValueChanged.AddListener((float Value) =>
         {
-            QAudioSingleton.Instance._musicSource.volume = Value;
-            QAudioSingleton.Instance._effectSource.volume = Value;
+            MyAudioMgr.Instance._musicSource.volume = Value;
+            MyAudioMgr.Instance._effectSource.volume = Value;
 
         });
         MusicCtrlBt.onValueChanged.AddListener((bool isOn) =>
         {
             if (isOn)
             {
-                QAudioSingleton.Instance.OpenMusic();
+                MyAudioMgr.Instance.OpenMusic();
 
             }
             else
             {
-                QAudioSingleton.Instance.CloseMusic();
+                MyAudioMgr.Instance.CloseMusic();
             }
         });
     }

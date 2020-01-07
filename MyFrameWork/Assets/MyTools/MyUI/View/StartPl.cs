@@ -18,10 +18,15 @@ public class StartPl : PanelBase {
         StartBt.onClick.AddListener(StartBtOnClick);
         CustomComponent();
     }
-    //====================上面部分自动生成，每次生成都会替换掉,不要手写东西==================
-
-    //====================以下为手写部分，初始化补充方法为CustomComponent()==================
+    //——————————上面部分自动生成，每次生成都会替换掉，不要手写东西——————————
+                                                                                                
+    //——————————以下为手写部分，初始化补充方法为CustomComponent()———————————
     //@EndMark@
+    public override void OnShow()
+    {
+        curView.SetActive(true); 
+    }
+        
     public void StartBtOnClick()
     {
         Debug.Log("开始游戏");

@@ -10,7 +10,7 @@ public class Launcher : MonoBehaviour
     {
         gameObject.AddComponent<PanelMgr>();
         PanelMgr.instance.OpenPanel<MenuePl>();
-        QAudioSingleton.Instance.Init();
+        MyAudioMgr.Instance.Init();
     }
 
     // Update is called once per frame

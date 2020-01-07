@@ -1,10 +1,19 @@
-﻿using UnityEngine;
+﻿/*
+ *  项目名字：MyFrameWork
+ *  创建时间：2019.12.28
+ *  描述信息：简单声音和音效控制。
+ *  注意事项：
+ *  1：和ExportAudio自动生成声音路径文件结合使用，路径可以在ExportAudio变更。
+ *  2：不支持同时播放多个背景音乐。
+ *  3：使用时，编辑器模式下我的工具——导入声音。工程代码中调用Init方法即可。
+ */
+using UnityEngine;
 using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-public class QAudioSingleton : MonoSingleton<QAudioSingleton>
+public class MyAudioMgr : MonoSingleton<MyAudioMgr>
 {
     private Dictionary<string, AudioClip> _dicAudio = null;
     public AudioSource _musicSource = null;                  //背景音乐
@@ -71,8 +80,9 @@ public class QAudioSingleton : MonoSingleton<QAudioSingleton>
     }
 
 
-    public AudioSource PlayerEffectAudio(string _ClipName, float _Volume = 1)
+    public AudioSource PlayerEffectAudio(MyAudioName ClipName, float _Volume = 1)
     {
+        string  _ClipName = ClipName.ToString();
         if (this._dicAudio.ContainsKey(_ClipName))
         {
             _Volume *= this._effectVolume;
@@ -87,8 +97,9 @@ public class QAudioSingleton : MonoSingleton<QAudioSingleton>
         }
         return this._effectSource;
     }
-    public AudioSource PlayeMusicAudio(string _ClipName, float _Volume = 1)
+    public AudioSource PlayeMusicAudio(MyAudioName ClipName, float _Volume = 1)
     {
+        string _ClipName = ClipName.ToString();
         if (this._dicAudio.ContainsKey(_ClipName))
         {
             _Volume *= this._musicVolume;
@@ -113,26 +124,10 @@ public class QAudioSingleton : MonoSingleton<QAudioSingleton>
 
     void InitAllAudioClip()
     {
-        this._dicAudio.Add(AudioName.Click, Resources.Load<AudioClip>(AudioPath.Click));
-        this._dicAudio.Add(AudioName.Win, Resources.Load<AudioClip>(AudioPath.Win));
-        this._dicAudio.Add(AudioName.Fail, Resources.Load<AudioClip>(AudioPath.Fail));
-        this._dicAudio.Add(AudioName.BackMusic, Resources.Load<AudioClip>(AudioPath.BackMusic));
-        this._dicAudio.Add(AudioName.BackMusic2, Resources.Load<AudioClip>(AudioPath.BackMusic2));
+        foreach (var item in Enum.GetValues(typeof(MyAudioName)))
+        {
+            item.ToString();
+            this._dicAudio.Add(item.ToString(), Resources.Load<AudioClip>(MyAudioPath.Path + item.ToString()));
+        }
     }
-}
-public class AudioPath
-{
-    public static string Click = "Source/Click";
-    public static string Fail = "Source/Fail";
-    public static string Win = "Source/Win";
-    public static string BackMusic = "Source/BackMusic";
-    public static string BackMusic2 = "Source/欢快渐进BG";
-}
-public static class AudioName
-{
-    public static string Click = "Click";
-    public static string Fail = "Fail";
-    public static string Win = "Win";
-    public static string BackMusic = "BackMusic";
-    public static string BackMusic2 = "BackMusic2";
 }
