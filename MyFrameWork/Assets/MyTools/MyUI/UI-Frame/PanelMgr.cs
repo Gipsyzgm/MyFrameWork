@@ -103,7 +103,7 @@ public class PanelMgr : MonoBehaviour
         PanelLayer layer;
         if (panel.layer == PanelLayer.Null)
         {
-            MyLog.LogError(panel.curView.name + "未设置PanelLayer,默认放在最后");
+            Debug.LogError(panel.curView.name + "未设置PanelLayer,默认放在最后");
             layer = PanelLayer.Tips;
         }
         else
@@ -138,7 +138,7 @@ public class PanelMgr : MonoBehaviour
         }
         else
         {
-            MyLog.LogError(panelName.ToString()+ ":页面打开失败，页面不存在。尝试使用OpenPanel<T>打开页面");
+            Debug.LogError(panelName.ToString()+ ":页面打开失败，页面不存在。尝试使用OpenPanel<T>打开页面");
         }
     }
 
@@ -149,12 +149,12 @@ public class PanelMgr : MonoBehaviour
     {
         if (ExictPanel== null)
         {
-            MyLog.LogError("所有页面关闭或ExictPanelList异常");
+            Debug.LogError("所有页面关闭或ExictPanelList异常");
             return;
         }
         if (ExictPanel.Count==1)
         {
-            MyLog.LogWithColor("除主页面和隐藏页面外已经全部关闭", Color.green);
+            Debug.LogError("除主页面和隐藏页面外已经全部关闭");
             return;
         }
         string name = ExictPanel[ExictPanel.Count - 1];

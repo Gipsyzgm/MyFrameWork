@@ -15,6 +15,7 @@ public class ExportAudio : MonoBehaviour {
     //音效目录
     static string clipPath = "Assets/Resources/MySource/";
 
+    [MenuItem("我的工具/导入声音")]
     public static void Export()
     {
         if (!Directory.Exists(scriptDir))
@@ -47,6 +48,6 @@ public class ExportAudio : MonoBehaviour {
         }     
         sbPath.AppendLine("}");
         File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
-        MyLog.LogWithColor("生成成功",Color.green);
+        Debug.LogError("音乐导入成功");
     }
 }
