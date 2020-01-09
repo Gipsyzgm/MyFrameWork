@@ -32,7 +32,9 @@ public class MyEditorTools
     /// <param name="tag"></param>
     public static void AddTag(string tag)
     {
+#if UNITY_EDITOR
         UnityEditorInternal.InternalEditorUtility.AddTag(tag);
+#endif
     }
 
 }
