@@ -6,7 +6,7 @@ public class IOSNotification : MonoBehaviour
     int alertHour = 19;
 
 
-    //NotificationMessage("大爷来玩嘛", System.DateTime.Now.AddSeconds(10), false);
+    //NotificationMessage("来玩吧", System.DateTime.Now.AddSeconds(10), false);
     //NotificationMessage("4点推送", 19, true);
 
     //定点通知

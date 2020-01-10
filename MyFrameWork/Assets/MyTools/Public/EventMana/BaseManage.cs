@@ -23,8 +23,6 @@ public abstract class BaseManage<T> : MonoBehaviour where T : BaseManage<T>
 
 					DontDestroyOnLoad (go);
 				}
-
-
 				_manage = go.AddComponent<T>();
 			}
 

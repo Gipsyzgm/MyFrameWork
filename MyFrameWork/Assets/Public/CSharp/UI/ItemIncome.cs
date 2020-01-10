@@ -30,7 +30,7 @@ public class ItemIncome : MonoBehaviour {
     public void Init(Transform t,long number)
     {
         tran = t;
-        textNumber.text = EasyCode.GetLongString(number);
+        textNumber.text = 1000000000000000.ToString();
         transform.localPosition = EasyCode.PosToUiPos(tran.position, tinker, ComponentMgr.Instance.uiCanvas);
         times = 0;
         gameObject.SetActive(true);

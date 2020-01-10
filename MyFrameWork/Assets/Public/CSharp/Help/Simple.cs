@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Simple : MonoBehaviour {
 
-
+    //帧动画
     public enum SimpleType
     {
         SpriteChange,

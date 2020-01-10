@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 简单的封装log类，提供带颜色和带标记的log信息
+/// </summary>
 public class MyLog{
 
    public static void LogWithTag(string info, LogTag logTag)

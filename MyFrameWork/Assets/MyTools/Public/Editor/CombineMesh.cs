@@ -41,7 +41,7 @@ public class CombineMesh : MonoBehaviour {
                 //矩阵(Matrix)自身空间坐标的点转换成世界空间坐标的点   
                 //combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
                 //变换矩阵的问题，要保持相对位置不变，要转换为父节点的本地坐标，
-                combine[i].transform = matrix * mf.transform.localToWorldMatrix;                       
+                combine[i].transform = matrix * mf.transform.localToWorldMatrix;           
             }
             Mesh mesh = new Mesh();
             mesh.name = objs[j].name;         

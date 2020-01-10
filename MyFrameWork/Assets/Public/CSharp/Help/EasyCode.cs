@@ -10,17 +10,7 @@ using UnityEngine.EventSystems;
 
 public class EasyCode : MonoBehaviour {
 
-    /// <summary>
-    /// 延迟执行
-    /// </summary>
-    /// <param name="action"></param>
-    /// <param name="delay"></param>
-    /// <returns></returns>
-    public static IEnumerator DelayInvoke(System.Action action,float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        action();
-    }
+
 
     /// <summary>
     /// 射线
@@ -83,32 +73,7 @@ public class EasyCode : MonoBehaviour {
         Vector3 newPos = Camera.main.ScreenToWorldPoint(mousePos);
         return newPos;
     }
-    /// <summary>
-    /// 在范围内选出n个不同对象
-    /// </summary>
-    /// <param name="list"></param>
-    /// <param name="n"></param>
-    /// <returns></returns>
-    public static List<int> RandomCount(List<int> list, int n)
-    {
-        if (list.Count <= n) return null;
-
-        List<int> newList = new List<int>();
-
-        int m = UnityEngine.Random.Range(0, list.Count);
-        newList.Add(list[m]);
-
-
-
-        while (newList.Count < n)
-        {
-            int a = UnityEngine.Random.Range(0, list.Count);
-            int num = list[a];
-            if (!newList.Contains(num))
-                newList.Add(num);
-        }
-        return newList;
-    }
+   
 
     public static int[] GetInts(string str,char c = '_')
     {
@@ -131,29 +96,7 @@ public class EasyCode : MonoBehaviour {
         return arr;
     }
 
-    public static string GetLongString(long money)
-    {
-        if(money < Mathf.Pow(10,3))
-        {
-            return money.ToString();
-        }
-        else if(money >= Mathf.Pow(10, 3) && money < Mathf.Pow(10, 6))
-        {
-            return (money / (Mathf.Pow(10, 3) + 0.0f)).ToString("f1") + "K";
-        }
-        else if (money >= Mathf.Pow(10, 6) && money < Mathf.Pow(10, 9))
-        {
-            return (money / (Mathf.Pow(10, 6) + 0.0f)).ToString("f1") + "M";
-        }
-        else if (money >= Mathf.Pow(10, 9) && money < Mathf.Pow(10, 12))
-        {
-            return (money / (Mathf.Pow(10, 9) + 0.0f)).ToString("f1") + "B";
-        }
-
-        string B = (money / (Mathf.Pow(10, 9) + 0.0f)).ToString("f1") + "B";
-
-        return B;
-    }
+   
     /// <summary>
     /// 震动
     /// </summary>
@@ -165,52 +108,8 @@ public class EasyCode : MonoBehaviour {
 #endif
     }
 
-    //color转hexColor
-    public static string ColorToHex(Color color)
-    {
-        int r = Mathf.RoundToInt(color.r * 255.0f);
-        int g = Mathf.RoundToInt(color.g * 255.0f);
-        int b = Mathf.RoundToInt(color.b * 255.0f);
-        int a = Mathf.RoundToInt(color.a * 255.0f);
-        string hex = string.Format("{0:X2}{1:X2}{2:X2}{3:X2}", r, g, b, a);
-        return hex;
-    }
-    /// <summary>
-    /// hex转换到color
-    /// </summary>
-    /// <param name="hex">ABCE56AE</param>
-    /// <returns></returns>
-    public static Color HexToColor(string hex)
-    {
-        byte br = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
-        byte bg = byte.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
-        byte bb = byte.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
-        byte cc = byte.Parse(hex.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
-        float r = br / 255f;
-        float g = bg / 255f;
-        float b = bb / 255f;
-        float a = cc / 255f;
-        return new Color(r, g, b, a);
-    }
-    //十六进制转color (#FF4357)
-    public static Color HtmlStringRGB(string htmlString)
-    {
-        Color color;
-        ColorUtility.TryParseHtmlString(htmlString,out color);
-        return color;
-    }
 
-    ///点到UI上
-    public static bool IsPointerOverGameObject()
-    {
-        PointerEventData eventData = new PointerEventData(UnityEngine.EventSystems.EventSystem.current);
-        eventData.pressPosition = Input.mousePosition;
-        eventData.position = Input.mousePosition;
 
-        List<RaycastResult> list = new List<RaycastResult>();
-        UnityEngine.EventSystems.EventSystem.current.RaycastAll(eventData, list);
-        return list.Count > 0;
-    }
 }
 
 #if Do_Tween

@@ -19,12 +19,7 @@ public class ComponentMgr : MonoBehaviour {
 
         //ui
         uiCanvas = FindObjectOfType<CanvasScaler>().gameObject.GetComponent<Canvas>();
-        uiRoot = uiCanvas.transform;
-        //先矫正，再读数据
-        gameObject.AddComponent<UpdateVersion>();
-        gameObject.AddComponent<Data>();
-        //UI
-        gameObject.AddComponent<UIMgr>();
+
         //适配
         uiRoot.gameObject.AddComponent<UIFitter>();
         //IphoneX
@@ -35,8 +30,7 @@ public class ComponentMgr : MonoBehaviour {
         gameObject.AddComponent<IApplication>();
         gameObject.AddComponent<IUpdate>();
         gameObject.AddComponent<IResources>();
-        //FPS
-        gameObject.AddComponent<FPS>();
+
         //内购
         IAP.Initialize();
         
