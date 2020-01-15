@@ -71,11 +71,7 @@ public class IResources : MonoBehaviour {
             bundles.Remove(dic.Key);
         }
     }
-    //每隔一段时间卸载不用的Bundle
-    public static void UnloadByTick()
-    {
-        IUpdate.Instance.AddUpdateHandheld(Unload, 60);
-    }
+
 
     //Lua不支持直接调用泛型,供Lua调用
     public static GameObject LoadResGameObject(string resPath, string resName)

@@ -26,15 +26,12 @@ public class ComponentMgr : MonoBehaviour {
         gameObject.AddComponent<SettingIphoneX>();
         //多语言
         gameObject.AddComponent<LanguageMgr>();
-        //运行
-        gameObject.AddComponent<IApplication>();
-        gameObject.AddComponent<IUpdate>();
+
+
         gameObject.AddComponent<IResources>();
 
-        //内购
-        IAP.Initialize();
         
-        IResources.UnloadByTick();
+       
 
     }
     void Start()

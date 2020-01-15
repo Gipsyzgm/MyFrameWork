@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -106,35 +107,20 @@ public class MyTools : MonoBehaviour {
         };
     }
 
-    /// <summary>
-    /// 是否为同一天，每次打开判定一次
-    /// </summary>
-    /// <returns></returns>
-    public static bool IsToday()
+   /// <summary>
+   /// 世界坐标转UI坐标
+   /// </summary>
+   /// <param name="WorldPos"></param>
+   /// <param name="tinkerUp"></param>
+   /// <param name="uiCanvas"></param>
+   /// <returns></returns>
+    public static Vector3 WorldPosToUiPos(Vector3 WorldPos, Canvas uiCanvas)
     {
-        System.DateTime currenTime = new System.DateTime();
-        currenTime = System.DateTime.Now;
-        int Month = currenTime.Month;
-        int Day = currenTime.Day;
-        if (!PlayerPrefs.HasKey("DayTime"))
-        {
-            PlayerPrefs.SetInt("DayTime", Day);
-            PlayerPrefs.SetInt("MonthTime", Month);
-        }
-        if (Day == PlayerPrefs.GetInt("DayTime") && Month == PlayerPrefs.GetInt("MonthTime"))
-        {
-            //Debug.LogError("Daytime" + Day+"MonthTime"+Month);
-            return true;
-        }
-        else
-        {
-            Debug.LogError("Daytime111" + Day + "MonthTime" + Month);
-            PlayerPrefs.SetInt("DayTime", Day);
-            PlayerPrefs.SetInt("MonthTime", Month);
-            return false;
-        }
-
+        Vector3 pt = Camera.main.WorldToScreenPoint(WorldPos);    
+        Vector2 v;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(uiCanvas.transform as RectTransform, pt, uiCanvas.worldCamera, out v);
+        pt = new Vector3(v.x, v.y, 0);
+        return pt;
     }
-
 
 }

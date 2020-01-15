@@ -10,8 +10,6 @@ public class EffectMgr : MonoBehaviour {
 	void Start () {
 		
 	}
-	
-
     void Pool(params int[] effectIds)
     {
         for(int i=0; i<effectIds.Length; i++)

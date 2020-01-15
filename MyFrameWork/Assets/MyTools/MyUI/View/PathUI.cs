@@ -6,6 +6,7 @@ public class PathUI
     public static string OverPl = "MyUI/View/OverPl";
     public static string SettingPl = "MyUI/View/SettingPl";
     public static string StartPl = "MyUI/View/StartPl";
+    public static string Text = "MyUI/View/Text";
 }
 public enum PanelName
 {
@@ -14,4 +15,5 @@ public enum PanelName
     OverPl,
     SettingPl,
     StartPl,
+    Text,
 }

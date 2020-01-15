@@ -50,7 +50,8 @@ public class GameEditor : MonoBehaviour {
         GameObject go = new GameObject();
         go.name = "Env_Mgr";
         go.transform.position = Vector3.zero;
-        go.AddComponent<Env_Mgr>();
+
+        MyEditorTools.AddFileComment(go, MyDefaultPath.PublicEnvPath, ".cs");
         MyEditorTools.AddFileComment(go, MyDefaultPath.EditorEnvPath, ".cs");
 
         MyLog.LogWithColor("切换至测试模式", Color.red);
@@ -72,7 +73,7 @@ public class GameEditor : MonoBehaviour {
         GameObject go = new GameObject();
         go.name = "Env_Mgr";
         go.transform.position = Vector3.zero;
-        go.AddComponent<Env_Mgr>();
+        MyEditorTools.AddFileComment(go, MyDefaultPath.PublicEnvPath, ".cs");
         MyEditorTools.AddFileComment(go, MyDefaultPath.FormalEnvPath, ".cs");
         MyLog.LogWithColor("切换至正式模式", Color.red);
     }

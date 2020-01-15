@@ -14,6 +14,10 @@ public class MyDefaultPath{
     /// 正式环境
     /// </summary>
     public static readonly string FormalEnvPath = "Assets/MyTools/Common/FormalEnv";
+    /// <summary>
+    /// 公共文件
+    /// </summary>
+    public static readonly string PublicEnvPath = "Assets/MyTools/Common/PublicEnv";
 
 
 
