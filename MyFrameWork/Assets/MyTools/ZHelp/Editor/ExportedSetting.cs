@@ -20,7 +20,7 @@ using System.Xml;
 
 public class ExportedSetting : MonoBehaviour
 {
-    [MenuItem("我的工具/自动打包")]
+    [MenuItem("我的工具/自动打包支持")]
     public static void AutoBuild()
     {
         Debug.LogError("自动打包需要自己配置文件，双击进入ExportSetting查看，现只支持安卓。");

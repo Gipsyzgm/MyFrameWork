@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 用来封装一些和时间相关的方法
+/// </summary>
 public class MyTime : MonoBehaviour {
 
     /// <summary>

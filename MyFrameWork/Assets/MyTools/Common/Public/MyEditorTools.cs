@@ -5,7 +5,9 @@ using System.IO;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
-
+/// <summary>
+/// 用来封装一些Editor工具可能需要用到的方法
+/// </summary>
 public class MyEditorTools
 {
     /// <summary>

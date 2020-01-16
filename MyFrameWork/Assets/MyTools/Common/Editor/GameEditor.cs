@@ -101,4 +101,13 @@ public class GameEditor : MonoBehaviour {
             EditorApplication.isPaused = false;
         }
     }
+    [MenuItem("我的工具/使用说明",false,100)]
+    static void Help()
+    {
+        MyLog.LogWithColor("使用说明1：Common文件夹为通用资源。谨慎操作，其他脚本可能引用", Color.red);
+        MyLog.LogWithColor("使用说明2：Zhelp文件内为一些辅助功能脚本", Color.yellow);
+        MyLog.LogWithColor("使用说明3：功能遵循独立原则，通过删除对应功能文件夹以删除其功能", Color.green);
+        MyLog.LogWithColor("使用说明4: 由划水爱好者Gipsy整理", Color.gray);    
+    }
+
 }

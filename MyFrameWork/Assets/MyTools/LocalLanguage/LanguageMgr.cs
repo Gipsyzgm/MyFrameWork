@@ -75,3 +75,10 @@ public class LanguageMgr : MonoBehaviour {
 
 
 }
+public class Language
+{
+
+   public static string[] cn = { };
+   public static string[] en = { };
+
+}
