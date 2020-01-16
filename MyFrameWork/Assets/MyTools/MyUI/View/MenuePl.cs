@@ -37,9 +37,12 @@ public class MenuePl : PanelBase {
         
     public void CustomComponent()
     {
-        
+       
+           
     }
-        
+
+  
+
     public override void OnShow()
     {
         curView.SetActive(true); 
@@ -63,7 +66,6 @@ public class MenuePl : PanelBase {
         
     public void StartBtOnClick()
     {
-
         MyLog.LogWithColor("点击Start", Color.red);
         PanelMgr.instance.OpenPanel<StartPl>();
         //PanelMgr.instance.HidePanel(PanelName.GamePl);

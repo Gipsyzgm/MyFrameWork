@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-
-public class EventManage : BaseManage<EventManage>
+/// <summary>
+///简单的事件处理系统，即通过添加Event和移除Event来实现。事件名须添加到对应的EventKey枚举内
+/// </summary>
+public class EventManage : MonoSingleton<EventManage>
 {
 	private Dictionary<EventKey, Action<System.Object>> eventDictionary = null;
-
 	public void Awake ()
 	{
 		eventDictionary = new Dictionary<EventKey, Action<System.Object>> ();
@@ -29,7 +30,7 @@ public class EventManage : BaseManage<EventManage>
 	/// <summary>
 	/// 清理事件监听
 	/// </summary>
-	public void clearEventListener (EventKey key)
+	public void RemoveEventListener (EventKey key)
 	{
 		if(eventDictionary.ContainsKey(key))
 		{
@@ -49,16 +50,11 @@ public class EventManage : BaseManage<EventManage>
 	}
 }
 
-
 public enum EventKey : int
 {	
 	/// <summary>
 	/// 玩家角色死亡
 	/// </summary>
 	PlayDie = 1001,
-	/// <summary>
-	/// 玩家角色无敌状态改变
-	/// </summary>
-	PlayStateChange,
 
 }
