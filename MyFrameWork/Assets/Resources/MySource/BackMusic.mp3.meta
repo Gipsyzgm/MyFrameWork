@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: 8bf3c2ca37a2edb4da8c86e884b134f7
-timeCreated: 1541580347
-licenseType: Pro
 AudioImporter:
   externalObjects: {}
   serializedVersion: 6
@@ -20,5 +18,5 @@ AudioImporter:
   ambisonic: 0
   3D: 1
   userData: 
-  assetBundleName: 
+  assetBundleName: mysource/backmusic
   assetBundleVariant: 
