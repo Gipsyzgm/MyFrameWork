@@ -5,7 +5,9 @@ using UnityEngine;
 public class Launcher : MonoBehaviour
 {
 
-    // Use this for initialization
+
+    // 游戏的总入口
+
     void Start()
     {
         gameObject.AddComponent<PanelMgr>();

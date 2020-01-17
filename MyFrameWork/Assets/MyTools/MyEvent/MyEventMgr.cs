@@ -6,7 +6,7 @@ using System;
 /// <summary>
 ///简单的事件处理系统，即通过添加Event和移除Event来实现。事件名须添加到对应的EventKey枚举内
 /// </summary>
-public class EventManage : MonoSingleton<EventManage>
+public class MyEventMgr : MonoSingleton<MyEventMgr>
 {
 	private Dictionary<EventKey, Action<System.Object>> eventDictionary = null;
 	public void Awake ()

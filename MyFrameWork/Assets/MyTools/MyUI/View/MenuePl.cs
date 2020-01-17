@@ -66,6 +66,9 @@ public class MenuePl : PanelBase {
         
     public void StartBtOnClick()
     {
+       
+
+       
         MyLog.LogWithColor("点击Start", Color.red);
         PanelMgr.instance.OpenPanel<StartPl>();
         //PanelMgr.instance.HidePanel(PanelName.GamePl);
@@ -75,6 +78,7 @@ public class MenuePl : PanelBase {
 
     public void GameBtOnClick()
     {
+       
         PanelMgr.instance.OpenPanel<GamePl>();
         //PanelMgr.instance.HidePanel(PanelName.StartPl);
         //PanelMgr.instance.HidePanel(PanelName.OverPl);
@@ -83,6 +87,8 @@ public class MenuePl : PanelBase {
 
     public void OverBtOnClick()
     {
+        
+       
         PanelMgr.instance.OpenPanel<OverPl>();
         //PanelMgr.instance.HidePanel(PanelName.GamePl);
         //PanelMgr.instance.HidePanel(PanelName.StartPl);
