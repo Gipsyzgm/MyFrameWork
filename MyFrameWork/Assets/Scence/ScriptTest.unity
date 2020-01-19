@@ -330,13 +330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116a9a490ff383e40940d496f1707d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DragTransform: {fileID: 1995904875}
-  LastMousePos: {x: 0, y: 0, z: 0}
-  isDrag: 0
-  Draggragle: 1
-  offesty: 0
-  UpBound: 12
-  DownBound: -2
 --- !u!1 &1995904870
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class Launcher : MonoBehaviour
 
     void Start()
     {
+        MyGameData.InitGameData();
         gameObject.AddComponent<PanelMgr>();
         PanelMgr.instance.OpenPanel<MenuePl>();
         MyAudioMgr.Instance.Init();
