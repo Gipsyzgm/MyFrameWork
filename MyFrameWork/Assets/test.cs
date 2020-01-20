@@ -6,10 +6,8 @@ public class test : MonoBehaviour {
 
     void Start()
     {
-        //实例化test
-        test test = new test("111");
 
-        test test1 = new test("222",1);
+
 
     }
     /// <summary>
