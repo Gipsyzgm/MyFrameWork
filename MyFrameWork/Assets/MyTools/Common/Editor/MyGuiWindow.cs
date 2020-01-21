@@ -46,15 +46,18 @@ public class MyGuiWindow : EditorWindow
         GUILayout.Label("MyFrameWork使用说明");
         //添加名为按钮，用于调用AutoUi()函数
         GUILayout.Space(Space);
-        if (GUILayout.Button("MyFrameWork说明", GUILayout.Height(BtnHigh)))
+        GUILayout.BeginHorizontal();
+        if (GUILayout.Button("框架使用说明", GUILayout.Height(BtnHigh)))
         {
             FrameWorkInfo();
         }
-        GUILayout.Space(Space);
+
         if (GUILayout.Button("关于我的工具", GUILayout.Height(BtnHigh)))
         {
             AboutMyTools();
         }
+        GUILayout.EndHorizontal();
+
         GUILayout.Space(Space);
         if (GUILayout.Button("自动生成UI", GUILayout.Height(BtnHigh)))
         {
