@@ -27,9 +27,13 @@ public class CreateConfigData : MonoBehaviour
     /// </summary>
     static string scriptDir = "Assets/MyTools/ExcelGameData/GameData/";
     /// <summary>
-    /// AllConfigInfo的文件夹存放地址
+    /// AllConfigInfo的文件存放地址
     /// </summary>
     static string AllConfigInfoDir = "Assets/MyTools/ExcelGameData/AllConfigInfo/";
+    /// <summary>
+    /// ReadExcelInfo的文件存放地址
+    /// </summary>
+    static string ReadExcelInfoDir = "Assets/MyTools/ExcelGameData/Editor/";
 
     /// <summary>
     /// AllConfigInfo的类名
@@ -41,7 +45,7 @@ public class CreateConfigData : MonoBehaviour
     /// </summary>
     static string ReadExcelName = "AllReadExcel";
 
-   
+    [MenuItem("我的工具/配置Excel表格/读取配置表格", false, 2)]
     public static void ReadConfigData()
     {
         WriteAllConfigInfo();
@@ -93,7 +97,7 @@ public class CreateConfigData : MonoBehaviour
         StringBuilder sbPath = new StringBuilder();
         DirectoryInfo direction = new DirectoryInfo(scriptDir);
         FileInfo[] files = direction.GetFiles("*", SearchOption.AllDirectories);
-        string scriptFilePath = AllConfigInfoDir + ReadExcelName + ".cs";
+        string scriptFilePath = ReadExcelInfoDir + ReadExcelName + ".cs";
 
         sbPath.AppendLine("using UnityEngine;");
         sbPath.AppendLine("using LitJson;");

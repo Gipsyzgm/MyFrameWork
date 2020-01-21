@@ -119,11 +119,6 @@ public class CreateExcel : MonoBehaviour {
         }
     }
 
-    [MenuItem("我的工具/配置Excel表格/读取配置表格", false, 2)]
-    public static void ReadConfigData()
-    {
-        CreateConfigData.ReadConfigData();
-    }
 }
 
 
