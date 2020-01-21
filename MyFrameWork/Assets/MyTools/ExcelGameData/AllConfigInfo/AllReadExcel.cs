@@ -6,19 +6,21 @@ public class AllReadExcel
 {
      public static void TestDicExcel()
      { 
-             Debug.LogError("TestDicExcel：执行了吗？"); 
+         Debug.LogError("读取表格:TestDicExcel"); 
          Dictionary<string, List<string>> dic = CreateConfigData.ReadDictionaryFromExcel("TestDicExcel", 0);
          CreateConfigData.configData.TestDicExcel= new TestDicExcel[dic.Count];
+         int Count = 0;
          foreach (var item in dic.Keys)
          { 
-             CreateConfigData.configData.TestDicExcel[int.Parse(item) - 1] = new TestDicExcel(); 
-             CreateConfigData.configData.TestDicExcel[int.Parse(item) - 1].level = item; 
-             CreateConfigData.configData.TestDicExcel[int.Parse(item) - 1].testDic = dic[item];
+             CreateConfigData.configData.TestDicExcel[Count] = new TestDicExcel(); 
+             CreateConfigData.configData.TestDicExcel[Count].level = item; 
+             CreateConfigData.configData.TestDicExcel[Count].testDic = dic[item];
+             Count ++;
          } 
      } 
      public static void TestExcel0()
      { 
-             Debug.LogError("TestExcel0：执行了吗？"); 
+         Debug.LogError("读取表格:TestExcel0"); 
          string json = CreateConfigData.ReadExcel2Json("TestExcel0", 0);
          JsonData jd = JsonMapper.ToObject(json);
          CreateConfigData.configData.TestExcel0 = new TestExcel0[jd.Count];
@@ -29,7 +31,7 @@ public class AllReadExcel
      } 
      public static void TestExcel1()
      { 
-             Debug.LogError("TestExcel1：执行了吗？"); 
+         Debug.LogError("读取表格:TestExcel1"); 
          string json = CreateConfigData.ReadExcel2Json("TestExcel1", 0);
          JsonData jd = JsonMapper.ToObject(json);
          CreateConfigData.configData.TestExcel1 = new TestExcel1[jd.Count];

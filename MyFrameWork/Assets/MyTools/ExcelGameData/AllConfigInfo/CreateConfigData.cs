@@ -51,9 +51,8 @@ public class CreateConfigData : MonoBehaviour
 
         AutoReadExcelInfo();
 
-       
         AssetDatabase.CreateAsset(configData, assetDir + "ConfigAsset.asset");
-        Debug.LogError("读取配置完成,"+ assetDir+"ConfigAsset.asset");     
+        Debug.LogError("读取配置完成,"+ assetDir+"ConfigAsset.asset");
     }
     /// <summary>
     /// 自动写AllConfigInfo脚本
@@ -119,18 +118,19 @@ public class CreateConfigData : MonoBehaviour
            
             sbPath.AppendLine("     public static void " + prefabName + "()");
             sbPath.AppendLine("     { ");
-            sbPath.AppendLine("             Debug.LogError("+'"' +prefabName+"：执行了吗？"+'"' +"); ");
+            sbPath.AppendLine("         Debug.LogError("+'"'+"读取表格:"+prefabName +'"' +"); ");
             if (IsDicExcel)
             {               
                 sbPath.AppendLine("         Dictionary<string, List<string>> dic = CreateConfigData.ReadDictionaryFromExcel(" + '"' + prefabName + '"' + ", 0);");
                 sbPath.AppendLine("         CreateConfigData.configData." + prefabName + "= new " + prefabName + "[dic.Count];");
+                sbPath.AppendLine("         int Count = 0;");
                 sbPath.AppendLine("         foreach (var item in dic.Keys)");
                 sbPath.AppendLine("         { ");
-                sbPath.AppendLine("             CreateConfigData.configData." + prefabName + "[int.Parse(item) - 1] = new " + prefabName + "(); ");
-                sbPath.AppendLine("             CreateConfigData.configData." + prefabName + "[int.Parse(item) - 1].level = item; ");
-                sbPath.AppendLine("             CreateConfigData.configData." + prefabName + "[int.Parse(item) - 1].testDic = dic[item];");
-                sbPath.AppendLine("         } ");
-           
+                sbPath.AppendLine("             CreateConfigData.configData." + prefabName + "[Count] = new " + prefabName + "(); ");
+                sbPath.AppendLine("             CreateConfigData.configData." + prefabName + "[Count]." + fields[0].Name + " = item; ");
+                sbPath.AppendLine("             CreateConfigData.configData." + prefabName + "[Count]." + fields[1].Name + " = dic[item];");
+                sbPath.AppendLine("             Count ++;");
+                sbPath.AppendLine("         } ");           
             }
             else
             {
@@ -156,12 +156,12 @@ public class CreateConfigData : MonoBehaviour
     public static void AutoReadExcelInfo()
     {
         Type t = typeof(AllReadExcel);
+       
         MethodInfo[] mt = t.GetMethods(BindingFlags.Public | BindingFlags.Static);
         if (mt != null)
         {
             for (int i = 0; i < mt.Length; i++)
             {
-                Debug.LogError(mt[i].Name);
                 mt[i].Invoke(null, null);
             }
         }
@@ -174,19 +174,21 @@ public class CreateConfigData : MonoBehaviour
     /// <summary>
     /// 测试读表读成字典格式
     /// </summary>
-    //public static void ReadTestDicExcel()
-    //{
-    //    Dictionary<string, List<string>> dic = ReadDictionaryFromExcel("测试字典配置表", 0);
-    //    configData.TestDicExcel = new TestDicExcel[dic.Count];
-    //    Debug.LogError(dic.Count);
-    //    foreach (var item in dic.Keys)
-    //    {
-    //        //因为item是Index为1，在程序里index开始是0；所以减1
-    //        configData.TestDicExcel[int.Parse(item) - 1] = new TestDicExcel();
-    //        configData.TestDicExcel[int.Parse(item) - 1].level = item;
-    //        configData.TestDicExcel[int.Parse(item) - 1].testDic = dic[item];
-    //    }
-    //}
+    public static void ReadTestDicExcel()
+    {
+        Dictionary<string, List<string>> dic = ReadDictionaryFromExcel("测试字典配置表", 0);
+        configData.TestDicExcel = new TestDicExcel[dic.Count];
+        Debug.LogError(dic.Count);
+        int Count = 0;
+        foreach (var item in dic.Keys)
+        {
+            Count++;
+            //因为item是Index为1，在程序里index开始是0；所以减1
+            configData.TestDicExcel[Count] = new TestDicExcel();
+            configData.TestDicExcel[Count].level = item;
+            configData.TestDicExcel[Count].testDic = dic[item];
+        }
+    }
     /// <summary>
     /// 测试读表0
     /// </summary>
@@ -261,6 +263,7 @@ public class CreateConfigData : MonoBehaviour
         FileStream fs = File.Open(_path + filename + ".xlsx", FileMode.Open, FileAccess.Read);
         IExcelDataReader er = ExcelReaderFactory.CreateOpenXmlReader(fs);
         DataSet ds = er.AsDataSet();
+
         fs.Close();
         if (ds.Tables.Count < 1)
         {
@@ -272,7 +275,6 @@ public class CreateConfigData : MonoBehaviour
     //excel 每行存为一个list,key为第一列的数据,value为每行之后的数据
     public static Dictionary<string, List<string>> ReadDictionaryFromExcel(string fileName, int tablesID)
     {
-
         Dictionary<string, List<string>> _dic = new Dictionary<string, List<string>>();
         DataTable mTables = getExcelData(fileName, tablesID);
         int columns = mTables.Columns.Count;
@@ -285,6 +287,7 @@ public class CreateConfigData : MonoBehaviour
             for (int j = 1; j < columns; j++)
             {
                 string value = mTables.Rows[i][j].ToString();
+               
                 if (!string.IsNullOrEmpty(value))
                 {
                     _list.Add(value);

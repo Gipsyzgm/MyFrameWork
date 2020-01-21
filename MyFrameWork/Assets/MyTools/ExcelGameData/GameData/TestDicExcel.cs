@@ -6,6 +6,5 @@ using UnityEngine;
 public class TestDicExcel
 {
     public string level;
-    public List<string> testDic;
-    
+    public List<string> testDic; 
 }

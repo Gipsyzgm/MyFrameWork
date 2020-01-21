@@ -25,6 +25,10 @@ public class CreateExcel : MonoBehaviour {
     /// 2：.xlsx
     /// </summary>
     static string FileFormat = ".xlsx";
+    /// <summary>
+    /// 1对多数据 最大数据数
+    /// </summary>
+    static int maxList = 10;
 
     [MenuItem("我的工具/配置Excel表格/生成默认表格", false, 1)]
     public static void CreateDefaultExcel()
@@ -68,11 +72,48 @@ public class CreateExcel : MonoBehaviour {
             // add a new worksheet to the empty workbook
             ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
             //把每个属性都放进Excel表格    
-            for (int i = 0; i < fieldInfos.Length; i++)
+            bool IsDicExcel = false;
+            foreach (var item in fieldInfos)
             {
-                worksheet.Cells[1, i + 1].Value = "参数描述（可替换）";
-                worksheet.Cells[2, i + 1].Value = fieldInfos[i].Name;
+                if (item.FieldType==typeof(List<string>))
+                {
+                    IsDicExcel = true;
+                }
             }
+            if (IsDicExcel)
+            {
+                if (fieldInfos.Length!=2)
+                {
+                    Debug.LogError("表格不合要求，请核对格式");
+                }
+                for (int i = 0; i < maxList+1; i++)
+                {
+                    if (i == 0)
+                    {
+                        worksheet.Cells[1, i + 1].Value = "Key";
+                        worksheet.Cells[2, i + 1].Value = fieldInfos[i].Name;
+                    }
+                    else if (i == 1)
+                    {
+                        worksheet.Cells[1, i + 1].Value = "Value";
+                        worksheet.Cells[2, i + 1].Value = "List[" + (i - 1) + "]";
+                    }
+                    else
+                    {
+                        worksheet.Cells[1, i + 1].Value = "";
+                        worksheet.Cells[2, i + 1].Value = "List[" + (i - 1) + "]";
+                    }     
+                }
+            }
+            else
+            {
+                for (int i = 0; i < fieldInfos.Length; i++)
+                {
+
+                    worksheet.Cells[1, i + 1].Value = "描述（可替换）";
+                    worksheet.Cells[2, i + 1].Value = fieldInfos[i].Name;
+                }
+            }          
             //save our new workbook and we are done!        
             package.Save();
         }

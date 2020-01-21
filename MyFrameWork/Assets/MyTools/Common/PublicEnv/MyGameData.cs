@@ -15,9 +15,7 @@ public class MyGameData : MonoBehaviour {
     /// </summary>
     public static void InitGameData()
     {    
-        config = Resources.Load<AllConfigInfo>("ConfigAsset");
-
-       
+        config = Resources.Load<AllConfigInfo>("ConfigAsset");     
     }
 
 }

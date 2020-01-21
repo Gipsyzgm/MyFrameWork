@@ -12,22 +12,35 @@ MonoBehaviour:
   m_Name: ConfigAsset
   m_EditorClassIdentifier: 
   TestDicExcel:
-  - level: 1
+  - level: "\u732A\u5996"
     testDic:
-    - NNN
-    - FF
-    - FF
+    - 111
+    - "\u554A\u554A"
   - level: 2
     testDic:
-    - SSS
-    - BBB
-    - BBB
+    - 11
+    - "\u554A\u554A"
   - level: 3
     testDic:
-    - DDD
-    - SSS
-    - SSS
-    - DDDD
+    - 11
+    - "\u662F"
+    - "\u662F\u7684"
+  - level: 4
+    testDic:
+    - 11
+    - "\u7684\u662F"
+    - "\u90FD\u662F"
+  - level: 5
+    testDic:
+    - 22
+    - "\u90FD\u662F"
+    - "\u90FD\u662F"
+    - "\u90FD\u662F"
+    - "\u7684\u662F"
+    - "\u6253"
+    - "\u7684\u662F"
+    - "\u90FD\u662F\u963F\u6253\u7B97"
+    - "\u6253\u6309\u65F6"
   TestExcel0:
   - Id: 11
     GroupInfo: 11
@@ -35,4 +48,19 @@ MonoBehaviour:
     GroupInfo: 22
   - Id: 33
     GroupInfo: 33
-  TestExcel1: []
+  TestExcel1:
+  - Stage: 1
+    ItemNum: 123
+    LookArea: 231
+    Min: 321
+    Max: 321
+  - Stage: 23
+    ItemNum: 4321
+    LookArea: 231
+    Min: 321
+    Max: 321
+  - Stage: 343
+    ItemNum: 213
+    LookArea: 321
+    Min: 321
+    Max: 32
