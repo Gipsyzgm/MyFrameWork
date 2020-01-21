@@ -101,7 +101,7 @@ public class GameEditor : MonoBehaviour {
             EditorApplication.isPaused = false;
         }
     }
-    [MenuItem("我的工具/使用说明",false,0)]
+    //[MenuItem("我的工具/使用说明",false,0)]
     static void Help()
     {
         MyLog.LogWithColor("使用说明1：Common文件夹为通用资源。谨慎操作，其他脚本可能引用", Color.red);

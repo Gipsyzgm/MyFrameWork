@@ -5,7 +5,8 @@
  *  注意事项：
  *  1：和ExportAudio自动生成声音路径文件结合使用，路径可以在ExportAudio变更。
  *  2：不支持同时播放多个背景音乐。
- *  3：使用时，编辑器模式下我的工具——导入声音。工程代码中调用Init方法即可。
+ *  3：声音文件放在Assets/Resources/MySource路径下。避免同名文件。
+ *  4：使用：a:编辑器模式下我的工具——导入声音。b:工程代码中调用Init方法即可。c:通过MyAudioMgr.Instance.调用对应方法即可。
  */
 using UnityEngine;
 using System;

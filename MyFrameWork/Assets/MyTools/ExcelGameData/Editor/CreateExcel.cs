@@ -1,4 +1,19 @@
-﻿using OfficeOpenXml;
+﻿/*
+ *  项目名字：MyFrameWork
+ *  创建时间：2020.1.21
+ *  描述信息：Excel数据处理。
+ *  使用说明：
+ *  1：写自己需要转换Excel表格的C#代码。可以参考Assets/MyTools/ExcelGameData/GameData/下的代码。
+ *  C#脚本也放在该路径下，该路径下只能放需要转换Excel表格
+ *  2：我的工具-配置Excel表格-生成默认表格。下面ExcelFileDir即为生成的表格路径。
+ *  3：表格填数据。
+ *  4：我的工具-配置Excel表格-读取配置表格。
+ *  5：MyGameData.InitGameData();调用初始化代码。
+ *  6：通过MyGameData.config.可以点出所有的数据。
+ */
+
+
+using OfficeOpenXml;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -33,7 +48,6 @@ public class CreateExcel : MonoBehaviour {
     [MenuItem("我的工具/配置Excel表格/生成默认表格", false, 1)]
     public static void CreateDefaultExcel()
     {
-
         if (!Directory.Exists(ExcelFileDir))
             Directory.CreateDirectory(ExcelFileDir);
         if (!Directory.Exists(scriptDir))

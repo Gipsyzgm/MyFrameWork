@@ -123,4 +123,10 @@ public class MyTools : MonoBehaviour {
         return pt;
     }
 
+    public static string GetColorText(string info, Color color)
+    {   
+        string MyColor = ColorUtility.ToHtmlStringRGB(color);
+        return  "-><color=#" + MyColor + ">" + info + "</color>";       
+    }
+
 }

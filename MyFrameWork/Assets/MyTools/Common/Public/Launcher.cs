@@ -14,6 +14,7 @@ public class Launcher : MonoBehaviour
         gameObject.AddComponent<PanelMgr>();
         PanelMgr.instance.OpenPanel<MenuePl>();
         MyAudioMgr.Instance.Init();
+       
     }
 
     // Update is called once per frame
