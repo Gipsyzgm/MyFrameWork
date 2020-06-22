@@ -12,6 +12,7 @@ public class SettingPl : PanelBase {
     public Button StopEffect;
     public Slider SoundValueBt;
     public Toggle MusicCtrlBt;
+    public Button ChangeLanguage;
     public override void Init(params object[] _args)
     {
          CurViewPath="MyUI/View/SettingPl";
@@ -31,12 +32,28 @@ public class SettingPl : PanelBase {
         StopEffect.onClick.AddListener(StopEffectOnClick);
         SoundValueBt = curView.transform.Find("SoundValueBt_Slider").GetComponent<Slider>();
         MusicCtrlBt = curView.transform.Find("MusicCtrlBt_Toggle").GetComponent<Toggle>();
+        ChangeLanguage = curView.transform.Find("ChangeLanguage_Button").GetComponent<Button>();
+        ChangeLanguage.onClick.AddListener(ChangeLanguageOnClick);
         CustomComponent();
     }
-    //====================上面部分自动生成，每次生成都会替换掉,不要手写东西==================
-
-    //====================以下为手写部分，初始化补充方法为CustomComponent()==================
+    //——————————上面部分自动生成，每次生成都会替换掉，不要手写东西——————————
+                                                                                                
+    //——————————以下为手写部分，初始化补充方法为CustomComponent()———————————
     //@EndMark@
+    public void ChangeLanguageOnClick()
+    {
+        Debug.Log("切换语言");
+        if (LanguageMgr.type == LanguageMgr.LanguageType.cn)
+        {
+            LanguageMgr.ChangeLanguage(LanguageMgr.LanguageType.en);
+        }
+        else
+        {
+            LanguageMgr.ChangeLanguage(LanguageMgr.LanguageType.cn);
+        }
+       
+    }
+        
     int count = 0;
 
 

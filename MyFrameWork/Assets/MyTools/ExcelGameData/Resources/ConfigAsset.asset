@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -64,3 +65,10 @@ MonoBehaviour:
     LookArea: 321
     Min: 321
     Max: 32
+  TestLanguage:
+  - cn: "\u5F00\u59CB\u6E38\u620F"
+    en: StartGame
+    id: 0
+  - cn: "\u6E38\u620F\u9875\u9762"
+    en: GamePanel
+    id: 1

@@ -40,4 +40,15 @@ public class AllReadExcel
              CreateConfigData.configData.TestExcel1[i] = JsonMapper.ToObject<TestExcel1>(jd[i].ToJson());
          }  
      } 
+     public static void TestLanguage()
+     { 
+         Debug.LogError("读取表格:TestLanguage"); 
+         string json = CreateConfigData.ReadExcel2Json("TestLanguage", 0);
+         JsonData jd = JsonMapper.ToObject(json);
+         CreateConfigData.configData.TestLanguage = new TestLanguage[jd.Count];
+         for (int i = 0; i < jd.Count; i++) 
+         {  
+             CreateConfigData.configData.TestLanguage[i] = JsonMapper.ToObject<TestLanguage>(jd[i].ToJson());
+         }  
+     } 
 }

@@ -5,4 +5,5 @@ public class AllConfigInfo: ScriptableObject
     public TestDicExcel[] TestDicExcel;
     public TestExcel0[] TestExcel0;
     public TestExcel1[] TestExcel1;
+    public TestLanguage[] TestLanguage;
 }

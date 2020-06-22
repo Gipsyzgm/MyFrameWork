@@ -11,8 +11,9 @@ public class LanguageMgr : MonoBehaviour {
         en,
     }
     public static LanguageType type = LanguageType.cn;
+    //初始化语言。
+	public static void Init () {
 
-	void Awake () {
         if(Application.systemLanguage == SystemLanguage.Chinese)
         {
             type = LanguageType.cn;
@@ -21,14 +22,15 @@ public class LanguageMgr : MonoBehaviour {
         {
             type = LanguageType.en;
         }
-
-        string defaul = PlayerPrefs.GetString("Language", string.Empty);
-
+        //如果存的有，设置为默认的
+        string defaul = PlayerPrefs.GetString("Language");
+        //检索指定枚举中常数名称的数组。
         string[] language = System.Enum.GetNames(typeof(LanguageType));
         for (int i = 0; i < language.Length; i++)
         {
             if (defaul.Equals(language[i]))
             {
+                //把将一个或多个枚举常数的名称或数字值的字符串表示转换成等效的枚举对象。
                 type = (LanguageType)System.Enum.Parse(typeof(LanguageType), defaul);
                 break;
             }
@@ -58,27 +60,19 @@ public class LanguageMgr : MonoBehaviour {
         }
     }
 
-    //用Id取一个语言
+    //用Id取一个语言。TestLanguage脚本必须和语言表格的脚本名称对应。
     public static string GetById(int id)
     {
         if (type == LanguageType.cn)
         {
-            return Language.cn[id];
+            return MyGameData.config.TestLanguage[id].cn;
         }
         else if (type == LanguageType.en)
         {
-            return Language.en[id];
+            return MyGameData.config.TestLanguage[id].en;
         }
-
-        return Language.en[id];
+        return  MyGameData.config.TestLanguage[id].en;
     }
 
-
 }
-public class Language
-{
 
-   public static string[] cn = { };
-   public static string[] en = { };
-
-}
