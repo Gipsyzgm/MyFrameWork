@@ -79,6 +79,11 @@ public class MyGuiWindow : EditorWindow
             AutoListener();
         }
         GUILayout.Space(Space);
+        if (GUILayout.Button("多语言快速构建", GUILayout.Height(BtnHigh)))
+        {
+            AutoLanguage();
+        }
+        GUILayout.Space(Space);
         if (GUILayout.Button("Excel读写数据及使用", GUILayout.Height(BtnHigh)))
         {
             AutoExcel();
@@ -128,6 +133,11 @@ public class MyGuiWindow : EditorWindow
     void AutoListener()
     {
         description = "自己去搜MyEventMgr脚本自己看,里面有详细介绍。";
+
+    }
+    void AutoLanguage()
+    {
+        description = "自己去LocalLanguage文件夹自己看,里面有详细介绍。";
 
     }
     void AutoExcel()

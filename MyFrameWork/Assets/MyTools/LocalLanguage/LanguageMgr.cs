@@ -1,4 +1,12 @@
-﻿using System.Collections;
+﻿/*
+ *  项目名字：LanguageMgr
+ *  创建时间：2020.6.23
+ *  描述信息：多语言简单实现。
+ *  使用说明：
+ *  1：没什么好说的。GetById(int id)方法里面读取方法需要和你定义的多语言表格一致。
+ *  2：增加语言的话要把需要当前脚本需要区分的位置都更改。
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
