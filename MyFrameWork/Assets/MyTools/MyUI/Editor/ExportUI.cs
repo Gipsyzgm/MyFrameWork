@@ -147,6 +147,7 @@ public class ExportUI {
         sb.AppendLine("using UnityEngine.UI;");
         sb.AppendLine("using System.Collections;");
         sb.AppendLine("using System.Collections.Generic;");
+        sb.AppendLine("using UnityEngine.Events;");
         sb.AppendLine();
         sb.AppendLine("public class " + className + " : "+ overrideScript +" {");
         sb.AppendLine();
@@ -174,7 +175,8 @@ public class ExportUI {
             tempPath = tempPath.Substring(0, tempPath.Length - 2);
 
             sb.AppendLine("    public override void Init(params object[] _args)");
-            sb.AppendLine("    {");           
+            sb.AppendLine("    {");
+            sb.AppendLine("         args = _args;");
             sb.AppendLine("         CurViewPath=" + '"'+ tempPath + "/" + className + '"' + ";");
             sb.AppendLine("         layer = PanelLayer." + UiLayerType.ToString()+ ";");
             sb.AppendLine("    }");

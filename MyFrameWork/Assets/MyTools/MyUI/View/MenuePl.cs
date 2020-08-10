@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 public class MenuePl : PanelBase {
 
@@ -10,6 +11,7 @@ public class MenuePl : PanelBase {
     public Button OverBt;
     public Button SettingBt;
     public Button ClosePl;
+    public Button TestParameter;
     public override void Init(params object[] _args)
     {
          CurViewPath="MyUI/View/MenuePl";
@@ -27,14 +29,36 @@ public class MenuePl : PanelBase {
         SettingBt.onClick.AddListener(SettingBtOnClick);
         ClosePl = curView.transform.Find("ClosePl_Button").GetComponent<Button>();
         ClosePl.onClick.AddListener(ClosePlOnClick);
+        TestParameter = curView.transform.Find("TestParameter_Button").GetComponent<Button>();
+        TestParameter.onClick.AddListener(TestParameterOnClick);
         CustomComponent();
     }
-    //====================上面部分自动生成，每次生成都会替换掉,不要手写东西==================
-
-    //====================以下为手写部分，初始化补充方法为CustomComponent()==================
+    //——————————上面部分自动生成，每次生成都会替换掉，不要手写东西——————————
+                                                                                                
+    //——————————以下为手写部分，初始化补充方法为CustomComponent()———————————
     //@EndMark@
- 
-        
+    public void TestParameterOnClick()
+    {
+        Debug.Log("测试传递参数按钮");
+        object[] args = new object[4];
+        args[0] = "Title_New";
+        args[1] = "描述_New";
+        args[2] = new UnityAction(TestAction1);
+        args[3] = new UnityAction(() =>
+        {
+
+            Debug.LogError("点击取消");
+        });
+        PanelMgr.instance.OpenPanel<CommonConfirmPl>("", args);
+
+
+    }
+    public void TestAction1()
+    {
+        Debug.LogError("点击确认");
+
+    }    
+
     public void CustomComponent()
     {
        
