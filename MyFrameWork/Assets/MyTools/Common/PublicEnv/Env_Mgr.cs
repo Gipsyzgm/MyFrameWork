@@ -26,6 +26,6 @@ public class Env_Mgr : MonoBehaviour {
 
     public void Init()
     {
-        MyLog.LogWithColor("环境组件正常",Color.green);
+        Debug.LogError("环境组件正常");
     }
 }

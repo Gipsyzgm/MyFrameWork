@@ -11,12 +11,12 @@ public class AppLife : MonoBehaviour {
         if (pause)
         {
             //切换到后台时执行
-            MyLog.LogWithTag("离开游戏暂停开始", LogTag.UnityTag_Info);
+            Debug.LogError("离开游戏暂停开始");
         }
         else
         {
             //切换到前台时执行，游戏启动时执行一次
-            MyLog.LogWithTag("进入游戏暂停结束", LogTag.UnityTag_Info);
+            Debug.LogError("进入游戏暂停结束");
         }
     }
     //游戏失去焦点也就是进入后台时 focus为false 切换回前台时 focus为true
@@ -26,12 +26,12 @@ public class AppLife : MonoBehaviour {
         if (focus)
         {
             //切换到前台时执行，游戏启动时执行一次
-            MyLog.LogWithTag("进入游戏获得焦点", LogTag.UnityTag_Info);
+            Debug.LogError("进入游戏获得焦点");
         }
         else
         {
             //切换到后台时执行
-            MyLog.LogWithTag("离开游戏失去焦点", LogTag.UnityTag_Info);
+            Debug.LogError("离开游戏失去焦点");
            
         }
     }
@@ -41,6 +41,6 @@ public class AppLife : MonoBehaviour {
     //3:跳出当前应用，然后Kill(IOS和Android都没回调)
     void OnApplicationQuit()
     {
-        MyLog.LogWithTag("退出游戏", LogTag.UnityTag_Info);
+        Debug.LogError("退出游戏");
     }
 }

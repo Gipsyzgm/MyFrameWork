@@ -90,10 +90,10 @@ public class MenuePl : PanelBase {
         
     public void StartBtOnClick()
     {
-       
 
-       
-        MyLog.LogWithColor("点击Start", Color.red);
+
+
+        Debug.LogError("点击Start");
         PanelMgr.instance.OpenPanel<StartPl>();
         //PanelMgr.instance.HidePanel(PanelName.GamePl);
         //PanelMgr.instance.HidePanel(PanelName.OverPl);
