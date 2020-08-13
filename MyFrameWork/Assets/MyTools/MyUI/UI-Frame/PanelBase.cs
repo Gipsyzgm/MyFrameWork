@@ -59,6 +59,6 @@ public class PanelBase : MonoBehaviour {
 	protected virtual void Close()
 	{
 		string name = this.GetType().ToString ();
-		PanelMgr.instance.ClosePanel (name);
+		PanelMgr.Instance.ClosePanel (name);
 	}   
 }

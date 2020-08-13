@@ -25,9 +25,8 @@ public enum PanelLayer
     Tips  = 6   
 }
 
-public class PanelMgr : MonoBehaviour
+public class PanelMgr : MonoSingleton<PanelMgr>
 {
-    public static PanelMgr instance;
     public Transform _canvas;
     private Dictionary<string, PanelBase> Paneldict;
     private Dictionary<PanelLayer, Transform> layer_dict;
@@ -37,14 +36,12 @@ public class PanelMgr : MonoBehaviour
     /// </summary>
     private List<string> ExictPanel;
 
-
     public Transform canvas
     {
         get { return _canvas; }
     }
     public void Awake()
     {
-        instance = this;
         InitLayer();
         Paneldict = new Dictionary<string, PanelBase>();
         ExictPanel = new List<string>();
@@ -196,7 +193,7 @@ public class PanelMgr : MonoBehaviour
     /// </summary>
     /// <param name="_name"></param>
     /// <returns></returns>
-    public PanelBase GetPanel(PanelName _name)
+    private PanelBase GetPanel(PanelName _name)
     {
         return GetPanel(_name.ToString());
     }
@@ -205,7 +202,7 @@ public class PanelMgr : MonoBehaviour
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
-    public PanelBase GetPanel(string name)
+    private PanelBase GetPanel(string name)
     {
         PanelBase panel;
         if (Paneldict.TryGetValue(name, out panel))

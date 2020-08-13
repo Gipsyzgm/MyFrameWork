@@ -40,16 +40,18 @@ public class MenuePl : PanelBase {
     public void TestParameterOnClick()
     {
         Debug.Log("测试传递参数按钮");
-        object[] args = new object[4];
+        object[] args = new object[6];
         args[0] = "Title_New";
         args[1] = "描述_New";
-        args[2] = new UnityAction(TestAction1);
-        args[3] = new UnityAction(() =>
+        args[2] = "确认";
+        args[3] = "取消";
+        args[4] = new UnityAction(TestAction1);
+        args[5] = new UnityAction(() =>
         {
 
             Debug.LogError("点击取消");
         });
-        PanelMgr.instance.OpenPanel<CommonConfirmPl>("", args);
+        PanelMgr.Instance.OpenPanel<CommonConfirmPl>("", args);
 
 
     }
@@ -94,7 +96,7 @@ public class MenuePl : PanelBase {
 
 
         Debug.LogError("点击Start");
-        PanelMgr.instance.OpenPanel<StartPl>();
+        PanelMgr.Instance.OpenPanel<StartPl>();
         //PanelMgr.instance.HidePanel(PanelName.GamePl);
         //PanelMgr.instance.HidePanel(PanelName.OverPl);
         //PanelMgr.instance.HidePanel(PanelName.SettingPl);
@@ -103,7 +105,7 @@ public class MenuePl : PanelBase {
     public void GameBtOnClick()
     {
        
-        PanelMgr.instance.OpenPanel<GamePl>();
+        PanelMgr.Instance.OpenPanel<GamePl>();
         //PanelMgr.instance.HidePanel(PanelName.StartPl);
         //PanelMgr.instance.HidePanel(PanelName.OverPl);
         //PanelMgr.instance.HidePanel(PanelName.SettingPl);
@@ -113,7 +115,7 @@ public class MenuePl : PanelBase {
     {
         
        
-        PanelMgr.instance.OpenPanel<OverPl>();
+        PanelMgr.Instance.OpenPanel<OverPl>();
         //PanelMgr.instance.HidePanel(PanelName.GamePl);
         //PanelMgr.instance.HidePanel(PanelName.StartPl);
         //PanelMgr.instance.HidePanel(PanelName.SettingPl);
@@ -122,7 +124,7 @@ public class MenuePl : PanelBase {
     public void SettingBtOnClick()
     {
        
-        PanelMgr.instance.OpenPanel<SettingPl>();
+        PanelMgr.Instance.OpenPanel<SettingPl>();
         //PanelMgr.instance.HidePanel(PanelName.GamePl);
         //PanelMgr.instance.HidePanel(PanelName.StartPl);
         //PanelMgr.instance.HidePanel(PanelName.OverPl);
@@ -131,7 +133,7 @@ public class MenuePl : PanelBase {
 
     public void ClosePlOnClick()
     {
-        PanelMgr.instance.CloseCurrentPanel();
+        PanelMgr.Instance.CloseCurrentPanel();
     }
 
 
