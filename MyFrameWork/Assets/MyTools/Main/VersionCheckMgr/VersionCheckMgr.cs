@@ -57,11 +57,6 @@ public class VersionCheckMgr : MonoSingleton<VersionCheckMgr>
     /// <summary>更新检测是否完成</summary>
     public bool isUpdateCheckComplete = false;
 
-    public bool CheckComplete()
-    {
-        return isUpdateCheckComplete;
-    }
-
     /// <summary>
     /// 核对版本信息入口初始化
     /// </summary>
@@ -73,6 +68,7 @@ public class VersionCheckMgr : MonoSingleton<VersionCheckMgr>
         {
             remoteVersion = new VersionInfo();
             UnityEngine.Debug.LogError("不启用版本检测!");
+            isUpdateCheckComplete = true;
             return;
         }
              
@@ -229,7 +225,7 @@ public class VersionCheckMgr : MonoSingleton<VersionCheckMgr>
     /// </summary>
     private async Task loadStreamingABFiles()
     {
-        string abFiles = AppSetting.StreamingAssetsURL + AppSetting.ABFiles;
+        string abFiles = AppSetting.StreamingAssetsPath + AppSetting.ABFiles;
         UnityWebRequest request = UnityWebRequest.Get(abFiles);
         await request.SendWebRequest();
         if (request.error == null)
@@ -490,7 +486,7 @@ public class VersionCheckMgr : MonoSingleton<VersionCheckMgr>
             return (size / 1024f).ToString("f2") + "K";
     }
     /// <summary>
-    /// 设置更新完成状态
+    /// 设置更新完成状态,把AB资源信息存一下
     /// </summary>
     /// <param name="abRes"></param>
     private void SetComplate(ABResInfo abRes)
@@ -499,7 +495,7 @@ public class VersionCheckMgr : MonoSingleton<VersionCheckMgr>
         foreach (ABResFile file in abRes.dicFileInfo.Values)
         {
             if (file.isStreaming)
-                AssetBundleManager.assetBundleURL.Add(file.File, AppSetting.StreamingAssetsURL + file.File);
+                AssetBundleManager.assetBundleURL.Add(file.File, AppSetting.StreamingAssetsPath + file.File);
             else
                 AssetBundleManager.assetBundleURL.Add(file.File, AppSetting.PersistentDataURL + file.File);
         }
@@ -509,7 +505,6 @@ public class VersionCheckMgr : MonoSingleton<VersionCheckMgr>
             streamingABRes.Dispose();
         if (persistentABRes != null)
             persistentABRes.Dispose();
-
         PanelMgr.Instance.GetPanel<VersionCheckPl>(PanelName.VersionCheckPl).VersionInfo.text = "更新完成";
         isUpdateCheckComplete = true;
     }

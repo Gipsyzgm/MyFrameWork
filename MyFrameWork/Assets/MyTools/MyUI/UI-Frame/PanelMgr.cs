@@ -91,7 +91,16 @@ public class PanelMgr : MonoSingleton<PanelMgr>
         panel.Init(_args);
         Paneldict.Add(name, panel);
         skinPath = (skinPath != "" ? skinPath : panel.CurViewPath);
-        GameObject skin =  await AssetbundleMgr.Instance.LoadPrefab(skinPath);
+        GameObject skin;
+        if (VersionCheckMgr.Instance.isUpdateCheckComplete)
+        {
+             skin = await AssetbundleMgr.Instance.LoadPrefab(skinPath);
+        }
+        else 
+        {
+             skin = Resources.Load<GameObject>(skinPath);
+        }
+       
         if (skin == null)
             Debug.LogError("panelMgr.OpenPanelfail,skin is null,skinPath= " + skinPath);
         panel.curView = (GameObject)Instantiate(skin);

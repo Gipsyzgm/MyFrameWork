@@ -20,18 +20,21 @@ using System.Threading.Tasks;
         /// <param name="initOK"></param>
         public async Task Initialize()
         {
-            AssetBundleManager.logMode = AssetBundleManager.LogMode.JustErrors;
+            Debug.LogError("AssetbundleMgrInitializeStart");        
+            AssetBundleManager.logMode = AssetBundleManager.LogMode.All;
             AssetBundleManager.BaseDownloadingURL = GetRelativePath();
+            Debug.LogError("BaseDownloadingURL:" + AssetBundleManager.BaseDownloadingURL);
             AssetBundleLoadManifestOperation request = AssetBundleManager.Initialize();
-            if (request == null) return;
+            if (request == null) return;          
+            Debug.LogError("AssetbundleMgrInitializeStartAHarf");
+            //await request;    
             while (AssetBundleManager.AssetBundleManifestObject == null)
             {
                 await new WaitForEndOfFrame();
             }
-            //await request;
             Debug.LogError("AssetbundleMgrInitialized");       
         }
-        
+    
         /// <summary>
         /// 异步加载资源
         /// </summary>
@@ -142,12 +145,12 @@ using System.Threading.Tasks;
             //Debug.Log("Finished loading scene " + levelName + " in " + elapsedTime + " seconds");
         }
     #endregion
-
+    //真实环境返回空
     public static string GetRelativePath()
     {
-        if (!AppSetting.IsRelease)
-            return "file://" + AppSetting.ExportResBaseDir + Utility.GetPlatformName() + "/";
-
+        if (!AppSetting.IsRelease)   
+            return "file://" + AppSetting.ExportResBaseDir + Utility.GetPlatformName() + "/";       
         return string.Empty;
     }
+
 }

@@ -138,7 +138,7 @@ public class ExportBundles : MonoBehaviour {
     }
     /// <summary>
     /// Unity 5新AssetBundle系统，需要为打包的AssetBundle配置名称
-    /// 配置名称文件夹下所有资源的Ab名
+    /// 配置名称文件夹下所有资源的Ab名 命名成资源加载的路径
     /// </summary>
     static void SetAssetsBundleName(string path)
     {
@@ -152,11 +152,9 @@ public class ExportBundles : MonoBehaviour {
             {
                 if (files[i].FullName.EndsWith(".meta")) continue;
                 string assetPath = "Assets" + files[i].FullName.Substring(Application.dataPath.Length);
-                AssetImporter assetImporter = AssetImporter.GetAtPath(assetPath);//AssetImporter
-                //string name = files[i].FullName.Substring(resPath.Length).Replace("\\", "/");
-                string name = files[i].FullName.Substring(resPath.Length).Replace(@"\", "/");
-                if (files[i].Name.Contains("."))
-                    name = name.Remove(name.LastIndexOf("."));
+                AssetImporter assetImporter = AssetImporter.GetAtPath(assetPath);
+                //string name = assetPath.Substring(resPath.Length).Replace("\\", "/");
+                string name = assetPath.Substring(resPath.Length).Replace(@"\", "/");
                 assetImporter.assetBundleName = name + AppSetting.ExtName;               
             }
         }

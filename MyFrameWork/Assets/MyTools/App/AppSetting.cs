@@ -10,7 +10,7 @@ using UnityEngine;
 public class AppSetting
 {
     public static bool IsVersionCheck = true;                        //是否启用版本检测 正式包改为true
-    public static bool IsRelease = false;                             //走正式流程设为true(发布会强制修改)
+    public static bool IsRelease = true;                             //走正式流程设为true(发布会强制修改)
     public static bool IsLocalResServer = false;                      //是否为本地资源测试
     public static bool LoaddelayTest = false;                       //延时加载UI测试(只有编辑器下有效)
     public static bool ILRNotABTest = false;                        //不使用AB资源加载ILR(只有编辑器下有效)  
@@ -52,27 +52,20 @@ public class AppSetting
         get { return Application.persistentDataPath + "/" + Utility.GetPlatformName() + "/"; }
     }
 
-    /// <summary>
-    /// StreamingAssetsURL
-    /// </summary>
-    public static string StreamingAssetsURL
-    {
-#if UNITY_ANDROID
-        get { return StreamingAssetsPath; }
-#else
-        get { return "file:///" + StreamingAssetsPath; }
-#endif
 
-    }
     /// <summary>
     /// streamingAssetsPath
     /// </summary>
     public static string StreamingAssetsPath
     {
-        get { return Application.streamingAssetsPath + "/" + Utility.GetPlatformName() + "/"; }
+        get {
+#if UNITY_ANDROID || UNITY_IPHONE || UNITY_STANDALONE_WIN        
+                return Application.streamingAssetsPath + "/" + Utility.GetPlatformName() + "/";
+#else
+                return "file:///" + Application.streamingAssetsPath + "/" + Utility.GetPlatformName()+ "/";
+#endif
+        }
     }
-
-
     //ILR逻辑代码目录,只用于编辑环境
     public static string ILRCodeDir
     {
@@ -96,7 +89,7 @@ public class AppSetting
 
     public static string[] BundleArtResFolders = new string[] { "Textures", "Prefabs", "Materials" };
 
-    #region 游戏内相关路径
+#region 游戏内相关路径
 
     /// <summary>
     /// 编辑器环境下所有需要挂在的通用脚本都可以放在这个文件夹路径下，可以通过我的工具/环境来意见挂载所有的文件夹下的脚本
@@ -133,5 +126,5 @@ public class AppSetting
     /// </summary>
     public static string BundleOutPut = Application.dataPath;
 
-    #endregion
+#endregion
 }

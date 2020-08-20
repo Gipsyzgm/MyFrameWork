@@ -13,18 +13,13 @@ public class Launcher : MonoBehaviour
     {
         MyGameData.InitGameData();
         LanguageMgr.Init();
+  
         await  VersionCheckMgr.Instance.Check();
         while (!VersionCheckMgr.Instance.isUpdateCheckComplete)
         {
             await new WaitForEndOfFrame();
         }
-      
-        if (VersionCheckMgr.Instance.isUpdateCheckComplete)
-        {
-
-            await AssetbundleMgr.Instance.Initialize();
-          
-        }
+        await AssetbundleMgr.Instance.Initialize();
         PanelMgr.Instance.ClosePanel(PanelName.VersionCheckPl);
         PanelMgr.Instance.OpenPanel<MenuePl>();
         Debug.LogError("111111111111111");
