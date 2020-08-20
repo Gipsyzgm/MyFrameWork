@@ -1,8 +1,7 @@
 fileFormatVersion: 2
-guid: 3733ea58d295e9848a9e9d0fa337883b
-NativeFormatImporter:
+guid: 4e5d347c5941b714793dafee34ead146
+PrefabImporter:
   externalObjects: {}
-  mainObjectFileID: 100100000
   userData: 
   assetBundleName: myui/view/overpl
   assetBundleVariant: 

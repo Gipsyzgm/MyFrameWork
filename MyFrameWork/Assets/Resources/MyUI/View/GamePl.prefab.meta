@@ -1,8 +1,7 @@
 fileFormatVersion: 2
-guid: 08d37799033367845a260ddb831671d7
-NativeFormatImporter:
+guid: fca0c75490495714385bc5fd1dac4dc1
+PrefabImporter:
   externalObjects: {}
-  mainObjectFileID: 100100000
   userData: 
   assetBundleName: myui/view/gamepl
   assetBundleVariant: 

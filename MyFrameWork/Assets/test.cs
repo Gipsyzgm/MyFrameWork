@@ -51,6 +51,14 @@ public class test : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+     
 		
 	}
+}
+public class newTest
+{
+    static bool isOk = false;
+    public static bool canDo => isOk || Input.GetMouseButton(0);
+    // Start is called before the first frame update
+
 }

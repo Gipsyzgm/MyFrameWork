@@ -70,7 +70,7 @@ public class PanelMgr : MonoSingleton<PanelMgr>
     /// <typeparam name="T"></typeparam>
     /// <param name="skinPath"></param>
     /// <param name="_args"></param>
-    public void OpenPanel<T>(string skinPath = "", params object[] _args) where T : PanelBase
+    public async void OpenPanel<T>(string skinPath = "", params object[] _args) where T : PanelBase
     {
         string name = typeof(T).ToString();
         if (Paneldict.ContainsKey(name))
@@ -91,7 +91,7 @@ public class PanelMgr : MonoSingleton<PanelMgr>
         panel.Init(_args);
         Paneldict.Add(name, panel);
         skinPath = (skinPath != "" ? skinPath : panel.CurViewPath);
-        GameObject skin = Resources.Load<GameObject>(skinPath);
+        GameObject skin =  await AssetbundleMgr.Instance.LoadPrefab(skinPath);
         if (skin == null)
             Debug.LogError("panelMgr.OpenPanelfail,skin is null,skinPath= " + skinPath);
         panel.curView = (GameObject)Instantiate(skin);

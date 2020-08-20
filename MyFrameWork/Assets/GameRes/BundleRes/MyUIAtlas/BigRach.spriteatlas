@@ -1,0 +1,128 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BigRach
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 47
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 1
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 56
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 1
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 253f5be43ea4cc3448e79eb5fb9de8da, type: 3}
+    totalSpriteSurfaceArea: 1422536
+    bindAsDefault: 0
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 717b2da0335bd0548a65ddda1bcb01e6, type: 3}
+  - {fileID: 21300000, guid: 45d916f0de3b7674ebd748153b1e957c, type: 3}
+  - {fileID: 21300000, guid: 697795016febfe14bb56d476885679ac, type: 3}
+  - {fileID: 21300000, guid: 6c980911f95bf774392f582e943ecc90, type: 3}
+  - {fileID: 21300000, guid: f22e5a21030427841a4af193e9597286, type: 3}
+  - {fileID: 21300000, guid: 93bc7a617b56fe5488b74fd494fedcc0, type: 3}
+  - {fileID: 21300000, guid: 6f6085223760a4e499a0b676baf34bb8, type: 3}
+  - {fileID: 21300000, guid: 602ed0a21d2ee004caa9609038b93616, type: 3}
+  - {fileID: 21300000, guid: 93b0d3638b33886448ba864b5cb74a28, type: 3}
+  - {fileID: 21300000, guid: 089ea6f3f1993ef45a210be79e410107, type: 3}
+  - {fileID: 21300000, guid: 1d392dc4a185bbd468e53506c3d5e8f3, type: 3}
+  - {fileID: 21300000, guid: cf2e550593024f442840bdb847826e3d, type: 3}
+  - {fileID: 21300000, guid: 4893a87585fe28a4095e05fc2e3faf7f, type: 3}
+  - {fileID: 21300000, guid: f7307b8565dd918419542bb79c9d48f1, type: 3}
+  - {fileID: 21300000, guid: ffdad346bb7b12e4581694f93961b0e8, type: 3}
+  - {fileID: 21300000, guid: 789fd4f7461f7534e8369aa62c9205a5, type: 3}
+  - {fileID: 21300000, guid: 27c5091899f5f2449a0f2bce0981abbe, type: 3}
+  - {fileID: 21300000, guid: 096d2be80d858ef4e9841052bae9e172, type: 3}
+  - {fileID: 21300000, guid: a81f1289d7e114441a306cf310d0619a, type: 3}
+  - {fileID: 21300000, guid: 4213c3d9b011f0344868c2a874702ee2, type: 3}
+  - {fileID: 21300000, guid: c866f9f988b7dc34db3d0b7e728baba3, type: 3}
+  - {fileID: 21300000, guid: 9e33f36c3d30f704fa77f14b00bd4c21, type: 3}
+  - {fileID: 21300000, guid: d5588cdc2b4130f458dc49f489ab92d5, type: 3}
+  - {fileID: 21300000, guid: 25cfc33ded0038d41b7d554c2703beab, type: 3}
+  - {fileID: 21300000, guid: dababa6e49c352342abc7f549a735451, type: 3}
+  - {fileID: 21300000, guid: 5837097f2df86f249ae9298304f8d714, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - 10003
+  - 10007
+  - 10012
+  - 10001
+  - 10017
+  - 10022
+  - 10005
+  - 10008
+  - 10015
+  - 10010
+  - 10013
+  - BG_Curr
+  - 10020
+  - 10004
+  - 10006
+  - 10014
+  - 10011
+  - 10021
+  - 10002
+  - 10024
+  - 10023
+  - 10016
+  - BG_Normal
+  - 10019
+  - 10009
+  - 10018
+  m_Tag: BigRach
+  m_IsVariant: 0

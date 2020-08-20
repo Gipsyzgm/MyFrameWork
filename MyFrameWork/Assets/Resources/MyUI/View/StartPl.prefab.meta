@@ -1,8 +1,7 @@
 fileFormatVersion: 2
-guid: 2c41e49615062fd4ca409d37008b25b0
-NativeFormatImporter:
+guid: 0928525cc40dbb146b593996d2bb2ea7
+PrefabImporter:
   externalObjects: {}
-  mainObjectFileID: 100100000
   userData: 
   assetBundleName: myui/view/startpl
   assetBundleVariant: 

@@ -71,6 +71,7 @@ public class MenuePl : PanelBase {
 
     public override void OnShow()
     {
+        Debug.LogError("打开游戏首页");
         curView.SetActive(true); 
     }
         
