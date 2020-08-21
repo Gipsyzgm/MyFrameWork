@@ -20,8 +20,7 @@ using System.Threading.Tasks;
         /// <param name="initOK"></param>
         public async Task Initialize()
         {
-            Debug.LogError("AssetbundleMgrInitializeStart");        
-            AssetBundleManager.logMode = AssetBundleManager.LogMode.All;
+            Debug.LogError("AssetbundleMgrInitializeStart");       
             AssetBundleManager.BaseDownloadingURL = GetRelativePath();
             Debug.LogError("BaseDownloadingURL:" + AssetBundleManager.BaseDownloadingURL);
             AssetBundleLoadManifestOperation request = AssetBundleManager.Initialize();
