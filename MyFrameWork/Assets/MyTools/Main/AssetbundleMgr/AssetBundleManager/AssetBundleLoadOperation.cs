@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
-using UnityEngine.Networking;
 
 namespace AssetBundles
 {
@@ -22,6 +21,7 @@ namespace AssetBundles
         public void Reset()
         {
         }
+
         abstract public bool Update();
 
         abstract public bool IsDone();
@@ -235,7 +235,6 @@ namespace AssetBundles
         public AssetBundleLoadManifestOperation(string bundleName, string assetName, System.Type type)
             : base(bundleName, assetName, type)
         {
-
         }
 
         public override bool Update()
@@ -286,7 +285,7 @@ namespace AssetBundles
     {
         protected string m_AssetBundleName;
         protected string m_DownloadingError;
-        protected UnityWebRequest www;
+        protected WWW www;
         protected LoadedAssetBundle bundle;
         public AssetBundleLoadOperationFull(string bundleName)
         {
@@ -328,7 +327,7 @@ namespace AssetBundles
         {
             if (bundle != null)
                 return 1;
-            return www == null ? 0 : www.downloadProgress;
+            return www == null ? 0 : www.progress;
         }
     }
     #endregion

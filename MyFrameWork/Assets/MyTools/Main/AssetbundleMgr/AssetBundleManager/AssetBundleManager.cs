@@ -4,7 +4,6 @@ using UnityEditor;
 #endif
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.Networking;
 
 /*
  	In this demo, we demonstrate:
@@ -21,22 +20,25 @@ using UnityEngine.Networking;
 */
 
 namespace AssetBundles
-{
-    // Loaded assetBundle contains the references count which can be used to unload dependent assetBundles automatically.
-    public class LoadedAssetBundle
-    {
-        public AssetBundle m_AssetBundle;
-        public int m_ReferencedCount;
-        public LoadedAssetBundle(AssetBundle assetBundle)
-        {
-            m_AssetBundle = assetBundle;
-            m_ReferencedCount = 1;
-        }
-    }
+{	
+	// Loaded assetBundle contains the references count which can be used to unload dependent assetBundles automatically.
+	public class LoadedAssetBundle
+	{
+		public AssetBundle m_AssetBundle;
+		public int m_ReferencedCount;
+		
+		public LoadedAssetBundle(AssetBundle assetBundle)
+		{
+			m_AssetBundle = assetBundle;
+			m_ReferencedCount = 1;
+		}
+	}
+
     // Class takes care of loading assetBundle and its dependencies automatically, loading variants automatically.
     public class AssetBundleManager : MonoBehaviour
     {
         public static Dictionary<string, string> assetBundleURL = new Dictionary<string, string>();
+
         public enum LogMode { All, JustErrors };
         public enum LogType { Info, Warning, Error };
 
@@ -48,9 +50,9 @@ namespace AssetBundles
         static int m_SimulateAssetBundleInEditor = -1;
         const string kSimulateAssetBundles = "SimulateAssetBundles";
 #endif
-        //已下载的
+
         static Dictionary<string, LoadedAssetBundle> m_LoadedAssetBundles = new Dictionary<string, LoadedAssetBundle>();
-        static Dictionary<string, UnityWebRequest> m_DownloadingWWWs = new Dictionary<string, UnityWebRequest>();
+        static Dictionary<string, WWW> m_DownloadingWWWs = new Dictionary<string, WWW>();
         static Dictionary<string, string> m_DownloadingErrors = new Dictionary<string, string>();
         static List<AssetBundleLoadOperation> m_InProgressOperations = new List<AssetBundleLoadOperation>();
         static Dictionary<string, string[]> m_Dependencies = new Dictionary<string, string[]>();
@@ -113,6 +115,21 @@ namespace AssetBundles
         }
 #endif
 
+        private static string GetStreamingAssetsPath()
+        {
+            if (Application.isEditor)
+                return "file://" + System.Environment.CurrentDirectory.Replace("\\", "/"); // Use the build output folder directly.
+            else if (Application.isMobilePlatform || Application.isConsolePlatform)
+                return Application.streamingAssetsPath;
+            else // For standalone player.
+                return "file://" + Application.streamingAssetsPath;
+        }
+
+        public static void SetSourceAssetBundleDirectory(string relativePath)
+        {
+            BaseDownloadingURL = GetStreamingAssetsPath() + relativePath;
+        }
+
         public static void SetSourceAssetBundleURL(string absolutePath)
         {
             BaseDownloadingURL = absolutePath + Utility.GetPlatformName() + "/";
@@ -142,28 +159,14 @@ namespace AssetBundles
         // Get loaded AssetBundle, only return vaild object when all the dependencies are downloaded successfully.
         static public LoadedAssetBundle GetLoadedAssetBundle(string assetBundleName, out string error)
         {
-
             if (m_DownloadingErrors.TryGetValue(assetBundleName, out error))
-            {
                 return null;
-            }
-            Debug.LogError("GetLoadedAssetBundle:" + assetBundleName + 2);
+
             LoadedAssetBundle bundle = null;
-            if (m_LoadedAssetBundles.Count == 0)
-            {
-                Debug.LogError("m_LoadedAssetBundles为空"); ;
-            }
-            else
-            {
-                foreach (var item in m_LoadedAssetBundles)
-                {
-                    Debug.LogError("GetLoadedAssetBundle:" + item.Key);
-                }
-            }
-            Debug.LogError("GetLoadedAssetBundle：" + 2.5);
             m_LoadedAssetBundles.TryGetValue(assetBundleName, out bundle);
             if (bundle == null)
                 return null;
+
             // No dependencies are recorded, only the bundle itself is required.
             string[] dependencies = null;
             if (!m_Dependencies.TryGetValue(assetBundleName, out dependencies))
@@ -174,13 +177,14 @@ namespace AssetBundles
             {
                 if (m_DownloadingErrors.TryGetValue(assetBundleName, out error))
                     return bundle;
+
                 // Wait all the dependent assetBundles being loaded.
                 LoadedAssetBundle dependentBundle;
                 m_LoadedAssetBundles.TryGetValue(dependency, out dependentBundle);
                 if (dependentBundle == null)
                     return null;
             }
-            Debug.LogError("GetLoadedAssetBundle:" + 5);
+
             return bundle;
         }
 
@@ -193,34 +197,23 @@ namespace AssetBundles
         // Load AssetBundleManifest.
         static public AssetBundleLoadManifestOperation Initialize(string manifestAssetBundleName)
         {
-            Debug.LogError("AssetBundleLoadManifestOperationInitialize:" + manifestAssetBundleName);
 #if UNITY_EDITOR
             Log(LogType.Info, "Simulation Mode: " + (SimulateAssetBundleInEditor ? "Enabled" : "Disabled"));
 #endif
+
             var go = new GameObject("AssetBundleManager", typeof(AssetBundleManager));
             DontDestroyOnLoad(go);
+
 #if UNITY_EDITOR
             // If we're in Editor simulation mode, we don't need the manifest assetBundle.
             if (SimulateAssetBundleInEditor)
                 return null;
 #endif
+
             LoadAssetBundle(manifestAssetBundleName, true);
-            Debug.LogError("LoadAssetBundleEnd");
             var operation = new AssetBundleLoadManifestOperation(manifestAssetBundleName, "AssetBundleManifest", typeof(AssetBundleManifest));
             m_InProgressOperations.Add(operation);
-
-            if (operation.IsDone())
-            {
-                Debug.LogError("完成！！");
-                return operation;
-            }
-            else
-            {
-                Debug.LogError("空的！！");
-                return operation;
-            }
-
-
+            return operation;
         }
 
         // Load AssetBundle and its dependencies.
@@ -242,9 +235,10 @@ namespace AssetBundles
                     return;
                 }
             }
+
             // Check if the assetBundle has already been processed.
             bool isAlreadyProcessed = LoadAssetBundleInternal(assetBundleName, isLoadingAssetBundleManifest);
-            Debug.LogError("LoadAssetBundle：" + isAlreadyProcessed + "isLoadingAssetBundleManifest:" + isLoadingAssetBundleManifest);
+
             // Load dependencies.
             if (!isAlreadyProcessed && !isLoadingAssetBundleManifest)
                 LoadDependencies(assetBundleName);
@@ -294,7 +288,7 @@ namespace AssetBundles
             }
         }
 
-        // 调用UnityWebRequest来下载assetBundle。
+        // Where we actuall call WWW to download the assetBundle.
         static protected bool LoadAssetBundleInternal(string assetBundleName, bool isLoadingAssetBundleManifest)
         {
             // Already loaded.
@@ -305,23 +299,26 @@ namespace AssetBundles
                 bundle.m_ReferencedCount++;
                 return true;
             }
+
             // @TODO: Do we need to consider the referenced count of WWWs?
             // In the demo, we never have duplicate WWWs as we wait LoadAssetAsync()/LoadLevelAsync() to be finished before calling another LoadAssetAsync()/LoadLevelAsync().
             // But in the real case, users can call LoadAssetAsync()/LoadLevelAsync() several times then wait them to be finished which might have duplicate WWWs.
             if (m_DownloadingWWWs.ContainsKey(assetBundleName))
                 return true;
-            UnityWebRequest download = null;
-            string url = "";
-            if (!assetBundleURL.TryGetValue(assetBundleName, out url))
-                url = m_BaseDownloadingURL + assetBundleName;
-            Debug.LogError("调用UnityWebRequest来下载assetBundle地址:" + url);
-            // For manifest assetbundle, always download it as we don't have hash for it.
-            if (isLoadingAssetBundleManifest)     
-                download = UnityWebRequestAssetBundle.GetAssetBundle(url);            
-            else
-                download = UnityWebRequestAssetBundle.GetAssetBundle(url, m_AssetBundleManifest.GetAssetBundleHash(assetBundleName), 0);            
-            m_DownloadingWWWs.Add(assetBundleName, download);
 
+            WWW download = null;
+
+            string url;
+            if (!assetBundleURL.TryGetValue(assetBundleName,out url))
+                url = m_BaseDownloadingURL + assetBundleName;
+            
+            // For manifest assetbundle, always download it as we don't have hash for it.
+            if (isLoadingAssetBundleManifest)
+                download = new WWW(url);
+            else               
+                download = WWW.LoadFromCacheOrDownload(url, m_AssetBundleManifest.GetAssetBundleHash(assetBundleName), 0);
+
+            m_DownloadingWWWs.Add(assetBundleName, download);
             return false;
         }
 
@@ -333,7 +330,7 @@ namespace AssetBundles
                 Debug.LogError("Please initialize AssetBundleManifest by calling AssetBundleManager.Initialize()");
                 return;
             }
-            Debug.LogError("m_AssetBundleManifest!=null");
+
             // Get dependecies from the AssetBundleManifest object..
             string[] dependencies = m_AssetBundleManifest.GetAllDependencies(assetBundleName);
             if (dependencies.Length == 0)
@@ -396,35 +393,27 @@ namespace AssetBundles
             }
         }
 
-        async void  Update()
+        void Update()
         {
             // Collect all the finished WWWs.
             var keysToRemove = new List<string>();
             foreach (var keyValue in m_DownloadingWWWs)
             {
-                UnityWebRequest download = keyValue.Value;
-                await download.SendWebRequest();
-                Debug.LogError("keyValue:"+keyValue.Key+":"+download.url);
+                WWW download = keyValue.Value;
+
                 // If downloading fails.
-                if (download.isHttpError||download.error!=null||download.isNetworkError)
+                if (download.error != null)
                 {
-                    Debug.LogError("downloaderror");
                     if (!m_DownloadingErrors.ContainsKey(keyValue.Key))
                         m_DownloadingErrors.Add(keyValue.Key, string.Format("Failed downloading bundle {0} from {1}: {2}", keyValue.Key, download.url, download.error));
                     keysToRemove.Add(keyValue.Key);
-
                     continue;
                 }
+
                 // If downloading succeeds.
                 if (download.isDone)
-                {           
-                    if (download.downloadHandler==null)
-                    {
-                        Debug.LogError("download为空");
-                    }
-                    Debug.LogError("download：" + download.downloadHandler.data.Length);
-                    AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(download);
-                    Debug.LogError("bundle" + bundle);
+                {
+                    AssetBundle bundle = download.assetBundle;
                     if (bundle == null)
                     {
                         if (!m_DownloadingErrors.ContainsKey(keyValue.Key))
@@ -433,22 +422,17 @@ namespace AssetBundles
                         continue;
                     }
 
-                    Debug.Log("Downloading " + keyValue.Key + " is done at frame " + Time.frameCount);
-                    if (!m_LoadedAssetBundles.ContainsKey(keyValue.Key))
-                        m_LoadedAssetBundles.Add(keyValue.Key, new LoadedAssetBundle(DownloadHandlerAssetBundle.GetContent(download)));
+                    //Debug.Log("Downloading " + keyValue.Key + " is done at frame " + Time.frameCount);
+                    if(!m_LoadedAssetBundles.ContainsKey(keyValue.Key))
+                        m_LoadedAssetBundles.Add(keyValue.Key, new LoadedAssetBundle(download.assetBundle));
                     keysToRemove.Add(keyValue.Key);
-                }
-                else 
-                {
-
-                    Debug.LogError("download没有完成" );
                 }
             }
 
             // Remove the finished WWWs.
             foreach (var key in keysToRemove)
             {
-                UnityWebRequest download = m_DownloadingWWWs[key];
+                WWW download = m_DownloadingWWWs[key];
                 m_DownloadingWWWs.Remove(key);
                 download.Dispose();
             }
@@ -480,6 +464,7 @@ namespace AssetBundles
                     Debug.LogError("There is no asset with name \"" + assetName + "\" in " + assetBundleName);
                     return null;
                 }
+
                 // @TODO: Now we only get the main object from the first asset. Should consider type also.
                 Object target = AssetDatabase.LoadMainAssetAtPath(assetPaths[0]);
                 operation = new AssetBundleLoadAssetOperationSimulation(target);
@@ -554,11 +539,11 @@ namespace AssetBundles
         }
 
 
-        static public UnityWebRequest GetAssetBundleWWW(string assetBundleName)
+        static public WWW GetAssetBundleWWW(string assetBundleName)
         {
-            UnityWebRequest www;
+            WWW www;
             m_DownloadingWWWs.TryGetValue(assetBundleName, out www);
             return www;
-        }
+    }
     } // End of AssetBundleManager.
 }
