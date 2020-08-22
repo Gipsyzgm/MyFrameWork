@@ -11,67 +11,25 @@ public class ITest: MonoBehaviour
 
     async void Start() 
     {
-        string url = "C:/Users/ZGM/Desktop/test/MyFrame_Data/StreamingAssets/Windows/Windows";
-        UnityWebRequest  request = UnityWebRequest.Get(url);
-     
+        string url = "C:/Users/ZGM/AppData/LocalLow/Jsf/MyFrame/Windows/Windows";
+        string url2 = "C:/Users/ZGM/Desktop/test/MyFrame_Data/StreamingAssets/Windows/Windows";
+        string url3 = "F:/anyelse/MyFrameWork/MyFrameWork/Assets/StreamingAssets/Windows/Windows";
+        //AssetBundle manifestAB = AssetBundle.LoadFromFile(url);
+        //AssetBundleManifest manifest = manifestAB.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
+        //foreach (var item in manifest.GetAllAssetBundles())
+        //{
+        //    Debug.LogError(item);
+        //}
+        //WWW download = new WWW(url2);
+        //await download;
+        //AssetBundle bundle = download.assetBundle;
+
+        UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(url3);
         await request.SendWebRequest();
-        if (request.error!=null)
-        {
-            Debug.LogError("下载空的数据：" + request.error);
-            return;
-        }
-        if (request.isDone)
-        {
-            Debug.LogError("下载的什么数据：" + request.downloadHandler.data.Length);
-            DownloadHandlerAssetBundle downloadHandler = request.downloadHandler as DownloadHandlerAssetBundle;
-            AssetBundle bundle = downloadHandler.assetBundle;
-            //AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(request);
-           
-
-            Debug.LogError("下载的什么数据：" + request.downloadHandler.data.Length);
-            Debug.LogError("下载的什么数据：" + request.url);
-
-        }
-        WWW download = new WWW(url);
-        await  download;
-        if (download.error != null)
-        {
-            Debug.LogError("WWW下载空的数据：" + request.error);
-            return;
-        }
-
-        // If downloading succeeds.
-        if (download.isDone)
-        {
-            Debug.LogError("WWW下载空的数据：" + download.bytes.Length);
-           
-            AssetBundle bundle = download.assetBundle;
-
-            if (bundle == null)
-            {
-
-                Debug.Log("www bundle is null ");
-                return;
-            }
-            else 
-            {
-                Debug.Log("www bundle 不为4 null ");
-
-            }
-
-            Debug.Log("Downloading is done at frame " + Time.frameCount);
-            Debug.LogError("www下载的什么数据：" + download.url);
-            Debug.LogError("www下载的什么数据：" + bundle.name);
-            Debug.LogError("www下载的什么数据：" + bundle.isStreamedSceneAssetBundle); 
-            Debug.LogError("www下载的什么数据：" + bundle.Contains("Windows"));
-            Debug.LogError("www下载的什么数据："  );
-
-            foreach (var item in bundle.GetAllScenePaths())
-            {
-                Debug.LogError(item);
-            }
-
-        }
+        AssetBundle bundle2 = DownloadHandlerAssetBundle.GetContent(request);
+        Debug.LogError(request.url);
+        AssetBundleManifest AssetBundleManifest2 = bundle2.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
+        Debug.LogError(AssetBundleManifest2.GetAllAssetBundles().Length);
 
     }
  
