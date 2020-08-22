@@ -7,14 +7,18 @@ using UObject = UnityEngine.Object;
 
 public class ABMgr : MonoSingleton<ABMgr>
 {
+
     public static Dictionary<string, string> assetBundleURL = new Dictionary<string, string>();
     public static string BaseDownloadingURL = GetRelativePath();
     public static AssetBundleManifest AssetBundleManifest = null;
+    static string[] ActiveVariants = { };
 
-    static Dictionary<string, UnityWebRequest> m_DownloadingWWWs = new Dictionary<string, UnityWebRequest>();
-    static Dictionary<string, string> m_DownloadingErrors = new Dictionary<string, string>();
-    static Dictionary<string, string[]> m_Dependencies = new Dictionary<string, string[]>();
-
+    static Dictionary<string, UnityWebRequest> DownloadingWWWs = new Dictionary<string, UnityWebRequest>();
+    static Dictionary<string, string>  DownloadingErrors = new Dictionary<string, string>();
+    static Dictionary<string, string[]> Dependencies = new Dictionary<string, string[]>();
+    //已经下载的AssetBundles数据
+    public static Dictionary<string, LoadedAssetBundle> LoadedAssetBundles = new Dictionary<string, LoadedAssetBundle>();
+  
     public void Initialize()
     {
         var go = new GameObject("ABMgr", typeof(ABMgr));
@@ -27,10 +31,10 @@ public class ABMgr : MonoSingleton<ABMgr>
         AssetBundle manifestAB = AssetBundle.LoadFromFile(url);
         AssetBundleManifest = manifestAB.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
         Debug.LogError("多少个资源："+AssetBundleManifest.GetAllAssetBundles().Length);
-
     }
 
-    public async Task<GameObject> LoadPrefab(string assetBundleName, string assetName = null)
+
+    public T LoadAsset<T>(string assetBundleName, string assetName = null) where T : UObject
     {
         if (string.IsNullOrEmpty(assetName))
             assetName = assetBundleName.Substring(assetBundleName.LastIndexOf("/") + 1);
@@ -38,72 +42,162 @@ public class ABMgr : MonoSingleton<ABMgr>
         assetBundleName = assetBundleName.ToLower();
         assetBundleName += AppSetting.ExtName;
         Debug.LogError("最终位置：" + assetBundleName + "最后的名字：" + assetName);
-        CheckDependencies(assetBundleName);
+        AssetBundle assetBundle; 
+        LoadedAssetBundle bundle = GetLoadedAssetBundle(assetBundleName);
+        if (bundle == null)
+        {
+            Debug.LogError("bundle为空");
+            CheckDependencies(assetBundleName);
+            string url;
+            if (!assetBundleURL.TryGetValue(assetBundleName, out url))
+                url = BaseDownloadingURL + assetBundleName;
+            Debug.LogError(url);
+            assetBundle = AssetBundle.LoadFromFile(url);
+        }
+        else 
+        {
+            assetBundle = bundle.m_AssetBundle;
+        }
+        //T obj = assetBundle.LoadAssetAsync<GameObject>(assetName);
+        T obj = (T)assetBundle.LoadAssetAsync<T>(assetName).asset;
+        if (obj == null)
+            Debug.LogError($"加载资源失败:{assetBundleName}  AssName:{assetName}");
+        return obj;        
+    }
+
+
+
+
+    /// <summary>
+    /// 获取已加载的AssetBundle，只有当所有依赖项下载成功时才返回有效对象.
+    /// </summary>
+    /// <param name="assetBundleName"></param>
+    /// <returns></returns>
+    static public LoadedAssetBundle GetLoadedAssetBundle(string assetBundleName)
+    {
+        LoadedAssetBundle bundle = null;
+        LoadedAssetBundles.TryGetValue(assetBundleName, out bundle);
+        if (bundle == null)
+            return null;
+        Debug.LogError("已下载");
+        // 不记录依赖项，只需要bundle本身.
+        string[] dependencies = null;
+        if (!Dependencies.TryGetValue(assetBundleName, out dependencies))
+            return bundle;
+        Debug.LogError("dependencies不全");
+        // 确保已加载所有依赖项
+        foreach (var dependency in dependencies)
+        {
+            // 等待加载所有依赖资产包。
+            LoadedAssetBundle dependentBundle;
+            LoadedAssetBundles.TryGetValue(dependency, out dependentBundle);
+            if (dependentBundle == null)
+                return null;
+        }
+        return bundle;
+    }
+
+    /// <summary>
+    /// 检查并处理依赖项
+    /// </summary>
+    /// <param name="assetBundleName"></param>
+    public void CheckDependencies(string assetBundleName) 
+    {
+        if (AssetBundleManifest == null)
+        {
+            Debug.LogError("Please initialize AssetBundleManifest by calling AssetBundleManager.Initialize()");
+            return;
+        }
+        string[] dependencies = AssetBundleManifest.GetAllDependencies(assetBundleName);
+        if (dependencies.Length == 0)
+            return;
+        for (int i = 0; i < dependencies.Length; i++)
+            dependencies[i] = RemapVariantName(dependencies[i]);
+        // Record and load all dependencies.
+        Dependencies.Add(assetBundleName, dependencies);
+        for (int i = 0; i < dependencies.Length; i++)
+            LoadAssetBundleInternal(dependencies[i]);
+    }
+    //都是本地资源，不走异步。
+    static protected void LoadAssetBundleInternal(string assetBundleName)
+    {
+        // Already loaded.
+        LoadedAssetBundle bundle = null;
+        LoadedAssetBundles.TryGetValue(assetBundleName, out bundle);
+        if (bundle != null)
+        {
+            bundle.m_ReferencedCount++;
+            return;
+        }
+        AssetBundle download = null;
         string url;
         if (!assetBundleURL.TryGetValue(assetBundleName, out url))
             url = BaseDownloadingURL + assetBundleName;
-        Debug.LogError(url);
-        AssetBundle assetBundle = AssetBundle.LoadFromFile(url);
-        Object obj = await assetBundle.LoadAssetAsync<GameObject>(assetName);    
-        return (GameObject)obj;
+        Debug.LogError("下载地址：" + url);
+        download = AssetBundle.LoadFromFile(url);
+        //download = UnityWebRequestAssetBundle.GetAssetBundle(url, m_AssetBundleManifest.GetAssetBundleHash(assetBundleName), 0);
+        Debug.LogError("存的名字："+ assetBundleName);
+        LoadedAssetBundles.Add(assetBundleName, new LoadedAssetBundle(download)); 
     }
 
-    public void CheckDependencies(string assetBundleName) 
+    static protected string RemapVariantName(string assetBundleName)
     {
-        string[] strs = AssetBundleManifest.GetAllDependencies(assetBundleName);
-        Debug.LogError("依赖资源数："+strs.Length);
-        foreach (var name in strs)
+        string[] bundlesWithVariant = AssetBundleManifest.GetAllAssetBundlesWithVariant();
+        string[] split = assetBundleName.Split('.');
+        int bestFit = int.MaxValue;
+        int bestFitIndex = -1;
+        //使用variant循环所有assetBundle以找到最适合的variant assetBundle.
+        for (int i = 0; i < bundlesWithVariant.Length; i++)
         {
-            Debug.LogError(name);
-            string url;
-            if (!assetBundleURL.TryGetValue(name, out url))
-                url = BaseDownloadingURL + name;
-            Debug.LogError(url);        
-            AssetBundle.LoadFromFile(url);
+            string[] curSplit = bundlesWithVariant[i].Split('.');
+            if (curSplit[0] != split[0])
+                continue;
+
+            int found = System.Array.IndexOf(ActiveVariants, curSplit[1]);
+
+            // 如果没有找到有效变体。我们还是要用第一个 
+            if (found == -1)
+                found = int.MaxValue - 1;
+
+            if (found < bestFit)
+            {
+                bestFit = found;
+                bestFitIndex = i;
+            }
+        }
+        if (bestFit == int.MaxValue - 1)
+        {
+            Debug.LogWarning("Ambigious asset bundle variant chosen because there was no matching active variant: " + bundlesWithVariant[bestFitIndex]);
+        }
+        if (bestFitIndex != -1)
+        {
+            return bundlesWithVariant[bestFitIndex];
+        }
+        else
+        {
+            return assetBundleName;
         }
     }
-    #region 私有协同方法
-    /// <summary>
-    /// 异步加载资源
-    /// </summary>
-    //private async Task<T> _LoadAsset<T>(string assetBundleName, string assetName, bool isWait = false) where T : UObject
-    //{
 
-    //   // T obj = request.GetAsset<T>();
-    //    if (obj == null)
-    //        Debug.LogError($"加载资源失败:{assetBundleName}  AssName:{assetName}");
-    //    return obj;
-    //}
 
-    private WaitForEndOfFrame waitFrame = new WaitForEndOfFrame();
-    /// <summary>
-    /// 异步加载场景
-    /// </summary>
-    //private async Task _LoadScene(string sceneAssetBundle, string levelName, bool isAdditive, Action<float> cbProgress)
-    //{
-    //    //float startTime = Time.realtimeSinceStartup;
-    //    AssetBundleLoadOperation request = AssetBundleManager.LoadLevelAsync(sceneAssetBundle, levelName, isAdditive);
-    //    if (request != null && cbProgress != null)
-    //    {
-    //        while (request.Progress() < 1f)
-    //        {
-    //            await waitFrame;
-    //            cbProgress(request.Progress());
-    //            if (request.IsDone())
-    //                break;
-    //        }
-    //        cbProgress(1f);
-    //    }
-    //    //float elapsedTime = Time.realtimeSinceStartup - startTime;
-    //    Utils.ResetShader(null);
-    //    //Debug.Log("Finished loading scene " + levelName + " in " + elapsedTime + " seconds");
-    //}
-    #endregion
+   
     public static string GetRelativePath()
     {
         if (!AppSetting.IsRelease)
             return "file://" + AppSetting.ExportResBaseDir + Utility.GetPlatformName() + "/";
         return string.Empty;
+    }
+}
+// 加载的资产包包含引用计数，可用于自动卸载依赖的资产包.
+public class LoadedAssetBundle
+{
+    public AssetBundle m_AssetBundle;
+    //移动被引用多少次
+    public int m_ReferencedCount;
+    public LoadedAssetBundle(AssetBundle assetBundle)
+    {
+        m_AssetBundle = assetBundle;
+        m_ReferencedCount = 1;
     }
 }
 
