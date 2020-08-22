@@ -235,6 +235,7 @@ namespace AssetBundles
         public AssetBundleLoadManifestOperation(string bundleName, string assetName, System.Type type)
             : base(bundleName, assetName, type)
         {
+
         }
 
         public override bool Update()

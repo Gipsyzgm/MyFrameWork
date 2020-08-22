@@ -49,7 +49,14 @@ public class AppSetting
     /// </summary>
     public static string PersistentDataPath
     {
-        get { return Application.persistentDataPath + "/" + Utility.GetPlatformName() + "/"; }
+        get {
+#if UNITY_ANDROID || UNITY_IPHONE || UNITY_STANDALONE_WIN
+            return Application.persistentDataPath + "/" + Utility.GetPlatformName() + "/";
+#else
+            return "file:///" + Application.persistentDataPath + "/" + Utility.GetPlatformName() + "/";
+#endif
+
+        }
     }
 
 

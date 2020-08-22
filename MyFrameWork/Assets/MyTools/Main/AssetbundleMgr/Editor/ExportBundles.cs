@@ -97,7 +97,7 @@ public class ExportBundles : MonoBehaviour {
         Debug.LogError("清除全部资源AssetBundle名称完成!");
         SetAssetsBundleName(resPath);
         Debug.LogError("设置AssetBundle名称完成!");
-        //EditSpritAtlas.SetUIAtlas();
+        EditSpritAtlas.SetUIAtlas();
         BuildPipeline.BuildAssetBundles(outPut, BuildAssetBundleOptions.None, EditorUserBuildSettings.activeBuildTarget);
         CreateAssetBundleFileInfo();
         AssetDatabase.Refresh();

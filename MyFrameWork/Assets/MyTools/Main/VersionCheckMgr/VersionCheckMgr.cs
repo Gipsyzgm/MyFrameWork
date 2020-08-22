@@ -204,7 +204,9 @@ public class VersionCheckMgr : MonoSingleton<VersionCheckMgr>
         else
         {
             //Application.streamingAssetsPath下没有MD5对比文件ABFiles，就用Application.persistentDataPath(热更资源)路径下的abfiles
-            string abFiles = AppSetting.PersistentDataURL + AppSetting.ABFiles;
+            string abFiles = AppSetting.PersistentDataPath + AppSetting.ABFiles;
+            UnityEngine.Debug.LogError("什么鬼东西:"+abFiles);
+
             UnityWebRequest request = UnityWebRequest.Get(abFiles);
             await request.SendWebRequest();
             if (request.error == null)
@@ -495,9 +497,15 @@ public class VersionCheckMgr : MonoSingleton<VersionCheckMgr>
         foreach (ABResFile file in abRes.dicFileInfo.Values)
         {
             if (file.isStreaming)
+            {
                 AssetBundleManager.assetBundleURL.Add(file.File, AppSetting.StreamingAssetsPath + file.File);
-            else
-                AssetBundleManager.assetBundleURL.Add(file.File, AppSetting.PersistentDataURL + file.File);
+                ABMgr.assetBundleURL.Add(file.File, AppSetting.StreamingAssetsPath + file.File);
+            }
+            else 
+            {
+                AssetBundleManager.assetBundleURL.Add(file.File, AppSetting.PersistentDataPath + file.File);
+                ABMgr.assetBundleURL.Add(file.File, AppSetting.PersistentDataPath + file.File);
+            }              
         }
         if (remoteABRes != null)
             remoteABRes.Dispose();

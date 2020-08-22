@@ -25,21 +25,18 @@ namespace AssetBundles
     public class LoadedAssetBundle
 	{
 		public AssetBundle m_AssetBundle;
-		public int m_ReferencedCount;
-		
+		public int m_ReferencedCount;		
 		public LoadedAssetBundle(AssetBundle assetBundle)
 		{
 			m_AssetBundle = assetBundle;
 			m_ReferencedCount = 1;
 		}
 	}
-
     // 类负责自动加载资产包及其依赖项，自动加载变量
     public class AssetBundleManager : MonoBehaviour
     {
         //所有AB资源的路径，必须添加
         public static Dictionary<string, string> assetBundleURL = new Dictionary<string, string>();
-
         static string m_BaseDownloadingURL = "";
         static string[] m_ActiveVariants = { };
         static AssetBundleManifest m_AssetBundleManifest = null;
@@ -47,29 +44,24 @@ namespace AssetBundles
         static int m_SimulateAssetBundleInEditor = -1;
         const string kSimulateAssetBundles = "SimulateAssetBundles";
 #endif
+        //已下载的AssetBundles数据
+        public static Dictionary<string, LoadedAssetBundle> LoadedAssetBundles = new Dictionary<string, LoadedAssetBundle>();
+        //正在下载的AssetBundles数据
+        public static Dictionary<string, WWW> DownloadingAssetBundle = new Dictionary<string, WWW>();
+        //下载出现问题的AssetBundles数据
+        public static Dictionary<string, string> DownloadingErrors = new Dictionary<string, string>();
+        //正在进行操作的AssetBundles列表
+        public static List<AssetBundleLoadOperation> LoadOperations = new List<AssetBundleLoadOperation>();
+        //AssetBundles依赖数据
+        public static Dictionary<string, string[]> Dependencies = new Dictionary<string, string[]>();
 
-        static Dictionary<string, LoadedAssetBundle> m_LoadedAssetBundles = new Dictionary<string, LoadedAssetBundle>();
-        static Dictionary<string, WWW> m_DownloadingWWWs = new Dictionary<string, WWW>();
-        static Dictionary<string, string> m_DownloadingErrors = new Dictionary<string, string>();
-        static List<AssetBundleLoadOperation> m_InProgressOperations = new List<AssetBundleLoadOperation>();
-        static Dictionary<string, string[]> m_Dependencies = new Dictionary<string, string[]>();
-
-
-        // The base downloading url which is used to generate the full downloading url with the assetBundle names.
+        // 基本下载url，用于生成包含资产包名称的完整下载url.
         public static string BaseDownloadingURL
         {
             get { return m_BaseDownloadingURL; }
             set { m_BaseDownloadingURL = value; }
         }
-
-        // Variants which is used to define the active variants.
-        public static string[] ActiveVariants
-        {
-            get { return m_ActiveVariants; }
-            set { m_ActiveVariants = value; }
-        }
-
-        // AssetBundleManifest object which can be used to load the dependecies and check suitable assetBundle variants.
+        // 可以用来加载依赖项和检查合适的资产包变体的AssetBundleManifest对象.
         public static AssetBundleManifest AssetBundleManifestObject
         {
             set { m_AssetBundleManifest = value; }
@@ -77,14 +69,13 @@ namespace AssetBundles
         }
 
 #if UNITY_EDITOR
-        // Flag to indicate if we want to simulate assetBundles in Editor without building them actually.
+        // 标记来指示我们是否想在编辑器中模拟资产包而不实际构建它们.
         public static bool SimulateAssetBundleInEditor
         {
             get
             {
                 if (m_SimulateAssetBundleInEditor == -1)
                     m_SimulateAssetBundleInEditor = EditorPrefs.GetBool(kSimulateAssetBundles, true) ? 1 : 0;
-
                 return m_SimulateAssetBundleInEditor != 0;
             }
             set
@@ -102,27 +93,27 @@ namespace AssetBundles
         // 获取已加载的AssetBundle，只有当所有依赖项下载成功时才返回有效对象.
         static public LoadedAssetBundle GetLoadedAssetBundle(string assetBundleName, out string error)
         {
-            if (m_DownloadingErrors.TryGetValue(assetBundleName, out error))
+            if (DownloadingErrors.TryGetValue(assetBundleName, out error))
                 return null;
             LoadedAssetBundle bundle = null;
-            m_LoadedAssetBundles.TryGetValue(assetBundleName, out bundle);
+            LoadedAssetBundles.TryGetValue(assetBundleName, out bundle);
             if (bundle == null)
                 return null;
 
             // 不记录依赖项，只需要bundle本身.
             string[] dependencies = null;
-            if (!m_Dependencies.TryGetValue(assetBundleName, out dependencies))
+            if (!Dependencies.TryGetValue(assetBundleName, out dependencies))
                 return bundle;
 
             // 确保已加载所有依赖项
             foreach (var dependency in dependencies)
             {
-                if (m_DownloadingErrors.TryGetValue(assetBundleName, out error))
+                if (DownloadingErrors.TryGetValue(assetBundleName, out error))
                     return bundle;
 
                 // 等待加载所有依赖资产包。
                 LoadedAssetBundle dependentBundle;
-                m_LoadedAssetBundles.TryGetValue(dependency, out dependentBundle);
+                LoadedAssetBundles.TryGetValue(dependency, out dependentBundle);
                 if (dependentBundle == null)
                     return null;
             }
@@ -134,8 +125,6 @@ namespace AssetBundles
         {
             return Initialize(Utility.GetPlatformName());
         }
-
-
         // Load AssetBundleManifest.
         static public AssetBundleLoadManifestOperation Initialize(string manifestAssetBundleName)
         {
@@ -146,10 +135,9 @@ namespace AssetBundles
             if (SimulateAssetBundleInEditor)
                 return null;
 #endif
-
             LoadAssetBundle(manifestAssetBundleName, true);
             var operation = new AssetBundleLoadManifestOperation(manifestAssetBundleName, "AssetBundleManifest", typeof(AssetBundleManifest));
-            m_InProgressOperations.Add(operation);
+            LoadOperations.Add(operation);
             return operation;
         }
 
@@ -220,12 +208,12 @@ namespace AssetBundles
             }
         }
 
-        // 可以调用WWW来下载assetBundle。
+        // 这里开始下载AssetBundle。
         static protected bool LoadAssetBundleInternal(string assetBundleName, bool isLoadingAssetBundleManifest)
         {
             // Already loaded.
             LoadedAssetBundle bundle = null;
-            m_LoadedAssetBundles.TryGetValue(assetBundleName, out bundle);
+            LoadedAssetBundles.TryGetValue(assetBundleName, out bundle);
             if (bundle != null)
             {
                 bundle.m_ReferencedCount++;
@@ -234,18 +222,19 @@ namespace AssetBundles
             // @TODO: Do we need to consider the referenced count of WWWs?
             // In the demo, we never have duplicate WWWs as we wait LoadAssetAsync()/LoadLevelAsync() to be finished before calling another LoadAssetAsync()/LoadLevelAsync().
             // But in the real case, users can call LoadAssetAsync()/LoadLevelAsync() several times then wait them to be finished which might have duplicate WWWs.
-            if (m_DownloadingWWWs.ContainsKey(assetBundleName))
+            if (DownloadingAssetBundle.ContainsKey(assetBundleName))
                 return true;
             WWW download = null;
             string url;
             if (!assetBundleURL.TryGetValue(assetBundleName,out url))
                 url = m_BaseDownloadingURL + assetBundleName;
-            // 对于manifest assetbundle，请始终下载它，因为我们没有哈希。
+            // 对于AssetBundleManifest。
+            Debug.LogError("下载地址："+url);
             if (isLoadingAssetBundleManifest)
                 download = new WWW(url);
             else               
                 download = WWW.LoadFromCacheOrDownload(url, m_AssetBundleManifest.GetAssetBundleHash(assetBundleName), 0);
-            m_DownloadingWWWs.Add(assetBundleName, download);
+            DownloadingAssetBundle.Add(assetBundleName, download);
             return false;
         }
 
@@ -264,7 +253,7 @@ namespace AssetBundles
             for (int i = 0; i < dependencies.Length; i++)
                 dependencies[i] = RemapVariantName(dependencies[i]);
             // Record and load all dependencies.
-            m_Dependencies.Add(assetBundleName, dependencies);
+            Dependencies.Add(assetBundleName, dependencies);
             for (int i = 0; i < dependencies.Length; i++)
                 LoadAssetBundleInternal(dependencies[i], false);
         }
@@ -273,15 +262,15 @@ namespace AssetBundles
         {
             // Collect all the finished WWWs.
             var keysToRemove = new List<string>();
-            foreach (var keyValue in m_DownloadingWWWs)
+            foreach (var keyValue in DownloadingAssetBundle)
             {
                 WWW download = keyValue.Value;
 
                 // If downloading fails.
                 if (download.error != null)
                 {
-                    if (!m_DownloadingErrors.ContainsKey(keyValue.Key))
-                        m_DownloadingErrors.Add(keyValue.Key, string.Format("Failed downloading bundle {0} from {1}: {2}", keyValue.Key, download.url, download.error));
+                    if (!DownloadingErrors.ContainsKey(keyValue.Key))
+                        DownloadingErrors.Add(keyValue.Key, string.Format("Failed downloading bundle {0} from {1}: {2}", keyValue.Key, download.url, download.error));
                     keysToRemove.Add(keyValue.Key);
                     continue;
                 }
@@ -292,15 +281,15 @@ namespace AssetBundles
                     AssetBundle bundle = download.assetBundle;
                     if (bundle == null)
                     {
-                        if (!m_DownloadingErrors.ContainsKey(keyValue.Key))
-                            m_DownloadingErrors.Add(keyValue.Key, string.Format("{0} is not a valid asset bundle.", keyValue.Key));
+                        if (!DownloadingErrors.ContainsKey(keyValue.Key))
+                            DownloadingErrors.Add(keyValue.Key, string.Format("{0} is not a valid asset bundle.", keyValue.Key));
                         keysToRemove.Add(keyValue.Key);
                         continue;
                     }
 
                     //Debug.Log("Downloading " + keyValue.Key + " is done at frame " + Time.frameCount);
-                    if(!m_LoadedAssetBundles.ContainsKey(keyValue.Key))
-                        m_LoadedAssetBundles.Add(keyValue.Key, new LoadedAssetBundle(download.assetBundle));
+                    if(!LoadedAssetBundles.ContainsKey(keyValue.Key))
+                        LoadedAssetBundles.Add(keyValue.Key, new LoadedAssetBundle(download.assetBundle));
                     keysToRemove.Add(keyValue.Key);
                 }
             }
@@ -308,17 +297,17 @@ namespace AssetBundles
             // Remove the finished WWWs.
             foreach (var key in keysToRemove)
             {
-                WWW download = m_DownloadingWWWs[key];
-                m_DownloadingWWWs.Remove(key);
+                WWW download = DownloadingAssetBundle[key];
+                DownloadingAssetBundle.Remove(key);
                 download.Dispose();
             }
 
             // Update all in progress operations
-            for (int i = 0; i < m_InProgressOperations.Count;)
+            for (int i = 0; i < LoadOperations.Count;)
             {
-                if (!m_InProgressOperations[i].Update())
+                if (!LoadOperations[i].Update())
                 {
-                    m_InProgressOperations.RemoveAt(i);
+                    LoadOperations.RemoveAt(i);
                 }
                 else
                     i++;
@@ -352,7 +341,7 @@ namespace AssetBundles
                 LoadAssetBundle(assetBundleName);
                 operation = new AssetBundleLoadAssetOperationFull(assetBundleName, assetName, type);
 
-                m_InProgressOperations.Add(operation);
+                LoadOperations.Add(operation);
             }
 
             return operation;
@@ -376,7 +365,7 @@ namespace AssetBundles
                 LoadAssetBundle(assetBundleName);
                 operation = new AssetBundleLoadLevelOperation(assetBundleName, levelName, isAdditive);
 
-                m_InProgressOperations.Add(operation);
+                LoadOperations.Add(operation);
             }
 
             return operation;
@@ -408,7 +397,7 @@ namespace AssetBundles
                 assetBundleName = RemapVariantName(assetBundleName);
                 LoadAssetBundle(assetBundleName);
                 operation = new AssetBundleLoadOperationFull(assetBundleName);
-                m_InProgressOperations.Add(operation);
+                LoadOperations.Add(operation);
             }
             return operation;
         }
@@ -417,7 +406,7 @@ namespace AssetBundles
         static public WWW GetAssetBundleWWW(string assetBundleName)
         {
             WWW www;
-            m_DownloadingWWWs.TryGetValue(assetBundleName, out www);
+            DownloadingAssetBundle.TryGetValue(assetBundleName, out www);
             return www;
     }
     } // End of AssetBundleManager.

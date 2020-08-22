@@ -19,7 +19,8 @@ public class Launcher : MonoBehaviour
         {
             await new WaitForEndOfFrame();
         }
-        await AssetbundleMgr.Instance.Initialize();
+        //await AssetbundleMgr.Instance.Initialize();
+        ABMgr.Instance.Initialize();
         PanelMgr.Instance.ClosePanel(PanelName.VersionCheckPl);
         PanelMgr.Instance.OpenPanel<MenuePl>();
         Debug.LogError("111111111111111");

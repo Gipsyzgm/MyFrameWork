@@ -94,11 +94,13 @@ public class PanelMgr : MonoSingleton<PanelMgr>
         GameObject skin;
         if (VersionCheckMgr.Instance.isUpdateCheckComplete)
         {
-             skin = await AssetbundleMgr.Instance.LoadPrefab(skinPath);
+             Debug.LogError("加载热更资源");
+             skin = await ABMgr.Instance.LoadPrefab(skinPath);
         }
         else 
         {
-             skin = Resources.Load<GameObject>(skinPath);
+            Debug.LogError("加载Resources资源");
+            skin = Resources.Load<GameObject>(skinPath);
         }
        
         if (skin == null)
