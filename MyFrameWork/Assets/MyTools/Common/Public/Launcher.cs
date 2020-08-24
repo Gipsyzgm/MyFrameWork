@@ -25,7 +25,10 @@ public class Launcher : MonoBehaviour
         PanelMgr.Instance.OpenPanel<MenuePl>();
         Debug.LogError("111111111111111");
         MyAudioMgr.Instance.Init();
-    
+        GameObject gameObject =  ABMgr.Instance.LoadPrefab("prefabs/scenemodel/tree_red_01");
+        GameObject obj = Instantiate(gameObject);
+        obj.transform.position = Vector3.zero;
+
     }
 
     // Update is called once per frame

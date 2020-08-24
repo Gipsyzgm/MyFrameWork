@@ -9,7 +9,7 @@ public class StartPl : PanelBase {
     public Button StartBt;
     public override void Init(params object[] _args)
     {
-         CurViewPath="MyUI/View/StartPl";
+         CurViewPath= "Prefabs/MyUI/View/StartPl";
          layer = PanelLayer.Start;
     }
     public override void InitComponent()

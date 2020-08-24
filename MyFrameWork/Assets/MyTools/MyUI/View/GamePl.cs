@@ -9,7 +9,7 @@ public class GamePl : PanelBase {
     public Transform Content;
     public override void Init(params object[] _args)
     {
-         CurViewPath="MyUI/View/GamePl";
+         CurViewPath= "Prefabs/MyUI/View/GamePl";
          layer = PanelLayer.Panel;
     }
     public override void InitComponent()

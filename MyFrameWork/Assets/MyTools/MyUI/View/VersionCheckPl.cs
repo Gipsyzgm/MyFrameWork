@@ -12,7 +12,7 @@ public class VersionCheckPl : PanelBase {
     public override void Init(params object[] _args)
     {
          args = _args;
-         CurViewPath="MyUI/View/VersionCheckPl";
+         CurViewPath= "Prefabs/MyUI/View/VersionCheckPl";
          layer = PanelLayer.Panel;
     }
     public override void InitComponent()

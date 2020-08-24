@@ -24,9 +24,9 @@ public class ExportUI {
     //Item代码存储位置
     static string itemScriptDir = Application.dataPath + "/MyTools/MyUI/Item/";
     //UI预制体存储位置
-    static string uiDir = "Assets/Resources/MyUI/View/";
+    static string uiDir = "Assets/Resources/Prefabs/MyUI/View/";
     //Item预制体存储位置
-    static string itemDir = "Assets/Resources/MyUI/Item/";
+    static string itemDir = "Assets/Resources/Prefabs/MyUI/Item/";
     //路径名
     static string uiPathName = "PathUI";
     static string itemPathName = "PathItem";

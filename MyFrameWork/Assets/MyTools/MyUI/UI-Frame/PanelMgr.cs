@@ -70,7 +70,7 @@ public class PanelMgr : MonoSingleton<PanelMgr>
     /// <typeparam name="T"></typeparam>
     /// <param name="skinPath"></param>
     /// <param name="_args"></param>
-    public async void OpenPanel<T>(string skinPath = "", params object[] _args) where T : PanelBase
+    public void OpenPanel<T>(string skinPath = "", params object[] _args) where T : PanelBase
     {
         string name = typeof(T).ToString();
         if (Paneldict.ContainsKey(name))
@@ -95,7 +95,7 @@ public class PanelMgr : MonoSingleton<PanelMgr>
         if (VersionCheckMgr.Instance.isUpdateCheckComplete)
         {
              Debug.LogError("加载热更资源");
-             skin = await ABMgr.Instance.LoadPrefab(skinPath);
+             skin = ABMgr.Instance.LoadPrefab(skinPath);
         }
         else 
         {

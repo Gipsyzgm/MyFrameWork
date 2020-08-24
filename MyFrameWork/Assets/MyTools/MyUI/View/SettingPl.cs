@@ -15,7 +15,7 @@ public class SettingPl : PanelBase {
     public Button ChangeLanguage;
     public override void Init(params object[] _args)
     {
-         CurViewPath="MyUI/View/SettingPl";
+         CurViewPath= "Prefabs/MyUI/View/SettingPl";
          layer = PanelLayer.Panel;
     }
     public override void InitComponent()
