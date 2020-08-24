@@ -18,7 +18,7 @@ public class Mgr
     // Start is called before the first frame update
     public static void Initialize()
     {
-        Assetbundle = AssetbundleMgr.Instance;
+        //Assetbundle = AssetbundleMgr.Instance;
         UI = PanelMgr.Instance;
         VersionCheck = VersionCheckMgr.Instance;
     }
