@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.U2D;
 using UObject = UnityEngine.Object;
 
 public class ABMgr : MonoSingleton<ABMgr>
@@ -21,8 +22,6 @@ public class ABMgr : MonoSingleton<ABMgr>
   
     public void Initialize()
     {
-        var go = new GameObject("ABMgr", typeof(ABMgr));
-        DontDestroyOnLoad(go);
         string PlatformName = Utility.GetPlatformName();
         string url;
         if (!assetBundleURL.TryGetValue(PlatformName,out url))
@@ -31,17 +30,48 @@ public class ABMgr : MonoSingleton<ABMgr>
         AssetBundle manifestAB = AssetBundle.LoadFromFile(url);
         AssetBundleManifest = manifestAB.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
         Debug.LogError("多少个资源："+AssetBundleManifest.GetAllAssetBundles().Length);
+
     }
 
-
-    public T LoadAsset<T>(string assetBundleName, string assetName = null) where T : UObject
-    {
-        if (string.IsNullOrEmpty(assetName))
-            assetName = assetBundleName.Substring(assetBundleName.LastIndexOf("/") + 1);
+    /// <summary>
+    /// 加载图集
+    /// </summary>
+    /// <param name="assetBundleName"></param>
+    /// <returns></returns>
+    public SpriteAtlas LoadSpriteAtlas(string assetBundleName)
+    { 
+        string assetName = assetBundleName.Substring(assetBundleName.LastIndexOf("/") + 1).ToLower();
+        assetBundleName = (AppSetting.UIAtlasDir + assetBundleName+ ".spriteatlas").ToLower()+ AppSetting.ExtName;
+        return LoadAsset<SpriteAtlas>(assetBundleName,assetName);
+    }
+    /// <summary>
+    /// 加载预制体
+    /// BundleRes后的全路径。
+    /// </summary>
+    /// <param name="assetBundleName"></param>
+    /// <param name="assetName"></param>
+    /// <returns></returns>
+    public GameObject LoadPrefab(string assetBundleName, string assetName = null)
+    {      
+        if (string.IsNullOrEmpty(assetName))        
+            assetName = assetBundleName.Substring(assetBundleName.LastIndexOf("/") + 1).ToLower();                  
         assetBundleName += ".prefab";
         assetBundleName = assetBundleName.ToLower();
         assetBundleName += AppSetting.ExtName;
         Debug.LogError("最终位置：" + assetBundleName + "最后的名字：" + assetName);
+        GameObject obj = LoadAsset<GameObject>(assetBundleName, assetName);
+        return obj;
+    }
+    /// <summary>
+    /// 加载资源
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="assetBundleName"></param>
+    /// <param name="assetName"></param>
+    /// <returns></returns>
+    public T LoadAsset<T>(string assetBundleName, string assetName = null) where T : UObject
+    {     
+        
         AssetBundle assetBundle; 
         LoadedAssetBundle bundle = GetLoadedAssetBundle(assetBundleName);
         if (bundle == null)
@@ -53,6 +83,8 @@ public class ABMgr : MonoSingleton<ABMgr>
                 url = BaseDownloadingURL + assetBundleName;
             Debug.LogError(url);
             assetBundle = AssetBundle.LoadFromFile(url);
+            Debug.LogError("存的名字：" + assetBundleName);
+            LoadedAssetBundles.Add(assetBundleName, new LoadedAssetBundle(assetBundle));
         }
         else 
         {
@@ -76,6 +108,7 @@ public class ABMgr : MonoSingleton<ABMgr>
     static public LoadedAssetBundle GetLoadedAssetBundle(string assetBundleName)
     {
         LoadedAssetBundle bundle = null;
+        Debug.LogError("取的名字:"+assetBundleName);
         LoadedAssetBundles.TryGetValue(assetBundleName, out bundle);
         if (bundle == null)
             return null;
@@ -93,6 +126,7 @@ public class ABMgr : MonoSingleton<ABMgr>
             LoadedAssetBundles.TryGetValue(dependency, out dependentBundle);
             if (dependentBundle == null)
                 return null;
+            Debug.Log(dependency.Length + ":" + dependentBundle.m_AssetBundle.name);
         }
         return bundle;
     }
