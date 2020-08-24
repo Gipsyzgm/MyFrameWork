@@ -67,30 +67,27 @@ public class MenuePl : PanelBase {
            
     }
 
-  
-
     public override void OnShow()
     {
         Debug.LogError("打开游戏首页");
-        curView.SetActive(true); 
+        base.OnShow();
     }
-        
+
     public override void Update()
     {
-        
+
     }
-        
+
     public override void OnHide()
     {
-         curView.SetActive(false);    
+        base.OnHide();
     }
-        
+
     public override void OnClose()
     {
-         Destroy(curView);   
-         Destroy(this);   
+        base.OnClose();
     }
-        
+
     public void StartBtOnClick()
     {
 

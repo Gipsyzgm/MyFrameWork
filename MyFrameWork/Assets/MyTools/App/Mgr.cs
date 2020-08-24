@@ -5,7 +5,7 @@ using UnityEngine;
 public class Mgr
 {
     /// <summary>资源管理器</summary>
-    public static AssetbundleMgr Assetbundle;
+    public static ABMgr Assetbundle;
     /// <summary>网络管理器</summary>
     //public static NetMgr Net;
     /// <summary>UI管理器</summary>
@@ -18,7 +18,7 @@ public class Mgr
     // Start is called before the first frame update
     public static void Initialize()
     {
-        //Assetbundle = AssetbundleMgr.Instance;
+        Assetbundle = ABMgr.Instance;
         UI = PanelMgr.Instance;
         VersionCheck = VersionCheckMgr.Instance;
     }

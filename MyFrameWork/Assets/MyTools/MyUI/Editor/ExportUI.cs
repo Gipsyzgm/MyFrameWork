@@ -272,7 +272,7 @@ public class ExportUI {
                 {
                     sb.AppendLine("    public override void OnShow()");
                     sb.AppendLine("    {");
-                    sb.AppendLine("        curView.SetActive(true); ");
+                    sb.AppendLine("         base.OnShow(); ");
                     sb.AppendLine("    }");
                     sb.AppendLine("        ");
                 }
@@ -288,7 +288,7 @@ public class ExportUI {
                 {
                     sb.AppendLine("    public override void OnHide()");
                     sb.AppendLine("    {");
-                    sb.AppendLine("         curView.SetActive(false);    ");
+                    sb.AppendLine("         base.OnHide();    ");
                     sb.AppendLine("    }");
                     sb.AppendLine("        ");
                 }
@@ -296,8 +296,7 @@ public class ExportUI {
                 {
                     sb.AppendLine("    public override void OnClose()");
                     sb.AppendLine("    {");
-                    sb.AppendLine("         Destroy(curView);   ");
-                    sb.AppendLine("         Destroy(this);   ");
+                    sb.AppendLine("         base.OnClose();   ");
                     sb.AppendLine("    }");
                     sb.AppendLine("        ");
                 }
@@ -342,7 +341,7 @@ public class ExportUI {
             {
                 sb.AppendLine("    public override void OnShow()");
                 sb.AppendLine("    {");
-                sb.AppendLine("        curView.SetActive(true); ");
+                sb.AppendLine("        base.OnShow(); ");
                 sb.AppendLine("    }");
                 sb.AppendLine("        ");
 
@@ -354,14 +353,13 @@ public class ExportUI {
 
                 sb.AppendLine("    public override void OnHide()");
                 sb.AppendLine("    {");
-                sb.AppendLine("         curView.SetActive(false);    ");
+                sb.AppendLine("        base.OnHide();    ");
                 sb.AppendLine("    }");
                 sb.AppendLine("        ");
 
                 sb.AppendLine("    public override void OnClose()");
                 sb.AppendLine("    {");
-                sb.AppendLine("         Destroy(curView);   ");
-                sb.AppendLine("         Destroy(this);   ");
+                sb.AppendLine("         base.OnClose();   ");
                 sb.AppendLine("    }");
             }
             if(exportType == 1)

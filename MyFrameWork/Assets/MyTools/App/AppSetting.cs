@@ -17,6 +17,7 @@ public class AppSetting
     public static bool EditorVerCheckt = false;                     //编辑器下是否启用版本检测(只有编辑器下有效)  
 
     public const string ProjectName = "MyFrame";
+    //用于根据扩展名选择热更资源
     public const string ExtName = ".unity3d";                      //(.unity3d)素材扩展名
     public const string UIAtlasDir = "MyUIAtlas/";
     public const string HotFixName = "HotFix_HorseRacing";  //热更工程名

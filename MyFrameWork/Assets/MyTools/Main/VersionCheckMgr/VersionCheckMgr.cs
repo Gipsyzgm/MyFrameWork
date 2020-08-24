@@ -10,7 +10,6 @@
  *  5：进入热更页面——判断网络状态——对比版本信息（判断热更或者整包更新）——热更
  *  6：热更——对比MD5文件判断需要下载的资源数量——下载资源并替换Application.persistentDataPath的对应文件-结束
  */
-using AssetBundles;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -497,13 +496,11 @@ public class VersionCheckMgr : MonoSingleton<VersionCheckMgr>
         foreach (ABResFile file in abRes.dicFileInfo.Values)
         {
             if (file.isStreaming)
-            {
-                AssetBundleManager.assetBundleURL.Add(file.File, AppSetting.StreamingAssetsPath + file.File);
+            {               
                 ABMgr.assetBundleURL.Add(file.File, AppSetting.StreamingAssetsPath + file.File);
             }
             else 
-            {
-                AssetBundleManager.assetBundleURL.Add(file.File, AppSetting.PersistentDataPath + file.File);
+            {               
                 ABMgr.assetBundleURL.Add(file.File, AppSetting.PersistentDataPath + file.File);
             }              
         }

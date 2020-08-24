@@ -63,7 +63,7 @@ public class EditSpritAtlas : EditorWindow
     packables:";
 
     /// <summary>
-    /// 设置图集属性
+    /// 设置图集属性，解决了图集图片显示偏差。
     /// </summary>
     public static void SetUIAtlas(bool isInBuild = false)
     {
@@ -72,7 +72,6 @@ public class EditSpritAtlas : EditorWindow
         string s = "bindAsDefault: " + (isInBuild ? "0" : "1");
         string r = "bindAsDefault: " + (isInBuild ? "1" : "0");
         FileInfo[] files = dir.GetFiles("*.spriteatlas", SearchOption.AllDirectories);
-
         string startFlag = "platformSettings:";
         string endFlag = "packables:";
         foreach (FileInfo file in files)

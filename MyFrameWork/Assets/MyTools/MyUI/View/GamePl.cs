@@ -42,25 +42,24 @@ public class GamePl : PanelBase {
     {
         
     }
-        
+
     public override void OnShow()
     {
-        curView.SetActive(true); 
+        base.OnShow();
     }
-        
+
     public override void Update()
     {
-        
+
     }
-        
+
     public override void OnHide()
     {
-         curView.SetActive(false);    
+        base.OnHide();
     }
-        
+
     public override void OnClose()
     {
-         Destroy(curView);   
-         Destroy(this);   
+        base.OnClose();
     }
 }

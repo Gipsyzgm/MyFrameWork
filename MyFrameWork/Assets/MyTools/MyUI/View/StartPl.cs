@@ -24,7 +24,7 @@ public class StartPl : PanelBase {
     //@EndMark@
     public override void OnShow()
     {
-        curView.SetActive(true); 
+        base.OnShow();
     }
         
     public void StartBtOnClick()
@@ -37,22 +37,20 @@ public class StartPl : PanelBase {
     {
         
     }
-        
-   
-        
+
+
     public override void Update()
     {
-        
+
     }
-        
+
     public override void OnHide()
     {
-        curView.SetActive(false);    
+        base.OnHide();
     }
-        
+
     public override void OnClose()
     {
-         Destroy(curView);   
-         Destroy(this);   
+        base.OnClose();
     }
 }

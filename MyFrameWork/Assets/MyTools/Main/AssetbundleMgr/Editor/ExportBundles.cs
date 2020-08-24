@@ -114,7 +114,7 @@ public class ExportBundles : MonoBehaviour {
         if (File.Exists(abFilesPath))
             File.Delete(abFilesPath);
 
-        var abFileList = new List<string>(Directory.GetFiles(abRootPath, "*" + AppSetting.ExtName, SearchOption.AllDirectories));
+        var abFileList = new List<string>(Directory.GetFiles(abRootPath, "*"+AppSetting.ExtName, SearchOption.AllDirectories));
         abFileList.Add(abRootPath + Utility.GetPlatformName());
         FileStream fs = new FileStream(abFilesPath, FileMode.CreateNew);
         StreamWriter sw = new StreamWriter(fs);
@@ -144,6 +144,7 @@ public class ExportBundles : MonoBehaviour {
     {
         DirectoryInfo dir = new DirectoryInfo(path);
         FileSystemInfo[] files = dir.GetFileSystemInfos();
+        Debug.LogError("多少个文件："+files.Length);
         for (int i = 0; i < files.Length; i++)
         {
             if (files[i] is DirectoryInfo)
@@ -155,7 +156,11 @@ public class ExportBundles : MonoBehaviour {
                 AssetImporter assetImporter = AssetImporter.GetAtPath(assetPath);
                 //string name = assetPath.Substring(resPath.Length).Replace("\\", "/");
                 string name = assetPath.Substring(resPath.Length).Replace(@"\", "/");
-                assetImporter.assetBundleName = name + AppSetting.ExtName;               
+                //移除后缀方便加载资源不用区分后缀
+                if (files[i].Name.Contains("."))
+                    name = name.Remove(name.LastIndexOf("."));
+                //添加后缀方便把更新资源信息写进ABfiles
+                assetImporter.assetBundleName = name+AppSetting.ExtName;              
             }
         }
     }

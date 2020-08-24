@@ -41,7 +41,7 @@ public class ABMgr : MonoSingleton<ABMgr>
     public SpriteAtlas LoadSpriteAtlas(string assetBundleName)
     { 
         string assetName = assetBundleName.Substring(assetBundleName.LastIndexOf("/") + 1).ToLower();
-        assetBundleName = (AppSetting.UIAtlasDir + assetBundleName+ ".spriteatlas").ToLower()+ AppSetting.ExtName;
+        assetBundleName = (AppSetting.UIAtlasDir + assetBundleName).ToLower()+AppSetting.ExtName;
         return LoadAsset<SpriteAtlas>(assetBundleName,assetName);
     }
     /// <summary>
@@ -55,7 +55,6 @@ public class ABMgr : MonoSingleton<ABMgr>
     {      
         if (string.IsNullOrEmpty(assetName))        
             assetName = assetBundleName.Substring(assetBundleName.LastIndexOf("/") + 1).ToLower();                  
-        assetBundleName += ".prefab";
         assetBundleName = assetBundleName.ToLower();
         assetBundleName += AppSetting.ExtName;
         Debug.LogError("最终位置：" + assetBundleName + "最后的名字：" + assetName);
@@ -186,9 +185,7 @@ public class ABMgr : MonoSingleton<ABMgr>
             string[] curSplit = bundlesWithVariant[i].Split('.');
             if (curSplit[0] != split[0])
                 continue;
-
             int found = System.Array.IndexOf(ActiveVariants, curSplit[1]);
-
             // 如果没有找到有效变体。我们还是要用第一个 
             if (found == -1)
                 found = int.MaxValue - 1;
@@ -213,14 +210,50 @@ public class ABMgr : MonoSingleton<ABMgr>
         }
     }
 
+    // Unload assetbundle and its dependencies.
+    public void UnloadAssetBundle(string assetBundleName)
+    {
+        assetBundleName = assetBundleName.ToLower();
+        assetBundleName += AppSetting.ExtName;
+        UnloadAssetBundleInternal(assetBundleName);
+        UnloadDependencies(assetBundleName);
+    }
 
-   
+    static protected void UnloadDependencies(string assetBundleName)
+    {
+        string[] dependencies = null;
+        if (!Dependencies.TryGetValue(assetBundleName, out dependencies))
+            return;
+        // Loop dependencies.
+        foreach (var dependency in dependencies)
+        {
+            UnloadAssetBundleInternal(dependency);
+        }
+        Dependencies.Remove(assetBundleName);
+    }
+
+    static protected void UnloadAssetBundleInternal(string assetBundleName)
+    {
+        LoadedAssetBundle bundle = GetLoadedAssetBundle(assetBundleName);
+
+        if (bundle == null)
+            return;
+        if (--bundle.m_ReferencedCount == 0)
+        {
+            bundle.m_AssetBundle.Unload(false);
+            LoadedAssetBundles.Remove(assetBundleName);
+            Debug.LogError( assetBundleName + " has been unloaded successfully");
+        }
+    }
+
     public static string GetRelativePath()
     {
         if (!AppSetting.IsRelease)
             return "file://" + AppSetting.ExportResBaseDir + Utility.GetPlatformName() + "/";
         return string.Empty;
     }
+
+
 }
 // 加载的资产包包含引用计数，可用于自动卸载依赖的资产包.
 public class LoadedAssetBundle
