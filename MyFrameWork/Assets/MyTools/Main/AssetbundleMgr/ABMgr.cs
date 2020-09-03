@@ -1,11 +1,15 @@
-﻿using System.Collections;
+﻿using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
 using UObject = UnityEngine.Object;
 
+//所有拼接的assetBundleName都是BundleRes后的全路径。
 public class ABMgr : MonoSingleton<ABMgr>
 {
 
@@ -14,8 +18,6 @@ public class ABMgr : MonoSingleton<ABMgr>
     public static AssetBundleManifest AssetBundleManifest = null;
     static string[] ActiveVariants = { };
 
-    static Dictionary<string, UnityWebRequest> DownloadingWWWs = new Dictionary<string, UnityWebRequest>();
-    static Dictionary<string, string>  DownloadingErrors = new Dictionary<string, string>();
     static Dictionary<string, string[]> Dependencies = new Dictionary<string, string[]>();
     //已经下载的AssetBundles数据
     public static Dictionary<string, LoadedAssetBundle> LoadedAssetBundles = new Dictionary<string, LoadedAssetBundle>();
@@ -31,6 +33,31 @@ public class ABMgr : MonoSingleton<ABMgr>
         AssetBundleManifest = manifestAB.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
         Debug.LogError("多少个资源："+AssetBundleManifest.GetAllAssetBundles().Length);
 
+    }
+    /// <summary>
+    /// 加载场景
+    /// 场景名
+    /// </summary>
+    /// <param name="sceneName">场景名大小写要和场景名一致</param>
+    /// <param name="isAdditive">是否叠加场景</param>
+    /// <param name="cbProgress">进度回调</param>
+    public void LoadScene(string sceneName, bool isAdditive = false, Action<float> cbProgress = null)
+    {
+        string sceen = sceneName;
+        string assetBundleName = "scene/" + sceneName.ToLower();
+        if (!assetBundleName.EndsWith(AppSetting.ExtName))
+            assetBundleName += AppSetting.ExtName;
+        assetBundleName = RemapVariantName(assetBundleName);
+        AssetBundle assetBundle = LoadAssetBundle(assetBundleName);
+        if (assetBundle != null)
+        {
+            SceneManager.LoadSceneAsync(sceen, isAdditive ? LoadSceneMode.Additive : LoadSceneMode.Single);
+        }
+        else 
+        {
+            Debug.LogError($"加载场景失败:{sceen}  AssetName:{assetBundleName}");
+        }
+      
     }
 
     /// <summary>
@@ -51,27 +78,40 @@ public class ABMgr : MonoSingleton<ABMgr>
     /// <param name="assetBundleName"></param>
     /// <param name="assetName"></param>
     /// <returns></returns>
-    public GameObject LoadPrefab(string assetBundleName, string assetName = null)
+    public GameObject LoadPrefab(string assetBundleName,string assetName = null)
     {      
         if (string.IsNullOrEmpty(assetName))        
             assetName = assetBundleName.Substring(assetBundleName.LastIndexOf("/") + 1).ToLower();                  
-        assetBundleName = assetBundleName.ToLower();
+        assetBundleName = assetBundleName.ToLower(); 
         assetBundleName += AppSetting.ExtName;
-        Debug.LogError("最终位置：" + assetBundleName + "最后的名字：" + assetName);
         GameObject obj = LoadAsset<GameObject>(assetBundleName, assetName);
         return obj;
     }
+/// <summary>
+/// 加载资源
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="assetBundleName"></param>
+/// <param name="assetName"></param>
+/// <param name="isWait"></param>
+/// <returns></returns>
+    public T LoadAsset<T>(string assetBundleName, string assetName = null, bool isWait = false) where T : UObject
+    {
+        AssetBundle assetBundle = LoadAssetBundle(assetBundleName);
+         T obj = (T)assetBundle.LoadAssetAsync<T>(assetName).asset;
+        if (obj == null)
+            Debug.LogError($"加载资源失败:{assetBundleName}  AssName:{assetName}");
+        return obj;        
+    }
+
     /// <summary>
-    /// 加载资源
+    /// 加载AssetBundle
     /// </summary>
-    /// <typeparam name="T"></typeparam>
     /// <param name="assetBundleName"></param>
-    /// <param name="assetName"></param>
     /// <returns></returns>
-    public T LoadAsset<T>(string assetBundleName, string assetName = null) where T : UObject
-    {     
-        
-        AssetBundle assetBundle; 
+    private AssetBundle LoadAssetBundle(string assetBundleName) 
+    {
+        AssetBundle assetBundle;
         LoadedAssetBundle bundle = GetLoadedAssetBundle(assetBundleName);
         if (bundle == null)
         {
@@ -85,18 +125,12 @@ public class ABMgr : MonoSingleton<ABMgr>
             Debug.LogError("存的名字：" + assetBundleName);
             LoadedAssetBundles.Add(assetBundleName, new LoadedAssetBundle(assetBundle));
         }
-        else 
+        else
         {
             assetBundle = bundle.m_AssetBundle;
         }
-        //T obj = assetBundle.LoadAssetAsync<GameObject>(assetName);
-        T obj = (T)assetBundle.LoadAssetAsync<T>(assetName).asset;
-        if (obj == null)
-            Debug.LogError($"加载资源失败:{assetBundleName}  AssName:{assetName}");
-        return obj;        
+        return assetBundle;
     }
-
-
 
 
     /// <summary>

@@ -30,7 +30,7 @@ public class StartPl : PanelBase {
     public void StartBtOnClick()
     {
         Debug.Log("开始游戏");
-        SceneManager.LoadScene("Test_Env");
+        ABMgr.Instance.LoadScene("Test_Env");
     }
        
     public void CustomComponent()

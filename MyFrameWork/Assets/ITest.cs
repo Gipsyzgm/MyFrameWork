@@ -30,7 +30,6 @@ public class ITest: MonoBehaviour
         Debug.LogError(request.url);
         AssetBundleManifest AssetBundleManifest2 = bundle2.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
         Debug.LogError(AssetBundleManifest2.GetAllAssetBundles().Length);
-
     }
  
 
