@@ -71,7 +71,7 @@ public class CreateExcel : MonoBehaviour {
             Debug.LogError(className + "表格生成成功");
         }
     }
-    public static void WriteExcel(string outputDir, FieldInfo[] fieldInfos)
+    private static void WriteExcel(string outputDir, FieldInfo[] fieldInfos)
     {
 
        //string outputDir = EditorUtility.SaveFilePanel("Save Excel", "", "New Resource", "xlsx");

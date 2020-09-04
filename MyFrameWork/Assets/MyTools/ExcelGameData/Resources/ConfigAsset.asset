@@ -49,32 +49,7 @@ MonoBehaviour:
     GroupInfo: 22
   - Id: 33
     GroupInfo: 33
-  TestExcel1:
-  - Stage: 1
-    ItemNum: 123
-    LookArea: 231
-    Min: 321
-    Max: 321
-  - Stage: 23
-    ItemNum: 4321
-    LookArea: 231
-    Min: 321
-    Max: 321
-  - Stage: 343
-    ItemNum: 213
-    LookArea: 321
-    Min: 321
-    Max: 32
-  TestExcel2:
-  - name: 111
-    HP: 111
-    mp: "\u5927\u5927"
-  - name: 222
-    HP: "\u5927\u8428\u8FBE"
-    mp: 
-  - name: 222
-    HP: 111
-    mp: 
+  TestExcel1: []
   TestLanguage:
   - cn: "\u5F00\u59CB\u6E38\u620F"
     en: StartGame

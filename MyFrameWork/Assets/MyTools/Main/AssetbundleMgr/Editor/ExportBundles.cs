@@ -144,7 +144,6 @@ public class ExportBundles : MonoBehaviour {
     {
         DirectoryInfo dir = new DirectoryInfo(path);
         FileSystemInfo[] files = dir.GetFileSystemInfos();
-        Debug.LogError("多少个文件："+files.Length);
         for (int i = 0; i < files.Length; i++)
         {
             if (files[i] is DirectoryInfo)

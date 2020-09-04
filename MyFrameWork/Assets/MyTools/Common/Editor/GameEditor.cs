@@ -15,11 +15,13 @@ public class GameEditor : MonoBehaviour {
     public static void Delete()
     {
         PlayerPrefs.DeleteAll();
+        MyEditorTools.OpenEXE("C:/Program Files/Mozilla Firefox/firefox.exe");
         Debug.LogError("删档成功，限PlayerPrefs数据");
     }
     [MenuItem("我的工具/游戏/加钱")]
     public static void AddCoin()
     {
+
         Debug.LogError("需要自己根据游戏逻辑扩展");
     }
     [MenuItem("我的工具/游戏/加钻石")]
@@ -51,8 +53,8 @@ public class GameEditor : MonoBehaviour {
         go.name = "Env_Mgr";
         go.transform.position = Vector3.zero;
 
-        MyEditorTools.AddFileComment(go, MyDefaultPath.PublicEnvPath, ".cs");
-        MyEditorTools.AddFileComment(go, MyDefaultPath.EditorEnvPath, ".cs");
+        ToolsHelper.AddFileComment(go, MyDefaultPath.PublicEnvPath, ".cs");
+        ToolsHelper.AddFileComment(go, MyDefaultPath.EditorEnvPath, ".cs");
 
         Debug.LogError("切换至测试模式");
     }
@@ -73,8 +75,8 @@ public class GameEditor : MonoBehaviour {
         GameObject go = new GameObject();
         go.name = "Env_Mgr";
         go.transform.position = Vector3.zero;
-        MyEditorTools.AddFileComment(go, MyDefaultPath.PublicEnvPath, ".cs");
-        MyEditorTools.AddFileComment(go, MyDefaultPath.FormalEnvPath, ".cs");
+        ToolsHelper.AddFileComment(go, MyDefaultPath.PublicEnvPath, ".cs");
+        ToolsHelper.AddFileComment(go, MyDefaultPath.FormalEnvPath, ".cs");
         Debug.LogError("切换至正式模式");
     }
     [MenuItem("我的工具/快捷键/PlayAndClose _F1")]

@@ -31,7 +31,7 @@ public class CreateConfigData : MonoBehaviour
     /// </summary>
     static string AllConfigInfoDir = "Assets/MyTools/ExcelGameData/AllConfigInfo/";
     /// <summary>
-    /// ReadExcelInfo的文件存放地址
+    /// ReadExcelInfo的文件存放地址,必须editor下
     /// </summary>
     static string ReadExcelInfoDir = "Assets/MyTools/ExcelGameData/Editor/";
 
@@ -41,9 +41,9 @@ public class CreateConfigData : MonoBehaviour
     static string AllConfigName = "AllConfigInfo";
 
     /// <summary>
-    /// 读Excel的类名
+    /// 需要读取读Excel的类名
     /// </summary>
-    static string ReadExcelName = "AllReadExcel";
+    static string ReadExcelName = "AllNeedReadExcel";
 
     [MenuItem("我的工具/配置Excel表格/读取配置表格", false, 2)]
     public static void ReadConfigData()
@@ -52,9 +52,7 @@ public class CreateConfigData : MonoBehaviour
         WriteReadExcelInfo();
         AssetDatabase.DeleteAsset(assetDir+"ConfigAsset.asset");
         configData = ScriptableObject.CreateInstance<AllConfigInfo>();
-
         AutoReadExcelInfo();
-
         AssetDatabase.CreateAsset(configData, assetDir + "ConfigAsset.asset");
         Debug.LogError("读取配置完成,"+ assetDir+"ConfigAsset.asset");
     }
@@ -83,7 +81,9 @@ public class CreateConfigData : MonoBehaviour
         }
         sbPath.AppendLine("}");
         File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
+        AssetDatabase.Refresh();
         Debug.LogError("先把GameData下的配置文件写入AllConfigInfo脚本");
+       
     }
     /// <summary>
     /// 自动生成读取方法
@@ -152,6 +152,7 @@ public class CreateConfigData : MonoBehaviour
         }
         sbPath.AppendLine("}");
         File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
+        AssetDatabase.Refresh();
         Debug.LogError("自动生成读Excel的方法脚本");
     }
     /// <summary>
@@ -159,8 +160,8 @@ public class CreateConfigData : MonoBehaviour
     /// </summary>
     public static void AutoReadExcelInfo()
     {
-        Type t = typeof(AllReadExcel);
-       
+        Type t = Type.GetType(ReadExcelName);      
+
         MethodInfo[] mt = t.GetMethods(BindingFlags.Public | BindingFlags.Static);
         if (mt != null)
         {
@@ -170,9 +171,6 @@ public class CreateConfigData : MonoBehaviour
             }
         }
     }
-
-
-
 
 
     /// <summary>
