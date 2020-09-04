@@ -38,6 +38,8 @@ public class GameEditor : MonoBehaviour {
     [MenuItem("我的工具/环境/测试模式")]
     public static void InEditorEnv()
     {
+        Menu.SetChecked("我的工具/环境/测试模式", true);
+        Menu.SetChecked("我的工具/环境/正式模式", false);
         while (true)
         {
             if (GameObject.Find("Env_Mgr") != null)
@@ -61,6 +63,8 @@ public class GameEditor : MonoBehaviour {
     [MenuItem("我的工具/环境/正式模式")]
     public static void InRealEnv()
     {
+        Menu.SetChecked("我的工具/环境/正式模式", true);
+        Menu.SetChecked("我的工具/环境/测试模式", false);
         while (true)
         {
             if (GameObject.Find("Env_Mgr") != null)
