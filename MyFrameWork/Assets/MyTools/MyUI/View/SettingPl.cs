@@ -66,7 +66,7 @@ public class SettingPl : PanelBase {
         }
         else
         {
-            MyAudioMgr.Instance.PlayeMusicAudio(MyAudioName.欢快渐进BG);
+            MyAudioMgr.Instance.PlayeMusicAudio(MyAudioName.QuickBg);
         }
     }
         
