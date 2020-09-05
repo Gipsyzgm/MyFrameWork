@@ -8,6 +8,10 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
 using UObject = UnityEngine.Object;
+#if UNITY_EDITOR
+using UnityEditor.SceneManagement;
+using UnityEditor;
+#endif
 
 //所有拼接的assetBundleName都是BundleRes后的全路径。
 public class ABMgr : MonoSingleton<ABMgr>
@@ -24,6 +28,13 @@ public class ABMgr : MonoSingleton<ABMgr>
   
     public void Initialize()
     {
+#if UNITY_EDITOR
+        if (SimulateAssetBundleInEditor == false)
+        {
+            Debug.LogError("为啥不走这里");
+            return;
+        }     
+#endif
         string PlatformName = Utility.GetPlatformName();
         string url;
         if (!assetBundleURL.TryGetValue(PlatformName,out url))
@@ -34,6 +45,25 @@ public class ABMgr : MonoSingleton<ABMgr>
         Debug.LogError("多少个资源："+AssetBundleManifest.GetAllAssetBundles().Length);
 
     }
+
+
+#if UNITY_EDITOR
+    public static string SimulateAssetBundlesKey = "SimulateAssetBundles";
+    // 使用本地资源（true）/模拟ab资源（false）
+    public static bool SimulateAssetBundleInEditor
+    {
+        get
+        {
+            return EditorPrefs.GetBool(SimulateAssetBundlesKey, false);
+
+        }
+        set
+        {
+            EditorPrefs.SetBool(SimulateAssetBundlesKey, value);
+        }
+    }
+#endif
+
     /// <summary>
     /// 加载场景
     /// 场景名
@@ -43,21 +73,44 @@ public class ABMgr : MonoSingleton<ABMgr>
     /// <param name="cbProgress">进度回调</param>
     public void LoadScene(string sceneName, bool isAdditive = false, Action<float> cbProgress = null)
     {
+
         string sceen = sceneName;
         string assetBundleName = "scene/" + sceneName.ToLower();
         if (!assetBundleName.EndsWith(AppSetting.ExtName))
             assetBundleName += AppSetting.ExtName;
-        assetBundleName = RemapVariantName(assetBundleName);
-        AssetBundle assetBundle = LoadAssetBundle(assetBundleName);
-        if (assetBundle != null)
+       
+#if UNITY_EDITOR
+        if (SimulateAssetBundleInEditor == false)
         {
-            SceneManager.LoadSceneAsync(sceen, isAdditive ? LoadSceneMode.Additive : LoadSceneMode.Single);
+            string[] levelPaths = UnityEditor.AssetDatabase.GetAssetPathsFromAssetBundleAndAssetName(assetBundleName, sceen);
+            if (levelPaths.Length == 0)
+            {
+                ///@TODO: The error needs to differentiate that an asset bundle name doesn't exist
+                //        from that there right scene does not exist in the asset bundle...
+
+                Debug.LogError("There is no scene with name \"" + sceen + "\" in " + assetBundleName);
+                return;
+            }
+            if (isAdditive)
+                EditorSceneManager.LoadSceneAsyncInPlayMode(levelPaths[0], new LoadSceneParameters(LoadSceneMode.Additive));
+            else
+                EditorSceneManager.LoadSceneAsyncInPlayMode(levelPaths[0], new LoadSceneParameters(LoadSceneMode.Single));
+            return;
         }
-        else 
+        else
+#endif
         {
-            Debug.LogError($"加载场景失败:{sceen}  AssetName:{assetBundleName}");
+            assetBundleName = RemapVariantName(assetBundleName);
+            AssetBundle assetBundle = LoadAssetBundle(assetBundleName);
+            if (assetBundle != null)
+            {
+                SceneManager.LoadSceneAsync(sceen, isAdditive ? LoadSceneMode.Additive : LoadSceneMode.Single);
+            }
+            else
+            {
+                Debug.LogError($"加载场景失败:{sceen}  AssetName:{assetBundleName}");
+            }
         }
-      
     }
 
     /// <summary>
@@ -97,11 +150,31 @@ public class ABMgr : MonoSingleton<ABMgr>
 /// <returns></returns>
     public T LoadAsset<T>(string assetBundleName, string assetName = null, bool isWait = false) where T : UObject
     {
-        AssetBundle assetBundle = LoadAssetBundle(assetBundleName);
-         T obj = (T)assetBundle.LoadAssetAsync<T>(assetName).asset;
-        if (obj == null)
-            Debug.LogError($"加载资源失败:{assetBundleName}  AssName:{assetName}");
-        return obj;        
+
+#if UNITY_EDITOR
+        if (SimulateAssetBundleInEditor == false)
+        {
+            string[] assetPaths = AssetDatabase.GetAssetPathsFromAssetBundleAndAssetName(assetBundleName, assetName);
+            if (assetPaths.Length == 0)
+            {
+                Debug.LogError("There is no asset with name \"" + assetName + "\" in " + assetBundleName);
+                return null;
+            }
+            // @TODO: Now we only get the main object from the first asset. Should consider type also.
+            UObject target = AssetDatabase.LoadMainAssetAtPath(assetPaths[0]);
+            return target as T;
+        }
+        else
+#endif
+
+        {
+            AssetBundle assetBundle = LoadAssetBundle(assetBundleName);
+            T obj = (T)assetBundle.LoadAssetAsync<T>(assetName).asset;
+            if (obj == null)
+                Debug.LogError($"加载资源失败:{assetBundleName}  AssName:{assetName}");
+            return obj;
+        }
+       
     }
 
     /// <summary>

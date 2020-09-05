@@ -38,8 +38,7 @@ public class GameEditor : MonoBehaviour {
     [MenuItem("我的工具/环境/测试模式")]
     public static void InEditorEnv()
     {
-        Menu.SetChecked("我的工具/环境/测试模式", true);
-        Menu.SetChecked("我的工具/环境/正式模式", false);
+        IsInRealEnv = !IsInRealEnv;
         while (true)
         {
             if (GameObject.Find("Env_Mgr") != null)
@@ -63,8 +62,7 @@ public class GameEditor : MonoBehaviour {
     [MenuItem("我的工具/环境/正式模式")]
     public static void InRealEnv()
     {
-        Menu.SetChecked("我的工具/环境/正式模式", true);
-        Menu.SetChecked("我的工具/环境/测试模式", false);
+        IsInRealEnv = !IsInRealEnv;
         while (true)
         {
             if (GameObject.Find("Env_Mgr") != null)
@@ -82,6 +80,13 @@ public class GameEditor : MonoBehaviour {
         ToolsHelper.AddFileComment(go, MyDefaultPath.PublicEnvPath, ".cs");
         ToolsHelper.AddFileComment(go, MyDefaultPath.FormalEnvPath, ".cs");
         Debug.LogError("切换至正式模式");
+    }
+    [MenuItem("我的工具/环境/正式模式", true)]
+    public static bool InRealEnvValidate()
+    {
+        Menu.SetChecked("我的工具/环境/正式模式", IsInRealEnv);
+        Menu.SetChecked("我的工具/环境/测试模式", !IsInRealEnv);
+        return true;
     }
     [MenuItem("我的工具/快捷键/PlayAndClose _F1")]
     static void PlayAndClose()
@@ -116,4 +121,16 @@ public class GameEditor : MonoBehaviour {
         Debug.LogError("使用说明4: 由划水爱好者Gipsy整理");    
     }
 
+    public static bool IsInRealEnv 
+    {
+        get 
+        {
+            return EditorPrefs.GetBool("IsInRealEnv", false);
+        }
+        set {
+
+            EditorPrefs.SetBool("IsInRealEnv", value);
+        }
+
+    }
 }

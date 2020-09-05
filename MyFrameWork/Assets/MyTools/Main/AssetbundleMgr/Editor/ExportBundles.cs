@@ -32,27 +32,28 @@ public class ExportBundles : MonoBehaviour {
     static string outPut = GetExportPath();
 
     /// <summary>
-    /// 复制热更文件
+    /// 使用本地AB资源（需要给ab资源命名）/模拟加载ab资源
     /// </summary>
-    private static void CopyHotFix()
+    [MenuItem("我的工具/AssetBundle/本地资源(F)模拟ab资源(T)")]
+    public static void SimulateAssetBundle()
     {
-        string fileDll = AppSetting.ILRCodeDir + AppSetting.HotFixName + ".dll";
-        string filePdb = AppSetting.ILRCodeDir + AppSetting.HotFixName + ".pdb";
-        FileInfo file = new FileInfo(fileDll);
-        if (file.Exists)
-        {
-            string targetPaht = Path.Combine(AppSetting.BundleResDir, AppSetting.HoxFixBundleDir, AppSetting.HotFixName);
-            file.CopyTo(targetPaht + ".bytes", true);
-            new FileInfo(filePdb).CopyTo(targetPaht + "_pdb.bytes", true);
-        }
-        AssetDatabase.Refresh();
+        ABMgr.SimulateAssetBundleInEditor = !ABMgr.SimulateAssetBundleInEditor;  
     }
-    [MenuItem("我的工具/AssetBundle/Show in Explorer")]
+    [MenuItem("我的工具/AssetBundle/本地资源(F)模拟ab资源(T)", true)]
+    public static bool SimulateAssetBundleValidate()
+    {
+        Menu.SetChecked("我的工具/AssetBundle/本地资源(F)模拟ab资源(T)", ABMgr.SimulateAssetBundleInEditor);
+        return true;
+    }
+
+    [MenuItem("我的工具/AssetBundle/打开AB资源文件夹")]
     public static void ShowInExplorer()
     {
         MyEditorTools.ShowExplorer(GetExportPath());
     }
-
+    /// <summary>
+    /// 把热更资源移除/放进StreamingAssets文件夹
+    /// </summary>
     [MenuItem("我的工具/AssetBundle/Link StreamingAssets")]
     public static void MkLinkStreamingAssets()
     {
@@ -164,6 +165,22 @@ public class ExportBundles : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 复制热更文件
+    /// </summary>
+    private static void CopyHotFix()
+    {
+        string fileDll = AppSetting.ILRCodeDir + AppSetting.HotFixName + ".dll";
+        string filePdb = AppSetting.ILRCodeDir + AppSetting.HotFixName + ".pdb";
+        FileInfo file = new FileInfo(fileDll);
+        if (file.Exists)
+        {
+            string targetPaht = Path.Combine(AppSetting.BundleResDir, AppSetting.HoxFixBundleDir, AppSetting.HotFixName);
+            file.CopyTo(targetPaht + ".bytes", true);
+            new FileInfo(filePdb).CopyTo(targetPaht + "_pdb.bytes", true);
+        }
+        AssetDatabase.Refresh();
+    }
     /// <summary>
     /// 获取导出资源路径目录
     /// </summary>
