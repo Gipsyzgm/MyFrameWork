@@ -45,7 +45,7 @@ public class CreateExcel : MonoBehaviour {
     /// </summary>
     static int maxList = 10;
 
-    [MenuItem("我的工具/配置Excel表格/生成默认表格", false, 1)]
+    [MenuItem("我的工具/其他/配置Excel表格/生成默认表格", false, 1)]
     public static void CreateDefaultExcel()
     {
         if (!Directory.Exists(ExcelFileDir))

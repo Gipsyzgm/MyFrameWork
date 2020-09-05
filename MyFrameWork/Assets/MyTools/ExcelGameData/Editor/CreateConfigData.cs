@@ -45,7 +45,7 @@ public class CreateConfigData : MonoBehaviour
     /// </summary>
     static string ReadExcelName = "AllNeedReadExcel";
 
-    [MenuItem("我的工具/配置Excel表格/读取配置表格", false, 2)]
+    [MenuItem("我的工具/其他/配置Excel表格/读取配置表格", false, 2)]
     public static void ReadConfigData()
     {
         WriteAllConfigInfo();
