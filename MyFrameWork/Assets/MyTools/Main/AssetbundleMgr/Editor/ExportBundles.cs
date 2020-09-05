@@ -32,7 +32,7 @@ public class ExportBundles : MonoBehaviour {
     static string outPut = GetExportPath();
 
     /// <summary>
-    /// 使用本地AB资源（需要给ab资源命名）/模拟加载ab资源
+    /// 使用本地AB资源（需要给ab资源命名或ab资源打包）/模拟加载ab资源（需要LinkStreamingAssets）
     /// </summary>
     [MenuItem("我的工具/AssetBundle/本地资源(F)模拟ab资源(T)")]
     public static void SimulateAssetBundle()
@@ -78,7 +78,24 @@ public class ExportBundles : MonoBehaviour {
         Directory.Delete(outputPath, true);
         Debug.LogError("删除目录: " + outputPath);
     }
-    [MenuItem("我的工具/AssetBundle/打Ab包")]
+    /// <summary>
+    /// 资源包命名
+    /// </summary>
+    /// <returns></returns>
+    [MenuItem("我的工具/AssetBundle/资源包命名")]
+    public static void MakeAssetBundleNames()
+    {
+        if (MyEditorTools.IsPlaying()) return;
+        //清除Ab包资源名
+        string[] abNames = AssetDatabase.GetAllAssetBundleNames();
+        for (int i = 0; i < abNames.Length; i++)
+            AssetDatabase.RemoveAssetBundleName(abNames[i], true);
+        Debug.LogError("清除全部资源AssetBundle名称完成!");
+        SetAssetsBundleName(resPath);
+        Debug.LogError("设置AssetBundle名称完成!");
+    }
+
+    [MenuItem("我的工具/AssetBundle/Ab资源打包")]
     public static void BuidldBundles()
     {
         if (MyEditorTools.IsPlaying()) return;

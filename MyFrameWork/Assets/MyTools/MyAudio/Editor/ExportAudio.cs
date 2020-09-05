@@ -15,7 +15,7 @@ public class ExportAudio : MonoBehaviour {
     //音效目录
     static string clipPath = "Assets/GameRes/Resources/MySource/";
 
-    [MenuItem("我的工具/导入声音")]
+    [MenuItem("我的工具/其他/导入声音")]
     public static void Export()
     {
         if (!Directory.Exists(scriptDir))

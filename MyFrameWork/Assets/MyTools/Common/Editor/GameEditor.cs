@@ -8,15 +8,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
+using System.Linq;
 
 public class GameEditor : MonoBehaviour {
 
-    [MenuItem("我的工具/游戏/删档")]
+    [MenuItem("我的工具/游戏/删除缓存(PlayerPrefs)")]
     public static void Delete()
     {
         PlayerPrefs.DeleteAll();
-        MyEditorTools.OpenEXE("C:/Program Files/Mozilla Firefox/firefox.exe");
-        Debug.LogError("删档成功，限PlayerPrefs数据");
     }
     [MenuItem("我的工具/游戏/加钱")]
     public static void AddCoin()
@@ -112,14 +111,6 @@ public class GameEditor : MonoBehaviour {
             EditorApplication.isPaused = false;
         }
     }
-    //[MenuItem("我的工具/使用说明",false,0)]
-    static void Help()
-    {
-        Debug.LogError("使用说明1：Common文件夹为通用资源。谨慎操作，其他脚本可能引用");
-        Debug.LogError("使用说明2：Zhelp文件内为一些辅助功能脚本");
-        Debug.LogError("使用说明3：功能遵循独立原则，通过删除对应功能文件夹以删除其功能");
-        Debug.LogError("使用说明4: 由划水爱好者Gipsy整理");    
-    }
 
     public static bool IsInRealEnv 
     {
@@ -133,4 +124,35 @@ public class GameEditor : MonoBehaviour {
         }
 
     }
+    /// <summary>
+    /// 宏改变，有则删除，没有则增加
+    /// </summary>
+    /// <param name="name"></param>
+    public static void ChangeDefineSymbols(string name)
+    {
+        string define;
+        BuildTargetGroup buildTargetGroup = BuildTargetGroup.Android;
+        if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
+            define = PlayerSettings.GetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android);
+        else
+        {
+            define = PlayerSettings.GetScriptingDefineSymbolsForGroup(BuildTargetGroup.iOS);
+            buildTargetGroup = BuildTargetGroup.iOS;
+        }
+        string[] defineArr = define.Split(';');
+        bool isAdd = !defineArr.Contains(name);
+        string newDefine = string.Empty;
+        if (isAdd)
+            newDefine = define + ";" + name;
+        else
+        {
+            newDefine = define.Replace(name, string.Empty);
+            newDefine = newDefine.Replace(";;", ";");
+        }
+        PlayerSettings.SetScriptingDefineSymbolsForGroup(buildTargetGroup, newDefine);
+        Debug.Log($"已经{(isAdd ? "添加" : "移除")}宏{name}");
+    }
+
+
+
 }

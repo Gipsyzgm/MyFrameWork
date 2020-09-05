@@ -18,7 +18,7 @@ public class ExportPhoto : MonoBehaviour {
     }
 
     //截游戏图
-    [UnityEditor.MenuItem("我的工具/截图")]
+    [UnityEditor.MenuItem("我的工具/其他/截图")]
     public static void Capture()
     {
         string file = GetFileName();
