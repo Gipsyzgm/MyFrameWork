@@ -4,6 +4,7 @@
  *  描述信息：Excel数据处理。
  *  使用说明：
  *  1：写自己需要转换Excel表格的C#代码。可以参考Assets/MyTools/ExcelGameData/GameData/下的代码。
+ *  需要热更的脚本放在Assets/MyTools/ExcelGameData/HotFixGameData/
  *  C#脚本也放在该路径下，该路径下只能放需要转换Excel表格
  *  2：我的工具-配置Excel表格-生成默认表格。下面ExcelFileDir即为生成的表格路径。
  *  3：表格填数据。
@@ -33,6 +34,10 @@ public class CreateExcel : MonoBehaviour {
     /// 需要写成Excel的文件夹地址
     /// </summary>
     static string scriptDir = "Assets/MyTools/ExcelGameData/GameData/";
+    /// <summary>
+    /// 需要写成Excel的文件夹地址
+    /// </summary>
+    static string HotFixscriptDir = "Assets/MyTools/ExcelGameData/HotFixGameData/";
 
     /// <summary>
     /// 文件格式 
@@ -70,7 +75,34 @@ public class CreateExcel : MonoBehaviour {
             WriteExcel(excelDir, fields);
             Debug.LogError(className + "表格生成成功");
         }
+        CreateHotFixDefaultExcel();
     }
+    public static void CreateHotFixDefaultExcel()
+    {
+        if (!Directory.Exists(ExcelFileDir))
+            Directory.CreateDirectory(ExcelFileDir);
+        if (!Directory.Exists(HotFixscriptDir))
+            Directory.CreateDirectory(HotFixscriptDir);
+        DirectoryInfo direction = new DirectoryInfo(HotFixscriptDir);
+        FileInfo[] files = direction.GetFiles("*", SearchOption.AllDirectories);
+
+        for (int i = 0; i < files.Length; i++)
+        {
+            if (files[i].Name.EndsWith(".meta")) continue;
+            string className = files[i].Name.Split('.')[0];
+            string excelDir = ExcelFileDir + files[i].Name.Split('.')[0] + FileFormat;
+            Type type = Assembly.Load("Assembly-CSharp").GetType(className);
+            if (File.Exists(excelDir))
+            {
+                Debug.LogError(className + "表格已存在，跳过，如需替换，需手动删除。");
+                continue;
+            }
+            FieldInfo[] fields = type.GetFields();
+            WriteExcel(excelDir, fields);
+            Debug.LogError(className + "表格生成成功");
+        }
+    }
+
     private static void WriteExcel(string outputDir, FieldInfo[] fieldInfos)
     {
 

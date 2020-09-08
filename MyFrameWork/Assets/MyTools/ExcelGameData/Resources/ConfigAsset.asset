@@ -12,48 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4e8a7bd11a3b241af0bef8187d686f, type: 3}
   m_Name: ConfigAsset
   m_EditorClassIdentifier: 
-  TestDicExcel:
-  - level: "\u732A\u5996"
-    testDic:
-    - 111
-    - "\u554A\u554A"
-  - level: 2
-    testDic:
-    - 11
-    - "\u554A\u554A"
-  - level: 3
-    testDic:
-    - 11
-    - "\u662F"
-    - "\u662F\u7684"
-  - level: 4
-    testDic:
-    - 11
-    - "\u7684\u662F"
-    - "\u90FD\u662F"
-  - level: 5
-    testDic:
-    - 22
-    - "\u90FD\u662F"
-    - "\u90FD\u662F"
-    - "\u90FD\u662F"
-    - "\u7684\u662F"
-    - "\u6253"
-    - "\u7684\u662F"
-    - "\u90FD\u662F\u963F\u6253\u7B97"
-    - "\u6253\u6309\u65F6"
-  TestExcel0:
-  - Id: 11
-    GroupInfo: 11
-  - Id: 22
-    GroupInfo: 22
-  - Id: 33
-    GroupInfo: 33
-  TestExcel1: []
-  TestLanguage:
-  - cn: "\u5F00\u59CB\u6E38\u620F"
-    en: StartGame
-    id: 0
-  - cn: "\u6E38\u620F\u9875\u9762"
-    en: GamePanel
-    id: 1
+  VerCheckLang: []
