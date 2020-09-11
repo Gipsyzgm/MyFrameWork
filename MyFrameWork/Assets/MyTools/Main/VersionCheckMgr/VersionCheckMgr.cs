@@ -62,15 +62,12 @@ public class VersionCheckMgr : MonoSingleton<VersionCheckMgr>
     /// <param name="initOK"></param>
     public async Task Check()
     {
-      
-        if (AppSetting.IsVersionCheck == false) 
+        if (!AppSetting.IsVersionCheck)
         {
-            remoteVersion = new VersionInfo();
-            UnityEngine.Debug.LogError("不启用版本检测!");
             isUpdateCheckComplete = true;
+            UnityEngine.Debug.LogError("IsVersionCheck:返回了啊");
             return;
         }
-             
         PanelMgr.Instance.OpenPanel<VersionCheckPl>();
         PanelMgr.Instance.GetPanel<VersionCheckPl>(PanelName.VersionCheckPl).VersionInfo.text = "检查网络情况";
         SetVersion();

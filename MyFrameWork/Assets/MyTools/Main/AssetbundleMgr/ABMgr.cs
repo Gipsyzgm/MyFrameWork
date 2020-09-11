@@ -16,12 +16,15 @@ using UnityEditor;
 //所有拼接的assetBundleName都是BundleRes后的全路径。
 public class ABMgr : MonoSingleton<ABMgr>
 {
-
+    /// <summary>
+    /// 所有热更资源的路径
+    /// </summary>
     public static Dictionary<string, string> assetBundleURL = new Dictionary<string, string>();
-    public static string BaseDownloadingURL = GetRelativePath();
     public static AssetBundleManifest AssetBundleManifest = null;
     static string[] ActiveVariants = { };
-
+    /// <summary>
+    /// 所有热更资源对应的依赖
+    /// </summary>
     static Dictionary<string, string[]> Dependencies = new Dictionary<string, string[]>();
     //已经下载的AssetBundles数据
     public static Dictionary<string, LoadedAssetBundle> LoadedAssetBundles = new Dictionary<string, LoadedAssetBundle>();
@@ -31,14 +34,14 @@ public class ABMgr : MonoSingleton<ABMgr>
 #if UNITY_EDITOR
         if (SimulateAssetBundleInEditor == false)
         {
-            Debug.LogError("为啥不走这里");
             return;
         }     
 #endif
+
         string PlatformName = Utility.GetPlatformName();
         string url;
         if (!assetBundleURL.TryGetValue(PlatformName,out url))
-            url = BaseDownloadingURL + PlatformName;
+            url = GetRelativePath() + PlatformName;
         Debug.LogError(url);
         AssetBundle manifestAB = AssetBundle.LoadFromFile(url);
         AssetBundleManifest = manifestAB.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
@@ -192,7 +195,7 @@ public class ABMgr : MonoSingleton<ABMgr>
             CheckDependencies(assetBundleName);
             string url;
             if (!assetBundleURL.TryGetValue(assetBundleName, out url))
-                url = BaseDownloadingURL + assetBundleName;
+                url = GetRelativePath() + assetBundleName;
             Debug.LogError(url);
             assetBundle = AssetBundle.LoadFromFile(url);
             Debug.LogError("存的名字：" + assetBundleName);
@@ -272,7 +275,7 @@ public class ABMgr : MonoSingleton<ABMgr>
         AssetBundle download = null;
         string url;
         if (!assetBundleURL.TryGetValue(assetBundleName, out url))
-            url = BaseDownloadingURL + assetBundleName;
+            url = GetRelativePath() + assetBundleName;
         Debug.LogError("下载地址：" + url);
         download = AssetBundle.LoadFromFile(url);
         //download = UnityWebRequestAssetBundle.GetAssetBundle(url, m_AssetBundleManifest.GetAssetBundleHash(assetBundleName), 0);
@@ -282,6 +285,7 @@ public class ABMgr : MonoSingleton<ABMgr>
 
     static protected string RemapVariantName(string assetBundleName)
     {
+        //GetAllAssetBundlesWithVariant获取最合适的assetBundle
         string[] bundlesWithVariant = AssetBundleManifest.GetAllAssetBundlesWithVariant();
         string[] split = assetBundleName.Split('.');
         int bestFit = int.MaxValue;
@@ -317,7 +321,7 @@ public class ABMgr : MonoSingleton<ABMgr>
         }
     }
 
-    // Unload assetbundle and its dependencies.
+    // 卸载ab资源和它的依赖
     public void UnloadAssetBundle(string assetBundleName)
     {
         assetBundleName = assetBundleName.ToLower();
@@ -352,14 +356,19 @@ public class ABMgr : MonoSingleton<ABMgr>
             Debug.LogError( assetBundleName + " has been unloaded successfully");
         }
     }
-
+    /// <summary>
+    /// 获取AB资源的路径真实路径
+    /// 非正式包的话用StreamingAssetsPath的资源
+    /// </summary>
+    /// <returns></returns>
     public static string GetRelativePath()
     {
-        if (!AppSetting.IsRelease)
-            return "file://" + AppSetting.ExportResBaseDir + Utility.GetPlatformName() + "/";
+        if (!AppSetting.IsRelease && SimulateAssetBundleInEditor)
+            return AppSetting.StreamingAssetsPath;
+        //if (!AppSetting.IsRelease && !SimulateAssetBundleInEditor)
+        //    return "file://" + AppSetting.ExportResBaseDir + Utility.GetPlatformName() + "/";
         return string.Empty;
     }
-
 
 }
 // 加载的资产包包含引用计数，可用于自动卸载依赖的资产包.
