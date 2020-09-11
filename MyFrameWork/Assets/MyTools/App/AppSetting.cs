@@ -9,8 +9,8 @@ using UnityEngine;
 /// </summary>
 public class AppSetting
 {
-    public static bool IsVersionCheck = true;                        //是否启用版本检测 正式包改为true
-    public static bool IsRelease = true;                             //走正式流程设为true(发布会强制修改)
+    public static bool IsVersionCheck = false;                        //是否启用版本检测 正式包改为true
+    public static bool IsRelease = false;                             //走正式流程设为true(发布会强制修改)
     public static bool IsLocalResServer = false;                      //是否为本地资源测试
     public static bool LoaddelayTest = false;                       //延时加载UI测试(只有编辑器下有效)
     public static bool ILRNotABTest = false;                        //不使用AB资源加载ILR(只有编辑器下有效)  
