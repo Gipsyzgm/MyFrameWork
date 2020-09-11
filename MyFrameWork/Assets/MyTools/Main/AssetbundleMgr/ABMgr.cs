@@ -35,9 +35,12 @@ public class ABMgr : MonoSingleton<ABMgr>
         if (SimulateAssetBundleInEditor == false)
         {
             return;
+        }
+        else 
+        {
+            Debug.LogError("使用StreamingAssetsPath资源");
         }     
 #endif
-
         string PlatformName = Utility.GetPlatformName();
         string url;
         if (!assetBundleURL.TryGetValue(PlatformName,out url))
@@ -363,10 +366,13 @@ public class ABMgr : MonoSingleton<ABMgr>
     /// <returns></returns>
     public static string GetRelativePath()
     {
-        if (!AppSetting.IsRelease && SimulateAssetBundleInEditor)
-            return AppSetting.StreamingAssetsPath;
+#if UNITY_EDITOR
+        if (!AppSetting.IsRelease && SimulateAssetBundleInEditor) 
+            return AppSetting.StreamingAssetsPath;            
         //if (!AppSetting.IsRelease && !SimulateAssetBundleInEditor)
         //    return "file://" + AppSetting.ExportResBaseDir + Utility.GetPlatformName() + "/";
+
+#endif
         return string.Empty;
     }
 
