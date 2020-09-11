@@ -65,7 +65,7 @@ public class VersionCheckMgr : MonoSingleton<VersionCheckMgr>
         if (!AppSetting.IsVersionCheck)
         {
             isUpdateCheckComplete = true;
-            UnityEngine.Debug.LogError("IsVersionCheck:返回了啊");
+            UnityEngine.Debug.LogError("不进行版本检测");
             return;
         }
         PanelMgr.Instance.OpenPanel<VersionCheckPl>();
