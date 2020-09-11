@@ -154,5 +154,9 @@ public class GameEditor : MonoBehaviour {
     }
 
 
-
+    [MenuItem("我的工具/其他/重新生成UiPAth信息(移除UI页面时可用)")]
+    public static void RefreshUiInfo()
+    {
+        ExportUI.RefreshUiInfo();
+    }
 }

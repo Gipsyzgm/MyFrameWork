@@ -11,13 +11,13 @@ public class Launcher : MonoBehaviour
     //注意先后顺序
     async void Awake()
     {
+        MyGameData.InitGameData();
         await VersionCheckMgr.Instance.Check();
         while (!VersionCheckMgr.Instance.isUpdateCheckComplete)
         {
             await new WaitForEndOfFrame();
         }
-        ABMgr.Instance.Initialize();
-        MyGameData.InitGameData();
+        ABMgr.Instance.Initialize(); 
         LanguageMgr.Init();
         PanelMgr.Instance.ClosePanel(PanelName.VersionCheckPl);
         PanelMgr.Instance.OpenPanel<MenuePl>();
