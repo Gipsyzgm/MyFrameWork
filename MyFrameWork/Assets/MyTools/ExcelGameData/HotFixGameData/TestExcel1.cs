@@ -25,6 +25,5 @@ public class TestExcel1
     /// 最大坐标
     /// </summary>
     public string Max;
-
 }
 

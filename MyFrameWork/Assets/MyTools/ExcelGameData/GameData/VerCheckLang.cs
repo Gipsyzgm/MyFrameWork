@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class VerCheckLang
 {
-    public string cn;
-    public string en;
     public string id;
+    public string cn;
+    public string en;  
 }

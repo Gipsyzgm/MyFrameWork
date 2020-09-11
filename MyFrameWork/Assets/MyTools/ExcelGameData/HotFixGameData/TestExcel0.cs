@@ -9,7 +9,6 @@ public class TestExcel0
     /// 组编号
     /// </summary>
     public string Id;
-
     /// <summary>
     /// 具体信息。0/空 1/State1 2/State2
     /// </summary>
