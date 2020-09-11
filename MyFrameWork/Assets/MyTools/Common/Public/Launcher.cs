@@ -11,21 +11,18 @@ public class Launcher : MonoBehaviour
     //注意先后顺序
     async void Awake()
     {
-        MyGameData.InitGameData();
-        LanguageMgr.Init();
-  
-        await  VersionCheckMgr.Instance.Check();
+        await VersionCheckMgr.Instance.Check();
         while (!VersionCheckMgr.Instance.isUpdateCheckComplete)
         {
             await new WaitForEndOfFrame();
         }
-        //await AssetbundleMgr.Instance.Initialize();
         ABMgr.Instance.Initialize();
+        MyGameData.InitGameData();
+        LanguageMgr.Init();
         PanelMgr.Instance.ClosePanel(PanelName.VersionCheckPl);
         PanelMgr.Instance.OpenPanel<MenuePl>();
-        Debug.LogError("111111111111111");
         MyAudioMgr.Instance.Init();
-        GameObject gameObject =  ABMgr.Instance.LoadPrefab("prefabs/scenemodel/tree_red_01");
+        GameObject gameObject = ABMgr.Instance.LoadPrefab("prefabs/scenemodel/tree_red_01");
         GameObject obj = Instantiate(gameObject);
         obj.transform.position = Vector3.zero;
 

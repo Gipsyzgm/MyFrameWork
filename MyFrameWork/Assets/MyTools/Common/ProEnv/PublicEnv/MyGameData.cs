@@ -11,11 +11,19 @@ public class MyGameData : MonoBehaviour {
     /// </summary>
     public static AllConfigInfo config;
     /// <summary>
+    /// 读表数据
+    /// </summary>
+    public static HotFixAllConfigInfo hotfixconfig;
+    /// <summary>
     /// 初始化游戏数据
     /// </summary>
     public static void InitGameData()
     {    
         config = Resources.Load<AllConfigInfo>("ConfigAsset");     
+    }
+    public static void InitHotFixGameData()
+    {
+        //
     }
 
 }
