@@ -26,7 +26,7 @@ public class GamePl : PanelBase {
     public void GameBtOnClick()
     {
         Debug.Log("生成物体");
-        GameObject item = Resources.Load<GameObject>(PathItem.Item);
+        GameObject item = ABMgr.Instance.LoadPrefab(PathItem.Item);
         for (int i = 0; i < 30; i++)
         {
             GameObject gameObject =  Instantiate(item, Content);               

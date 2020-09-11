@@ -24,9 +24,9 @@ public class ExportUI {
     //Item代码存储位置
     static string itemScriptDir = Application.dataPath + "/MyTools/MyUI/Item/";
     //UI预制体存储位置
-    static string uiDir = "Assets/Resources/Prefabs/MyUI/View/";
+    static string uiDir = "Assets/GameRes/BundleRes/Prefabs/MyUI/View/";
     //Item预制体存储位置
-    static string itemDir = "Assets/Resources/Prefabs/MyUI/Item/";
+    static string itemDir = "Assets/GameRes/BundleRes/Prefabs/MyUI/Item/";
     //路径名
     static string uiPathName = "PathUI";
     static string itemPathName = "PathItem";
@@ -118,10 +118,18 @@ public class ExportUI {
             }
         }
         //创建文件夹
-        if (!Directory.Exists(scriptDir))
-            Directory.CreateDirectory(scriptDir);
-        if (!Directory.Exists(prefabDir))
-            Directory.CreateDirectory(prefabDir);
+        if (!Directory.Exists(scriptDir)) 
+        {
+            Debug.LogError("请检查路径配置是否正确：" + scriptDir);
+            return;
+        }
+
+        if (!Directory.Exists(prefabDir)) 
+        {
+            Debug.LogError("请检查路径配置是否正确：" + prefabDir);
+            return;
+        }
+           
         //创建Prefab
         UnityEngine.Object prefabObj = null;
         string dirObj = prefabDir + transSelect.gameObject.name + ".prefab";
@@ -133,8 +141,6 @@ public class ExportUI {
         PrefabUtility.ReplacePrefab(transSelect.gameObject, prefabObj);
         //ToCS
         ToCS(transSelect.name, path_type_dic, path_name_dic);
-        //ToLua
-        ToLua(transSelect.name, path_type_dic, path_name_dic);
 
         AssetDatabase.Refresh();
     }
@@ -168,7 +174,7 @@ public class ExportUI {
         {   //Split切分如果后面切分符后没字符的话会切分出一个空字符            
             string[] PathAry = prefabDir.Split('/');
             string tempPath="";          
-            for (int i = 2; i < PathAry.Length; i++)
+            for (int i = 3; i < PathAry.Length; i++)
             {                
                 tempPath += PathAry[i] + "/";            
             }
@@ -380,7 +386,7 @@ public class ExportUI {
         sbPath.AppendLine("{");
         string resPath = "";
         string[] str = prefabDir.Split('/');
-        for (int i = 2; i < str.Length; i++)
+        for (int i = 3; i < str.Length; i++)
         {
             resPath += str[i] + "/";
         }
@@ -416,12 +422,99 @@ public class ExportUI {
         string scriptFilePath = scriptDir + pathName + ".cs";
         File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
         Debug.Log("成功生成脚本");
-
+       
     }
-    static void ToLua(string className, Dictionary<string, Type> path_type_dic, Dictionary<string, string> path_name_dic)
+    /// <summary>
+    /// 重新生成UI路径和枚举信息
+    /// </summary>
+    public static void RefreshUiInfo() 
     {
+        UiPathToCs();
+        ItemPathToCs();
+    }
+    private static void UiPathToCs() 
+    {
+        StringBuilder sbPath = new StringBuilder();
+        sbPath.AppendLine("//每次都会重新生成的脚本，不要删，覆盖就行了");
+        sbPath.AppendLine("public class " + uiPathName);
+        sbPath.AppendLine("{");
+        string resPath = "";
+        string[] str = uiDir.Split('/');
+        for (int i = 3; i < str.Length; i++)
+        {
+            resPath += str[i] + "/";
+        }
+
+        //Substring（int beginIndex，int endIndex） 意思为返回下标从beginIndex开始（包括），到endIndex（不包括）结束的子字符串。
+        resPath = resPath.Substring(0, resPath.Length - 2); //剔除后缀名
+        DirectoryInfo direction = new DirectoryInfo(uiDir);
+        //DirectoryInfo.GetFiles返回当前目录的文件列表
+        //DirectoryInfo 的 GetFiles 返回的是 FileInfo[]，而 Directory.GetFiles 返回的是 string[]
+        //通配符是一种特殊语句，主要有星号(*)和问号(?)
+        //SearchOption是设置文件夹的。TopDirectoryOnly值检索当前文件夹。AllDirectories检索当前文件夹及子文件夹
+        FileInfo[] files = direction.GetFiles("*", SearchOption.AllDirectories);
+        for (int i = 0; i < files.Length; i++)
+        {
+            if (!files[i].Name.EndsWith(".prefab")) continue;
+            string prefabName = files[i].Name.Split('.')[0];
+            sbPath.AppendLine("    public static string " + prefabName + " = " + '"' + resPath + "/" + prefabName + '"' + ";");
+        }
+        sbPath.AppendLine("}");
+        if (exportType == 0)
+        {
+            sbPath.AppendLine("public enum PanelName");
+            sbPath.AppendLine("{");
+
+            for (int i = 0; i < files.Length; i++)
+            {
+                if (!files[i].Name.EndsWith(".prefab")) continue;
+                string prefabName = files[i].Name.Split('.')[0];
+                sbPath.AppendLine("    " + prefabName + ",");
+            }
+            sbPath.AppendLine("}");
+        }
+        string scriptFilePath = uiScriptDir + uiPathName + ".cs";
+        File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
+        AssetDatabase.Refresh();
+        Debug.Log("成功生成UI信息脚本");
 
     }
+
+    private static void ItemPathToCs()
+    {
+        StringBuilder sbPath = new StringBuilder();
+        sbPath.AppendLine("//每次都会重新生成的脚本，不要删，覆盖就行了");
+        sbPath.AppendLine("public class " + itemPathName);
+        sbPath.AppendLine("{");
+        string resPath = "";
+        string[] str = itemDir.Split('/');
+        for (int i = 3; i < str.Length; i++)
+        {
+            resPath += str[i] + "/";
+        }
+
+        //Substring（int beginIndex，int endIndex） 意思为返回下标从beginIndex开始（包括），到endIndex（不包括）结束的子字符串。
+        resPath = resPath.Substring(0, resPath.Length - 2); //剔除后缀名
+        DirectoryInfo direction = new DirectoryInfo(itemDir);
+        //DirectoryInfo.GetFiles返回当前目录的文件列表
+        //DirectoryInfo 的 GetFiles 返回的是 FileInfo[]，而 Directory.GetFiles 返回的是 string[]
+        //通配符是一种特殊语句，主要有星号(*)和问号(?)
+        //SearchOption是设置文件夹的。TopDirectoryOnly值检索当前文件夹。AllDirectories检索当前文件夹及子文件夹
+        FileInfo[] files = direction.GetFiles("*", SearchOption.AllDirectories);
+        for (int i = 0; i < files.Length; i++)
+        {
+            if (!files[i].Name.EndsWith(".prefab")) continue;
+            string prefabName = files[i].Name.Split('.')[0];
+            sbPath.AppendLine("    public static string " + prefabName + " = " + '"' + resPath + "/" + prefabName + '"' + ";");
+        }
+        sbPath.AppendLine("}");      
+        string scriptFilePath = itemScriptDir + itemPathName + ".cs";
+        File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
+        AssetDatabase.Refresh();
+        Debug.Log("成功生成Item信息脚本");
+    }
+
+
     /// <summary>
     /// 递归找拼接子物体位置信息//递归找父物体
     /// </summary>
