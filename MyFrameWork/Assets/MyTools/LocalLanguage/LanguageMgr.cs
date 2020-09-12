@@ -69,17 +69,19 @@ public class LanguageMgr : MonoBehaviour {
     }
 
     //用Id取一个语言。TestLanguage脚本必须和语言表格的脚本名称对应。
-    public static string GetById(int id)
+    public static string GetById(string id)
     {
-        if (type == LanguageType.cn)
-        {
-            return MyGameData.config.TestLanguage[id].cn;
-        }
-        else if (type == LanguageType.en)
-        {
-            return MyGameData.config.TestLanguage[id].en;
-        }
-        return  MyGameData.config.TestLanguage[id].en;
+        //if (type == LanguageType.cn)
+        //{
+        //    return MyGameData.config.VerCheckLang.GetValue()
+        //}
+        //else if (type == LanguageType.en)
+        //{
+        //    return MyGameData.config.VerCheckLang;
+        //}
+        //return MyGameData.config.VerCheckLang[id].en;
+
+        return null;
     }
 
 }

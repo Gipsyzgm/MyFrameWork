@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class TestExcel0
+public class TestExcel0 : BaseDataConfig
 {
+    public override object UniqueID => Id;
     /// <summary>
     /// 组编号
     /// </summary>

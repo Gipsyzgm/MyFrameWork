@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class LabelLocal : MonoBehaviour {
 
     //挂载在需要转换的文字组件上，填写对应ID。
-    public int languageId;
+    public string languageId;
 
     void OnEnable()
     {

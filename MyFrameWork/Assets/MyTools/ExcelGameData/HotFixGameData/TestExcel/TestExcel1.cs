@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class TestExcel1
+public class TestExcel1:BaseDataConfig
 {
-    /// <summary>
+    public override object UniqueID => Id;
+
+    public string Id;
     /// 根据此参数确定当前阶段
     /// </summary>
     public string Stage;

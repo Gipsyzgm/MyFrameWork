@@ -11,8 +11,8 @@ using Excel;
 
 public class CreateConfigData : MonoBehaviour
 {
-    public static AllConfigInfo configData;
-    public static HotFixAllConfigInfo HotFixconfigData;
+    //public static AllConfigInfo configData;
+    //public static HotFixAllConfigInfo HotFixconfigData;
 
     static string _path = "";
     /// <summary>
@@ -43,14 +43,7 @@ public class CreateConfigData : MonoBehaviour
     /// ReadExcelInfo的文件存放地址,必须editor下
     /// </summary>
     static string ReadExcelInfoDir = "Assets/MyTools/ExcelGameData/Editor/";
-    /// <summary>
-    /// 不需要热更AllConfigInfo的类名
-    /// </summary>
-    static string AllConfigName = "AllConfigInfo";
-    /// <summary>
-    /// 需要热更的类名
-    /// </summary>
-    static string HotFixConfigName = "HotFixAllConfigInfo";
+
     /// <summary>
     /// 不需要热更读取读Excel的类名
     /// </summary>
@@ -65,18 +58,19 @@ public class CreateConfigData : MonoBehaviour
     {
         WriteAllConfigInfo();
         WriteHotFixAllConfigInfo();
-        WriteReadExcelInfo();
-        WriteHotFixReadExcelInfo();
-        AssetDatabase.DeleteAsset(assetDir+"ConfigAsset.asset");
-        AssetDatabase.DeleteAsset(HotFixassetDir + "HotFixConfigAsset.asset");
-        configData = ScriptableObject.CreateInstance<AllConfigInfo>();
-        HotFixconfigData = ScriptableObject.CreateInstance<HotFixAllConfigInfo>();
-        AutoReadExcelInfo();
-        AutoReadHotFixExcelInfo();
-        AssetDatabase.CreateAsset(configData, assetDir + "ConfigAsset.asset");
-        AssetDatabase.CreateAsset(HotFixconfigData, HotFixassetDir + "HotFixConfigAsset.asset");
-        Debug.LogError("读取配置完成,"+ assetDir+"ConfigAsset.asset");
-        Debug.LogError("读取配置完成," + HotFixassetDir + "HotFixConfigAsset.asset");
+        return;
+        //WriteReadExcelInfo();
+        //WriteHotFixReadExcelInfo();
+        //AssetDatabase.DeleteAsset(assetDir+"ConfigAsset.asset");
+        //AssetDatabase.DeleteAsset(HotFixassetDir + "HotFixConfigAsset.asset");
+        //configData = ScriptableObject.CreateInstance<AllConfigInfo>();
+        //HotFixconfigData = ScriptableObject.CreateInstance<HotFixAllConfigInfo>();
+        //AutoReadExcelInfo();
+        //AutoReadHotFixExcelInfo();
+        //AssetDatabase.CreateAsset(configData, assetDir + "ConfigAsset.asset");
+        //AssetDatabase.CreateAsset(HotFixconfigData, HotFixassetDir + "HotFixConfigAsset.asset");
+        //Debug.LogError("读取配置完成,"+ assetDir+"ConfigAsset.asset");
+        //Debug.LogError("读取配置完成," + HotFixassetDir + "HotFixConfigAsset.asset");
     }
     /// <summary>
     /// 自动写AllConfigInfo脚本
@@ -89,25 +83,30 @@ public class CreateConfigData : MonoBehaviour
         {
             Debug.LogError("文件夹" + scriptDir + "不存在，请检查路径是否正确");
             return;
-        }        
-        StringBuilder sbPath = new StringBuilder(); 
-        sbPath.AppendLine("using UnityEngine;");
-        sbPath.AppendLine("//每次都会重新生成的脚本，不要删，覆盖就行了");
-        sbPath.AppendLine("public class " + AllConfigName+ ": ScriptableObject");
-        sbPath.AppendLine("{");
-        DirectoryInfo direction = new DirectoryInfo(scriptDir);
-        FileInfo[] files = direction.GetFiles("*", SearchOption.AllDirectories);
-        string scriptFilePath = AllConfigInfoDir + AllConfigName + ".cs";
-        for (int i = 0; i < files.Length; i++)
-        {
-            if (files[i].Name.EndsWith(".meta")) continue;
-            string prefabName = files[i].Name.Split('.')[0];
-            sbPath.AppendLine("    public " + prefabName + "[] "+ prefabName+";");
         }
-        sbPath.AppendLine("}");
-        File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
+        DirectoryInfo direction = new DirectoryInfo(scriptDir);
+        DirectoryInfo[] directions = direction.GetDirectories();
+        for (int i = 0; i < directions.Length; i++)
+        {
+            FileInfo[] files = directions[i].GetFiles("*", SearchOption.AllDirectories);
+            StringBuilder sbPath = new StringBuilder();
+            sbPath.AppendLine("using UnityEngine;");
+            sbPath.AppendLine("//每次都会重新生成的脚本，不要删，覆盖就行了");
+            sbPath.AppendLine("public class " + "all"+ directions[i].Name + ": ScriptableObject");
+            sbPath.AppendLine("{");
+            string scriptFilePath = AllConfigInfoDir + "all" + directions[i].Name + ".cs";
+            for (int x = 0; x < files.Length; x++)
+            {
+                if (files[x].Name.EndsWith(".meta")) continue;
+                string prefabName = files[x].Name.Split('.')[0];
+                sbPath.AppendLine("    public " + prefabName + "[] " + prefabName + ";");
+            }
+            sbPath.AppendLine("}");
+            File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);   
+        }
         AssetDatabase.Refresh();
-        Debug.LogError("把GameData下的配置文件写入AllConfigInfo脚本");       
+        Debug.LogError("把GameData下的配置文件写入AllConfigInfo脚本");
+
     }
 
     public static void WriteHotFixAllConfigInfo()
@@ -119,22 +118,28 @@ public class CreateConfigData : MonoBehaviour
             Debug.LogError("文件夹" + HotFixscriptDir + "不存在，请检查路径是否正确");
             return;
         }
-        StringBuilder sbPath = new StringBuilder();
-        sbPath.AppendLine("using UnityEngine;");
-        sbPath.AppendLine("//每次都会重新生成的脚本，不要删，覆盖就行了");
-        sbPath.AppendLine("public class " + HotFixConfigName + ": ScriptableObject");
-        sbPath.AppendLine("{");
         DirectoryInfo direction = new DirectoryInfo(HotFixscriptDir);
-        FileInfo[] files = direction.GetFiles("*", SearchOption.AllDirectories);
-        string scriptFilePath = AllConfigInfoDir + HotFixConfigName + ".cs";
-        for (int i = 0; i < files.Length; i++)
+        DirectoryInfo[] directions = direction.GetDirectories();
+      
+        for (int i = 0; i < directions.Length; i++)
         {
-            if (files[i].Name.EndsWith(".meta")) continue;
-            string prefabName = files[i].Name.Split('.')[0];
-            sbPath.AppendLine("    public " + prefabName + "[] " + prefabName + ";");
+            FileInfo[] files = directions[i].GetFiles("*", SearchOption.AllDirectories);
+            StringBuilder sbPath = new StringBuilder();
+            sbPath.AppendLine("using UnityEngine;");
+            sbPath.AppendLine("//每次都会重新生成的脚本，不要删，覆盖就行了");
+            sbPath.AppendLine("public class " + "all" + directions[i].Name + ": ScriptableObject");
+            sbPath.AppendLine("{");
+            string scriptFilePath = AllConfigInfoDir + "all" + directions[i].Name + ".cs";
+            for (int x = 0; x < files.Length; x++)
+            {
+                if (files[x].Name.EndsWith(".meta")) continue;
+                string prefabName = files[x].Name.Split('.')[0];
+                sbPath.AppendLine("    public " + prefabName + "[] " + prefabName + ";");
+            }
+            sbPath.AppendLine("}");
+            File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
+          
         }
-        sbPath.AppendLine("}");
-        File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
         AssetDatabase.Refresh();
         Debug.LogError("先把HotFixGameData下的配置文件写入HotFixAllConfigInfo脚本");
     }
@@ -305,7 +310,6 @@ public class CreateConfigData : MonoBehaviour
             }
         }
     }
-
 
     /// <summary>
     /// 测试读表读成字典格式

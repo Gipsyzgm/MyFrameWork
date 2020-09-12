@@ -38,42 +38,40 @@ public class CreateExcel : MonoBehaviour {
     /// 需要写成Excel的文件夹地址
     /// </summary>
     static string HotFixscriptDir = "Assets/MyTools/ExcelGameData/HotFixGameData/";
-
     /// <summary>
     /// 文件格式 
     /// 1：.xls
     /// 2：.xlsx
     /// </summary>
     static string FileFormat = ".xlsx";
-    /// <summary>
-    /// 1对多数据 最大数据数
-    /// </summary>
-    static int maxList = 10;
 
     [MenuItem("我的工具/其他/配置Excel表格/生成默认表格", false, 1)]
     public static void CreateDefaultExcel()
     {
         if (!Directory.Exists(ExcelFileDir))
             Directory.CreateDirectory(ExcelFileDir);
-        if (!Directory.Exists(scriptDir))
-            Directory.CreateDirectory(scriptDir);
-        DirectoryInfo direction = new DirectoryInfo(scriptDir);
-        FileInfo[] files = direction.GetFiles("*", SearchOption.AllDirectories);
-
-        for (int i = 0; i < files.Length; i++)
+        if (!Directory.Exists(scriptDir)) 
         {
-            if (files[i].Name.EndsWith(".meta")) continue;
-            string className = files[i].Name.Split('.')[0];
-            string excelDir = ExcelFileDir + files[i].Name.Split('.')[0] + FileFormat;
-            Type type = Assembly.Load("Assembly-CSharp").GetType(className);
-            if (File.Exists(excelDir))
+            Debug.LogError("需要写入表格的文件路径不存在："+scriptDir);
+            return;
+        }
+        DirectoryInfo direction = new DirectoryInfo(scriptDir);
+        //把同一个文件夹下的数据写进同一张表，根据sheet划分
+        DirectoryInfo[] directions = direction.GetDirectories(); 
+        for (int i = 0; i < directions.Length; i++)
+        {
+            FileInfo[] files = directions[i].GetFiles("*", SearchOption.AllDirectories);
+            for (int x = 0; x < files.Length; x++)
             {
-                Debug.LogError(className + "表格已存在，跳过，如需替换，需手动删除。");
-                continue;
+                if (files[x].Name.EndsWith(".meta")) continue;
+                //写入的文件类名
+                string className = files[x].Name.Split('.')[0];
+                //储存路径和文件名
+                string excelDir = ExcelFileDir + directions[i].Name + FileFormat;
+                Type type = Assembly.Load("Assembly-CSharp").GetType(className);
+                FieldInfo[] fields = type.GetFields();
+                WriteExcel(excelDir, fields, className);                
             }
-            FieldInfo[] fields = type.GetFields();
-            WriteExcel(excelDir, fields);
-            Debug.LogError(className + "表格生成成功");
         }
         CreateHotFixDefaultExcel();
     }
@@ -82,86 +80,58 @@ public class CreateExcel : MonoBehaviour {
         if (!Directory.Exists(ExcelFileDir))
             Directory.CreateDirectory(ExcelFileDir);
         if (!Directory.Exists(HotFixscriptDir))
-            Directory.CreateDirectory(HotFixscriptDir);
-        DirectoryInfo direction = new DirectoryInfo(HotFixscriptDir);
-        FileInfo[] files = direction.GetFiles("*", SearchOption.AllDirectories);
-
-        for (int i = 0; i < files.Length; i++)
         {
-            if (files[i].Name.EndsWith(".meta")) continue;
-            string className = files[i].Name.Split('.')[0];
-            string excelDir = ExcelFileDir + files[i].Name.Split('.')[0] + FileFormat;
-            Type type = Assembly.Load("Assembly-CSharp").GetType(className);
-            if (File.Exists(excelDir))
-            {
-                Debug.LogError(className + "表格已存在，跳过，如需替换，需手动删除。");
-                continue;
-            }
-            FieldInfo[] fields = type.GetFields();
-            WriteExcel(excelDir, fields);
-            Debug.LogError(className + "表格生成成功");
+            Debug.LogError("需要写入表格的文件路径不存在：" + HotFixscriptDir);
+            return;
         }
+        DirectoryInfo direction = new DirectoryInfo(HotFixscriptDir);
+        DirectoryInfo[] directions = direction.GetDirectories();
+        for (int i = 0; i < directions.Length; i++)
+        {
+            FileInfo[] files = directions[i].GetFiles("*", SearchOption.AllDirectories);
+
+            for (int x = 0; x < files.Length; x++)
+            {
+                if (files[x].Name.EndsWith(".meta")) continue;
+                string className = files[x].Name.Split('.')[0];
+                string excelDir = ExcelFileDir + directions[i].Name + FileFormat;
+                Type type = Assembly.Load("Assembly-CSharp").GetType(className);
+                FieldInfo[] fields = type.GetFields();
+                WriteExcel(excelDir, fields, className);
+            }
+        }     
     }
 
-    private static void WriteExcel(string outputDir, FieldInfo[] fieldInfos)
+    private static void WriteExcel(string outputDir, FieldInfo[] fieldInfos,string sheetName)
     {
-
-       //string outputDir = EditorUtility.SaveFilePanel("Save Excel", "", "New Resource", "xlsx");
-       FileInfo newFile = new FileInfo(outputDir);
-        if (newFile.Exists)
+        FileInfo newFile = new FileInfo(outputDir);
+        if (!newFile.Exists)
         {
-            newFile.Delete();  // ensures we create a new workbook
             newFile = new FileInfo(outputDir);
         }
         using (ExcelPackage package = new ExcelPackage(newFile))
         {
-            // add a new worksheet to the empty workbook
-            ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
+          
+            //根据Worksheet的名称判断是否写过这个表格         
+            for (int i = 0; i < package.Workbook.Worksheets.Count; i++)
+            {
+                if (package.Workbook.Worksheets[i+1].Name==sheetName)
+                {
+                    Debug.LogError(sheetName + "表格已存在，跳过，如需替换，需手动删除。");
+                    return;
+                }
+            }
+            ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(sheetName);
             //把每个属性都放进Excel表格    
-            bool IsDicExcel = false;
-            foreach (var item in fieldInfos)
+            for (int i = 0; i < fieldInfos.Length; i++)
             {
-                if (item.FieldType==typeof(List<string>))
-                {
-                    IsDicExcel = true;
-                }
+                worksheet.Cells[1, i + 1].Value = "描述（可替换）";
+                worksheet.Cells[2, i + 1].Value = fieldInfos[i].FieldType.ToString();
+                worksheet.Cells[3, i + 1].Value = fieldInfos[i].Name;
             }
-            if (IsDicExcel)
-            {
-                if (fieldInfos.Length!=2)
-                {
-                    Debug.LogError("表格不合要求，请核对格式");
-                }
-                for (int i = 0; i < maxList+1; i++)
-                {
-                    if (i == 0)
-                    {
-                        worksheet.Cells[1, i + 1].Value = "Key";
-                        worksheet.Cells[2, i + 1].Value = fieldInfos[i].Name;
-                    }
-                    else if (i == 1)
-                    {
-                        worksheet.Cells[1, i + 1].Value = "Value";
-                        worksheet.Cells[2, i + 1].Value = "List[" + (i - 1) + "]";
-                    }
-                    else
-                    {
-                        worksheet.Cells[1, i + 1].Value = "";
-                        worksheet.Cells[2, i + 1].Value = "List[" + (i - 1) + "]";
-                    }     
-                }
-            }
-            else
-            {
-                for (int i = 0; i < fieldInfos.Length; i++)
-                {
-
-                    worksheet.Cells[1, i + 1].Value = "描述（可替换）";
-                    worksheet.Cells[2, i + 1].Value = fieldInfos[i].Name;
-                }
-            }          
             //save our new workbook and we are done!        
             package.Save();
+            Debug.LogError(sheetName + "表格生成成功");
         }
     }
 

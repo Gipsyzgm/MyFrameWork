@@ -25,7 +25,6 @@ public class Launcher : MonoBehaviour
         GameObject gameObject = ABMgr.Instance.LoadPrefab("prefabs/scenemodel/tree_red_01");
         GameObject obj = Instantiate(gameObject);
         obj.transform.position = Vector3.zero;
-
     }
 
     // Update is called once per frame
