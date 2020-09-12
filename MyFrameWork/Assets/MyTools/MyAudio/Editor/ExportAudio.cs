@@ -13,7 +13,7 @@ public class ExportAudio : MonoBehaviour {
     //代码目录
     static string scriptDir = Application.dataPath + "/MyTools/MyAudio/";
     //音效目录
-    static string clipPath = "Assets/GameRes/Resources/MySource/";
+    static string clipPath = "Assets/GameRes/BundleRes/MySource/";
 
     [MenuItem("我的工具/其他/导入声音")]
     public static void Export()
@@ -29,7 +29,7 @@ public class ExportAudio : MonoBehaviour {
         sbPath.AppendLine("{");
         string resPath = "";
         string[] str = clipPath.Split('/');
-        for (int i = 2; i < str.Length; i++)
+        for (int i = 3; i < str.Length; i++)
             resPath += str[i] + "/";
         resPath = resPath.Substring(0, resPath.Length - 2);
         DirectoryInfo direction = new DirectoryInfo(clipPath);
