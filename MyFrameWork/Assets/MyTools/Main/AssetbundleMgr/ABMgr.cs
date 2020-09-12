@@ -128,7 +128,7 @@ public class ABMgr : MonoSingleton<ABMgr>
     { 
         string assetName = assetBundleName.Substring(assetBundleName.LastIndexOf("/") + 1).ToLower();
         assetBundleName = (AppSetting.UIAtlasDir + assetBundleName).ToLower()+AppSetting.ExtName;
-        return LoadAsset<SpriteAtlas>(assetBundleName,assetName);
+        return _LoadAsset<SpriteAtlas>(assetBundleName,assetName);
     }
     /// <summary>
     /// 加载预制体
@@ -143,18 +143,29 @@ public class ABMgr : MonoSingleton<ABMgr>
             assetName = assetBundleName.Substring(assetBundleName.LastIndexOf("/") + 1).ToLower();                  
         assetBundleName = assetBundleName.ToLower(); 
         assetBundleName += AppSetting.ExtName;
-        GameObject obj = LoadAsset<GameObject>(assetBundleName, assetName);
+        GameObject obj = _LoadAsset<GameObject>(assetBundleName, assetName);
         return obj;
     }
-/// <summary>
-/// 加载资源
-/// </summary>
-/// <typeparam name="T"></typeparam>
-/// <param name="assetBundleName"></param>
-/// <param name="assetName"></param>
-/// <param name="isWait"></param>
-/// <returns></returns>
-    public T LoadAsset<T>(string assetBundleName, string assetName = null, bool isWait = false) where T : UObject
+
+    public T LoadAsset<T>(string assetBundleName, string assetName = null) where T : UObject
+    {
+        if (string.IsNullOrEmpty(assetName))
+            assetName = assetBundleName.Substring(assetBundleName.LastIndexOf("/") + 1).ToLower();
+        assetBundleName = assetBundleName.ToLower();
+        assetBundleName += AppSetting.ExtName;
+        T obj = _LoadAsset<T>(assetBundleName, assetName);
+        return obj;
+    }
+
+    /// <summary>
+    /// 加载资源
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="assetBundleName"></param>
+    /// <param name="assetName"></param>
+    /// <param name="isWait"></param>
+    /// <returns></returns>
+    private T _LoadAsset<T>(string assetBundleName, string assetName = null, bool isWait = false) where T : UObject
     {
 
 #if UNITY_EDITOR
