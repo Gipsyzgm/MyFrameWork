@@ -110,7 +110,17 @@ public class CreateExcel : MonoBehaviour {
             ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(sheetName);
             for (int i = 0; i < fieldInfos.Length; i++)
             {
-                worksheet.Cells[1, i + 1].Value = "描述（可替换）";
+                if (i == 0)
+                {
+                    worksheet.Cells[1, i + 1].Value = "唯一ID,不可重复";
+
+                }
+                else
+                {
+                    worksheet.Cells[1, i + 1].Value = "描述（可替换）";
+
+                }
+               
                 string type = GetDataBaseType(fieldInfos[i].FieldType.ToString(), sheetName);
                 if (type == "error") return;
                 worksheet.Cells[2, i + 1].Value = type;
