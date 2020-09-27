@@ -247,65 +247,7 @@ public class CreateConfigData : MonoBehaviour
         Debug.Log("自动生成读HotFixExcel的方法脚本");
     }
 
-    /// <summary>
-    /// 数据初始化脚本
-    /// </summary>
-    public static void WriteDataInitInfo()
-    {
-        StringBuilder sbPath = new StringBuilder();
-        DirectoryInfo direction = new DirectoryInfo(HotFixscriptDir);
-        FileInfo[] files = direction.GetFiles("*", SearchOption.AllDirectories);
-        string scriptFilePath = DataInitInfoDir + DataInitInfo + ".cs";
-
-        sbPath.AppendLine("using UnityEngine;");
-        sbPath.AppendLine("using System.Collections;");
-        sbPath.AppendLine("using System.Collections.Generic;");
-        sbPath.AppendLine("//每次都会重新生成的脚本，不要删，覆盖就行了");
-        sbPath.AppendLine("public class " + DataInitInfo + " :MonoSingleton<" + DataInitInfo + ">");
-        sbPath.AppendLine("{");
-        sbPath.AppendLine("         private  AllConfigInfo AllConfig; ");
-        sbPath.AppendLine("         private  AllHotConfigInfo AllHotConfig; ");
-        sbPath.AppendLine("         public void InitAllConfig() ");
-        sbPath.AppendLine("         {");
-        sbPath.AppendLine("             AllConfig = Resources.Load<AllConfigInfo>(" +'"'+ AllConfigName +'"'+ ");");
-        sbPath.AppendLine("             Deserialize(AllConfig);");
-        sbPath.AppendLine("             Resources.UnloadUnusedAssets();");
-        sbPath.AppendLine("         }");
-        sbPath.AppendLine("         ");
-        sbPath.AppendLine("         public void InitAllHotConfig() ");
-        sbPath.AppendLine("         {");
-        sbPath.AppendLine("             AllHotConfig = ABMgr.Instance.LoadConfigInfo("+ '"'+ "GameData/"+ AllHotConfigName + '"' +");");
-        sbPath.AppendLine("             Deserialize(AllHotConfig);");
-        sbPath.AppendLine("         }");
-        sbPath.AppendLine("         public static void Deserialize(AllConfigInfo set)");
-        sbPath.AppendLine("         {");
-        Type tempClass = Assembly.Load("Assembly-CSharp").GetType(AllConfigName);
-        FieldInfo[] fields = tempClass.GetFields();
-        for (int i = 0; i < fields.Length; i++)
-        {
-            sbPath.AppendLine("             for (int i = 0; i < set."+ fields[i].Name + ".Length; i++)");
-            sbPath.AppendLine("             {");
-            sbPath.AppendLine("                  " + fields[i].FieldType.ToString().Replace("[]", "") + ".GetDictionary().Add(set." + fields[i].Name + "[i].Id, set."+ fields[i].Name + "[i]);");
-            sbPath.AppendLine("             }");
-        }    
-        sbPath.AppendLine("         }");
-        sbPath.AppendLine("         public static void Deserialize(AllHotConfigInfo set)");
-        sbPath.AppendLine("         {");
-        Type temp1Class = Assembly.Load("Assembly-CSharp").GetType(AllHotConfigName);
-        FieldInfo[] fields1 = temp1Class.GetFields();
-        for (int i = 0; i < fields1.Length; i++)
-        {
-            sbPath.AppendLine("             for (int i = 0; i < set." + fields1[i].Name + ".Length; i++)");
-            sbPath.AppendLine("             {");
-            sbPath.AppendLine("                  " + fields1[i].FieldType.ToString().Replace("[]", "") + ".GetDictionary().Add(set." + fields1[i].Name + "[i].Id, set." + fields1[i].Name + "[i]);");
-            sbPath.AppendLine("             }");
-        }
-        sbPath.AppendLine("         }");
-        sbPath.AppendLine("}");
-        File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
-        AssetDatabase.Refresh();
-        Debug.Log("自动生成数据初始化脚本");
-    }
+   
 
     /// <summary>
     /// 自动读取自动生成读取方法
@@ -334,6 +276,84 @@ public class CreateConfigData : MonoBehaviour
                 mt[i].Invoke(null, null);
             }
         }
+    }
+    /// <summary>
+    /// 数据初始化脚本
+    /// </summary>
+    public static void WriteDataInitInfo()
+    {
+        StringBuilder sbPath = new StringBuilder();
+        DirectoryInfo direction = new DirectoryInfo(HotFixscriptDir);
+        FileInfo[] files = direction.GetFiles("*", SearchOption.AllDirectories);
+        string scriptFilePath = DataInitInfoDir + DataInitInfo + ".cs";
+
+        sbPath.AppendLine("using UnityEngine;");
+        sbPath.AppendLine("using System.Collections;");
+        sbPath.AppendLine("using System.Collections.Generic;");
+        sbPath.AppendLine("//每次都会重新生成的脚本，不要删，覆盖就行了");
+        sbPath.AppendLine("public class " + DataInitInfo + " :MonoSingleton<" + DataInitInfo + ">");
+        sbPath.AppendLine("{");
+        sbPath.AppendLine("         private  AllConfigInfo AllConfig; ");
+        sbPath.AppendLine("         private  AllHotConfigInfo AllHotConfig; ");
+        sbPath.AppendLine("         public void InitAllConfig() ");
+        sbPath.AppendLine("         {");
+        sbPath.AppendLine("             AllConfig = Resources.Load<AllConfigInfo>(" + '"' + AllConfigName + '"' + ");");
+        sbPath.AppendLine("             Deserialize(AllConfig);");
+        sbPath.AppendLine("             Resources.UnloadUnusedAssets();");
+        sbPath.AppendLine("         }");
+        sbPath.AppendLine("         ");
+        sbPath.AppendLine("         public void InitAllHotConfig() ");
+        sbPath.AppendLine("         {");
+        sbPath.AppendLine("             AllHotConfig = ABMgr.Instance.LoadConfigInfo(" + '"' + "GameData/" + AllHotConfigName + '"' + ");");
+        sbPath.AppendLine("             Deserialize(AllHotConfig);");
+        sbPath.AppendLine("         }");
+        sbPath.AppendLine("         public static void Deserialize(AllConfigInfo set)");
+        sbPath.AppendLine("         {");
+        Type tempClass = Assembly.Load("Assembly-CSharp").GetType(AllConfigName);
+        FieldInfo[] fields = tempClass.GetFields();
+        for (int i = 0; i < fields.Length; i++)
+        {
+            sbPath.AppendLine("             for (int i = 0; i < set." + fields[i].Name + ".Length; i++)");
+            sbPath.AppendLine("             {");
+            sbPath.AppendLine("                  " + fields[i].FieldType.ToString().Replace("[]", "") + " ID;");
+            sbPath.AppendLine("                  " + fields[i].FieldType.ToString().Replace("[]", "") + ".GetDictionary().TryGetValue(set." + fields[i].Name + "[i].Id, out ID);");
+            sbPath.AppendLine("                    if (ID!=null)");
+            sbPath.AppendLine("                    {");
+            sbPath.AppendLine("                         Debug.LogError(string.Format(" +'"' + "{0}数据唯一ID{1}重复,数据覆盖,数据不支持重复ID,请核实修正避免Bug!"+'"'+','+'"'+ fields[i].FieldType.ToString().Replace("[]", "")+'"'+", set."+ fields[i].Name + "[i].Id));");
+            sbPath.AppendLine("                    }");
+            sbPath.AppendLine("                    else");
+            sbPath.AppendLine("                    {");
+            sbPath.AppendLine("                         " + fields[i].FieldType.ToString().Replace("[]", "") + ".GetDictionary().Add(set." + fields[i].Name + "[i].Id, set." + fields[i].Name + "[i]);");
+            sbPath.AppendLine("                    }");      
+            sbPath.AppendLine("             }");
+        }
+        sbPath.AppendLine("         }");
+        sbPath.AppendLine("         public static void Deserialize(AllHotConfigInfo set)");
+        sbPath.AppendLine("         {");
+        Type temp1Class = Assembly.Load("Assembly-CSharp").GetType(AllHotConfigName);
+        FieldInfo[] fields1 = temp1Class.GetFields();
+        for (int i = 0; i < fields1.Length; i++)
+        {
+
+            sbPath.AppendLine("             for (int i = 0; i < set." + fields1[i].Name + ".Length; i++)");
+            sbPath.AppendLine("             {");
+            sbPath.AppendLine("                  " + fields1[i].FieldType.ToString().Replace("[]", "") + " ID;");
+            sbPath.AppendLine("                  " + fields1[i].FieldType.ToString().Replace("[]", "") + ".GetDictionary().TryGetValue(set." + fields1[i].Name + "[i].Id, out ID);");
+            sbPath.AppendLine("                    if (ID!=null)");
+            sbPath.AppendLine("                    {");
+            sbPath.AppendLine("                         Debug.LogError(string.Format(" + '"' + "{0}数据唯一ID{1}重复,数据覆盖,数据不支持重复ID,请核实修正避免Bug!" + '"' + ',' + '"' + fields1[i].FieldType.ToString().Replace("[]", "") + '"' + ", set." + fields1[i].Name + "[i].Id));");
+            sbPath.AppendLine("                    }");
+            sbPath.AppendLine("                    else");
+            sbPath.AppendLine("                    {");
+            sbPath.AppendLine("                         " + fields1[i].FieldType.ToString().Replace("[]", "") + ".GetDictionary().Add(set." + fields1[i].Name + "[i].Id, set." + fields1[i].Name + "[i]);");
+            sbPath.AppendLine("                    }");
+            sbPath.AppendLine("             }");
+        }
+        sbPath.AppendLine("         }");
+        sbPath.AppendLine("}");
+        File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
+        AssetDatabase.Refresh();
+        Debug.Log("自动生成数据初始化脚本");
     }
     /// <summary>
     /// 测试读表0
