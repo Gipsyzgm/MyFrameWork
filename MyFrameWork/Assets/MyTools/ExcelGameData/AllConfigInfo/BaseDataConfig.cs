@@ -14,4 +14,6 @@ public abstract class BaseDataConfig
             throw new System.NotImplementedException();
         }
     }
+
+   
 }

@@ -11,13 +11,14 @@ public class Launcher : MonoBehaviour
     //注意先后顺序
     async void Awake()
     {
-        MyGameData.InitGameData();
+        DataMgr.Instance.InitAllConfig();
         await VersionCheckMgr.Instance.Check();
         while (!VersionCheckMgr.Instance.isUpdateCheckComplete)
         {
             await new WaitForEndOfFrame();
         }
-        ABMgr.Instance.Initialize(); 
+        ABMgr.Instance.Initialize();
+        DataMgr.Instance.InitAllHotConfig();
         LanguageMgr.Init();
         PanelMgr.Instance.ClosePanel(PanelName.VersionCheckPl);
         PanelMgr.Instance.OpenPanel<MenuePl>();
@@ -25,6 +26,14 @@ public class Launcher : MonoBehaviour
         GameObject gameObject = ABMgr.Instance.LoadPrefab("prefabs/scenemodel/tree_red_01");
         GameObject obj = Instantiate(gameObject);
         obj.transform.position = Vector3.zero;
+
+        string[] any = TestDicExcel.Get(123).testDic3;
+        for (int i = 0; i < any.Length; i++)
+        {
+          
+            Debug.LogError(any[i]);
+        }
+        
     }
 
     // Update is called once per frame

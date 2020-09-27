@@ -56,7 +56,7 @@ public class LanguageMgr : MonoBehaviour {
     }
     static void UpdateLanguage()
     {
-        LabelLocal[] locals = FindObjectsOfType<LabelLocal>();
+        LacalText[] locals = FindObjectsOfType<LacalText>();
 
         for(int i=0;i<locals.Length;i++)
         {
@@ -69,19 +69,23 @@ public class LanguageMgr : MonoBehaviour {
     }
 
     //用Id取一个语言。TestLanguage脚本必须和语言表格的脚本名称对应。
-    public static string GetById(string id)
+    public static string GetById(int id)
     {
-        //if (type == LanguageType.cn)
-        //{
-        //    return MyGameData.config.VerCheckLang.GetValue()
-        //}
-        //else if (type == LanguageType.en)
-        //{
-        //    return MyGameData.config.VerCheckLang;
-        //}
-        //return MyGameData.config.VerCheckLang[id].en;
-
-        return null;
+        string temp;
+        switch (type)
+        {
+            case LanguageType.cn:
+                temp = TestLanguage.Get(id).cn;
+                break;
+            case LanguageType.en:
+                temp = TestLanguage.Get(id).en;
+                break;
+            default:
+                temp = TestLanguage.Get(id).en;
+                break;
+        }
+       
+        return temp;
     }
 
 }

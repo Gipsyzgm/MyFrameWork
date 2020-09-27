@@ -147,6 +147,44 @@ public class ABMgr : MonoSingleton<ABMgr>
         return obj;
     }
 
+    //加载数据文件
+    public AllHotConfigInfo LoadConfigInfo(string assetBundleName, string assetName = null)
+    {
+        if (string.IsNullOrEmpty(assetName))
+            assetName = assetBundleName.Substring(assetBundleName.LastIndexOf("/") + 1).ToLower();
+        assetBundleName = assetBundleName.ToLower();
+        assetBundleName += AppSetting.ExtName;
+
+#if UNITY_EDITOR
+        if (SimulateAssetBundleInEditor == false)
+        {
+            string[] assetPaths = AssetDatabase.GetAssetPathsFromAssetBundleAndAssetName(assetBundleName, assetName);
+            if (assetPaths.Length == 0)
+            {
+                Debug.LogError("There is no asset with name \"" + assetName + "\" in " + assetBundleName);
+                return null;
+            }
+            // @TODO: Now we only get the main object from the first asset. Should consider type also.
+            UObject target = AssetDatabase.LoadMainAssetAtPath(assetPaths[0]);
+            return target as AllHotConfigInfo;
+        }
+        else
+#endif
+
+        {
+            AssetBundle assetBundle = LoadAssetBundle(assetBundleName);
+            AllHotConfigInfo obj = (AllHotConfigInfo)assetBundle.LoadAsset(assetName);
+            if (obj == null)
+                Debug.LogError($"加载资源失败:{assetBundleName}  AssName:{assetName}");
+            assetBundle.Unload(true);
+            return obj;
+        }
+
+     
+       
+    }
+
+
     public T LoadAsset<T>(string assetBundleName, string assetName = null) where T : UObject
     {
         if (string.IsNullOrEmpty(assetName))
