@@ -213,5 +213,55 @@ public class MyEditorTools
         }
     }
 
+
+    /// <summary>
+    /// 拷贝文件
+    /// </summary>
+    /// <param name="srcDir">起始文件夹</param>
+    /// <param name="tgtDir">目标文件夹</param>
+    public static void CopyDirectory(string srcDir, string tgtDir, bool copySubDirs)
+    {
+        // Get the subdirectories for the specified directory.
+        DirectoryInfo dir = new DirectoryInfo(srcDir);
+        if (!dir.Exists)
+        {  
+            throw new DirectoryNotFoundException("Source directory does not exist or could not be found: "+ srcDir);
+        }
+
+        DirectoryInfo[] dirs = dir.GetDirectories();
+        // If the destination directory doesn't exist, create it.
+        if (!Directory.Exists(tgtDir))
+            Directory.CreateDirectory(tgtDir);
+        // Get the files in the directory and copy them to the new location.
+        FileInfo[] files = dir.GetFiles();
+        foreach (FileInfo file in files)
+        {
+            string temppath = Path.Combine(tgtDir, file.Name);
+            file.CopyTo(temppath, true);
+        }
+        // If copying subdirectories, copy them and their contents to new location.
+        if (copySubDirs)
+        {
+            foreach (DirectoryInfo subdir in dirs)
+            {
+                string temppath = Path.Combine(tgtDir, subdir.Name);
+                CopyDirectory(subdir.FullName, temppath, true);
+            }
+        }
+    }
+
+    //删除目标文件夹下面所有文件
+    public static void CleanDirectory(string dir)
+    {
+        foreach (string subdir in Directory.GetDirectories(dir))
+        {
+            Directory.Delete(subdir, true);
+        }
+
+        foreach (string subFile in Directory.GetFiles(dir))
+        {
+            File.Delete(subFile);
+        }
+    }
 }
 

@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 3166473527
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: fb7679dab0ec8a239451b6066dc9b332
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 21c99c86a43ad817b2cb7f65458ae090
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/GameRes/BundleRes/Materials/Tree_trunk.mat
+Dependencies:
+- F:/anyelse/MyFrameWork/Product/AssetBundles/Windows/textures/scenemodel/trees_trunk.unity3d

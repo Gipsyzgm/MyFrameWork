@@ -1,0 +1,18 @@
+ManifestFileVersion: 0
+CRC: 1173506654
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2adccd18a6e386c1348b2d7c377da4c0
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: d0d58ba19a2d5cb771de5bee859cad84
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11500000, guid: a9e02223a3287734da115bc039a1f726, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/GameRes/BundleRes/GameData/HotConfigAsset.asset
+Dependencies: []

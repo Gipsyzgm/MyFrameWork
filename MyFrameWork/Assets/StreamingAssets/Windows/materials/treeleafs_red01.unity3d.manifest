@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 42250780
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ee233b93ce975f0d81d8e56f3904a4a4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 21c99c86a43ad817b2cb7f65458ae090
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/GameRes/BundleRes/Materials/TreeLeafs_red01.mat
+Dependencies:
+- F:/anyelse/MyFrameWork/Product/AssetBundles/Windows/textures/scenemodel/tree_leafs.unity3d

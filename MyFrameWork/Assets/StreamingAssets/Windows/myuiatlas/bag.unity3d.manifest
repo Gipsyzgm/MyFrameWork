@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 4182789130
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d3a92da70e9916e8f38c8312a1326212
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 192e690a6ab30273b050a05752742228
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 687078895
+  Script: {instanceID: 0}
+Assets:
+- Assets/GameRes/BundleRes/MyUIAtlas/Bag.spriteatlas
+Dependencies: []

@@ -1,0 +1,95 @@
+ManifestFileVersion: 0
+CRC: 347591749
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: gamedata/allhotconfiginfo.unity3d
+      Dependencies: {}
+    Info_1:
+      Name: materials/treeleafs_red01.unity3d
+      Dependencies:
+        Dependency_0: textures/scenemodel/tree_leafs.unity3d
+    Info_2:
+      Name: materials/treeleafs_red02.unity3d
+      Dependencies:
+        Dependency_0: textures/scenemodel/tree_leafs.unity3d
+    Info_3:
+      Name: materials/tree_trunk.unity3d
+      Dependencies:
+        Dependency_0: textures/scenemodel/trees_trunk.unity3d
+    Info_4:
+      Name: model/scenemodel/tree_01.unity3d
+      Dependencies: {}
+    Info_5:
+      Name: model/scenemodel/tree_02.unity3d
+      Dependencies: {}
+    Info_6:
+      Name: mysource/backmusic.unity3d
+      Dependencies: {}
+    Info_7:
+      Name: mysource/click.unity3d
+      Dependencies: {}
+    Info_8:
+      Name: mysource/fail.unity3d
+      Dependencies: {}
+    Info_9:
+      Name: mysource/quickbg.unity3d
+      Dependencies: {}
+    Info_10:
+      Name: mysource/win.unity3d
+      Dependencies: {}
+    Info_11:
+      Name: myuiatlas/bag.unity3d
+      Dependencies: {}
+    Info_12:
+      Name: myuiatlas/bigrach.unity3d
+      Dependencies: {}
+    Info_13:
+      Name: myuiatlas/newpanel.unity3d
+      Dependencies: {}
+    Info_14:
+      Name: prefabs/myui/item/item.unity3d
+      Dependencies: {}
+    Info_15:
+      Name: prefabs/myui/view/commonconfirmpl.unity3d
+      Dependencies: {}
+    Info_16:
+      Name: prefabs/myui/view/gamepl.unity3d
+      Dependencies: {}
+    Info_17:
+      Name: prefabs/myui/view/menuepl.unity3d
+      Dependencies: {}
+    Info_18:
+      Name: prefabs/myui/view/overpl.unity3d
+      Dependencies: {}
+    Info_19:
+      Name: prefabs/myui/view/settingpl.unity3d
+      Dependencies: {}
+    Info_20:
+      Name: prefabs/myui/view/startpl.unity3d
+      Dependencies: {}
+    Info_21:
+      Name: prefabs/myui/view/versioncheckpl.unity3d
+      Dependencies: {}
+    Info_22:
+      Name: prefabs/scenemodel/tree_red_01.unity3d
+      Dependencies:
+        Dependency_0: materials/treeleafs_red01.unity3d
+        Dependency_1: materials/tree_trunk.unity3d
+        Dependency_2: model/scenemodel/tree_01.unity3d
+    Info_23:
+      Name: prefabs/scenemodel/tree_red_02.unity3d
+      Dependencies:
+        Dependency_0: materials/treeleafs_red02.unity3d
+        Dependency_1: materials/tree_trunk.unity3d
+        Dependency_2: model/scenemodel/tree_02.unity3d
+    Info_24:
+      Name: scene/test_env.unity3d
+      Dependencies:
+        Dependency_0: prefabs/scenemodel/tree_red_02.unity3d
+    Info_25:
+      Name: textures/scenemodel/trees_trunk.unity3d
+      Dependencies: {}
+    Info_26:
+      Name: textures/scenemodel/tree_leafs.unity3d
+      Dependencies: {}
