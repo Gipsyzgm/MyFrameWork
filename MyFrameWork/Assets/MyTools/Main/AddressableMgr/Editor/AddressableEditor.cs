@@ -13,6 +13,8 @@ using UnityEngine.AddressableAssets;
 /// <summary>
 /// 所有资源全用远程构建远程加载非静态的方式来做。
 /// 通过DefaultBuild来做首次构建。
+/// 关于crc建议：静态资源不要勾选,非静态资源勾不勾选都可以
+/// 安卓会直接缓存.待测试.
 /// </summary>
 public class AddressableEditor
 {
