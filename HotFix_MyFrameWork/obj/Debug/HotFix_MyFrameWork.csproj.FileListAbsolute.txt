@@ -1,9 +1,0 @@
-F:\anyelse\MyFrameWork\MyFrameWork\Assets\GameRes\HotFixDll\HotFix_MyFrameWork.dll
-F:\anyelse\MyFrameWork\MyFrameWork\Assets\GameRes\HotFixDll\HotFix_MyFrameWork.pdb
-F:\anyelse\MyFrameWork\HotFix_MyFrameWork\obj\Debug\HotFix_MyFrameWork.csprojAssemblyReference.cache
-F:\anyelse\MyFrameWork\HotFix_MyFrameWork\obj\Debug\HotFix_MyFrameWork.csproj.CoreCompileInputs.cache
-F:\anyelse\MyFrameWork\HotFix_MyFrameWork\obj\Debug\HotFix_MyFrameWork.csproj.CopyComplete
-F:\anyelse\MyFrameWork\HotFix_MyFrameWork\obj\Debug\HotFix_MyFrameWork.dll
-F:\anyelse\MyFrameWork\HotFix_MyFrameWork\obj\Debug\HotFix_MyFrameWork.pdb
-F:\anyelse\MyFrameWork\HotFix_CrateDll\HotFix_MyFrameWork.dll
-F:\anyelse\MyFrameWork\HotFix_CrateDll\HotFix_MyFrameWork.pdb
