@@ -33,10 +33,6 @@ public class CreateExcel : MonoBehaviour {
     /// </summary>
     static string scriptDir = "Assets/MyTools/ExcelGameData/GameData/";
     /// <summary>
-    /// 需要写成Excel的文件夹地址
-    /// </summary>
-    static string HotFixscriptDir = "Assets/MyTools/ExcelGameData/HotFixGameData/";
-    /// <summary>
     /// 文件格式 
     /// 1：.xls
     /// 2：.xlsx
@@ -68,34 +64,7 @@ public class CreateExcel : MonoBehaviour {
             Type type = Assembly.Load("Assembly-CSharp").GetType(className);
             FieldInfo[] fields = type.GetFields();
             WriteExcel(excelDir, fields, className);
-        }
-        CreateHotFixDefaultExcel();
-    }
-    public static void CreateHotFixDefaultExcel()
-    {
-        if (!Directory.Exists(ExcelFileDir))
-            Directory.CreateDirectory(ExcelFileDir);
-        if (!Directory.Exists(HotFixscriptDir))
-        {
-            Debug.LogError("需要写入表格的文件路径不存在：" + HotFixscriptDir);
-            return;
-        }
-        DirectoryInfo direction = new DirectoryInfo(HotFixscriptDir);
-        FileInfo[] files = direction.GetFiles("*", SearchOption.AllDirectories);
-        for (int x = 0; x < files.Length; x++)
-        {
-            if (files[x].Name.EndsWith(".meta")) continue;
-            string className = files[x].Name.Split('.')[0];
-            string excelDir = ExcelFileDir + className + FileFormat;   
-            if (File.Exists(excelDir))
-            {
-                Debug.LogWarning(className + "表格已存在，跳过，如需替换，需手动删除。" + excelDir);
-                continue;
-            }
-            Type type = Assembly.Load("Assembly-CSharp").GetType(className);
-            FieldInfo[] fields = type.GetFields();
-            WriteExcel(excelDir, fields, className);
-        }
+        }       
     }
 
     public static void WriteExcel(string outputDir, FieldInfo[] fieldInfos, string sheetName)

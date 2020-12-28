@@ -8,7 +8,7 @@ public class OverPl : PanelBase {
     public Button OverBt;
     public override void Init(params object[] _args)
     {
-         CurViewPath= "Prefabs/MyUI/View/OverPl";
+         CurViewPath= "MyUI/View/OverPl";
          layer = PanelLayer.Panel;
     }
     public override void InitComponent()

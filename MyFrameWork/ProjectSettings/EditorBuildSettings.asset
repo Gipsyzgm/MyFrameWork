@@ -11,4 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MyTools/MyUI/ExampleScene/Test_Env.unity
     guid: 92017a118adeec24ca068438bd7fa265
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 22d2919f4a3f3c3408769bb6ae58473a,
+      type: 2}

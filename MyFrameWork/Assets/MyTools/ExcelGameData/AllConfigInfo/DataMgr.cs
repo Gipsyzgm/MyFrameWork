@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class DataMgr :MonoSingleton<DataMgr>
 {
          private  AllConfigInfo AllConfig; 
-         private  AllHotConfigInfo AllHotConfig; 
          public void InitAllConfig() 
          {
              AllConfig = Resources.Load<AllConfigInfo>("AllConfigInfo");
@@ -13,105 +12,76 @@ public class DataMgr :MonoSingleton<DataMgr>
              Resources.UnloadUnusedAssets();
          }
          
-         public void InitAllHotConfig() 
-         {
-             AllHotConfig = ABMgr.Instance.LoadConfigInfo("GameData/AllHotConfigInfo");
-             Deserialize(AllHotConfig);
-         }
          public static void Deserialize(AllConfigInfo set)
          {
-             for (int i = 0; i < set.TextPanel1.Length; i++)
+             for (int i = 0; i < set.ArmsInfo.Length; i++)
              {
-                  TextPanel1 ID;
-                  TextPanel1.GetDictionary().TryGetValue(set.TextPanel1[i].Id, out ID);
+                  ArmsInfo ID;
+                  ArmsInfo.GetDictionary().TryGetValue(set.ArmsInfo[i].Id, out ID);
                     if (ID!=null)
                     {
-                         Debug.LogError(string.Format("{0}数据唯一ID{1}重复,数据覆盖,数据不支持重复ID,请核实修正避免Bug!","TextPanel1", set.TextPanel1[i].Id));
+                         Debug.LogError(string.Format("{0}数据唯一ID{1}重复,数据覆盖,数据不支持重复ID,请核实修正避免Bug!","ArmsInfo", set.ArmsInfo[i].Id));
                     }
                     else
                     {
-                         TextPanel1.GetDictionary().Add(set.TextPanel1[i].Id, set.TextPanel1[i]);
+                         ArmsInfo.GetDictionary().Add(set.ArmsInfo[i].Id, set.ArmsInfo[i]);
+                         ArmsInfo.GetAllKey().Add(set.ArmsInfo[i].Id);
                     }
              }
-             for (int i = 0; i < set.TextPanel2.Length; i++)
+             for (int i = 0; i < set.EquipInfo.Length; i++)
              {
-                  TextPanel2 ID;
-                  TextPanel2.GetDictionary().TryGetValue(set.TextPanel2[i].Id, out ID);
+                  EquipInfo ID;
+                  EquipInfo.GetDictionary().TryGetValue(set.EquipInfo[i].Id, out ID);
                     if (ID!=null)
                     {
-                         Debug.LogError(string.Format("{0}数据唯一ID{1}重复,数据覆盖,数据不支持重复ID,请核实修正避免Bug!","TextPanel2", set.TextPanel2[i].Id));
+                         Debug.LogError(string.Format("{0}数据唯一ID{1}重复,数据覆盖,数据不支持重复ID,请核实修正避免Bug!","EquipInfo", set.EquipInfo[i].Id));
                     }
                     else
                     {
-                         TextPanel2.GetDictionary().Add(set.TextPanel2[i].Id, set.TextPanel2[i]);
+                         EquipInfo.GetDictionary().Add(set.EquipInfo[i].Id, set.EquipInfo[i]);
+                         EquipInfo.GetAllKey().Add(set.EquipInfo[i].Id);
                     }
              }
-             for (int i = 0; i < set.VerCheckLang.Length; i++)
+             for (int i = 0; i < set.GameLang.Length; i++)
              {
-                  VerCheckLang ID;
-                  VerCheckLang.GetDictionary().TryGetValue(set.VerCheckLang[i].Id, out ID);
+                  GameLang ID;
+                  GameLang.GetDictionary().TryGetValue(set.GameLang[i].Id, out ID);
                     if (ID!=null)
                     {
-                         Debug.LogError(string.Format("{0}数据唯一ID{1}重复,数据覆盖,数据不支持重复ID,请核实修正避免Bug!","VerCheckLang", set.VerCheckLang[i].Id));
+                         Debug.LogError(string.Format("{0}数据唯一ID{1}重复,数据覆盖,数据不支持重复ID,请核实修正避免Bug!","GameLang", set.GameLang[i].Id));
                     }
                     else
                     {
-                         VerCheckLang.GetDictionary().Add(set.VerCheckLang[i].Id, set.VerCheckLang[i]);
+                         GameLang.GetDictionary().Add(set.GameLang[i].Id, set.GameLang[i]);
+                         GameLang.GetAllKey().Add(set.GameLang[i].Id);
                     }
              }
-         }
-         public static void Deserialize(AllHotConfigInfo set)
-         {
-             for (int i = 0; i < set.TestDicExcel.Length; i++)
+             for (int i = 0; i < set.LevelInfo.Length; i++)
              {
-                  TestDicExcel ID;
-                  TestDicExcel.GetDictionary().TryGetValue(set.TestDicExcel[i].Id, out ID);
+                  LevelInfo ID;
+                  LevelInfo.GetDictionary().TryGetValue(set.LevelInfo[i].Id, out ID);
                     if (ID!=null)
                     {
-                         Debug.LogError(string.Format("{0}数据唯一ID{1}重复,数据覆盖,数据不支持重复ID,请核实修正避免Bug!","TestDicExcel", set.TestDicExcel[i].Id));
+                         Debug.LogError(string.Format("{0}数据唯一ID{1}重复,数据覆盖,数据不支持重复ID,请核实修正避免Bug!","LevelInfo", set.LevelInfo[i].Id));
                     }
                     else
                     {
-                         TestDicExcel.GetDictionary().Add(set.TestDicExcel[i].Id, set.TestDicExcel[i]);
+                         LevelInfo.GetDictionary().Add(set.LevelInfo[i].Id, set.LevelInfo[i]);
+                         LevelInfo.GetAllKey().Add(set.LevelInfo[i].Id);
                     }
              }
-             for (int i = 0; i < set.TestExcel0.Length; i++)
+             for (int i = 0; i < set.SkillInfo.Length; i++)
              {
-                  TestExcel0 ID;
-                  TestExcel0.GetDictionary().TryGetValue(set.TestExcel0[i].Id, out ID);
+                  SkillInfo ID;
+                  SkillInfo.GetDictionary().TryGetValue(set.SkillInfo[i].Id, out ID);
                     if (ID!=null)
                     {
-                         Debug.LogError(string.Format("{0}数据唯一ID{1}重复,数据覆盖,数据不支持重复ID,请核实修正避免Bug!","TestExcel0", set.TestExcel0[i].Id));
+                         Debug.LogError(string.Format("{0}数据唯一ID{1}重复,数据覆盖,数据不支持重复ID,请核实修正避免Bug!","SkillInfo", set.SkillInfo[i].Id));
                     }
                     else
                     {
-                         TestExcel0.GetDictionary().Add(set.TestExcel0[i].Id, set.TestExcel0[i]);
-                    }
-             }
-             for (int i = 0; i < set.TestExcel1.Length; i++)
-             {
-                  TestExcel1 ID;
-                  TestExcel1.GetDictionary().TryGetValue(set.TestExcel1[i].Id, out ID);
-                    if (ID!=null)
-                    {
-                         Debug.LogError(string.Format("{0}数据唯一ID{1}重复,数据覆盖,数据不支持重复ID,请核实修正避免Bug!","TestExcel1", set.TestExcel1[i].Id));
-                    }
-                    else
-                    {
-                         TestExcel1.GetDictionary().Add(set.TestExcel1[i].Id, set.TestExcel1[i]);
-                    }
-             }
-             for (int i = 0; i < set.TestLanguage.Length; i++)
-             {
-                  TestLanguage ID;
-                  TestLanguage.GetDictionary().TryGetValue(set.TestLanguage[i].Id, out ID);
-                    if (ID!=null)
-                    {
-                         Debug.LogError(string.Format("{0}数据唯一ID{1}重复,数据覆盖,数据不支持重复ID,请核实修正避免Bug!","TestLanguage", set.TestLanguage[i].Id));
-                    }
-                    else
-                    {
-                         TestLanguage.GetDictionary().Add(set.TestLanguage[i].Id, set.TestLanguage[i]);
+                         SkillInfo.GetDictionary().Add(set.SkillInfo[i].Id, set.SkillInfo[i]);
+                         SkillInfo.GetAllKey().Add(set.SkillInfo[i].Id);
                     }
              }
          }

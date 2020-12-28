@@ -24,9 +24,9 @@ public class ExportUI {
     //Item代码存储位置
     static string itemScriptDir = Application.dataPath + "/MyTools/MyUI/Item/";
     //UI预制体存储位置
-    static string uiDir = "Assets/GameRes/BundleRes/Prefabs/MyUI/View/";
+    static string uiDir = "Assets/Resources/MyUI/View/";
     //Item预制体存储位置
-    static string itemDir = "Assets/GameRes/BundleRes/Prefabs/MyUI/Item/";
+    static string itemDir = "Assets/Resources/MyUI/Item/";
     //路径名
     static string uiPathName = "PathUI";
     static string itemPathName = "PathItem";
@@ -167,14 +167,16 @@ public class ExportUI {
         if (exportType == 1)
         {
             sb.AppendLine("    public int index = 0;");
-
-            sb.AppendLine("    public void InitComponent()");
+            sb.AppendLine("    public object[] args;");
+            sb.AppendLine("    public void InitComponent(params object[] _args)");
+            sb.AppendLine("    {");
+            sb.AppendLine("        args = _args;");
         }
         else
         {   //Split切分如果后面切分符后没字符的话会切分出一个空字符            
             string[] PathAry = prefabDir.Split('/');
             string tempPath="";          
-            for (int i = 3; i < PathAry.Length; i++)
+            for (int i = 2; i < PathAry.Length; i++)
             {                
                 tempPath += PathAry[i] + "/";            
             }
@@ -188,9 +190,10 @@ public class ExportUI {
             sb.AppendLine("    }");
 
             sb.AppendLine("    public override void InitComponent()");
+            sb.AppendLine("    {");
         }
  
-        sb.AppendLine("    {");
+       
         //查找Ui变量名
         foreach (var key in path_type_dic.Keys)
         {
@@ -386,7 +389,7 @@ public class ExportUI {
         sbPath.AppendLine("{");
         string resPath = "";
         string[] str = prefabDir.Split('/');
-        for (int i = 3; i < str.Length; i++)
+        for (int i = 2; i < str.Length; i++)
         {
             resPath += str[i] + "/";
         }
@@ -440,7 +443,7 @@ public class ExportUI {
         sbPath.AppendLine("{");
         string resPath = "";
         string[] str = uiDir.Split('/');
-        for (int i = 3; i < str.Length; i++)
+        for (int i = 2; i < str.Length; i++)
         {
             resPath += str[i] + "/";
         }
@@ -488,7 +491,7 @@ public class ExportUI {
         sbPath.AppendLine("{");
         string resPath = "";
         string[] str = itemDir.Split('/');
-        for (int i = 3; i < str.Length; i++)
+        for (int i = 2; i < str.Length; i++)
         {
             resPath += str[i] + "/";
         }

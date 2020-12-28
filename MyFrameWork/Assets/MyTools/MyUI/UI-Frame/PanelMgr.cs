@@ -91,18 +91,7 @@ public class PanelMgr : MonoSingleton<PanelMgr>
         panel.Init(_args);
         Paneldict.Add(name, panel);
         skinPath = (skinPath != "" ? skinPath : panel.CurViewPath);
-        GameObject skin;
-        if (VersionCheckMgr.Instance.isUpdateCheckComplete)
-        {
-             Debug.LogError("加载热更资源");
-             skin = ABMgr.Instance.LoadPrefab(skinPath);
-        }
-        else 
-        {
-            Debug.LogError("加载Resources资源");
-            skin = Resources.Load<GameObject>(skinPath);
-        }
-       
+        GameObject skin = Resources.Load<GameObject>(skinPath);
         if (skin == null)
             Debug.LogError("panelMgr.OpenPanelfail,skin is null,skinPath= " + skinPath);
         panel.curView = (GameObject)Instantiate(skin);

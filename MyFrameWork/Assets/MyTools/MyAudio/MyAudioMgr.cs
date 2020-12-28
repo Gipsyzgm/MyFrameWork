@@ -128,8 +128,7 @@ public class MyAudioMgr : MonoSingleton<MyAudioMgr>
         foreach (var item in Enum.GetValues(typeof(MyAudioName)))
         {
             item.ToString();
-            //this._dicAudio.Add(item.ToString(), Resources.Load<AudioClip>(MyAudioPath.Path + item.ToString()));
-            this._dicAudio.Add(item.ToString(), ABMgr.Instance.LoadAsset<AudioClip>(MyAudioPath.Path + item.ToString()));
+            this._dicAudio.Add(item.ToString(), Resources.Load<AudioClip>(MyAudioPath.Path + item.ToString()));
         }
     }
 }

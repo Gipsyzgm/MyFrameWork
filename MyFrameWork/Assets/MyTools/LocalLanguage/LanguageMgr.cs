@@ -13,6 +13,7 @@ using UnityEngine.UI;
 
 public class LanguageMgr : MonoBehaviour {
 
+    public static bool IsInt = false;
     public enum LanguageType
     {
         cn,
@@ -43,6 +44,7 @@ public class LanguageMgr : MonoBehaviour {
                 break;
             }
         }
+        IsInt = true;
     }
 
     //设置语言
@@ -56,7 +58,7 @@ public class LanguageMgr : MonoBehaviour {
     }
     static void UpdateLanguage()
     {
-        LocalText[] locals = FindObjectsOfType<LocalText>();
+        LabelLocal[] locals = FindObjectsOfType<LabelLocal>();
 
         for(int i=0;i<locals.Length;i++)
         {
@@ -71,22 +73,24 @@ public class LanguageMgr : MonoBehaviour {
     //用Id取一个语言。TestLanguage脚本必须和语言表格的脚本名称对应。
     public static string GetById(int id)
     {
+        if (GameLang.GetDictionary() == null) return null;
+ 
         string temp;
         switch (type)
         {
             case LanguageType.cn:
-                temp = TestLanguage.Get(id).cn;
+                temp = GameLang.Get(id).cn;
                 break;
             case LanguageType.en:
-                temp = TestLanguage.Get(id).en;
+                temp = GameLang.Get(id).en;
                 break;
             default:
-                temp = TestLanguage.Get(id).en;
+                temp = GameLang.Get(id).en;
                 break;
         }
-       
+
         return temp;
     }
-
 }
+
 

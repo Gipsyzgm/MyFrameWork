@@ -49,13 +49,9 @@ public class PanelBase : MonoBehaviour {
     /// 可重写，页面关闭的逻辑。动画等
     /// </summary>
     public virtual void OnClose(){
-      
+
         Destroy(curView);
         Destroy(this);
-        Debug.LogError("关闭的页面："+ CurViewPath.ToLower());
-        //卸载AB资源
-        ABMgr.Instance.UnloadAssetBundle(CurViewPath.ToLower());
-
     }
     /// <summary>
     /// 备用的自己关闭自己的方法
@@ -63,6 +59,6 @@ public class PanelBase : MonoBehaviour {
 	protected virtual void Close()
 	{
 		string name = this.GetType().ToString ();
-		PanelMgr.Instance.ClosePanel (name);
+		PanelMgr.Instance.ClosePanel(name);
 	}   
 }

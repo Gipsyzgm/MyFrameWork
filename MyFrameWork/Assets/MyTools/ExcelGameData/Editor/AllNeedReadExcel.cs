@@ -4,43 +4,92 @@ using System.Collections.Generic;
 //每次都会重新生成的脚本，不要删，覆盖就行了
 public class AllNeedReadExcel
 {
-     public static void TextPanel1()
+     public static void ArmsInfo()
      { 
-         Debug.Log("读取表格:TextPanel1"); 
-         List<Dictionary<string, object>> table = CreateConfigData.ReadExcelData("TextPanel1", 0);
-         CreateConfigData.configInfo.TextPanel1= new TextPanel1[table.Count];
+         Debug.Log("读取表格:ArmsInfo"); 
+         List<Dictionary<string, object>> table = CreateConfigData.ReadExcelData("ArmsInfo", 0);
+         CreateConfigData.configInfo.ArmsInfo= new ArmsInfo[table.Count];
          for (int i = 0; i < table.Count; i++)
          { 
-             CreateConfigData.configInfo.TextPanel1[i] = new TextPanel1(); 
-             CreateConfigData.configInfo.TextPanel1[i].Id= (int) table[i]["Id"];
-             CreateConfigData.configInfo.TextPanel1[i].cn= (string) table[i]["cn"];
-             CreateConfigData.configInfo.TextPanel1[i].en= (string) table[i]["en"];
+             CreateConfigData.configInfo.ArmsInfo[i] = new ArmsInfo(); 
+             CreateConfigData.configInfo.ArmsInfo[i].Id= (int) table[i]["Id"];
+             CreateConfigData.configInfo.ArmsInfo[i].Name= (string) table[i]["Name"];
+             CreateConfigData.configInfo.ArmsInfo[i].Des= (string) table[i]["Des"];
+             CreateConfigData.configInfo.ArmsInfo[i].HeadImg= (string) table[i]["HeadImg"];
+             CreateConfigData.configInfo.ArmsInfo[i].Duty= (string) table[i]["Duty"];
+             CreateConfigData.configInfo.ArmsInfo[i].DutyImg= (string) table[i]["DutyImg"];
+             CreateConfigData.configInfo.ArmsInfo[i].Skill= (int[]) table[i]["Skill"];
+             CreateConfigData.configInfo.ArmsInfo[i].level= (int) table[i]["level"];
+             CreateConfigData.configInfo.ArmsInfo[i].TarGetID= (int[]) table[i]["TarGetID"];
+             CreateConfigData.configInfo.ArmsInfo[i].Price= (int) table[i]["Price"];
+             CreateConfigData.configInfo.ArmsInfo[i].PrefabsObj= (string) table[i]["PrefabsObj"];
+             CreateConfigData.configInfo.ArmsInfo[i].MixTreeID= (int[]) table[i]["MixTreeID"];
+             CreateConfigData.configInfo.ArmsInfo[i].HP= (int) table[i]["HP"];
+             CreateConfigData.configInfo.ArmsInfo[i].Attack= (int) table[i]["Attack"];
+             CreateConfigData.configInfo.ArmsInfo[i].Defense= (int) table[i]["Defense"];
+             CreateConfigData.configInfo.ArmsInfo[i].Speed= (float) table[i]["Speed"];
+             CreateConfigData.configInfo.ArmsInfo[i].Miss= (float) table[i]["Miss"];
+             CreateConfigData.configInfo.ArmsInfo[i].Critical= (float) table[i]["Critical"];
+             CreateConfigData.configInfo.ArmsInfo[i].Race= (string) table[i]["Race"];
          } 
      } 
-     public static void TextPanel2()
+     public static void EquipInfo()
      { 
-         Debug.Log("读取表格:TextPanel2"); 
-         List<Dictionary<string, object>> table = CreateConfigData.ReadExcelData("TextPanel2", 0);
-         CreateConfigData.configInfo.TextPanel2= new TextPanel2[table.Count];
+         Debug.Log("读取表格:EquipInfo"); 
+         List<Dictionary<string, object>> table = CreateConfigData.ReadExcelData("EquipInfo", 0);
+         CreateConfigData.configInfo.EquipInfo= new EquipInfo[table.Count];
          for (int i = 0; i < table.Count; i++)
          { 
-             CreateConfigData.configInfo.TextPanel2[i] = new TextPanel2(); 
-             CreateConfigData.configInfo.TextPanel2[i].Id= (int) table[i]["Id"];
-             CreateConfigData.configInfo.TextPanel2[i].cn= (string) table[i]["cn"];
-             CreateConfigData.configInfo.TextPanel2[i].en= (string) table[i]["en"];
+             CreateConfigData.configInfo.EquipInfo[i] = new EquipInfo(); 
+             CreateConfigData.configInfo.EquipInfo[i].Id= (int) table[i]["Id"];
+             CreateConfigData.configInfo.EquipInfo[i].Name= (string) table[i]["Name"];
+             CreateConfigData.configInfo.EquipInfo[i].Des= (string) table[i]["Des"];
+             CreateConfigData.configInfo.EquipInfo[i].HeadImg= (string) table[i]["HeadImg"];
+             CreateConfigData.configInfo.EquipInfo[i].level= (int) table[i]["level"];
+             CreateConfigData.configInfo.EquipInfo[i].attack= (int) table[i]["attack"];
+             CreateConfigData.configInfo.EquipInfo[i].Price= (int) table[i]["Price"];
          } 
      } 
-     public static void VerCheckLang()
+     public static void GameLang()
      { 
-         Debug.Log("读取表格:VerCheckLang"); 
-         List<Dictionary<string, object>> table = CreateConfigData.ReadExcelData("VerCheckLang", 0);
-         CreateConfigData.configInfo.VerCheckLang= new VerCheckLang[table.Count];
+         Debug.Log("读取表格:GameLang"); 
+         List<Dictionary<string, object>> table = CreateConfigData.ReadExcelData("GameLang", 0);
+         CreateConfigData.configInfo.GameLang= new GameLang[table.Count];
          for (int i = 0; i < table.Count; i++)
          { 
-             CreateConfigData.configInfo.VerCheckLang[i] = new VerCheckLang(); 
-             CreateConfigData.configInfo.VerCheckLang[i].Id= (int) table[i]["Id"];
-             CreateConfigData.configInfo.VerCheckLang[i].cn= (string) table[i]["cn"];
-             CreateConfigData.configInfo.VerCheckLang[i].en= (string) table[i]["en"];
+             CreateConfigData.configInfo.GameLang[i] = new GameLang(); 
+             CreateConfigData.configInfo.GameLang[i].Id= (int) table[i]["Id"];
+             CreateConfigData.configInfo.GameLang[i].cn= (string) table[i]["cn"];
+             CreateConfigData.configInfo.GameLang[i].en= (string) table[i]["en"];
+         } 
+     } 
+     public static void LevelInfo()
+     { 
+         Debug.Log("读取表格:LevelInfo"); 
+         List<Dictionary<string, object>> table = CreateConfigData.ReadExcelData("LevelInfo", 0);
+         CreateConfigData.configInfo.LevelInfo= new LevelInfo[table.Count];
+         for (int i = 0; i < table.Count; i++)
+         { 
+             CreateConfigData.configInfo.LevelInfo[i] = new LevelInfo(); 
+             CreateConfigData.configInfo.LevelInfo[i].Id= (int) table[i]["Id"];
+             CreateConfigData.configInfo.LevelInfo[i].HeroCount= (int) table[i]["HeroCount"];
+             CreateConfigData.configInfo.LevelInfo[i].EnemyInfo= (string[]) table[i]["EnemyInfo"];
+             CreateConfigData.configInfo.LevelInfo[i].LevelType= (int) table[i]["LevelType"];
+             CreateConfigData.configInfo.LevelInfo[i].LevelSelect= (int[]) table[i]["LevelSelect"];
+         } 
+     } 
+     public static void SkillInfo()
+     { 
+         Debug.Log("读取表格:SkillInfo"); 
+         List<Dictionary<string, object>> table = CreateConfigData.ReadExcelData("SkillInfo", 0);
+         CreateConfigData.configInfo.SkillInfo= new SkillInfo[table.Count];
+         for (int i = 0; i < table.Count; i++)
+         { 
+             CreateConfigData.configInfo.SkillInfo[i] = new SkillInfo(); 
+             CreateConfigData.configInfo.SkillInfo[i].Id= (int) table[i]["Id"];
+             CreateConfigData.configInfo.SkillInfo[i].Name= (string) table[i]["Name"];
+             CreateConfigData.configInfo.SkillInfo[i].Des= (string) table[i]["Des"];
+             CreateConfigData.configInfo.SkillInfo[i].SkillImg= (string) table[i]["SkillImg"];
          } 
      } 
 }

@@ -14,7 +14,7 @@ public class MenuePl : PanelBase {
     public Button TestParameter;
     public override void Init(params object[] _args)
     {
-         CurViewPath= "Prefabs/MyUI/View/MenuePl";
+         CurViewPath= "MyUI/View/MenuePl";
          layer = PanelLayer.Tips;
     }
     public override void InitComponent()

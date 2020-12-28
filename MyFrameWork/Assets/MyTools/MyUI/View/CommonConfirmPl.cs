@@ -15,7 +15,7 @@ public class CommonConfirmPl : PanelBase {
     public override void Init(params object[] _args)
     {
          args = _args;
-         CurViewPath= "Prefabs/MyUI/View/CommonConfirmPl";
+         CurViewPath= "MyUI/View/CommonConfirmPl";
          layer = PanelLayer.Tips;
     }
     public override void InitComponent()

@@ -9,13 +9,11 @@ using LitJson;
 using System.Data;
 using Excel;
 using OfficeOpenXml;
-using ILRuntime.Runtime;
 using UObject = UnityEngine.Object;
 
 public class CreateConfigData : MonoBehaviour
 {
     public static AllConfigInfo configInfo;
-    public static AllHotConfigInfo hotConfigInfo;
 
     static string _path = "";
     /// <summary>
@@ -26,18 +24,11 @@ public class CreateConfigData : MonoBehaviour
     /// 写入资源的生成资源的路径,不需要热更的资源放在Resources下
     /// </summary>
     static string assetDir = "Assets/MyTools/ExcelGameData/Resources/";
-    /// <summary>
-    /// 写入资源的生成资源的路径,需要热更的资源放在BundleRes热更目录下
-    /// </summary>
-    static string HotFixassetDir = "Assets/GameRes/BundleRes/GameData/";  
-    /// <summary>
+
     /// 不需要热更的excel写入AllConfigInfo的文件夹地址
     /// </summary>
     static string scriptDir = "Assets/MyTools/ExcelGameData/GameData/";
-    /// <summary>
-    /// 需要热更的excel写入AllConfigInfo的文件夹地址
-    /// </summary>
-    static string HotFixscriptDir = "Assets/MyTools/ExcelGameData/HotFixGameData/";
+
     /// <summary>
     /// AllConfigInfo的文件存放地址
     /// </summary>
@@ -50,18 +41,12 @@ public class CreateConfigData : MonoBehaviour
     /// 不需要热更读取读Excel的类名
     /// </summary>
     static string ReadExcelName = "AllNeedReadExcel";
-    /// <summary>
-    /// 需要热更读取读Excel的类名
-    /// </summary>
-    static string HotFixReadExcelName = "HotFixAllNeedReadExcel";
+
     /// <summary>
     /// AllConfigInfo的类名/序列化数据的名称
     /// </summary>
     static string AllConfigName = "AllConfigInfo";
-    /// <summary>
-    /// AllHotConfigInfo的类名/序列化数据的名称
-    /// </summary>
-    static string AllHotConfigName = "AllHotConfigInfo";
+
     /// <summary>
     /// 生成初始化Data的方法
     /// </summary>
@@ -76,19 +61,18 @@ public class CreateConfigData : MonoBehaviour
     public static void ReadConfigData()
     {
         AssetDatabase.DeleteAsset(assetDir + AllConfigName + ".asset");
-        AssetDatabase.DeleteAsset(HotFixassetDir + AllHotConfigName + ".asset");
+
         configInfo = ScriptableObject.CreateInstance<AllConfigInfo>();
-        hotConfigInfo = ScriptableObject.CreateInstance<AllHotConfigInfo>();
+
         WriteAllConfigInfo();
-        WriteHotFixAllConfigInfo();
+
         WriteReadExcelInfo();
-        WriteHotFixReadExcelInfo();
+ 
         AutoReadExcelInfo();
-        AutoReadHotFixExcelInfo();
+
         AssetDatabase.CreateAsset(configInfo, assetDir + AllConfigName + ".asset");
-        AssetDatabase.CreateAsset(hotConfigInfo, HotFixassetDir + AllHotConfigName + ".asset");
+
         Debug.Log("读取配置完成,"+ assetDir + AllConfigName + ".asset");
-        Debug.Log("读取配置完成," + HotFixassetDir + AllHotConfigName + ".asset");
         WriteDataInitInfo();
 
     }
@@ -124,34 +108,6 @@ public class CreateConfigData : MonoBehaviour
         Debug.Log("把GameData下的配置文件写入AllConfigInfo脚本");
     }
 
-    public static void WriteHotFixAllConfigInfo()
-    {
-        if (!Directory.Exists(AllConfigInfoDir))
-            Directory.CreateDirectory(AllConfigInfoDir);
-        if (!Directory.Exists(HotFixscriptDir))
-        {
-            Debug.LogError("文件夹" + HotFixscriptDir + "不存在，请检查路径是否正确");
-            return;
-        }
-        DirectoryInfo direction = new DirectoryInfo(HotFixscriptDir);
-        FileInfo[] files = direction.GetFiles("*", SearchOption.AllDirectories);
-        StringBuilder sbPath = new StringBuilder();
-        sbPath.AppendLine("using UnityEngine;");
-        sbPath.AppendLine("//每次都会重新生成的脚本，不要删，覆盖就行了");
-        sbPath.AppendLine("public class " + AllHotConfigName + ": ScriptableObject");
-        sbPath.AppendLine("{");
-        string scriptFilePath = AllConfigInfoDir + AllHotConfigName + ".cs";
-        for (int x = 0; x < files.Length; x++)
-        {
-            if (files[x].Name.EndsWith(".meta")) continue;
-            string prefabName = files[x].Name.Split('.')[0];
-            sbPath.AppendLine("    public " + prefabName + "[] " + prefabName + ";");
-        }
-        sbPath.AppendLine("}");
-        File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
-        AssetDatabase.Refresh();
-        Debug.Log("把HotFixGameData下的配置文件写入HotFixAllConfigInfo脚本");
-    }
     /// <summary>
     /// 自动生成读取方法
     /// </summary>
@@ -200,52 +156,7 @@ public class CreateConfigData : MonoBehaviour
         AssetDatabase.Refresh();
         Debug.Log("自动生成读Excel的方法脚本");
     }
-    public static void WriteHotFixReadExcelInfo()
-    {
-        if (!Directory.Exists(AllConfigInfoDir))
-            Directory.CreateDirectory(AllConfigInfoDir);
-        if (!Directory.Exists(HotFixscriptDir))
-            Directory.CreateDirectory(HotFixscriptDir);
-        StringBuilder sbPath = new StringBuilder();
-        DirectoryInfo direction = new DirectoryInfo(HotFixscriptDir);
-        FileInfo[] files = direction.GetFiles("*", SearchOption.AllDirectories);
-        string scriptFilePath = ReadExcelInfoDir + HotFixReadExcelName + ".cs";
 
-        sbPath.AppendLine("using UnityEngine;");
-        sbPath.AppendLine("using LitJson;");
-        sbPath.AppendLine("using System.Collections.Generic;");
-        sbPath.AppendLine("//每次都会重新生成的脚本，不要删，覆盖就行了");
-        sbPath.AppendLine("public class " + HotFixReadExcelName);
-        sbPath.AppendLine("{");
-        for (int i = 0; i < files.Length; i++)
-        {
-            if (files[i].Name.EndsWith(".meta")) continue;
-            string prefabName = files[i].Name.Split('.')[0];
-            sbPath.AppendLine("     public static void " + prefabName + "()");
-            sbPath.AppendLine("     { ");
-            sbPath.AppendLine("         Debug.Log(" + '"' + "读取表格:" + prefabName + '"' + "); ");
-            sbPath.AppendLine("         List<Dictionary<string, object>> table = CreateConfigData.ReadExcelData(" + '"'+prefabName+'"'+", 0);");
-            sbPath.AppendLine("         CreateConfigData.hotConfigInfo." + prefabName + "= new " + prefabName + "[table.Count];");
-            sbPath.AppendLine("         for (int i = 0; i < table.Count; i++)");
-            sbPath.AppendLine("         { ");
-            sbPath.AppendLine("             CreateConfigData.hotConfigInfo." + prefabName + "[i] = new " + prefabName + "(); ");       
-            Type tempClass = Assembly.Load("Assembly-CSharp").GetType(prefabName);
-            FieldInfo[] fields = tempClass.GetFields();   
-            for (int x = 0; x < fields.Length; x++)
-            {
-                string type = CreateExcel.GetDataBaseType(fields[x].FieldType.ToString());
-                if (type == "error") return;
-                sbPath.AppendLine("             CreateConfigData.hotConfigInfo." + prefabName + "[i]." + fields[x].Name+"= ("+ type + ") table[i]["+'"'+ fields[x].Name + '"'+"];");
-            }
-            sbPath.AppendLine("         } ");
-            sbPath.AppendLine("     } ");
-
-        }
-        sbPath.AppendLine("}");
-        File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
-        AssetDatabase.Refresh();
-        Debug.Log("自动生成读HotFixExcel的方法脚本");
-    }
 
    
 
@@ -265,26 +176,13 @@ public class CreateConfigData : MonoBehaviour
             }
         }
     }
-    public static void AutoReadHotFixExcelInfo()
-    {
-        Type t = Type.GetType(HotFixReadExcelName);
-        MethodInfo[] mt = t.GetMethods(BindingFlags.Public | BindingFlags.Static);
-        if (mt != null)
-        {
-            for (int i = 0; i < mt.Length; i++)
-            {
-                mt[i].Invoke(null, null);
-            }
-        }
-    }
+  
     /// <summary>
     /// 数据初始化脚本
     /// </summary>
     public static void WriteDataInitInfo()
     {
         StringBuilder sbPath = new StringBuilder();
-        DirectoryInfo direction = new DirectoryInfo(HotFixscriptDir);
-        FileInfo[] files = direction.GetFiles("*", SearchOption.AllDirectories);
         string scriptFilePath = DataInitInfoDir + DataInitInfo + ".cs";
 
         sbPath.AppendLine("using UnityEngine;");
@@ -294,7 +192,6 @@ public class CreateConfigData : MonoBehaviour
         sbPath.AppendLine("public class " + DataInitInfo + " :MonoSingleton<" + DataInitInfo + ">");
         sbPath.AppendLine("{");
         sbPath.AppendLine("         private  AllConfigInfo AllConfig; ");
-        sbPath.AppendLine("         private  AllHotConfigInfo AllHotConfig; ");
         sbPath.AppendLine("         public void InitAllConfig() ");
         sbPath.AppendLine("         {");
         sbPath.AppendLine("             AllConfig = Resources.Load<AllConfigInfo>(" + '"' + AllConfigName + '"' + ");");
@@ -302,11 +199,6 @@ public class CreateConfigData : MonoBehaviour
         sbPath.AppendLine("             Resources.UnloadUnusedAssets();");
         sbPath.AppendLine("         }");
         sbPath.AppendLine("         ");
-        sbPath.AppendLine("         public void InitAllHotConfig() ");
-        sbPath.AppendLine("         {");
-        sbPath.AppendLine("             AllHotConfig = ABMgr.Instance.LoadConfigInfo(" + '"' + "GameData/" + AllHotConfigName + '"' + ");");
-        sbPath.AppendLine("             Deserialize(AllHotConfig);");
-        sbPath.AppendLine("         }");
         sbPath.AppendLine("         public static void Deserialize(AllConfigInfo set)");
         sbPath.AppendLine("         {");
         Type tempClass = Assembly.Load("Assembly-CSharp").GetType(AllConfigName);
@@ -324,29 +216,8 @@ public class CreateConfigData : MonoBehaviour
             sbPath.AppendLine("                    else");
             sbPath.AppendLine("                    {");
             sbPath.AppendLine("                         " + fields[i].FieldType.ToString().Replace("[]", "") + ".GetDictionary().Add(set." + fields[i].Name + "[i].Id, set." + fields[i].Name + "[i]);");
+            sbPath.AppendLine("                         " + fields[i].FieldType.ToString().Replace("[]", "") + ".GetAllKey().Add(set." + fields[i].Name + "[i].Id);");
             sbPath.AppendLine("                    }");      
-            sbPath.AppendLine("             }");
-        }
-        sbPath.AppendLine("         }");
-        sbPath.AppendLine("         public static void Deserialize(AllHotConfigInfo set)");
-        sbPath.AppendLine("         {");
-        Type temp1Class = Assembly.Load("Assembly-CSharp").GetType(AllHotConfigName);
-        FieldInfo[] fields1 = temp1Class.GetFields();
-        for (int i = 0; i < fields1.Length; i++)
-        {
-
-            sbPath.AppendLine("             for (int i = 0; i < set." + fields1[i].Name + ".Length; i++)");
-            sbPath.AppendLine("             {");
-            sbPath.AppendLine("                  " + fields1[i].FieldType.ToString().Replace("[]", "") + " ID;");
-            sbPath.AppendLine("                  " + fields1[i].FieldType.ToString().Replace("[]", "") + ".GetDictionary().TryGetValue(set." + fields1[i].Name + "[i].Id, out ID);");
-            sbPath.AppendLine("                    if (ID!=null)");
-            sbPath.AppendLine("                    {");
-            sbPath.AppendLine("                         Debug.LogError(string.Format(" + '"' + "{0}数据唯一ID{1}重复,数据覆盖,数据不支持重复ID,请核实修正避免Bug!" + '"' + ',' + '"' + fields1[i].FieldType.ToString().Replace("[]", "") + '"' + ", set." + fields1[i].Name + "[i].Id));");
-            sbPath.AppendLine("                    }");
-            sbPath.AppendLine("                    else");
-            sbPath.AppendLine("                    {");
-            sbPath.AppendLine("                         " + fields1[i].FieldType.ToString().Replace("[]", "") + ".GetDictionary().Add(set." + fields1[i].Name + "[i].Id, set." + fields1[i].Name + "[i]);");
-            sbPath.AppendLine("                    }");
             sbPath.AppendLine("             }");
         }
         sbPath.AppendLine("         }");
@@ -457,7 +328,7 @@ public class CreateConfigData : MonoBehaviour
         switch (tempType)
         {
             case "int":               
-                result = obj==""? 0 : obj.ToInt32();
+                result = obj==""? 0 : Convert.ToInt32(obj);
                 break;
             case "string":
                 result = obj;
@@ -486,7 +357,7 @@ public class CreateConfigData : MonoBehaviour
             case "int[]":
                 if (obj == "")
                 {
-                    intAryData = new int[2];
+                    intAryData = null;
                 }
                 else 
                 {
@@ -498,7 +369,7 @@ public class CreateConfigData : MonoBehaviour
             case "string[]":
                 if (obj == "")
                 {
-                    stringAryData = new string[2];
+                    stringAryData = null;
                 }
                 else
                 {
