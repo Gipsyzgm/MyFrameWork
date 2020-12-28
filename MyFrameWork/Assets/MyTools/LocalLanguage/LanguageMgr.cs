@@ -56,7 +56,7 @@ public class LanguageMgr : MonoBehaviour {
     }
     static void UpdateLanguage()
     {
-        LacalText[] locals = FindObjectsOfType<LacalText>();
+        LocalText[] locals = FindObjectsOfType<LocalText>();
 
         for(int i=0;i<locals.Length;i++)
         {

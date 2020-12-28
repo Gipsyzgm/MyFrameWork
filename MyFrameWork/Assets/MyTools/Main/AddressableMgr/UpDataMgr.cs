@@ -135,22 +135,22 @@ public class UpDataMgr : MonoBehaviour
     /// <summary>
     /// 这个方法和Addressables.UpdateCatalogs获取到的资源是一致的。
     /// </summary>
-    async void StartUpdate()
-    {
-        Debug.Log("开始更新资源");
-        IEnumerable<IResourceLocator> locators = Addressables.ResourceLocators;
-        foreach (var item in locators)
-        {
-            var sizeHandle  =  Addressables.GetDownloadSizeAsync(item.Keys);
-            await sizeHandle.Task;
-            if (sizeHandle.Result > 0) 
-            {
-                var downloadHandle = Addressables.DownloadDependenciesAsync(item.Keys, Addressables.MergeMode.Union);
-                await downloadHandle.Task;
-            }             
-        }
-        Debug.Log("更新完成");
-    }
+    //async void StartUpdate()
+    //{
+    //    Debug.Log("开始更新资源");
+    //    IEnumerable<IResourceLocator> locators = Addressables.ResourceLocators;
+    //    foreach (var item in locators)
+    //    {
+    //        var sizeHandle  =  Addressables.GetDownloadSizeAsync(item.Keys);
+    //        await sizeHandle.Task;
+    //        if (sizeHandle.Result > 0) 
+    //        {
+    //            var downloadHandle = Addressables.DownloadDependenciesAsync(item.Keys, Addressables.MergeMode.Union);
+    //            await downloadHandle.Task;
+    //        }             
+    //    }
+    //    Debug.Log("更新完成");
+    //}
 
 
 
