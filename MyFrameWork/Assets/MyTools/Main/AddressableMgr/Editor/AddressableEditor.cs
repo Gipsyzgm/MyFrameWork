@@ -63,8 +63,8 @@ public class AddressableEditor
         //groupSchema.UseAssetBundleCrc = false;
         //groupSchema.BundleNaming = BundledAssetGroupSchema.BundleNamingStyle.OnlyHash;
         groupSchema.BundleMode = BundledAssetGroupSchema.BundlePackingMode.PackSeparately;
-        groupSchema.BuildPath.SetVariableByName(settings, AddressableAssetSettings.kRemoteBuildPath);
-        groupSchema.BuildPath.SetVariableByName(settings, AddressableAssetSettings.kRemoteLoadPath);
+        groupSchema.BuildPath.SetVariableByName(settings, AddressableAssetSettings.kLocalBuildPath);
+        groupSchema.LoadPath.SetVariableByName(settings, AddressableAssetSettings.kLocalLoadPath);
         return group;    
     }
 
@@ -72,15 +72,8 @@ public class AddressableEditor
     [MenuItem("AddressableEditor/DefaultBuild",false, 1)]
     public static void BuildContent()
     {
-        Debug.LogError("首次打包使用,会总把bundle资源克隆到对应的StreamingAsset目录");
         AddressableAssetSettings.BuildPlayerContent();
-        string linkPath = Application.dataPath.Substring(0, Application.dataPath.LastIndexOf('/')) + "/" + AddressableAssetSettingsDefaultObject.Settings.RemoteCatalogBuildPath.GetValue(AddressableAssetSettingsDefaultObject.Settings);
-        Debug.LogError(linkPath);
-        var exportPath = Application.dataPath.Substring(0, Application.dataPath.LastIndexOf('/')) + "/" + Addressables.BuildPath+"/"+ Utility.GetPlatformName();
-        Debug.LogError(exportPath);
-        MyEditorTools.CopyDirectory(linkPath,exportPath,true); 
         AssetDatabase.Refresh();
-
     }
 
     //更新

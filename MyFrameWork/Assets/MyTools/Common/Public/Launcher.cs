@@ -12,20 +12,9 @@ public class Launcher : MonoBehaviour
     async void Awake()
     {
         DataMgr.Instance.InitAllConfig();
-        //await VersionCheckMgr.Instance.Check();
-        //while (!VersionCheckMgr.Instance.isUpdateCheckComplete)
-        //{
-        //    await new WaitForEndOfFrame();
-        //}
-        //ABMgr.Instance.Initialize();
         LanguageMgr.Init();
-        //PanelMgr.Instance.ClosePanel(PanelName.VersionCheckPl);
         PanelMgr.Instance.OpenPanel<MenuePl>();
-        //MyAudioMgr.Instance.Init();
-        //GameObject gameObject = ABMgr.Instance.LoadPrefab("prefabs/scenemodel/tree_red_01");
-
-        //GameObject obj = Instantiate(gameObject);
-        //obj.transform.position = Vector3.zero;        
+         
     }
 
     // Update is called once per frame

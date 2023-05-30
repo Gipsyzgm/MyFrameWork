@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AddressableAssets;
 //每次都会重新生成的脚本，不要删，覆盖就行了
 public class DataMgr :MonoSingleton<DataMgr>
 {
          private  AllConfigInfo AllConfig; 
          public void InitAllConfig() 
          {
-             AllConfig = Resources.Load<AllConfigInfo>("AllConfigInfo");
-             Deserialize(AllConfig);
-             Resources.UnloadUnusedAssets();
+             Addressables.LoadAssetAsync<AllConfigInfo>("AllConfigInfo").Completed += (obj) => { Deserialize(obj.Result); };
          }
          
          public static void Deserialize(AllConfigInfo set)

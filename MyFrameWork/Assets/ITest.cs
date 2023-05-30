@@ -24,12 +24,6 @@ public class ITest: MonoBehaviour
         //await download;
         //AssetBundle bundle = download.assetBundle;
 
-        UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(url3);
-        await request.SendWebRequest();
-        AssetBundle bundle2 = DownloadHandlerAssetBundle.GetContent(request);
-        Debug.LogError(request.url);
-        AssetBundleManifest AssetBundleManifest2 = bundle2.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
-        Debug.LogError(AssetBundleManifest2.GetAllAssetBundles().Length);
     }
  
 

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: MyUIAtlas
+  m_EditorClassIdentifier: 
+  m_GroupName: MyUIAtlas
+  m_Data:
+    m_SerializedData: []
+  m_GUID: a0dfc5e19051d6e4da8141e4c0cae123
+  m_SerializeEntries: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: afc6c9bc5e36ff34babf0992ee372095, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 1ab86b90cd9d20b40832438ef6db13ea, type: 2}
+    - {fileID: 11400000, guid: b5b9231f93426a140b3d6db4b8e24a26, type: 2}

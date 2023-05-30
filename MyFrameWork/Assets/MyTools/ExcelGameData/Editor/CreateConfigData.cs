@@ -23,8 +23,11 @@ public class CreateConfigData : MonoBehaviour
     /// <summary>
     /// 写入资源的生成资源的路径,不需要热更的资源放在Resources下
     /// </summary>
-    static string assetDir = "Assets/MyTools/ExcelGameData/Resources/";
-
+    ///static string assetDir = "Assets/MyTools/ExcelGameData/Resources/";
+    /// <summary>
+    /// 写入资源的生成资源的路径,使用addressable用这个
+    /// </summary>
+    static string assetDir = "Assets/GameRes/BundleRes/GameData/";
     /// 不需要热更的excel写入AllConfigInfo的文件夹地址
     /// </summary>
     static string scriptDir = "Assets/MyTools/ExcelGameData/GameData/";
@@ -188,15 +191,21 @@ public class CreateConfigData : MonoBehaviour
         sbPath.AppendLine("using UnityEngine;");
         sbPath.AppendLine("using System.Collections;");
         sbPath.AppendLine("using System.Collections.Generic;");
+        sbPath.AppendLine("using UnityEngine.AddressableAssets;");
         sbPath.AppendLine("//每次都会重新生成的脚本，不要删，覆盖就行了");
         sbPath.AppendLine("public class " + DataInitInfo + " :MonoSingleton<" + DataInitInfo + ">");
         sbPath.AppendLine("{");
         sbPath.AppendLine("         private  AllConfigInfo AllConfig; ");
         sbPath.AppendLine("         public void InitAllConfig() ");
         sbPath.AppendLine("         {");
-        sbPath.AppendLine("             AllConfig = Resources.Load<AllConfigInfo>(" + '"' + AllConfigName + '"' + ");");
-        sbPath.AppendLine("             Deserialize(AllConfig);");
-        sbPath.AppendLine("             Resources.UnloadUnusedAssets();");
+        // Resource的加载方式
+        // sbPath.AppendLine("             AllConfig = Resources.Load<AllConfigInfo>(" + '"' + AllConfigName + '"' + ");");
+        // sbPath.AppendLine("             Deserialize(AllConfig);");
+        // sbPath.AppendLine("             Resources.UnloadUnusedAssets();");
+        
+        //Addressable的加载方式
+        sbPath.AppendLine("             Addressables.LoadAssetAsync<AllConfigInfo>(" + '"' + AllConfigName + '"' + ").Completed += (obj) => { Deserialize(obj.Result); };");
+        
         sbPath.AppendLine("         }");
         sbPath.AppendLine("         ");
         sbPath.AppendLine("         public static void Deserialize(AllConfigInfo set)");

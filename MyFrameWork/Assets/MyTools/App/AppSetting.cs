@@ -9,34 +9,11 @@ using UnityEngine;
 /// </summary>
 public class AppSetting
 {
-    public static bool IsVersionCheck = false;                        //是否启用版本检测 正式包改为true
-    public static bool IsRelease = false;                             //走正式流程设为true(发布会强制修改)
-    public static bool IsLocalResServer = false;                      //是否为本地资源测试
-    public static bool LoaddelayTest = false;                       //延时加载UI测试(只有编辑器下有效)
-    public static bool ILRNotABTest = false;                        //不使用AB资源加载ILR(只有编辑器下有效)  
-    public static bool EditorVerCheckt = false;                     //编辑器下是否启用版本检测(只有编辑器下有效)  
 
     public const string ProjectName = "MyFrame";
     //用于根据扩展名选择热更资源
     public const string ExtName = ".unity3d";                      //(.unity3d)素材扩展名
-    public const string UIAtlasDir = "MyUIAtlas/";
-    public const string HotFixName = "HotFix_HorseRacing";  //热更工程名
-    public const bool HotFixUnbound = true;                        //(true)是否可使用未绑定的方法,禁用后没有CLR的方法会抛异常
-    public const string ConfigBundleDir = "Data/Config/";       //配置文件目录(相对于BundleResDir)
-    public const string HoxFixBundleDir = "Data/HotFix/";      //配置文件目录(相对于BundleResDir)
-    public const string ABFiles = "ABFiles.txt";                    //AB资源文件信息  资源路径|MD5值|大小
-    public const string VersionFile = "Version.txt";                //版本信息文件      
-
-    public static bool IsForcedUpdate = false;      //是否强制更新
-    public static bool IsCheckVer = false;             //是否为审核版本 
-  
-    public static string TestHttpServer = "http://localhost/hotfix/";
- 
-
-    //是否进入服务器调试模式
-    public static bool IsDebugServer => PlayerPrefs.GetInt("IsDebugServer", 0) == 1;
-
-
+    
     /// <summary>
     /// persistentDataPath
     /// </summary>
@@ -56,7 +33,6 @@ public class AppSetting
 #else
             return "file:///" + Application.persistentDataPath + "/" + Utility.GetPlatformName() + "/";
 #endif
-
         }
     }
 
@@ -74,11 +50,6 @@ public class AppSetting
 #endif
         }
     }
-    //ILR逻辑代码目录,只用于编辑环境
-    public static string ILRCodeDir
-    {
-        get { return Path.GetFullPath("../Product/ILR/").Replace("\\", "/"); }
-    }
 
     /// <summary>
     /// 导出资源根目录
@@ -92,10 +63,7 @@ public class AppSetting
     /// 需要打包的资源目录
     /// </summary>
     public const string BundleResDir = "Assets/GameRes/BundleRes/";
-
-    public const string BundleArtResDir = "Assets/GameRes/ArtRes/";
-
-    public static string[] BundleArtResFolders = new string[] { "Textures", "Prefabs", "Materials" };
+    
 
 #region 游戏内相关路径
 

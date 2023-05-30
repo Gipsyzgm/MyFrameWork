@@ -26,15 +26,15 @@ public class GamePl : PanelBase {
     public void GameBtOnClick()
     {
         Debug.Log("生成物体");
-        GameObject item = ABMgr.Instance.LoadPrefab(PathItem.Item);
-        for (int i = 0; i < 30; i++)
-        {
-            GameObject gameObject =  Instantiate(item, Content);               
-            Item Myitem = gameObject.AddComponent<Item>();
-            Myitem.index = i;
-            Myitem.InitComponent();
-            Debug.LogError(Myitem.index);
-        }
+        // GameObject item = ABMgr.Instance.LoadPrefab(PathItem.Item);
+        // for (int i = 0; i < 30; i++)
+        // {
+        //     GameObject gameObject =  Instantiate(item, Content);               
+        //     Item Myitem = gameObject.AddComponent<Item>();
+        //     Myitem.index = i;
+        //     Myitem.InitComponent();
+        //     Debug.LogError(Myitem.index);
+        // }
 
     }
         
