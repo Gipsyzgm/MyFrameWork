@@ -15,11 +15,11 @@ MonoBehaviour:
   m_GroupName: MyUIAtlas
   m_Data:
     m_SerializedData: []
-  m_GUID: a0dfc5e19051d6e4da8141e4c0cae123
+  m_GUID: 22c0a29408c092d4ead1f30ecb13a597
   m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: afc6c9bc5e36ff34babf0992ee372095, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 1ab86b90cd9d20b40832438ef6db13ea, type: 2}
-    - {fileID: 11400000, guid: b5b9231f93426a140b3d6db4b8e24a26, type: 2}
+    - {fileID: 11400000, guid: c0edc1de811f43f418a6cff4e895beac, type: 2}
+    - {fileID: 11400000, guid: 4c952288a2320a6468294aa9a5220f1c, type: 2}

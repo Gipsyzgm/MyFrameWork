@@ -13,6 +13,7 @@ public class Launcher : MonoBehaviour
     {
         DataMgr.Instance.InitAllConfig();
         LanguageMgr.Init();
+        MyAudioMgr.Instance.Init();
         PanelMgr.Instance.OpenPanel<MenuePl>();
          
     }

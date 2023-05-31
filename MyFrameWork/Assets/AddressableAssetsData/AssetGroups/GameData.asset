@@ -15,11 +15,15 @@ MonoBehaviour:
   m_GroupName: GameData
   m_Data:
     m_SerializedData: []
-  m_GUID: 1f7099a0086dcb145945eab1f763d032
-  m_SerializeEntries: []
+  m_GUID: b11de3fab64c94440980eb8c5feb60f9
+  m_SerializeEntries:
+  - m_GUID: 1699f138222ad844d9ea549f6eaa339b
+    m_Address: GameData/AllConfigInfo
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: afc6c9bc5e36ff34babf0992ee372095, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 1e2b4342bb7047e4a89f0996866731e3, type: 2}
-    - {fileID: 11400000, guid: 0b72f8260a716e84da08ad6621cf3fff, type: 2}
+    - {fileID: 11400000, guid: 64a7fbcdcfdb56f408ab54e9404e79b8, type: 2}
+    - {fileID: 11400000, guid: 59dc55e95e818f64fa060f2a0a3372af, type: 2}

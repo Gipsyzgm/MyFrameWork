@@ -13,7 +13,8 @@ public class ExportAudio : MonoBehaviour {
     //代码目录
     static string scriptDir = Application.dataPath + "/MyTools/MyAudio/";
     //音效目录
-    static string clipPath = "Assets/Resources/MySource/";
+    //static string clipPath = "Assets/Resources/MySource/";
+    static string clipPath = "Assets/GameRes/BundleRes/MySource/";
 
     [MenuItem("我的工具/其他/导入声音")]
     public static void Export()

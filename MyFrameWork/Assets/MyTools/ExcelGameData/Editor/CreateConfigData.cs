@@ -50,6 +50,12 @@ public class CreateConfigData : MonoBehaviour
     /// </summary>
     static string AllConfigName = "AllConfigInfo";
 
+    
+    /// <summary>
+    /// AddressablePath加载地址
+    /// </summary>
+    static string AddressablePath = "GameData/AllConfigInfo";
+    
     /// <summary>
     /// 生成初始化Data的方法
     /// </summary>
@@ -204,7 +210,9 @@ public class CreateConfigData : MonoBehaviour
         // sbPath.AppendLine("             Resources.UnloadUnusedAssets();");
         
         //Addressable的加载方式
-        sbPath.AppendLine("             Addressables.LoadAssetAsync<AllConfigInfo>(" + '"' + AllConfigName + '"' + ").Completed += (obj) => { Deserialize(obj.Result); };");
+        sbPath.AppendLine("             AllConfig = Addressables.LoadAssetAsync<AllConfigInfo>(" + '"' + AddressablePath + '"' + ").WaitForCompletion();");
+        sbPath.AppendLine("             Deserialize(AllConfig);");
+        sbPath.AppendLine("             Addressables.Release(AllConfig);");
         
         sbPath.AppendLine("         }");
         sbPath.AppendLine("         ");

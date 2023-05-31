@@ -15,19 +15,19 @@ MonoBehaviour:
   m_GroupName: Scene
   m_Data:
     m_SerializedData: []
-  m_GUID: a2af107f21e6f054eb0e8265d0b81f48
+  m_GUID: 62733995173dda94f8cd8bbd3e6c9d2a
   m_SerializeEntries:
   - m_GUID: b6e501f788d18b64e81ae0b784a1749e
-    m_Address: Assets\GameRes\BundleRes\Scene\Test_Env.unity
+    m_Address: Scene/Test_Env
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: b40ffbd0e1663ee4792da6b748b0f53f
-    m_Address: Assets\GameRes\BundleRes\Scene\Test_EnvSettings.lighting
+    m_Address: Scene/Test_EnvSettings
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: afc6c9bc5e36ff34babf0992ee372095, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 3460ae529bbf751418cac5b14d2f4b4d, type: 2}
-    - {fileID: 11400000, guid: d7fbd64600df4934fb0ba6b69b8f4dbc, type: 2}
+    - {fileID: 11400000, guid: 059df9b280a525e498e1c665fbefab7f, type: 2}
+    - {fileID: 11400000, guid: a7d80f5127673384bbb1723a4a3ef98c, type: 2}

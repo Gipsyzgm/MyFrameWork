@@ -15,11 +15,31 @@ MonoBehaviour:
   m_GroupName: MySource
   m_Data:
     m_SerializedData: []
-  m_GUID: 109dd8d4e379cd34386f1b8dd63a34cc
-  m_SerializeEntries: []
+  m_GUID: 530fda72fbf022d42ac509d2d9bf9e00
+  m_SerializeEntries:
+  - m_GUID: 8bf3c2ca37a2edb4da8c86e884b134f7
+    m_Address: MySource/BackMusic
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f2fb8153f15abdc439c86aca7280f54f
+    m_Address: MySource/Click
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5322654ca64cf7341bcb5d10d43589d6
+    m_Address: MySource/Fail
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dd7e9e9f6f3cb224f904dceb2620d234
+    m_Address: MySource/QuickBg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ce7b5003c37264445bfe3cb0126c2424
+    m_Address: MySource/Win
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: afc6c9bc5e36ff34babf0992ee372095, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 14ce12abbb164ab45a75b71f7d2e201f, type: 2}
-    - {fileID: 11400000, guid: 593d0c9e05ebe7f46b2a0500fa881dc5, type: 2}
+    - {fileID: 11400000, guid: 730cc808aa32221408c869c712b7ddb4, type: 2}
+    - {fileID: 11400000, guid: ad52ceea3e23555418004c439a6283fb, type: 2}

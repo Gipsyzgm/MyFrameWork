@@ -15,15 +15,19 @@ MonoBehaviour:
   m_GroupName: Textures
   m_Data:
     m_SerializedData: []
-  m_GUID: 081a9daf0bf6cee419156ab13715be0a
+  m_GUID: e2470c3b9109a1f458f129c4dd477df6
   m_SerializeEntries:
-  - m_GUID: 07bdafefd94505d4c80383c12f0dbe48
-    m_Address: Assets\GameRes\BundleRes\Textures\SceneModel
+  - m_GUID: e459c77a3e93726418672a5e9c7ae24f
+    m_Address: Textures/SceneModel/Trees_Trunk
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c30b448b313a6f44c85c14f6f4044079
+    m_Address: Textures/SceneModel/Tree_Leafs
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: afc6c9bc5e36ff34babf0992ee372095, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 9d36535b4ab56ed4e82d52b9bfef924a, type: 2}
-    - {fileID: 11400000, guid: 254f4809805f3264a897d391863d27e2, type: 2}
+    - {fileID: 11400000, guid: cf71ef739001a814683bce0ca06f56e8, type: 2}
+    - {fileID: 11400000, guid: c23ef6cac6f49744e89bc0162b604422, type: 2}

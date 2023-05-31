@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: MyUI
+  m_EditorClassIdentifier: 
+  m_GroupName: MyUI
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 1db63bd8e40b9f3438b6d292404427bf
+  m_SerializeEntries:
+  - m_GUID: 51be472a275c08e4c92dcdf899cfdc0a
+    m_Address: MyUI/Item/Item
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2180a23c7cfb1f044b09430260384e86
+    m_Address: MyUI/View/CommonConfirmPl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fca0c75490495714385bc5fd1dac4dc1
+    m_Address: MyUI/View/GamePl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 51e4c7e25893dd043b9f79966565f9fa
+    m_Address: MyUI/View/MenuePl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4e5d347c5941b714793dafee34ead146
+    m_Address: MyUI/View/OverPl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 933f1f0276415514b92a23f2055b368d
+    m_Address: MyUI/View/SettingPl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0928525cc40dbb146b593996d2bb2ea7
+    m_Address: MyUI/View/StartPl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d0f648a8f912f2a4eaef5999d4381c5a
+    m_Address: MyUI/View/VersionCheckPl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: afc6c9bc5e36ff34babf0992ee372095, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: a56ed2a01d66f6e41ac26ddc99e91bf4, type: 2}
+    - {fileID: 11400000, guid: 27765943854e5f04398233ce48b69f96, type: 2}

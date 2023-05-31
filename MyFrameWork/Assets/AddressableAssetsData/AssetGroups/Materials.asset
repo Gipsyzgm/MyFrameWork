@@ -15,23 +15,23 @@ MonoBehaviour:
   m_GroupName: Materials
   m_Data:
     m_SerializedData: []
-  m_GUID: 70229e041e2e5d049805e2b1775c597e
+  m_GUID: 6e448417c850c584d8d8843fe1f2e76f
   m_SerializeEntries:
   - m_GUID: 7b04f03cad557dd43863885698ecec3f
-    m_Address: Assets\GameRes\BundleRes\Materials\TreeLeafs_red01.mat
+    m_Address: Materials/TreeLeafs_red01
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 58023fd94923ba042aa9c30b0f782118
-    m_Address: Assets\GameRes\BundleRes\Materials\TreeLeafs_red02.mat
+    m_Address: Materials/TreeLeafs_red02
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: d8731b933efcad44e8252a414f604676
-    m_Address: Assets\GameRes\BundleRes\Materials\Tree_trunk.mat
+    m_Address: Materials/Tree_trunk
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: afc6c9bc5e36ff34babf0992ee372095, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 98ba9469d86626846ade2846af1aa744, type: 2}
-    - {fileID: 11400000, guid: fc52f3ea13ed1f840b3477d6c2b07b0d, type: 2}
+    - {fileID: 11400000, guid: ed0a3f14140e59143b4dbccd5a61f853, type: 2}
+    - {fileID: 11400000, guid: 053181ba96af46d4b9e794c924a24143, type: 2}

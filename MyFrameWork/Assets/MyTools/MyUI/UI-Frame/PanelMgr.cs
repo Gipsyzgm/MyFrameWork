@@ -12,6 +12,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 
 /// <summary>
@@ -91,10 +92,12 @@ public class PanelMgr : MonoSingleton<PanelMgr>
         panel.Init(_args);
         Paneldict.Add(name, panel);
         skinPath = (skinPath != "" ? skinPath : panel.CurViewPath);
-        GameObject skin = Resources.Load<GameObject>(skinPath);
+        //GameObject skin = Resources.Load<GameObject>(skinPath);
+        GameObject skin = Addressables.LoadAssetAsync<GameObject>(skinPath).WaitForCompletion();
         if (skin == null)
             Debug.LogError("panelMgr.OpenPanelfail,skin is null,skinPath= " + skinPath);
         panel.curView = (GameObject)Instantiate(skin);
+        Addressables.Release(skin);
         panel.curView.transform.SetAsLastSibling();
         Transform skinTrans = panel.curView.transform;
         PanelLayer layer;

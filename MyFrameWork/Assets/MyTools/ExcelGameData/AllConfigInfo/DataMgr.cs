@@ -8,7 +8,9 @@ public class DataMgr :MonoSingleton<DataMgr>
          private  AllConfigInfo AllConfig; 
          public void InitAllConfig() 
          {
-             Addressables.LoadAssetAsync<AllConfigInfo>("AllConfigInfo").Completed += (obj) => { Deserialize(obj.Result); };
+             AllConfig = Addressables.LoadAssetAsync<AllConfigInfo>("GameData/AllConfigInfo").WaitForCompletion();
+             Deserialize(AllConfig);
+             Addressables.Release(AllConfig);
          }
          
          public static void Deserialize(AllConfigInfo set)

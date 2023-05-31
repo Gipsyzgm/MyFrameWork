@@ -16,23 +16,37 @@ using System;
 using System.Text;
 using System.IO;
 
-public class ExportUI {
+public class ExportUI
+{
     //结束标志
     static string replace = "@EndMark@";
+
     //UI代码存储位置
     static string uiScriptDir = Application.dataPath + "/MyTools/MyUI/View/";
+
     //Item代码存储位置
     static string itemScriptDir = Application.dataPath + "/MyTools/MyUI/Item/";
-    //UI预制体存储位置
-    static string uiDir = "Assets/Resources/MyUI/View/";
-    //Item预制体存储位置
-    static string itemDir = "Assets/Resources/MyUI/Item/";
+
+    //UI预制体存储位置(Resource)
+    //static string uiDir = "Assets/Resources/MyUI/View/";
+    //Item预制体存储位置(Resource)
+    //static string itemDir = "Assets/Resources/MyUI/Item/";
+    //UI预制体存储位置(addressable)
+    static string uiDir = "Assets/GameRes/BundleRes/MyUI/View/";
+
+    //Item预制体存储位置(addressable)
+    static string itemDir = "Assets/GameRes/BundleRes/MyUI/Item/";
+
     //路径名
     static string uiPathName = "PathUI";
+
     static string itemPathName = "PathItem";
+
     //继承脚本
     static string overrideUI = "PanelBase";
+
     static string overrideItem = "MonoBehaviour";
+
     //导出类型
     static int exportType = 0;
     static PanelLayer UiLayerType = PanelLayer.Null;
@@ -53,6 +67,7 @@ public class ExportUI {
         UiLayerType = PanelLayer.Start;
         Export();
     }
+
     [MenuItem("GameObject/自动生成UI/生成UI脚本/Panel", priority = 2)]
     public static void Export_UIToPanel()
     {
@@ -64,6 +79,7 @@ public class ExportUI {
         UiLayerType = PanelLayer.Panel;
         Export();
     }
+
     [MenuItem("GameObject/自动生成UI/生成UI脚本/Tips", priority = 3)]
     public static void Export_UIToTips()
     {
@@ -75,6 +91,7 @@ public class ExportUI {
         UiLayerType = PanelLayer.Tips;
         Export();
     }
+
     [MenuItem("GameObject/自动生成UI/生成Item脚本", priority = 2)]
     public static void Export_Item()
     {
@@ -84,8 +101,8 @@ public class ExportUI {
         pathName = itemPathName;
         overrideScript = overrideItem;
         Export();
-
     }
+
     public static void Export()
     {
         //选择是不是单个物体
@@ -107,29 +124,32 @@ public class ExportUI {
                         Debug.LogError("生成失败，作为页面的父物体不可被标记。");
                         return;
                     }
+
                     if (path_type_dic.ContainsKey(path))
                     {
                         Debug.Log("生成失败，重名了，检查一下:" + objs[i].name);
                         return;
                     }
+
                     path_type_dic.Add(path, dict[key]);
                     path_name_dic.Add(path, objs[i].name.Split('_')[0]);
                 }
             }
         }
+
         //创建文件夹
-        if (!Directory.Exists(scriptDir)) 
+        if (!Directory.Exists(scriptDir))
         {
             Debug.LogError("请检查路径配置是否正确：" + scriptDir);
             return;
         }
 
-        if (!Directory.Exists(prefabDir)) 
+        if (!Directory.Exists(prefabDir))
         {
             Debug.LogError("请检查路径配置是否正确：" + prefabDir);
             return;
         }
-           
+
         //创建Prefab
         UnityEngine.Object prefabObj = null;
         string dirObj = prefabDir + transSelect.gameObject.name + ".prefab";
@@ -144,6 +164,7 @@ public class ExportUI {
 
         AssetDatabase.Refresh();
     }
+
     //拼接C#脚本
     static void ToCS(string className, Dictionary<string, Type> path_type_dic, Dictionary<string, string> path_name_dic)
     {
@@ -155,7 +176,7 @@ public class ExportUI {
         sb.AppendLine("using System.Collections.Generic;");
         sb.AppendLine("using UnityEngine.Events;");
         sb.AppendLine();
-        sb.AppendLine("public class " + className + " : "+ overrideScript +" {");
+        sb.AppendLine("public class " + className + " : " + overrideScript + " {");
         sb.AppendLine();
         //定义Ui变量名
         foreach (var key in path_type_dic.Keys)
@@ -164,6 +185,7 @@ public class ExportUI {
             string name = path_name_dic[key];
             sb.AppendLine("    public " + type.Name + " " + name + ";");
         }
+
         if (exportType == 1)
         {
             sb.AppendLine("    public int index = 0;");
@@ -173,27 +195,29 @@ public class ExportUI {
             sb.AppendLine("        args = _args;");
         }
         else
-        {   //Split切分如果后面切分符后没字符的话会切分出一个空字符            
+        {
+            //Split切分如果后面切分符后没字符的话会切分出一个空字符            
             string[] PathAry = prefabDir.Split('/');
-            string tempPath="";          
+            string tempPath = "";
             for (int i = 2; i < PathAry.Length; i++)
-            {                
-                tempPath += PathAry[i] + "/";            
+            {
+                tempPath += PathAry[i] + "/";
             }
+
             tempPath = tempPath.Substring(0, tempPath.Length - 2);
 
             sb.AppendLine("    public override void Init(params object[] _args)");
             sb.AppendLine("    {");
             sb.AppendLine("         args = _args;");
-            sb.AppendLine("         CurViewPath=" + '"'+ tempPath + "/" + className + '"' + ";");
-            sb.AppendLine("         layer = PanelLayer." + UiLayerType.ToString()+ ";");
+            sb.AppendLine("         CurViewPath=" + '"' + tempPath + "/" + className + '"' + ";");
+            sb.AppendLine("         layer = PanelLayer." + UiLayerType.ToString() + ";");
             sb.AppendLine("    }");
 
             sb.AppendLine("    public override void InitComponent()");
             sb.AppendLine("    {");
         }
- 
-       
+
+
         //查找Ui变量名
         foreach (var key in path_type_dic.Keys)
         {
@@ -208,8 +232,8 @@ public class ExportUI {
                 else if (type == typeof(Transform))
                     sb.AppendLine(name + " = " + "transform.Find(" + '"' + path + '"' + ").transform" + ";");
                 else
-                    sb.AppendLine(name + " = " + "transform.Find(" + '"' + path + '"' + ").GetComponent<" + type.Name + ">()" + ";");
-              
+                    sb.AppendLine(name + " = " + "transform.Find(" + '"' + path + '"' + ").GetComponent<" + type.Name +
+                                  ">()" + ";");
             }
             else
             {
@@ -218,19 +242,22 @@ public class ExportUI {
                 else if (type == typeof(Transform))
                     sb.AppendLine(name + " = " + "curView.transform.Find(" + '"' + path + '"' + ").transform" + ";");
                 else
-                    sb.AppendLine(name + " = " + "curView.transform.Find(" + '"' + path + '"' + ").GetComponent<" + type.Name + ">()" + ";");
+                    sb.AppendLine(name + " = " + "curView.transform.Find(" + '"' + path + '"' + ").GetComponent<" +
+                                  type.Name + ">()" + ";");
             }
+
             if (type == typeof(Button))
             {
                 string methodName = name + "OnClick";
                 sb.AppendLine("        " + name + ".onClick.AddListener(" + methodName + ");");
             }
-
         }
+
         sb.AppendLine("        CustomComponent();");
         sb.AppendLine("    }");
         sb.AppendLine("    //——————————上面部分自动生成，每次生成都会替换掉，不要手写东西——————————");
-        sb.AppendLine("                                                                                                ");
+        sb.AppendLine(
+            "                                                                                                ");
         sb.AppendLine("    //——————————以下为手写部分，初始化补充方法为CustomComponent()———————————");
         sb.AppendLine("    //" + replace);
 
@@ -243,7 +270,8 @@ public class ExportUI {
             {
                 Debug.Log(replace + "没找到" + replace + "在InitComponent方法后一行补上//" + replace);
                 return;
-            }            
+            }
+
             int splitIndex = csString.IndexOf(replace) + replace.Length;
             //substring（int beginIndex） 意思为返回下标从beginIndex开始（包括），到字符串结尾的子字符串。
             //存起来replace标记后面的代码
@@ -267,6 +295,7 @@ public class ExportUI {
                     }
                 }
             }
+
             if (!csString.Contains("CustomComponent()"))
             {
                 sb.AppendLine("    public void CustomComponent()");
@@ -275,6 +304,7 @@ public class ExportUI {
                 sb.AppendLine("    }");
                 sb.AppendLine("        ");
             }
+
             if (exportType == 0)
             {
                 if (!csString.Contains("OnShow()"))
@@ -285,6 +315,7 @@ public class ExportUI {
                     sb.AppendLine("    }");
                     sb.AppendLine("        ");
                 }
+
                 if (!csString.Contains("Update()"))
                 {
                     sb.AppendLine("    public override void Update()");
@@ -293,6 +324,7 @@ public class ExportUI {
                     sb.AppendLine("    }");
                     sb.AppendLine("        ");
                 }
+
                 if (!csString.Contains("OnHide()"))
                 {
                     sb.AppendLine("    public override void OnHide()");
@@ -301,6 +333,7 @@ public class ExportUI {
                     sb.AppendLine("    }");
                     sb.AppendLine("        ");
                 }
+
                 if (!csString.Contains("OnClose()"))
                 {
                     sb.AppendLine("    public override void OnClose()");
@@ -319,15 +352,14 @@ public class ExportUI {
                     sb.AppendLine("        ");
                     sb.AppendLine("    }");
                 }
-
             }
-            
+
             csString = "    " + csString.TrimStart();
             sb.Append(csString);
         }
         else
         {
-            foreach(var key in path_type_dic.Keys)
+            foreach (var key in path_type_dic.Keys)
             {
                 Type type = path_type_dic[key];
                 string name = path_name_dic[key];
@@ -341,6 +373,7 @@ public class ExportUI {
                     sb.AppendLine("        ");
                 }
             }
+
             sb.AppendLine("    public void CustomComponent()");
             sb.AppendLine("    {");
             sb.AppendLine("        ");
@@ -371,15 +404,18 @@ public class ExportUI {
                 sb.AppendLine("         base.OnClose();   ");
                 sb.AppendLine("    }");
             }
-            if(exportType == 1)
+
+            if (exportType == 1)
             {
                 sb.AppendLine("    public void UpdateItem()");
                 sb.AppendLine("    {");
                 sb.AppendLine("        ");
                 sb.AppendLine("    }");
             }
+
             sb.AppendLine("}");
         }
+
         //参数1为文件绝对路径，创建一个新文件，使用指定的编码在其中写入指定的字符串数组，然后关闭文件。如果目标文件已存在，则改写该文件。
         File.WriteAllText(scriptFile, sb.ToString(), Encoding.UTF8);
 
@@ -393,7 +429,7 @@ public class ExportUI {
         {
             resPath += str[i] + "/";
         }
-            
+
         //Substring（int beginIndex，int endIndex） 意思为返回下标从beginIndex开始（包括），到endIndex（不包括）结束的子字符串。
         resPath = resPath.Substring(0, resPath.Length - 2); //剔除后缀名
         DirectoryInfo direction = new DirectoryInfo(prefabDir);
@@ -408,6 +444,7 @@ public class ExportUI {
             string prefabName = files[i].Name.Split('.')[0];
             sbPath.AppendLine("    public static string " + prefabName + " = " + '"' + resPath + "/" + prefabName + '"' + ";");
         }
+
         sbPath.AppendLine("}");
         if (exportType == 0)
         {
@@ -418,24 +455,27 @@ public class ExportUI {
             {
                 if (!files[i].Name.EndsWith(".prefab")) continue;
                 string prefabName = files[i].Name.Split('.')[0];
-                sbPath.AppendLine( "    " + prefabName +",");
+                sbPath.AppendLine("    " + prefabName + ",");
             }
+
             sbPath.AppendLine("}");
         }
+
         string scriptFilePath = scriptDir + pathName + ".cs";
         File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
         Debug.Log("成功生成脚本");
-       
     }
+
     /// <summary>
     /// 重新生成UI路径和枚举信息
     /// </summary>
-    public static void RefreshUiInfo() 
+    public static void RefreshUiInfo()
     {
         UiPathToCs();
         ItemPathToCs();
     }
-    private static void UiPathToCs() 
+
+    private static void UiPathToCs()
     {
         StringBuilder sbPath = new StringBuilder();
         sbPath.AppendLine("//每次都会重新生成的脚本，不要删，覆盖就行了");
@@ -462,6 +502,7 @@ public class ExportUI {
             string prefabName = files[i].Name.Split('.')[0];
             sbPath.AppendLine("    public static string " + prefabName + " = " + '"' + resPath + "/" + prefabName + '"' + ";");
         }
+
         sbPath.AppendLine("}");
         if (exportType == 0)
         {
@@ -474,13 +515,14 @@ public class ExportUI {
                 string prefabName = files[i].Name.Split('.')[0];
                 sbPath.AppendLine("    " + prefabName + ",");
             }
+
             sbPath.AppendLine("}");
         }
+
         string scriptFilePath = uiScriptDir + uiPathName + ".cs";
         File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
         AssetDatabase.Refresh();
         Debug.Log("成功生成UI信息脚本");
-
     }
 
     private static void ItemPathToCs()
@@ -510,7 +552,8 @@ public class ExportUI {
             string prefabName = files[i].Name.Split('.')[0];
             sbPath.AppendLine("    public static string " + prefabName + " = " + '"' + resPath + "/" + prefabName + '"' + ";");
         }
-        sbPath.AppendLine("}");      
+
+        sbPath.AppendLine("}");
         string scriptFilePath = itemScriptDir + itemPathName + ".cs";
         File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
         AssetDatabase.Refresh();
@@ -530,28 +573,30 @@ public class ExportUI {
         //直到找到父物体，返回path
 
         if (trans == root)
-        {          
+        {
             return null;
         }
+
         if (trans.parent == root) return path;
-        Transform parent = trans.parent;      
+        Transform parent = trans.parent;
         path = parent.name + "/" + path;
         return TransformPath(parent, root, path);
     }
+
     static Dictionary<string, Type> dict = new Dictionary<string, Type>()
     {
-        { "_GameObject",     typeof(GameObject) },
-        { "_Transform",      typeof(Transform) },
-        { "_Image",          typeof(Image) },
-        { "_Text",           typeof(Text) },
-        { "_Button",         typeof(Button) },
-        { "_ScrollRect",     typeof(ScrollRect) },
-        { "_GridLayoutGroup",typeof(GridLayoutGroup) },
-        { "_Slider",         typeof(Slider) },
-        { "_DropDown",       typeof(Dropdown) },
-        { "_RawImage",       typeof(RawImage) },
-        { "_InputField",     typeof(InputField) },
-        { "_Toggle",         typeof(Toggle) },
+        {"_GameObject", typeof(GameObject)},
+        {"_Transform", typeof(Transform)},
+        {"_Image", typeof(Image)},
+        {"_Text", typeof(Text)},
+        {"_Button", typeof(Button)},
+        {"_ScrollRect", typeof(ScrollRect)},
+        {"_GridLayoutGroup", typeof(GridLayoutGroup)},
+        {"_Slider", typeof(Slider)},
+        {"_DropDown", typeof(Dropdown)},
+        {"_RawImage", typeof(RawImage)},
+        {"_InputField", typeof(InputField)},
+        {"_Toggle", typeof(Toggle)},
         //还需要什么就在这里加
     };
     //=================================加后缀===================================
@@ -561,56 +606,67 @@ public class ExportUI {
     {
         SetName(typeof(GameObject));
     }
+
     [MenuItem("GameObject/自动生成UI/标记类型/Transform", priority = 1)]
     public static void TypeTransform()
     {
         SetName(typeof(Transform));
     }
+
     [MenuItem("GameObject/自动生成UI/标记类型/Image", priority = 2)]
     public static void TypeImage()
     {
         SetName(typeof(Image));
     }
+
     [MenuItem("GameObject/自动生成UI/标记类型/Text", priority = 3)]
     public static void TypeText()
     {
         SetName(typeof(Text));
     }
+
     [MenuItem("GameObject/自动生成UI/标记类型/Button", priority = 4)]
     public static void TypeButton()
     {
         SetName(typeof(Button));
     }
+
     [MenuItem("GameObject/自动生成UI/标记类型/ScrollRect", priority = 5)]
     public static void TypeScrollRect()
     {
         SetName(typeof(ScrollRect));
     }
+
     [MenuItem("GameObject/自动生成UI/标记类型/GridLayoutGroup", priority = 6)]
     public static void TypeGridLayoutGroup()
     {
         SetName(typeof(GridLayoutGroup));
     }
+
     [MenuItem("GameObject/自动生成UI/标记类型/Slider", priority = 7)]
     public static void TypeSlider()
     {
         SetName(typeof(Slider));
     }
+
     [MenuItem("GameObject/自动生成UI/标记类型/Dropdown", priority = 8)]
     public static void TypeDropdown()
     {
         SetName(typeof(Dropdown));
     }
+
     [MenuItem("GameObject/自动生成UI/标记类型/RawImage", priority = 9)]
     public static void TypeRawImage()
     {
         SetName(typeof(RawImage));
     }
+
     [MenuItem("GameObject/自动生成UI/标记类型/InputField", priority = 10)]
     public static void TypeInputField()
     {
         SetName(typeof(InputField));
     }
+
     [MenuItem("GameObject/自动生成UI/标记类型/Toggle", priority = 11)]
     public static void TypeToggle()
     {
@@ -619,7 +675,7 @@ public class ExportUI {
 
     static void SetName(Type type)
     {
-        for(int i=0;i<Selection.gameObjects.Length;i++)
+        for (int i = 0; i < Selection.gameObjects.Length; i++)
         {
             GameObject obj = Selection.gameObjects[i];
 
@@ -641,6 +697,7 @@ public class ExportUI {
                     }
                 }
             }
+
             if (down) continue;
 
             foreach (var key in dict.Keys)
