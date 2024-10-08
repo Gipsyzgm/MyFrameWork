@@ -40,9 +40,6 @@ public class MyGuiWindow : EditorWindow
         GUILayout.BeginVertical();
         //绘制标题
         GUILayout.Space(10);
-        GUI.skin.label.fontSize = 24;
-        GUI.skin.label.alignment = TextAnchor.MiddleCenter;
-        GUI.skin.label.normal.textColor = Color.green;
         GUILayout.Label("MyFrameWork使用说明");
         //添加名为按钮，用于调用AutoUi()函数
         GUILayout.Space(Space);
@@ -99,8 +96,6 @@ public class MyGuiWindow : EditorWindow
         EditorGUI.BeginDisabledGroup(true);  //如果nextPath == null 为真，在Inspector面板上显示，承灰色（即不可操作）  
         GUILayout.BeginHorizontal();
         GUI.skin.label.alignment = TextAnchor.UpperLeft;
-        GUI.skin.label.fontSize = 18;
-        GUI.skin.label.normal.textColor = Color.yellow;
         description = EditorGUILayout.TextArea(description, GUI.skin.label, GUILayout.MaxHeight(400));
         GUILayout.EndHorizontal();
         EditorGUI.EndDisabledGroup();
