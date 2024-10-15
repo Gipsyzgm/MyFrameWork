@@ -27,19 +27,19 @@ public class CreateConfigData : MonoBehaviour
     /// <summary>
     /// 写入资源的生成资源的路径,使用addressable用这个
     /// </summary>
-    static string assetDir = "Assets/GameRes/BundleRes/GameData/";
+    static string assetDir = FilePathMgr.ExcelAssetDir;
     /// 不需要热更的excel写入AllConfigInfo的文件夹地址
     /// </summary>
-    static string scriptDir = "Assets/MyTools/ExcelGameData/GameData/";
+    static string scriptDir = FilePathMgr.ExcelScriptDir;
 
     /// <summary>
     /// AllConfigInfo的文件存放地址
     /// </summary>
-    static string AllConfigInfoDir = "Assets/MyTools/ExcelGameData/AllConfigInfo/";
+    static string AllConfigInfoDir = FilePathMgr.ExcelAllConfigInfoDir;
     /// <summary>
     /// ReadExcelInfo的文件存放地址,必须editor下
     /// </summary>
-    static string ReadExcelInfoDir = "Assets/MyTools/ExcelGameData/Editor/";
+    static string ReadExcelInfoDir = FilePathMgr.ReadExcelInfoDir;
     /// <summary>
     /// 不需要热更读取读Excel的类名
     /// </summary>
@@ -63,7 +63,7 @@ public class CreateConfigData : MonoBehaviour
     /// <summary>
     /// DataMgr生成的路径
     /// </summary>
-    static string DataInitInfoDir = "Assets/MyTools/ExcelGameData/AllConfigInfo/";
+    static string DataInitInfoDir = FilePathMgr.ExcelAllConfigInfoDir;
 
 
     [MenuItem("我的工具/其他/配置Excel表格/读取配置表格", false, 2)]

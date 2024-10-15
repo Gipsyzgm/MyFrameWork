@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class Launcher : MonoBehaviour
 {
-
-
-    // 游戏的总入口
+    
+    [SerializeField]
+    public GameObject startUpCfgReference;
+    
+    //游戏的总入口
     //注意先后顺序
-    async void Awake()
+    void Awake()
     {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
         DataMgr.Instance.InitAllConfig();
         LanguageMgr.Init();
         MyAudioMgr.Instance.Init();

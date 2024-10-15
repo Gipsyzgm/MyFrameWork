@@ -22,20 +22,20 @@ public class ExportUI
     static string replace = "@EndMark@";
 
     //UI代码存储位置
-    static string uiScriptDir = Application.dataPath + "/MyTools/MyUI/View/";
+    static string uiScriptDir = FilePathMgr.UIScriptDir;
 
     //Item代码存储位置
-    static string itemScriptDir = Application.dataPath + "/MyTools/MyUI/Item/";
+    static string itemScriptDir = FilePathMgr.UIItemScriptDir;
 
     //UI预制体存储位置(Resource)
     //static string uiDir = "Assets/Resources/MyUI/View/";
     //Item预制体存储位置(Resource)
     //static string itemDir = "Assets/Resources/MyUI/Item/";
     //UI预制体存储位置(addressable)
-    static string uiDir = "Assets/GameRes/BundleRes/MyUI/View/";
+    static string uiDir = FilePathMgr.UiPrefabDir;
 
     //Item预制体存储位置(addressable)
-    static string itemDir = "Assets/GameRes/BundleRes/MyUI/Item/";
+    static string itemDir = FilePathMgr.ItemPrefabDir;
 
     //路径名
     static string uiPathName = "PathUI";

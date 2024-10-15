@@ -31,7 +31,7 @@ public class CreateExcel : MonoBehaviour {
     /// <summary>
     /// 需要写成Excel的文件夹地址
     /// </summary>
-    static string scriptDir = "Assets/MyTools/ExcelGameData/GameData/";
+    static string scriptDir = FilePathMgr.ExcelScriptDir;
     /// <summary>
     /// 文件格式 
     /// 1：.xls

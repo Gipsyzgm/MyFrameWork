@@ -6,15 +6,15 @@ using UnityEditor;
 using UnityEngine;
 
 /*
- * 把音效放在Assets/Resources/MySource,点击我的工具/导入声音 即可通过
+ * 把音效放在Assets/GameRes/BundleRes/MySource/,点击我的工具/导入声音 即可通过
  */
 
 public class ExportAudio : MonoBehaviour {
     //代码目录
-    static string scriptDir = Application.dataPath + "/MyTools/MyAudio/";
+    static string scriptDir = FilePathMgr.MusicScriptPath;
     //音效目录
     //static string clipPath = "Assets/Resources/MySource/";
-    static string clipPath = "Assets/GameRes/BundleRes/MySource/";
+    static string clipPath = FilePathMgr.MusicClipPath;
 
     [MenuItem("我的工具/其他/导入声音")]
     public static void Export()

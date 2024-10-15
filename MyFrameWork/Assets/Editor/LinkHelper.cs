@@ -76,7 +76,7 @@ using UnityEngine;
             if (IsLinkStreamingAssets)
             {
                 MyEditorTools.CreateDir(Application.streamingAssetsPath);
-                var exportPath = AppSetting.ExportResBaseDir + Utility.GetPlatformName();
+                var exportPath = FilePathMgr.ExportResBaseDir + Utility.GetPlatformName();
                 MyEditorTools.DeleteDir(linkPath); //删除复制过来的文件夹
                 SymbolLinkFolder(exportPath, linkPath);
             }
