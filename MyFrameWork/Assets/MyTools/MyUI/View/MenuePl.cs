@@ -95,6 +95,9 @@ public class MenuePl : PanelBase {
 
         Debug.LogError("点击Start");
         PanelMgr.Instance.OpenPanel<StartPl>();
+        
+       
+        MsgSend.SendLogin("token", "1.0.1");
         //PanelMgr.instance.HidePanel(PanelName.GamePl);
         //PanelMgr.instance.HidePanel(PanelName.OverPl);
         //PanelMgr.instance.HidePanel(PanelName.SettingPl);

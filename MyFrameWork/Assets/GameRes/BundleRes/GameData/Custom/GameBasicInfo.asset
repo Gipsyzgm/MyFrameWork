@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85c1102a1679d6848ba73167fef03711, type: 3}
-  m_Name: GameBasicInfoEditor
+  m_Name: GameBasicInfo
   m_EditorClassIdentifier: 
-  LoginServer: 
+  LoginServer: http://192.168.0.9:1020
   remoteResCheck: 0
-  remoteResPath: 
+  remoteResPath: http://192.168.1.23:15478/GameResCfg
   minConnectElapseTime: 3
   fcm: 0
-  AppVersion: 
+  AppVersion: 1.0.1
