@@ -92,4 +92,20 @@ public class AllNeedReadExcel
              CreateConfigData.configInfo.SkillInfo[i].SkillImg= (string) table[i]["SkillImg"];
          } 
      } 
+     public static void UpdateNotice()
+     { 
+         Debug.Log("读取表格:UpdateNotice"); 
+         List<Dictionary<string, object>> table = CreateConfigData.ReadExcelData("UpdateNotice", 0);
+         CreateConfigData.configInfo.UpdateNotice= new UpdateNotice[table.Count];
+         for (int i = 0; i < table.Count; i++)
+         { 
+             CreateConfigData.configInfo.UpdateNotice[i] = new UpdateNotice(); 
+             CreateConfigData.configInfo.UpdateNotice[i].Id= (int) table[i]["Id"];
+             CreateConfigData.configInfo.UpdateNotice[i].Name= (string) table[i]["Name"];
+             CreateConfigData.configInfo.UpdateNotice[i].Content= (string) table[i]["Content"];
+             CreateConfigData.configInfo.UpdateNotice[i].Date= (string) table[i]["Date"];
+             CreateConfigData.configInfo.UpdateNotice[i].Version= (string) table[i]["Version"];
+             CreateConfigData.configInfo.UpdateNotice[i].Sort= (int) table[i]["Sort"];
+         } 
+     } 
 }

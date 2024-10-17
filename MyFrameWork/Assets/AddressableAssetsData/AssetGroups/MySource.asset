@@ -15,28 +15,33 @@ MonoBehaviour:
   m_GroupName: MySource
   m_Data:
     m_SerializedData: []
-  m_GUID: 530fda72fbf022d42ac509d2d9bf9e00
+  m_GUID: f0967e6700ecd804a8a96306107e3c9c
   m_SerializeEntries:
-  - m_GUID: 8bf3c2ca37a2edb4da8c86e884b134f7
-    m_Address: MySource/BackMusic
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: f2fb8153f15abdc439c86aca7280f54f
-    m_Address: MySource/Click
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 5322654ca64cf7341bcb5d10d43589d6
     m_Address: MySource/Fail
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: dd7e9e9f6f3cb224f904dceb2620d234
-    m_Address: MySource/QuickBg
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8bf3c2ca37a2edb4da8c86e884b134f7
+    m_Address: MySource/BackMusic
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ce7b5003c37264445bfe3cb0126c2424
     m_Address: MySource/Win
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dd7e9e9f6f3cb224f904dceb2620d234
+    m_Address: MySource/QuickBg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f2fb8153f15abdc439c86aca7280f54f
+    m_Address: MySource/Click
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: afc6c9bc5e36ff34babf0992ee372095, type: 2}
   m_SchemaSet:

@@ -85,5 +85,19 @@ public class DataMgr :MonoSingleton<DataMgr>
                          SkillInfo.GetAllKey().Add(set.SkillInfo[i].Id);
                     }
              }
+             for (int i = 0; i < set.UpdateNotice.Length; i++)
+             {
+                  UpdateNotice ID;
+                  UpdateNotice.GetDictionary().TryGetValue(set.UpdateNotice[i].Id, out ID);
+                    if (ID!=null)
+                    {
+                         Debug.LogError(string.Format("{0}数据唯一ID{1}重复,数据覆盖,数据不支持重复ID,请核实修正避免Bug!","UpdateNotice", set.UpdateNotice[i].Id));
+                    }
+                    else
+                    {
+                         UpdateNotice.GetDictionary().Add(set.UpdateNotice[i].Id, set.UpdateNotice[i]);
+                         UpdateNotice.GetAllKey().Add(set.UpdateNotice[i].Id);
+                    }
+             }
          }
 }

@@ -15,40 +15,68 @@ MonoBehaviour:
   m_GroupName: MyUI
   m_Data:
     m_SerializedData: []
-  m_GUID: 1db63bd8e40b9f3438b6d292404427bf
+  m_GUID: 209a9f769d296b948896da1a7598a197
   m_SerializeEntries:
-  - m_GUID: 51be472a275c08e4c92dcdf899cfdc0a
-    m_Address: MyUI/Item/Item
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 2180a23c7cfb1f044b09430260384e86
-    m_Address: MyUI/View/CommonConfirmPl
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: fca0c75490495714385bc5fd1dac4dc1
-    m_Address: MyUI/View/GamePl
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 51e4c7e25893dd043b9f79966565f9fa
-    m_Address: MyUI/View/MenuePl
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 4e5d347c5941b714793dafee34ead146
-    m_Address: MyUI/View/OverPl
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 933f1f0276415514b92a23f2055b368d
-    m_Address: MyUI/View/SettingPl
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 0928525cc40dbb146b593996d2bb2ea7
     m_Address: MyUI/View/StartPl
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1ab1f80c1e7f5c04f8662de5b69d911c
+    m_Address: MyUI/Item/NoticeItem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2180a23c7cfb1f044b09430260384e86
+    m_Address: MyUI/View/CommonConfirmPl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4e5d347c5941b714793dafee34ead146
+    m_Address: MyUI/View/OverPl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 51be472a275c08e4c92dcdf899cfdc0a
+    m_Address: MyUI/Item/Item
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 51e4c7e25893dd043b9f79966565f9fa
+    m_Address: MyUI/View/MenuePl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5cb59e33ebe260e4ab8d628cfbbc00b3
+    m_Address: MyUI/View/PanelLogin
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 72208cd1f6a6c0847a74f785f2b89747
+    m_Address: MyUI/View/PanelLoading
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 916a74e5ac8833945b34051f58bfef92
+    m_Address: MyUI/View/PanelNotice
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 933f1f0276415514b92a23f2055b368d
+    m_Address: MyUI/View/SettingPl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d0f648a8f912f2a4eaef5999d4381c5a
     m_Address: MyUI/View/VersionCheckPl
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fca0c75490495714385bc5fd1dac4dc1
+    m_Address: MyUI/View/GamePl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: afc6c9bc5e36ff34babf0992ee372095, type: 2}
   m_SchemaSet:

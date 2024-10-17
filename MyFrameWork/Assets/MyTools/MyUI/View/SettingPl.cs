@@ -16,7 +16,7 @@ public class SettingPl : PanelBase {
     public override void Init(params object[] _args)
     {
          CurViewPath= "MyUI/View/SettingPl";
-         layer = PanelLayer.Panel;
+         layer = PanelLayer.Info;
     }
     public override void InitComponent()
     {
@@ -133,11 +133,7 @@ public class SettingPl : PanelBase {
     {
         base.OnShow();
     }
-
-    public override void Update()
-    {
-
-    }
+    
 
     public override void OnHide()
     {

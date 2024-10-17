@@ -17,7 +17,7 @@ public abstract class PacketMsgProcess
 
     [SerializeField] public PrintLevel printLevel = PrintLevel.PacketHead_And_EditorBody;
 
-    //ɸѡ����Ҫ��ӡ����Ϣ��
+    //设置屏蔽的msgID,不可为空,可以屏蔽高频不重要的信息。
     [SerializeField] private int[] printExceptMsgIds = new[] { 1006 };
 
     [NonSerialized] protected MemoryStream sndstream;

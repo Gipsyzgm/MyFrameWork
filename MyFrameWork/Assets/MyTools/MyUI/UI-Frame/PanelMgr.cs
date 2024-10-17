@@ -4,10 +4,11 @@
  *  描述信息：UI页面控制。
  *  注意事项：
  *  1：引入PanelLayer概念。处于下层的Layer的页面优先显示，优先级大于Open级别。
- *  例：在Tips层的UI页面打开Panel层的UI页面。在Tips层的UI处于显示状态的话一定遮挡Panel层的UI。
- *  如果不需要Layer控制，全部放在Start层也没问题。
+ *  例：在Tips层的UI处于显示状态的话一定遮挡Info层的UI。
+ *  如果不需要Layer控制，全部放在Normal层也没问题。
  *  2：默认第一个打开（通过OpenPanel打开）的页面为主页面。(无法通过CloseCurrentPanel关闭)。
  */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,10 +21,11 @@ using UnityEngine.UI;
 /// </summary>
 public enum PanelLayer
 {
-    Null  = 0,
-    Start = 2,
-    Panel = 4,
-    Tips  = 6   
+    Null = 0,
+    Normal = 2,
+    Info = 4,
+    Tips = 6,
+    Top = 8
 }
 
 public class PanelMgr : MonoSingleton<PanelMgr>
@@ -41,12 +43,14 @@ public class PanelMgr : MonoSingleton<PanelMgr>
     {
         get { return _canvas; }
     }
+
     public void Awake()
     {
         InitLayer();
         Paneldict = new Dictionary<string, PanelBase>();
         ExictPanel = new List<string>();
     }
+
     /// <summary>
     /// 初始化
     /// </summary>
@@ -65,13 +69,13 @@ public class PanelMgr : MonoSingleton<PanelMgr>
             layer_dict.Add(pl, transform);
         }
     }
+
     /// <summary>
     /// 首次打开必须根据类型打开页面
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    /// <param name="skinPath"></param>
     /// <param name="_args"></param>
-    public void OpenPanel<T>(string skinPath = "", params object[] _args) where T : PanelBase
+    public void OpenPanel<T>(params object[] _args) where T : PanelBase
     {
         string name = typeof(T).ToString();
         if (Paneldict.ContainsKey(name))
@@ -83,15 +87,17 @@ public class PanelMgr : MonoSingleton<PanelMgr>
                 AddToListLast(name);
                 return;
             }
+
             GetPanel(name).args = _args;
-            AddToList(name);
-            GetPanel(name).OnShow();           
+            AddToListLast(name);
+            GetPanel(name).OnShow();
             return;
         }
+
         PanelBase panel = canvas.gameObject.AddComponent<T>();
         panel.Init(_args);
         Paneldict.Add(name, panel);
-        skinPath = (skinPath != "" ? skinPath : panel.CurViewPath);
+        string skinPath = panel.CurViewPath;
         //GameObject skin = Resources.Load<GameObject>(skinPath);
         GameObject skin = Addressables.LoadAssetAsync<GameObject>(skinPath).WaitForCompletion();
         if (skin == null)
@@ -109,37 +115,13 @@ public class PanelMgr : MonoSingleton<PanelMgr>
         else
         {
             layer = panel.layer;
-        }       
+        }
+
         Transform parent = layer_dict[layer];
         skinTrans.SetParent(parent, false);
         AddToList(name);
-        panel.InitComponent();        
+        panel.InitComponent();
         panel.OnShow();
-    }
-
-    /// <summary>
-    /// 用于打开已经打开过的页面隐藏显示或者靠后页面置顶
-    /// </summary>
-    /// <param name="panelName"></param>
-    /// <param name="_args"></param>
-    public void OpenHidePanel(PanelName panelName, params object[] _args)
-    {
-        string name = panelName.ToString();
-        if (Paneldict.ContainsKey(name))
-        {
-            GetPanel(name).curView.transform.SetAsLastSibling();
-            if (GetPanel(name).curView.gameObject.activeInHierarchy)
-            {
-                return;
-            }
-            GetPanel(name).args = _args;
-            GetPanel(name).OnShow();
-            return;
-        }
-        else
-        {
-            Debug.LogError(panelName.ToString()+ ":页面打开失败，页面不存在。尝试使用OpenPanel<T>打开页面");
-        }
     }
 
     /// <summary>
@@ -147,19 +129,22 @@ public class PanelMgr : MonoSingleton<PanelMgr>
     /// </summary>
     public void CloseCurrentPanel()
     {
-        if (ExictPanel== null)
+        if (ExictPanel == null)
         {
             Debug.LogError("所有页面关闭或ExictPanelList异常");
             return;
         }
-        if (ExictPanel.Count==1)
+
+        if (ExictPanel.Count == 1)
         {
             Debug.LogError("除主页面和隐藏页面外已经全部关闭");
             return;
         }
+
         string name = ExictPanel[ExictPanel.Count - 1];
-        ClosePanel(name);    
+        ClosePanel(name);
     }
+
     /// <summary>
     /// 关闭页面
     /// </summary>
@@ -172,8 +157,9 @@ public class PanelMgr : MonoSingleton<PanelMgr>
             return;
         Paneldict.Remove(name);
         RomoveToList(name);
-        panel.OnClose();      
+        panel.OnClose();
     }
+
     /// <summary>
     /// 隐藏页面
     /// </summary>
@@ -184,9 +170,9 @@ public class PanelMgr : MonoSingleton<PanelMgr>
         if (panel != null)
         {
             if (!panel.curView.activeInHierarchy)
-                return;           
+                return;
             RomoveToList(panelName.ToString());
-            panel.OnHide();      
+            panel.OnHide();
         }
     }
 
@@ -200,6 +186,7 @@ public class PanelMgr : MonoSingleton<PanelMgr>
     {
         return GetPanel(_name.ToString());
     }
+
     /// <summary>
     /// 通过名字获得panel
     /// </summary>
@@ -212,8 +199,10 @@ public class PanelMgr : MonoSingleton<PanelMgr>
         {
             return panel;
         }
+
         return null;
     }
+
     public T GetPanel<T>(PanelName _name) where T : PanelBase
     {
         return GetPanel(_name) as T;
@@ -233,6 +222,7 @@ public class PanelMgr : MonoSingleton<PanelMgr>
         ExictPanel.Remove(item);
         ExictPanel.Add(item);
     }
+
     /// <summary>
     /// 每次打开页面或者隐藏页面显示时Add一次
     /// </summary>
@@ -241,15 +231,13 @@ public class PanelMgr : MonoSingleton<PanelMgr>
     {
         ExictPanel.Add(item);
     }
+
     /// <summary>
     /// 每次隐藏或者关闭Romove掉
     /// </summary>
     /// <param name="item"></param>
     private void RomoveToList(string item)
     {
-        ExictPanel.Remove(item);     
+        ExictPanel.Remove(item);
     }
-
 }
-
-

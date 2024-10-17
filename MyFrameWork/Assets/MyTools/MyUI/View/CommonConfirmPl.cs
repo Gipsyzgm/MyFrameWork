@@ -71,11 +71,6 @@ public class CommonConfirmPl : PanelBase {
         base.OnShow();
     }
 
-    public override void Update()
-    {
-
-    }
-
     public override void OnHide()
     {
         base.OnHide();

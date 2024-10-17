@@ -5,9 +5,11 @@ public class PathUI
     public static string GamePl = "MyUI/View/GamePl";
     public static string MenuePl = "MyUI/View/MenuePl";
     public static string OverPl = "MyUI/View/OverPl";
+    public static string PanelLoading = "MyUI/View/PanelLoading";
+    public static string PanelLogin = "MyUI/View/PanelLogin";
+    public static string PanelNotice = "MyUI/View/PanelNotice";
     public static string SettingPl = "MyUI/View/SettingPl";
     public static string StartPl = "MyUI/View/StartPl";
-    public static string Text = "MyUI/View/Text";
     public static string VersionCheckPl = "MyUI/View/VersionCheckPl";
 }
 public enum PanelName
@@ -16,8 +18,10 @@ public enum PanelName
     GamePl,
     MenuePl,
     OverPl,
+    PanelLoading,
+    PanelLogin,
+    PanelNotice,
     SettingPl,
     StartPl,
-    Text,
     VersionCheckPl,
 }

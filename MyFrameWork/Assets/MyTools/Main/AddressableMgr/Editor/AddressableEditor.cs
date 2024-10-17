@@ -58,7 +58,7 @@ public class AddressableEditor
                 string assetPath = "Assets" + file.FullName.Substring(Application.dataPath.Length);
                 var guid = AssetDatabase.AssetPathToGUID(assetPath);
                 var entry = settings.CreateOrMoveEntry(guid, Group);
-                string address = assetPath.Replace(@"Assets\GameRes\BundleRes\", "");
+                string address = assetPath.Replace(@"Assets\GameRes\", "");
                 int length;
                 address = (length = address.LastIndexOf('.')) == -1 ? address : address.Substring(0, length);
                 address = address.Replace(@"\", "/");

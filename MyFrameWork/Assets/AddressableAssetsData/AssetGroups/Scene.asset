@@ -15,16 +15,18 @@ MonoBehaviour:
   m_GroupName: Scene
   m_Data:
     m_SerializedData: []
-  m_GUID: 62733995173dda94f8cd8bbd3e6c9d2a
+  m_GUID: de9400cd7dce13440bd945d4bac316cc
   m_SerializeEntries:
-  - m_GUID: b6e501f788d18b64e81ae0b784a1749e
-    m_Address: Scene/Test_Env
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: b40ffbd0e1663ee4792da6b748b0f53f
     m_Address: Scene/Test_EnvSettings
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b6e501f788d18b64e81ae0b784a1749e
+    m_Address: Scene/Test_Env
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: afc6c9bc5e36ff34babf0992ee372095, type: 2}
   m_SchemaSet:

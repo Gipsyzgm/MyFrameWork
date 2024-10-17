@@ -56,7 +56,7 @@ public class ExportUI
     static string overrideScript = "";
     static string pathName = "";
 
-    [MenuItem("GameObject/自动生成UI/生成UI脚本/(默认）Start", priority = 1)]
+    [MenuItem("GameObject/自动生成UI/生成UI脚本/(默认Normal)", priority = 1)]
     public static void Export_UIToStart()
     {
         exportType = 0;
@@ -64,11 +64,11 @@ public class ExportUI
         prefabDir = uiDir;
         pathName = uiPathName;
         overrideScript = overrideUI;
-        UiLayerType = PanelLayer.Start;
+        UiLayerType = PanelLayer.Normal;
         Export();
     }
 
-    [MenuItem("GameObject/自动生成UI/生成UI脚本/Panel", priority = 2)]
+    [MenuItem("GameObject/自动生成UI/生成UI脚本/(Info)", priority = 2)]
     public static void Export_UIToPanel()
     {
         exportType = 0;
@@ -76,11 +76,11 @@ public class ExportUI
         prefabDir = uiDir;
         pathName = uiPathName;
         overrideScript = overrideUI;
-        UiLayerType = PanelLayer.Panel;
+        UiLayerType = PanelLayer.Info;
         Export();
     }
 
-    [MenuItem("GameObject/自动生成UI/生成UI脚本/Tips", priority = 3)]
+    [MenuItem("GameObject/自动生成UI/生成UI脚本/(Tips)", priority = 3)]
     public static void Export_UIToTips()
     {
         exportType = 0;
@@ -91,6 +91,19 @@ public class ExportUI
         UiLayerType = PanelLayer.Tips;
         Export();
     }
+
+    [MenuItem("GameObject/自动生成UI/生成UI脚本/(Top)", priority = 3)]
+    public static void Export_UIToTop()
+    {
+        exportType = 0;
+        scriptDir = uiScriptDir;
+        prefabDir = uiDir;
+        pathName = uiPathName;
+        overrideScript = overrideUI;
+        UiLayerType = PanelLayer.Top;
+        Export();
+    }
+
 
     [MenuItem("GameObject/自动生成UI/生成Item脚本", priority = 2)]
     public static void Export_Item()
@@ -107,7 +120,8 @@ public class ExportUI
     {
         //选择是不是单个物体
         if (Selection.gameObjects.Length != 1) return;
-        Transform transSelect = Selection.gameObjects[0].transform;
+        GameObject selectedGameObject = Selection.activeGameObject;
+        Transform transSelect = Selection.activeGameObject.transform;
         Transform[] objs = transSelect.GetComponentsInChildren<Transform>(true);
         Dictionary<string, Type> path_type_dic = new Dictionary<string, Type>();
         Dictionary<string, string> path_name_dic = new Dictionary<string, string>();
@@ -149,19 +163,12 @@ public class ExportUI
             Debug.LogError("请检查路径配置是否正确：" + prefabDir);
             return;
         }
-
-        //创建Prefab
-        UnityEngine.Object prefabObj = null;
         string dirObj = prefabDir + transSelect.gameObject.name + ".prefab";
-
-        if (!File.Exists(dirObj))
-            PrefabUtility.CreateEmptyPrefab(dirObj);
-        prefabObj = AssetDatabase.LoadAssetAtPath(dirObj, typeof(UnityEngine.Object));
-        //使用PrefabUtility.ReplacePrefab将场景中选中的Prefab实例制作成一个Prefab并覆盖到之前的空prefab上
-        PrefabUtility.ReplacePrefab(transSelect.gameObject, prefabObj);
+        //保存或更新 Prefab
+        PrefabUtility.SaveAsPrefabAsset(selectedGameObject, dirObj);
+        Debug.Log($"保存预制体{dirObj}");
         //ToCS
         ToCS(transSelect.name, path_type_dic, path_name_dic);
-
         AssetDatabase.Refresh();
     }
 
@@ -175,6 +182,8 @@ public class ExportUI
         sb.AppendLine("using System.Collections;");
         sb.AppendLine("using System.Collections.Generic;");
         sb.AppendLine("using UnityEngine.Events;");
+        sb.AppendLine("using DG.Tweening;");
+        sb.AppendLine("using UnityEngine.AddressableAssets;");
         sb.AppendLine();
         sb.AppendLine("public class " + className + " : " + overrideScript + " {");
         sb.AppendLine();
@@ -316,15 +325,6 @@ public class ExportUI
                     sb.AppendLine("        ");
                 }
 
-                if (!csString.Contains("Update()"))
-                {
-                    sb.AppendLine("    public override void Update()");
-                    sb.AppendLine("    {");
-                    sb.AppendLine("        ");
-                    sb.AppendLine("    }");
-                    sb.AppendLine("        ");
-                }
-
                 if (!csString.Contains("OnHide()"))
                 {
                     sb.AppendLine("    public override void OnHide()");
@@ -387,12 +387,6 @@ public class ExportUI
                 sb.AppendLine("    }");
                 sb.AppendLine("        ");
 
-                sb.AppendLine("    public override void Update()");
-                sb.AppendLine("    {");
-                sb.AppendLine("        ");
-                sb.AppendLine("    }");
-                sb.AppendLine("        ");
-
                 sb.AppendLine("    public override void OnHide()");
                 sb.AppendLine("    {");
                 sb.AppendLine("        base.OnHide();    ");
@@ -442,7 +436,8 @@ public class ExportUI
         {
             if (!files[i].Name.EndsWith(".prefab")) continue;
             string prefabName = files[i].Name.Split('.')[0];
-            sbPath.AppendLine("    public static string " + prefabName + " = " + '"' + resPath + "/" + prefabName + '"' + ";");
+            sbPath.AppendLine("    public static string " + prefabName + " = " + '"' + resPath + "/" + prefabName +
+                              '"' + ";");
         }
 
         sbPath.AppendLine("}");
@@ -500,7 +495,8 @@ public class ExportUI
         {
             if (!files[i].Name.EndsWith(".prefab")) continue;
             string prefabName = files[i].Name.Split('.')[0];
-            sbPath.AppendLine("    public static string " + prefabName + " = " + '"' + resPath + "/" + prefabName + '"' + ";");
+            sbPath.AppendLine("    public static string " + prefabName + " = " + '"' + resPath + "/" + prefabName +
+                              '"' + ";");
         }
 
         sbPath.AppendLine("}");
@@ -521,8 +517,8 @@ public class ExportUI
 
         string scriptFilePath = uiScriptDir + uiPathName + ".cs";
         File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
-        AssetDatabase.Refresh();
         Debug.Log("成功生成UI信息脚本");
+        AssetDatabase.Refresh();
     }
 
     private static void ItemPathToCs()
@@ -550,14 +546,15 @@ public class ExportUI
         {
             if (!files[i].Name.EndsWith(".prefab")) continue;
             string prefabName = files[i].Name.Split('.')[0];
-            sbPath.AppendLine("    public static string " + prefabName + " = " + '"' + resPath + "/" + prefabName + '"' + ";");
+            sbPath.AppendLine("    public static string " + prefabName + " = " + '"' + resPath + "/" + prefabName +
+                              '"' + ";");
         }
 
         sbPath.AppendLine("}");
         string scriptFilePath = itemScriptDir + itemPathName + ".cs";
         File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
-        AssetDatabase.Refresh();
         Debug.Log("成功生成Item信息脚本");
+        AssetDatabase.Refresh();
     }
 
 
@@ -585,89 +582,89 @@ public class ExportUI
 
     static Dictionary<string, Type> dict = new Dictionary<string, Type>()
     {
-        {"_GameObject", typeof(GameObject)},
-        {"_Transform", typeof(Transform)},
-        {"_Image", typeof(Image)},
-        {"_Text", typeof(Text)},
-        {"_Button", typeof(Button)},
-        {"_ScrollRect", typeof(ScrollRect)},
-        {"_GridLayoutGroup", typeof(GridLayoutGroup)},
-        {"_Slider", typeof(Slider)},
-        {"_DropDown", typeof(Dropdown)},
-        {"_RawImage", typeof(RawImage)},
-        {"_InputField", typeof(InputField)},
-        {"_Toggle", typeof(Toggle)},
+        { "_GameObject", typeof(GameObject) },
+        { "_Transform", typeof(Transform) },
+        { "_Image", typeof(Image) },
+        { "_Text", typeof(Text) },
+        { "_Button", typeof(Button) },
+        { "_ScrollRect", typeof(ScrollRect) },
+        { "_GridLayoutGroup", typeof(GridLayoutGroup) },
+        { "_Slider", typeof(Slider) },
+        { "_DropDown", typeof(Dropdown) },
+        { "_RawImage", typeof(RawImage) },
+        { "_InputField", typeof(InputField) },
+        { "_Toggle", typeof(Toggle) },
         //还需要什么就在这里加
     };
     //=================================加后缀===================================
 
-    [MenuItem("GameObject/自动生成UI/标记类型/GameObject", priority = 0)]
+    [MenuItem("GameObject/自动生成UI/标记类型/(GameObject)", priority = 0)]
     public static void TypeGameObject()
     {
         SetName(typeof(GameObject));
     }
 
-    [MenuItem("GameObject/自动生成UI/标记类型/Transform", priority = 1)]
+    [MenuItem("GameObject/自动生成UI/标记类型/(Transform)", priority = 1)]
     public static void TypeTransform()
     {
         SetName(typeof(Transform));
     }
 
-    [MenuItem("GameObject/自动生成UI/标记类型/Image", priority = 2)]
+    [MenuItem("GameObject/自动生成UI/标记类型/(Image)", priority = 2)]
     public static void TypeImage()
     {
         SetName(typeof(Image));
     }
 
-    [MenuItem("GameObject/自动生成UI/标记类型/Text", priority = 3)]
+    [MenuItem("GameObject/自动生成UI/标记类型/(Text)", priority = 3)]
     public static void TypeText()
     {
         SetName(typeof(Text));
     }
 
-    [MenuItem("GameObject/自动生成UI/标记类型/Button", priority = 4)]
+    [MenuItem("GameObject/自动生成UI/标记类型/(Button)", priority = 4)]
     public static void TypeButton()
     {
         SetName(typeof(Button));
     }
 
-    [MenuItem("GameObject/自动生成UI/标记类型/ScrollRect", priority = 5)]
+    [MenuItem("GameObject/自动生成UI/标记类型/(ScrollRect)", priority = 5)]
     public static void TypeScrollRect()
     {
         SetName(typeof(ScrollRect));
     }
 
-    [MenuItem("GameObject/自动生成UI/标记类型/GridLayoutGroup", priority = 6)]
+    [MenuItem("GameObject/自动生成UI/标记类型/(GridLayoutGroup)", priority = 6)]
     public static void TypeGridLayoutGroup()
     {
         SetName(typeof(GridLayoutGroup));
     }
 
-    [MenuItem("GameObject/自动生成UI/标记类型/Slider", priority = 7)]
+    [MenuItem("GameObject/自动生成UI/标记类型/(Slider)", priority = 7)]
     public static void TypeSlider()
     {
         SetName(typeof(Slider));
     }
 
-    [MenuItem("GameObject/自动生成UI/标记类型/Dropdown", priority = 8)]
+    [MenuItem("GameObject/自动生成UI/标记类型/(Dropdown)", priority = 8)]
     public static void TypeDropdown()
     {
         SetName(typeof(Dropdown));
     }
 
-    [MenuItem("GameObject/自动生成UI/标记类型/RawImage", priority = 9)]
+    [MenuItem("GameObject/自动生成UI/标记类型/(RawImage)", priority = 9)]
     public static void TypeRawImage()
     {
         SetName(typeof(RawImage));
     }
 
-    [MenuItem("GameObject/自动生成UI/标记类型/InputField", priority = 10)]
+    [MenuItem("GameObject/自动生成UI/标记类型/(InputField)", priority = 10)]
     public static void TypeInputField()
     {
         SetName(typeof(InputField));
     }
 
-    [MenuItem("GameObject/自动生成UI/标记类型/Toggle", priority = 11)]
+    [MenuItem("GameObject/自动生成UI/标记类型/(Toggle)", priority = 11)]
     public static void TypeToggle()
     {
         SetName(typeof(Toggle));

@@ -15,16 +15,18 @@ MonoBehaviour:
   m_GroupName: Textures
   m_Data:
     m_SerializedData: []
-  m_GUID: e2470c3b9109a1f458f129c4dd477df6
+  m_GUID: 8cae96311242a4e469c1e0b2b6f48624
   m_SerializeEntries:
-  - m_GUID: e459c77a3e93726418672a5e9c7ae24f
-    m_Address: Textures/SceneModel/Trees_Trunk
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: c30b448b313a6f44c85c14f6f4044079
     m_Address: Textures/SceneModel/Tree_Leafs
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e459c77a3e93726418672a5e9c7ae24f
+    m_Address: Textures/SceneModel/Trees_Trunk
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: afc6c9bc5e36ff34babf0992ee372095, type: 2}
   m_SchemaSet:

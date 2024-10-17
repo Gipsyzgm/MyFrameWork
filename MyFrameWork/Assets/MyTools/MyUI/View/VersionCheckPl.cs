@@ -13,7 +13,7 @@ public class VersionCheckPl : PanelBase {
     {
          args = _args;
          CurViewPath= "MyUI/View/VersionCheckPl";
-         layer = PanelLayer.Panel;
+         layer = PanelLayer.Info;
     }
     public override void InitComponent()
     {
@@ -35,11 +35,7 @@ public class VersionCheckPl : PanelBase {
     {
         base.OnShow();
     }
-
-    public override void Update()
-    {
-
-    }
+    
 
     public override void OnHide()
     {

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -11,13 +12,14 @@ public class Launcher : MonoBehaviour
     //注意先后顺序
     void Awake()
     {
+        
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         DataMgr.Instance.InitAllConfig();
         LanguageMgr.Init();
         MyAudioMgr.Instance.Init();
         NetMgr.Instance.Init();
         PanelMgr.Instance.OpenPanel<MenuePl>();
-        
+        PanelMgr.Instance.OpenPanel<PanelLogin>();
         
         string server = GameBasicInfo.LoginServer;
         string str = server.Substring(7);

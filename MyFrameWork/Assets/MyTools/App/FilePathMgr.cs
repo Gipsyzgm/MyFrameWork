@@ -65,7 +65,7 @@ public class FilePathMgr
     /// <summary>
     /// 需要打包的资源目录
     /// </summary>
-    public const string BundleResDir = "Assets/GameRes/BundleRes/";
+    public const string BundleResDir = "Assets/GameRes/";
 
 
     #region 游戏内相关路径
@@ -88,7 +88,7 @@ public class FilePathMgr
     /// <summary>
     /// EXCEL表格生成资源的路径 "Assets/GameRes/BundleRes/GameData/"
     /// </summary>
-    public static string ExcelAssetDir = "Assets/GameRes/BundleRes/GameData/";
+    public static string ExcelAssetDir = "Assets/GameRes/GameData/";
     
     /// <summary>
     /// EXCEL数据脚本 "Assets/MyTools/ExcelGameData/GameData/"
@@ -108,7 +108,7 @@ public class FilePathMgr
     /// <summary>
     /// 音乐存放路径 "Assets/GameRes/BundleRes/MySource/"
     /// </summary>
-    public static string MusicClipPath = "Assets/GameRes/BundleRes/MySource/";
+    public static string MusicClipPath = "Assets/GameRes/MySource/";
     
     /// <summary>
     /// 音乐代码存放路径 "/MyTools/MyAudio/"
@@ -122,13 +122,13 @@ public class FilePathMgr
     public static string UIItemScriptDir = Application.dataPath + "/MyTools/MyUI/Item/";
     
     //UI预制体存储位置 "Assets/GameRes/BundleRes/MyUI/View/"
-    public static string UiPrefabDir = "Assets/GameRes/BundleRes/MyUI/View/";
+    public static string UiPrefabDir = "Assets/GameRes/MyUI/View/";
 
     //Item预制体存储位置 "Assets/GameRes/BundleRes/MyUI/Item/"
-    public static string ItemPrefabDir = "Assets/GameRes/BundleRes/MyUI/Item/";
+    public static string ItemPrefabDir = "Assets/GameRes/MyUI/Item/";
     
     //自定义Asset位置 "Assets/GameRes/BundleRes/GameData/Custom/"
-    public static string CustomAssetDir = "Assets/GameRes/BundleRes/GameData/Custom/";
+    public static string CustomAssetDir = "Assets/GameRes/GameData/Custom/";
     
 
     #endregion

@@ -32,11 +32,7 @@ public class PanelBase : MonoBehaviour {
         curView.SetActive(true);
 
     }
-
-    public virtual void Update(){
-
-
-	}
+    
     /// <summary>
     /// 可重写，页面隐藏的逻辑。动画等
     /// </summary>

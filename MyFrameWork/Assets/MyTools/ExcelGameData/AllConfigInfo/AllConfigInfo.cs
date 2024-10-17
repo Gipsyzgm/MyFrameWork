@@ -7,4 +7,5 @@ public class AllConfigInfo: ScriptableObject
     public GameLang[] GameLang;
     public LevelInfo[] LevelInfo;
     public SkillInfo[] SkillInfo;
+    public UpdateNotice[] UpdateNotice;
 }

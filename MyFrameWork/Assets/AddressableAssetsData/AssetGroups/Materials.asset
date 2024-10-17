@@ -15,20 +15,23 @@ MonoBehaviour:
   m_GroupName: Materials
   m_Data:
     m_SerializedData: []
-  m_GUID: 6e448417c850c584d8d8843fe1f2e76f
+  m_GUID: 2167b5f26105c39498b89bb540ffd76d
   m_SerializeEntries:
-  - m_GUID: 7b04f03cad557dd43863885698ecec3f
-    m_Address: Materials/TreeLeafs_red01
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 58023fd94923ba042aa9c30b0f782118
     m_Address: Materials/TreeLeafs_red02
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7b04f03cad557dd43863885698ecec3f
+    m_Address: Materials/TreeLeafs_red01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d8731b933efcad44e8252a414f604676
     m_Address: Materials/Tree_trunk
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: afc6c9bc5e36ff34babf0992ee372095, type: 2}
   m_SchemaSet:

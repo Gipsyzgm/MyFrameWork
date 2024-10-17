@@ -9,7 +9,7 @@ public class OverPl : PanelBase {
     public override void Init(params object[] _args)
     {
          CurViewPath= "MyUI/View/OverPl";
-         layer = PanelLayer.Panel;
+         layer = PanelLayer.Info;
     }
     public override void InitComponent()
     {
@@ -35,11 +35,7 @@ public class OverPl : PanelBase {
     {
         base.OnShow();
     }
-
-    public override void Update()
-    {
-
-    }
+    
 
     public override void OnHide()
     {

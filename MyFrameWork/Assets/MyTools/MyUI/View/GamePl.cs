@@ -10,7 +10,7 @@ public class GamePl : PanelBase {
     public override void Init(params object[] _args)
     {
          CurViewPath= "MyUI/View/GamePl";
-         layer = PanelLayer.Panel;
+         layer = PanelLayer.Info;
     }
     public override void InitComponent()
     {
@@ -47,12 +47,7 @@ public class GamePl : PanelBase {
     {
         base.OnShow();
     }
-
-    public override void Update()
-    {
-
-    }
-
+    
     public override void OnHide()
     {
         base.OnHide();

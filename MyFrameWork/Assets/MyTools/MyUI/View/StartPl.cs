@@ -10,7 +10,7 @@ public class StartPl : PanelBase {
     public override void Init(params object[] _args)
     {
          CurViewPath= "MyUI/View/StartPl";
-         layer = PanelLayer.Start;
+         layer = PanelLayer.Normal;
     }
     public override void InitComponent()
     {
@@ -37,12 +37,7 @@ public class StartPl : PanelBase {
     {
         
     }
-
-
-    public override void Update()
-    {
-
-    }
+    
 
     public override void OnHide()
     {

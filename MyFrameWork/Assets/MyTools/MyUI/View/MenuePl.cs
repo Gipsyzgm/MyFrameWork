@@ -14,8 +14,9 @@ public class MenuePl : PanelBase {
     public Button TestParameter;
     public override void Init(params object[] _args)
     {
-         CurViewPath= "MyUI/View/MenuePl";
-         layer = PanelLayer.Tips;
+         args = _args;
+         CurViewPath="MyUI/View/MenuePl";
+         layer = PanelLayer.Normal;
     }
     public override void InitComponent()
     {
@@ -71,11 +72,6 @@ public class MenuePl : PanelBase {
     {
         Debug.LogError("打开游戏首页");
         base.OnShow();
-    }
-
-    public override void Update()
-    {
-
     }
 
     public override void OnHide()
