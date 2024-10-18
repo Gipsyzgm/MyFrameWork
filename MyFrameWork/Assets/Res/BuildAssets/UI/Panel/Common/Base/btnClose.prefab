@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8118739751189564715}
   - component: {fileID: 6661787219432849914}
   - component: {fileID: 8703950349948943713}
-  - component: {fileID: 2486472787192367771}
   m_Layer: 5
   m_Name: btnClose
   m_TagString: Untagged
@@ -32,7 +31,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -77,20 +75,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2486472787192367771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7702283627782954865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcc50cbb1742e054a906c1a3c0808f70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  isEnable: 1
-  scale: 0.9
-  duration: 0.2
-  originScale: {x: 0, y: 0, z: 0}
