@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class BaseInfo<T> where T : BaseInfo<T>
 {
     protected static Dictionary<int, T> dictionary = new Dictionary<int, T>();
-    protected static List<int> KeyList = new List<int>();
+    protected static List<T> KeyList = new List<T>();
 
     /// <summary>
     /// 通过EquipId获取Csv1Config的实例
@@ -33,7 +33,7 @@ public abstract class BaseInfo<T> where T : BaseInfo<T>
         return dictionary;
     }
 
-    public static List<int> GetAllKey()
+    public static List<T> GetList()
     {
         return KeyList;
     }

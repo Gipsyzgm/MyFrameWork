@@ -26,7 +26,7 @@ public class DataMgr :MonoSingleton<DataMgr>
                     else
                     {
                          ArmsInfo.GetDictionary().Add(set.ArmsInfo[i].Id, set.ArmsInfo[i]);
-                         ArmsInfo.GetAllKey().Add(set.ArmsInfo[i].Id);
+                         ArmsInfo.GetList().Add(set.ArmsInfo[i]);
                     }
              }
              for (int i = 0; i < set.EquipInfo.Length; i++)
@@ -40,7 +40,7 @@ public class DataMgr :MonoSingleton<DataMgr>
                     else
                     {
                          EquipInfo.GetDictionary().Add(set.EquipInfo[i].Id, set.EquipInfo[i]);
-                         EquipInfo.GetAllKey().Add(set.EquipInfo[i].Id);
+                         EquipInfo.GetList().Add(set.EquipInfo[i]);
                     }
              }
              for (int i = 0; i < set.GameLang.Length; i++)
@@ -54,7 +54,7 @@ public class DataMgr :MonoSingleton<DataMgr>
                     else
                     {
                          GameLang.GetDictionary().Add(set.GameLang[i].Id, set.GameLang[i]);
-                         GameLang.GetAllKey().Add(set.GameLang[i].Id);
+                         GameLang.GetList().Add(set.GameLang[i]);
                     }
              }
              for (int i = 0; i < set.LevelInfo.Length; i++)
@@ -68,7 +68,7 @@ public class DataMgr :MonoSingleton<DataMgr>
                     else
                     {
                          LevelInfo.GetDictionary().Add(set.LevelInfo[i].Id, set.LevelInfo[i]);
-                         LevelInfo.GetAllKey().Add(set.LevelInfo[i].Id);
+                         LevelInfo.GetList().Add(set.LevelInfo[i]);
                     }
              }
              for (int i = 0; i < set.SkillInfo.Length; i++)
@@ -82,7 +82,7 @@ public class DataMgr :MonoSingleton<DataMgr>
                     else
                     {
                          SkillInfo.GetDictionary().Add(set.SkillInfo[i].Id, set.SkillInfo[i]);
-                         SkillInfo.GetAllKey().Add(set.SkillInfo[i].Id);
+                         SkillInfo.GetList().Add(set.SkillInfo[i]);
                     }
              }
              for (int i = 0; i < set.UpdateNotice.Length; i++)
@@ -96,7 +96,7 @@ public class DataMgr :MonoSingleton<DataMgr>
                     else
                     {
                          UpdateNotice.GetDictionary().Add(set.UpdateNotice[i].Id, set.UpdateNotice[i]);
-                         UpdateNotice.GetAllKey().Add(set.UpdateNotice[i].Id);
+                         UpdateNotice.GetList().Add(set.UpdateNotice[i]);
                     }
              }
          }

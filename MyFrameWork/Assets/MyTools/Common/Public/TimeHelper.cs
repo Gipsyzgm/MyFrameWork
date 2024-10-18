@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 /// <summary>
 /// 用来封装一些和时间相关的方法
@@ -139,5 +140,22 @@ public class TimeHelper : MonoBehaviour {
             return false;
         }
     }
-
+    
+    /// <summary>
+    /// 把1999.1.1 转化成1月1日
+    /// </summary>
+    /// <returns></returns>
+    public static string TimeFormatToString(string dota)
+    {
+        string inputFormat = "yyyy.M.d";
+        // 定义目标日期的格式
+        string outputFormat = "M月d日";
+        // 将字符串转换为DateTime对象
+        DateTime date = DateTime.ParseExact(dota, inputFormat, CultureInfo.InvariantCulture);
+        // 格式化日期为所需的中文格式
+        string formattedDate = date.ToString(outputFormat, new CultureInfo("zh-CN"));
+        
+        return formattedDate;
+    }
+    
 }

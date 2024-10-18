@@ -233,7 +233,7 @@ public class CreateConfigData : MonoBehaviour
             sbPath.AppendLine("                    else");
             sbPath.AppendLine("                    {");
             sbPath.AppendLine("                         " + fields[i].FieldType.ToString().Replace("[]", "") + ".GetDictionary().Add(set." + fields[i].Name + "[i].Id, set." + fields[i].Name + "[i]);");
-            sbPath.AppendLine("                         " + fields[i].FieldType.ToString().Replace("[]", "") + ".GetAllKey().Add(set." + fields[i].Name + "[i].Id);");
+            sbPath.AppendLine("                         " + fields[i].FieldType.ToString().Replace("[]", "") + ".GetList().Add(set." + fields[i].Name + "[i]);");
             sbPath.AppendLine("                    }");      
             sbPath.AppendLine("             }");
         }
