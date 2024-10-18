@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: Textures
   m_Data:
     m_SerializedData: []
-  m_GUID: 8cae96311242a4e469c1e0b2b6f48624
+  m_GUID: db56b41c0a059f04193e2b0185cf6355
   m_SerializeEntries:
   - m_GUID: c30b448b313a6f44c85c14f6f4044079
     m_Address: Textures/SceneModel/Tree_Leafs

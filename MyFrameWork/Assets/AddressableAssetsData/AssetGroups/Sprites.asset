@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: Sprites
   m_Data:
     m_SerializedData: []
-  m_GUID: 3a83af57320b42a41a2042d6c13881ec
+  m_GUID: 171c76667d1d2864f80bc2edd22ae116
   m_SerializeEntries:
   - m_GUID: 02bb0710c3ef54845be83e01ebed39f7
     m_Address: Sprites/PanelLogin/btn_shezhi

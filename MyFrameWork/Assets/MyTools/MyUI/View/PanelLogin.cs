@@ -57,7 +57,7 @@ public class PanelLogin : PanelBase {
         
     public void btnNoticeOnClick()
     {
-        
+        PanelMgr.Instance.OpenPanel<PanelNotice>();
     }
         
     public void btncloseOnClick()
