@@ -7,6 +7,7 @@ public class PathUI
     public static string OverPl = "MyUI/View/OverPl";
     public static string PanelLoading = "MyUI/View/PanelLoading";
     public static string PanelLogin = "MyUI/View/PanelLogin";
+    public static string PanelMode = "MyUI/View/PanelMode";
     public static string PanelNotice = "MyUI/View/PanelNotice";
     public static string PanelSetting = "MyUI/View/PanelSetting";
     public static string SettingPl = "MyUI/View/SettingPl";
@@ -21,6 +22,7 @@ public enum PanelName
     OverPl,
     PanelLoading,
     PanelLogin,
+    PanelMode,
     PanelNotice,
     PanelSetting,
     SettingPl,

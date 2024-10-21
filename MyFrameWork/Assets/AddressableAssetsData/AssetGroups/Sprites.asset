@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: Sprites
   m_Data:
     m_SerializedData: []
-  m_GUID: 2c11ebb682658b445a512a952e34c517
+  m_GUID: ab943d0c5834ae04d83202bf2faf904e
   m_SerializeEntries:
   - m_GUID: 02baaf8b78eac3546a4aab849ece198a
     m_Address: Sprites/Common/frane_qieye
@@ -49,6 +49,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 13d84694eb6e3b844adb2d57b24e7200
     m_Address: Sprites/Common/progress_back 1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 14f7b6ef5931985479cad01befb914a0
+    m_Address: Sprites/Common/PanelModeAtlas
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

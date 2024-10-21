@@ -43,6 +43,8 @@ public class PanelLogin : PanelBase
     public void btnTimeSettingOnClick()
     {
         MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
+        PanelMgr.Instance.OpenPanel<PanelMode>();
+        
     }
 
     public void btnLoginOnClick()

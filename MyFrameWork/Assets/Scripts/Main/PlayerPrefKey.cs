@@ -32,4 +32,12 @@ public class PlayerPrefKey
     /// 分辨率高
     /// </summary>
     public static string ScreenHeight = "ScreenHeight";
+    
+    /// <summary>
+    /// 游戏时长
+    /// </summary>
+    public static string TimeIndex = "TimeIndex";
+    
+    
+    
 }

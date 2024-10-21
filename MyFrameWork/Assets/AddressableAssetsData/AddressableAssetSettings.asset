@@ -44,17 +44,17 @@ MonoBehaviour:
   m_BuildAddressablesWithPlayerBuild: 0
   m_overridePlayerVersion: 
   m_GroupAssets:
-  - {fileID: 11400000, guid: 0f7bab21eeac7094ebf41326fd14f97d, type: 2}
-  - {fileID: 11400000, guid: a11def5d7a1c4db4d8018ba318c2a1e6, type: 2}
   - {fileID: 11400000, guid: 00d2d566f8af4804da1935427e083fdc, type: 2}
+  - {fileID: 11400000, guid: a11def5d7a1c4db4d8018ba318c2a1e6, type: 2}
   - {fileID: 11400000, guid: 6056b41c1653766419759cc5a7674b01, type: 2}
-  - {fileID: 11400000, guid: 798677e2518e917478655abc22b2fc8f, type: 2}
   - {fileID: 11400000, guid: f5433fa1f342fbb489be205cb5c0d52c, type: 2}
-  - {fileID: 11400000, guid: 1d7e55b742d9e8449a61f67807786a2f, type: 2}
-  - {fileID: 11400000, guid: 7a06b041bca50624daf0d19eba667a87, type: 2}
-  - {fileID: 11400000, guid: e61afe60daf9d714d8c3d9ae039a3bd6, type: 2}
   - {fileID: 11400000, guid: bb0928a6c5c368a44ad66b9ecde00280, type: 2}
+  - {fileID: 11400000, guid: 1d7e55b742d9e8449a61f67807786a2f, type: 2}
+  - {fileID: 11400000, guid: e61afe60daf9d714d8c3d9ae039a3bd6, type: 2}
+  - {fileID: 11400000, guid: 798677e2518e917478655abc22b2fc8f, type: 2}
+  - {fileID: 11400000, guid: 7a06b041bca50624daf0d19eba667a87, type: 2}
   - {fileID: 11400000, guid: 752708e72d2538f46a0dc85d6f23eea2, type: 2}
+  - {fileID: 11400000, guid: 0f7bab21eeac7094ebf41326fd14f97d, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1

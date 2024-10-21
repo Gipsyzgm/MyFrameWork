@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: MySource
   m_Data:
     m_SerializedData: []
-  m_GUID: fc724b1a0979a064caa9436172cf7109
+  m_GUID: e564c750459d2314eab0d6ce7be7d9ca
   m_SerializeEntries:
   - m_GUID: 0068bac7b31656a4892349caee07b70c
     m_Address: MySource/gs_jingbao
