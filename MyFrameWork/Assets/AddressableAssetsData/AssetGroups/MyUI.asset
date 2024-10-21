@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: MyUI
   m_Data:
     m_SerializedData: []
-  m_GUID: c9c7655e1ec76464080d033bcffeb799
+  m_GUID: 531e3c1f11022894d8539fc5d66f90c4
   m_SerializeEntries:
   - m_GUID: 0928525cc40dbb146b593996d2bb2ea7
     m_Address: MyUI/View/StartPl
@@ -64,6 +64,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 933f1f0276415514b92a23f2055b368d
     m_Address: MyUI/View/SettingPl
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 97e315348111a5f46966c5fc53534ceb
+    m_Address: MyUI/View/PanelSetting
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

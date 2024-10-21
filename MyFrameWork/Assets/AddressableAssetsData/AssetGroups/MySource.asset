@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: MySource
   m_Data:
     m_SerializedData: []
-  m_GUID: d3c08920493386441b36ebed6cdc9e01
+  m_GUID: 1bc284dd200f97e40935d256e946a75b
   m_SerializeEntries:
   - m_GUID: 5322654ca64cf7341bcb5d10d43589d6
     m_Address: MySource/Fail

@@ -52,7 +52,7 @@ public class PanelLogin : PanelBase {
         
     public void btnSettingOnClick()
     {
-        
+        PanelMgr.Instance.OpenPanel<PanelSetting>();
     }
         
     public void btnNoticeOnClick()

@@ -83,27 +83,11 @@ public class SettingPl : PanelBase {
     public void StopMusicBtOnClick()
     {
         count++;
-        if (count % 2 == 0)
-        {
-            MyAudioMgr.Instance.OpenMusic();
-        }
-        else
-        {
-            MyAudioMgr.Instance.CloseMusic();
-        }
     }
         
     public void StopEffectOnClick()
     {
         count++;
-        if (count % 2 == 0)
-        {
-            MyAudioMgr.Instance.OpenEffect();
-        }
-        else
-        {
-            MyAudioMgr.Instance.CloseEffect();
-        }
 
     }
         
@@ -117,15 +101,7 @@ public class SettingPl : PanelBase {
         });
         MusicCtrlBt.onValueChanged.AddListener((bool isOn) =>
         {
-            if (isOn)
-            {
-                MyAudioMgr.Instance.OpenMusic();
-
-            }
-            else
-            {
-                MyAudioMgr.Instance.CloseMusic();
-            }
+         
         });
     }
 

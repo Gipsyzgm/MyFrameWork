@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: GameData
   m_Data:
     m_SerializedData: []
-  m_GUID: 289335b0fe05c574c9e919b899409438
+  m_GUID: fd36f36b220fddf48b61ac7f2039ddf0
   m_SerializeEntries:
   - m_GUID: 1699f138222ad844d9ea549f6eaa339b
     m_Address: GameData/AllConfigInfo

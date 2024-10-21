@@ -21,60 +21,79 @@ public class MyAudioMgr : MonoSingleton<MyAudioMgr>
     private Dictionary<string, AudioClip> _dicAudio = null;
     public AudioSource _musicSource = null; //背景音乐
     public AudioSource _effectSource = null; //音效
-    private float _musicVolume = 0; //背景音乐音量    
-    private float _effectVolume = 0; //音效音量  
 
     public void Init()
     {
         if (this._dicAudio == null)
         {
-            this._musicSource = this.gameObject.AddComponent<AudioSource>();
-            this._effectSource = this.gameObject.AddComponent<AudioSource>();
-            this._dicAudio = new Dictionary<string, AudioClip>();
-            this.InitAllAudioClip();
-            this.SetMusicVolume(1);
-            this.SetEffectVolume(1);
+            _musicSource = gameObject.AddComponent<AudioSource>();
+            _effectSource = gameObject.AddComponent<AudioSource>();
+            _dicAudio = new Dictionary<string, AudioClip>();
+            InitAllAudioClip();
+            SetMusicVolume(PlayerPrefs.GetFloat(PlayerPrefKey.MusicVoulume, 1.0f));
+            SetEffectVolume(PlayerPrefs.GetFloat(PlayerPrefKey.SoundVoulume, 1.0f));
         }
+
+        PlayeMusicAudio(MyAudioName.BackMusic);
     }
 
     /// <summary>
     /// 开启背景音乐
     /// </summary>
     /// <param name=""></param>
-    public void OpenMusic()
+    public void OpenMusic(bool isOpen)
     {
-        this._musicSource.Play();
-        SetMusicVolume(1);
-    }
+        if (isOpen)
+        {
+            PlayerPrefs.SetInt(PlayerPrefKey.MusicOn, 1);
+            _musicSource.Play();
+            SetMusicVolume(1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt(PlayerPrefKey.MusicOn, 0);
+            _musicSource.Stop();
+            SetMusicVolume(0);
+        }
 
-    public void CloseMusic()
-    {
-        this._musicSource.Stop();
-        SetMusicVolume(0);
     }
 
     /// <summary>
     /// 开启音效
     /// </summary>
     /// <param name="_Value"></param>
-    public void OpenEffect()
+    public void OpenEffect(bool isOpen)
     {
-        this._effectSource.Play();
-        SetEffectVolume(1);
+        if (isOpen)
+        {
+            PlayerPrefs.SetInt(PlayerPrefKey.SoundOn, 1);
+            _effectSource.Play();
+            SetEffectVolume(1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt(PlayerPrefKey.SoundOn, 0);
+            _effectSource.Stop();
+            SetEffectVolume(0);
+        }
+
     }
 
     public void CloseEffect()
     {
-        this._effectSource.Stop();
-        SetEffectVolume(0);
+       
     }
 
     public void SetMusicVolume(float _Value)
     {
+        Debug.LogError("音量" + _Value);
         if (_Value < 0)
             return;
         else
-            this._musicVolume = _Value;
+        {
+            _musicSource.volume = _Value;
+            PlayerPrefs.SetFloat(PlayerPrefKey.MusicVoulume, _Value);
+        }
     }
 
     public void SetEffectVolume(float _Value)
@@ -82,20 +101,19 @@ public class MyAudioMgr : MonoSingleton<MyAudioMgr>
         if (_Value < 0)
             return;
         else
-            this._effectVolume = _Value;
+        {
+            _effectSource.volume = _Value;
+            PlayerPrefs.SetFloat(PlayerPrefKey.SoundVoulume, _Value);
+        }
     }
 
 
-    public AudioSource PlayerEffectAudio(MyAudioName ClipName, float _Volume = 1)
+    public AudioSource PlayerEffectAudio(MyAudioName ClipName)
     {
         string _ClipName = ClipName.ToString();
-        if (this._dicAudio.ContainsKey(_ClipName))
+        if (_dicAudio.ContainsKey(_ClipName))
         {
-            _Volume *= this._effectVolume;
-            if (0.01f < _Volume)
-            {
-                this._effectSource.PlayOneShot(this._dicAudio[_ClipName], _Volume);
-            }
+            _effectSource.PlayOneShot(_dicAudio[_ClipName]);
         }
         else
         {
@@ -105,30 +123,21 @@ public class MyAudioMgr : MonoSingleton<MyAudioMgr>
         return this._effectSource;
     }
 
-    public AudioSource PlayeMusicAudio(MyAudioName ClipName, float _Volume = 1)
+    public AudioSource PlayeMusicAudio(MyAudioName ClipName)
     {
         string _ClipName = ClipName.ToString();
-        if (this._dicAudio.ContainsKey(_ClipName))
+        if (_dicAudio.ContainsKey(_ClipName))
         {
-            _Volume *= this._musicVolume;
-            if (0.01f < _Volume)
-            {
-                this._musicSource.loop = true;
-                this._musicSource.clip = this._dicAudio[_ClipName];
-                this._musicSource.volume = _Volume;
-                this._musicSource.Play();
-            }
-            else
-            {
-                this._musicSource.Stop();
-            }
+            _musicSource.loop = true;
+            _musicSource.clip = _dicAudio[_ClipName];
+            _musicSource.Play();
         }
         else
         {
             Debug.LogWarning("找不到对应得声音");
         }
 
-        return this._musicSource;
+        return _musicSource;
     }
 
     void InitAllAudioClip()
