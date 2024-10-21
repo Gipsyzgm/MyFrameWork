@@ -62,22 +62,22 @@ public class SettingPl : PanelBase {
         count++;
         if (count % 2 == 0)
         {
-            MyAudioMgr.Instance.PlayeMusicAudio(MyAudioName.BackMusic);
+            MyAudioMgr.Instance.PlayMusic(MyAudioName.BackMusic);
         }
         else
         {
-            MyAudioMgr.Instance.PlayeMusicAudio(MyAudioName.QuickBg);
+            MyAudioMgr.Instance.PlayMusic(MyAudioName.QuickBg);
         }
     }
         
     public void PlayWinBtOnClick()
     {
-        MyAudioMgr.Instance.PlayerEffectAudio(MyAudioName.Win);
+        MyAudioMgr.Instance.PlayEffect(MyAudioName.Win);
     }
         
     public void PlayFailBtOnClick()
     {
-        MyAudioMgr.Instance.PlayerEffectAudio(MyAudioName.Fail);
+        MyAudioMgr.Instance.PlayEffect(MyAudioName.Fail);
     }
         
     public void StopMusicBtOnClick()
@@ -95,8 +95,8 @@ public class SettingPl : PanelBase {
     {
         SoundValueBt.onValueChanged.AddListener((float Value) =>
         {
-            MyAudioMgr.Instance._musicSource.volume = Value;
-            MyAudioMgr.Instance._effectSource.volume = Value;
+            MyAudioMgr.Instance.musicSource.volume = Value;
+            MyAudioMgr.Instance.effectSource.volume = Value;
 
         });
         MusicCtrlBt.onValueChanged.AddListener((bool isOn) =>

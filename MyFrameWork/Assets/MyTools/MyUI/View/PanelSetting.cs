@@ -54,20 +54,26 @@ public class PanelSetting : PanelBase
     //@EndMark@
     public void btnCloseOnClick()
     {
+        MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
         Close();
     }
 
 
     public void CustomComponent()
     {
+        tab1.onValueChanged.AddListener((bool active) => { MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1); });
+        tab2.onValueChanged.AddListener((bool active) => { MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1); });
+
         tab2open.onValueChanged.AddListener((bool active) =>
         {
+            MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
             tab2open.isOn = active;
             tab2close.isOn = !active;
             MyAudioMgr.Instance.OpenMusic(active);
         });
         tab2close.onValueChanged.AddListener((bool active) =>
         {
+            MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
             tab2open.isOn = !active;
             tab2close.isOn = active;
             MyAudioMgr.Instance.OpenMusic(!active);
@@ -75,12 +81,14 @@ public class PanelSetting : PanelBase
 
         tab3open.onValueChanged.AddListener((bool active) =>
         {
+            MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
             tab3open.isOn = active;
             tab3close.isOn = !active;
             MyAudioMgr.Instance.OpenEffect(active);
         });
         tab3close.onValueChanged.AddListener((bool active) =>
         {
+            MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
             tab3open.isOn = !active;
             tab3close.isOn = active;
             MyAudioMgr.Instance.OpenEffect(!active);
@@ -92,6 +100,7 @@ public class PanelSetting : PanelBase
         btnResolution.AddOptions(ResolutionConfig);
         btnResolution.onValueChanged.AddListener((int value) =>
         {
+            MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
             string[] split = ResolutionConfig[value].Split('x');
             PlayerPrefs.SetInt(PlayerPrefKey.ScreenWidth, int.Parse(split[0]));
             PlayerPrefs.SetInt(PlayerPrefKey.ScreenHeight, int.Parse(split[1]));
