@@ -322,6 +322,468 @@ MonoBehaviour:
   - Id: 2
     cn: "\u8FDB\u5165\u6E38\u620F"
     en: EnterGame
+  GiftEffectConfig:
+  - Id: 1
+    giftId: 1
+    name: "\u6253\u795E\u77F3"
+    camp: 1
+    model: aaa
+    num: 2
+    life: 98
+    defense: 0
+    time: 0
+    para: 
+    voice: 40001
+    picName: icon_yuanqifangkuai
+    heroName: hero_shibatian
+    heroNameId: "\u77F3\u7F62\u5929"
+  - Id: 2
+    giftId: 2
+    name: "\u8FD8\u9B42\u73E0"
+    camp: 1
+    model: aaa
+    num: 1
+    life: 500
+    defense: 0
+    time: 0
+    para: 8;160
+    voice: 40003
+    picName: icon_tuntianmoguang
+    heroName: hero_henren
+    heroNameId: "\u72E0\u4EBA\u5973\u5E1D"
+  - Id: 3
+    giftId: 3
+    name: "\u7167\u5996\u955C"
+    camp: 1
+    model: aaa
+    num: 1
+    life: 5000
+    defense: 0
+    time: 0
+    para: 50%;3;8
+    voice: 40005
+    picName: iocn_xushengjing
+    heroName: hero_xukong
+    heroNameId: "\u865A\u7A7A\u795E\u5E1D"
+  - Id: 4
+    giftId: 4
+    name: "\u516B\u5366\u7089"
+    camp: 1
+    model: aaa
+    num: 1
+    life: 4000
+    defense: 0
+    time: 0
+    para: 9500
+    voice: 40007
+    picName: icon_shengnvlu
+    heroName: hero_hengyu
+    heroNameId: "\u6052\u5B87\u706B\u5E1D"
+  - Id: 5
+    giftId: 5
+    name: "\u4E7E\u5764\u9F0E"
+    camp: 1
+    model: aaa
+    num: 1
+    life: 20000
+    defense: 0
+    time: 0
+    para: 5;1200
+    voice: 40009
+    picName: icon_tiandiding
+    heroName: hero_yetiandi
+    heroNameId: "\u53F6\u9ED1"
+  - Id: 6
+    giftId: 6
+    name: "\u9547\u5996\u5854"
+    camp: 1
+    model: aaa
+    num: 1
+    life: 50000
+    defense: 0
+    time: 0
+    para: 
+    voice: 40011
+    picName: icon_huangta
+    heroName: hero_huangtiandi
+    heroNameId: "\u8352\u53E4\u5927\u5E1D"
+  - Id: 7
+    giftId: 7
+    name: "\u9B54\u795E\u8840"
+    camp: 1
+    model: 
+    num: 0
+    life: 0
+    defense: 0
+    time: 120
+    para: 30
+    voice: 40013
+    picName: icon_xiuluoshenghuan
+    heroName: hero_xiuluoshen
+    heroNameId: "\u9B54\u795E\u8840\u8109"
+  - Id: 8
+    giftId: 1
+    name: "\u5251\u9635"
+    camp: 2
+    model: 
+    num: 300
+    life: 0
+    defense: 0
+    time: 0
+    para: 6;100
+    voice: 40002
+    picName: icon_jian
+    heroName: hero_chenpingan
+    heroNameId: "\u529B\u98DE\u7FBD"
+  - Id: 9
+    giftId: 2
+    name: "\u8BDB\u4ED9\u5251"
+    camp: 2
+    model: 
+    num: 500
+    life: 0
+    defense: 0
+    time: 45
+    para: 35
+    voice: 40004
+    picName: icon_qingzhujian
+    heroName: hero_hanpaopao
+    heroNameId: "\u97E9\u8DD1\u8DD1"
+  - Id: 10
+    giftId: 3
+    name: "\u51B0\u51E4"
+    camp: 2
+    model: 
+    num: 2000
+    life: 1000
+    defense: 0
+    time: 0
+    para: 500;3400
+    voice: 40006
+    picName: icon_bingfeng
+    heroName: hero_bingfeng
+    heroNameId: "\u51B0\u51E4\u4ED9\u5B50"
+  - Id: 11
+    giftId: 4
+    name: "\u4E94\u6307\u5C71"
+    camp: 2
+    model: 
+    num: 2000
+    life: 10000
+    defense: 0
+    time: 100
+    para: 
+    voice: 40008
+    picName: icon_yuancishan
+    heroName: hero_hanmou
+    heroNameId: "\u97E9\u67D0"
+  - Id: 12
+    giftId: 5
+    name: "\u706B\u83B2"
+    camp: 2
+    model: 
+    num: 5000
+    life: 4000
+    defense: 0
+    time: 100
+    para: 75;35
+    voice: 40010
+    picName: icon_huolian
+    heroName: hero_yandi
+    heroNameId: "\u708E\u5E1D"
+  - Id: 13
+    giftId: 6
+    name: "\u901A\u5929\u5251\u9635"
+    camp: 2
+    model: 
+    num: 5000
+    life: 10000
+    defense: 0
+    time: 100
+    para: 600
+    voice: 40012
+    picName: iocn_jianzheng
+    heroName: hero_hantianzun
+    heroNameId: "\u97E9\u5929\u5C0A"
+  - Id: 14
+    giftId: 7
+    name: "\u4ED9\u738B\u74F6"
+    camp: 2
+    model: 
+    num: 5000
+    life: 10000
+    defense: 0
+    time: 120
+    para: 30
+    voice: 40014
+    picName: icon_zhangtianping
+    heroName: hero_handaozu
+    heroNameId: "\u97E9\u9053\u7956"
+  GradeInnerConfig:
+  - Id: 1
+    needMoney: 1
+    name: "\u70BC\u6C14\u524D\u671F"
+    xCoeffi: 1
+    yCoeffi: 1.1
+    blockLift: 2
+    shootPara: 2;3
+    fontSize: 1
+    spreadAngle: 2
+    frequency: 0.1
+    playerHead: 1
+  - Id: 2
+    needMoney: 10
+    name: "\u70BC\u6C14\u4E2D\u671F"
+    xCoeffi: 1.3
+    yCoeffi: 1.2
+    blockLift: 4
+    shootPara: 2;3
+    fontSize: 1.3
+    spreadAngle: 2
+    frequency: 0.09
+    playerHead: 1
+  - Id: 3
+    needMoney: 20
+    name: "\u70BC\u6C14\u540E\u671F"
+    xCoeffi: 1.5
+    yCoeffi: 1.3
+    blockLift: 6
+    shootPara: 2;3
+    fontSize: 1.5
+    spreadAngle: 2
+    frequency: 0.083
+    playerHead: 1
+  - Id: 4
+    needMoney: 50
+    name: "\u7B51\u57FA\u524D\u671F"
+    xCoeffi: 1.65
+    yCoeffi: 1.38
+    blockLift: 8
+    shootPara: 3;2
+    fontSize: 1.65
+    spreadAngle: 4
+    frequency: 0.08
+    playerHead: 2
+  - Id: 5
+    needMoney: 100
+    name: "\u7B51\u57FA\u4E2D\u671F"
+    xCoeffi: 1.8
+    yCoeffi: 1.46
+    blockLift: 10
+    shootPara: 3;2
+    fontSize: 1.8
+    spreadAngle: 4
+    frequency: 0.075
+    playerHead: 2
+  - Id: 6
+    needMoney: 250
+    name: "\u7B51\u57FA\u540E\u671F"
+    xCoeffi: 1.94
+    yCoeffi: 1.54
+    blockLift: 12
+    shootPara: 3;2
+    fontSize: 1.94
+    spreadAngle: 4
+    frequency: 0.07
+    playerHead: 2
+  - Id: 7
+    needMoney: 500
+    name: "\u7ED3\u4E39\u524D\u671F"
+    xCoeffi: 2.09
+    yCoeffi: 1.62
+    blockLift: 14
+    shootPara: 4;2
+    fontSize: 2.09
+    spreadAngle: 6
+    frequency: 0.067
+    playerHead: 3
+  - Id: 8
+    needMoney: 800
+    name: "\u7ED3\u4E39\u4E2D\u671F"
+    xCoeffi: 2.24
+    yCoeffi: 1.7
+    blockLift: 16
+    shootPara: 4;2
+    fontSize: 2.24
+    spreadAngle: 6
+    frequency: 0.066
+    playerHead: 3
+  - Id: 9
+    needMoney: 1200
+    name: "\u7ED3\u4E39\u540E\u671F"
+    xCoeffi: 2.39
+    yCoeffi: 1.79
+    blockLift: 18
+    shootPara: 4;2
+    fontSize: 2.39
+    spreadAngle: 6
+    frequency: 0.065
+    playerHead: 3
+  - Id: 10
+    needMoney: 1700
+    name: "\u5143\u5A74\u524D\u671F"
+    xCoeffi: 2.53
+    yCoeffi: 1.87
+    blockLift: 20
+    shootPara: 5;2
+    fontSize: 2.53
+    spreadAngle: 8
+    frequency: 0.064
+    playerHead: 4
+  - Id: 11
+    needMoney: 2300
+    name: "\u5143\u5A74\u4E2D\u671F"
+    xCoeffi: 2.68
+    yCoeffi: 1.95
+    blockLift: 22
+    shootPara: 5;2
+    fontSize: 2.68
+    spreadAngle: 8
+    frequency: 0.063
+    playerHead: 4
+  - Id: 12
+    needMoney: 3000
+    name: "\u5143\u5A74\u540E\u671F"
+    xCoeffi: 2.83
+    yCoeffi: 2.03
+    blockLift: 24
+    shootPara: 5;2
+    fontSize: 2.83
+    spreadAngle: 8
+    frequency: 0.062
+    playerHead: 4
+  - Id: 13
+    needMoney: 3800
+    name: "\u5316\u795E\u524D\u671F"
+    xCoeffi: 2.98
+    yCoeffi: 2.11
+    blockLift: 26
+    shootPara: 6;2
+    fontSize: 2.98
+    spreadAngle: 10
+    frequency: 0.061
+    playerHead: 5
+  - Id: 14
+    needMoney: 4700
+    name: "\u5316\u795E\u4E2D\u671F"
+    xCoeffi: 3.12
+    yCoeffi: 2.19
+    blockLift: 28
+    shootPara: 6;2
+    fontSize: 3.12
+    spreadAngle: 10
+    frequency: 0.06
+    playerHead: 5
+  - Id: 15
+    needMoney: 5700
+    name: "\u5316\u795E\u540E\u671F"
+    xCoeffi: 3.27
+    yCoeffi: 2.27
+    blockLift: 30
+    shootPara: 6;2
+    fontSize: 3.27
+    spreadAngle: 10
+    frequency: 0.059
+    playerHead: 5
+  - Id: 16
+    needMoney: 7200
+    name: "\u5927\u4E58\u524D\u671F"
+    xCoeffi: 3.42
+    yCoeffi: 2.35
+    blockLift: 32
+    shootPara: 7;2
+    fontSize: 3.42
+    spreadAngle: 12
+    frequency: 0.058
+    playerHead: 6
+  - Id: 17
+    needMoney: 9200
+    name: "\u5927\u4E58\u4E2D\u671F"
+    xCoeffi: 3.57
+    yCoeffi: 2.43
+    blockLift: 34
+    shootPara: 7;2
+    fontSize: 3.57
+    spreadAngle: 12
+    frequency: 0.057
+    playerHead: 6
+  - Id: 18
+    needMoney: 11700
+    name: "\u5927\u4E58\u540E\u671F"
+    xCoeffi: 3.71
+    yCoeffi: 2.51
+    blockLift: 36
+    shootPara: 7;2
+    fontSize: 3.71
+    spreadAngle: 12
+    frequency: 0.056
+    playerHead: 6
+  - Id: 19
+    needMoney: 15200
+    name: "\u7384\u4ED9\u524D\u671F"
+    xCoeffi: 3.86
+    yCoeffi: 2.6
+    blockLift: 38
+    shootPara: 8;2
+    fontSize: 3.86
+    spreadAngle: 14
+    frequency: 0.055
+    playerHead: 7
+  - Id: 20
+    needMoney: 19700
+    name: "\u7384\u4ED9\u4E2D\u671F"
+    xCoeffi: 4.01
+    yCoeffi: 2.68
+    blockLift: 40
+    shootPara: 8;2
+    fontSize: 4.01
+    spreadAngle: 14
+    frequency: 0.054
+    playerHead: 7
+  - Id: 21
+    needMoney: 25200
+    name: "\u7384\u4ED9\u540E\u671F"
+    xCoeffi: 4.16
+    yCoeffi: 2.76
+    blockLift: 42
+    shootPara: 8;2
+    fontSize: 4.16
+    spreadAngle: 14
+    frequency: 0.053
+    playerHead: 7
+  - Id: 22
+    needMoney: 32200
+    name: "\u91D1\u4ED9\u524D\u671F"
+    xCoeffi: 4.3
+    yCoeffi: 2.84
+    blockLift: 44
+    shootPara: 9;2
+    fontSize: 4.3
+    spreadAngle: 16
+    frequency: 0.052
+    playerHead: 8
+  - Id: 23
+    needMoney: 40700
+    name: "\u91D1\u4ED9\u4E2D\u671F"
+    xCoeffi: 4.45
+    yCoeffi: 2.92
+    blockLift: 46
+    shootPara: 9;2
+    fontSize: 4.45
+    spreadAngle: 16
+    frequency: 0.051
+    playerHead: 8
+  - Id: 24
+    needMoney: 50700
+    name: "\u91D1\u4ED9\u540E\u671F"
+    xCoeffi: 4.6
+    yCoeffi: 3
+    blockLift: 48
+    shootPara: 9;2
+    fontSize: 4.6
+    spreadAngle: 16
+    frequency: 0.05
+    playerHead: 8
   LevelInfo:
   - Id: 1
     HeroCount: 99

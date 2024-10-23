@@ -41,13 +41,13 @@ public class PanelMode : PanelBase
     //@EndMark@
     public void btnCloseOnClick()
     {
-        MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
+        AudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
         Close();
     }
 
     public void btnConfirmOnClick()
     {
-        MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
+        AudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
         Close();
     }
 
@@ -59,7 +59,7 @@ public class PanelMode : PanelBase
         timetab2txt.text = timelist[1].ToString() + "分钟";
         timetab.onValueChanged.AddListener((bool ison) =>
         {
-            MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
+            AudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
             if (ison)
             {
                 PlayerPrefs.SetInt(PlayerPrefKey.TimeIndex, timelist[0]);
@@ -67,7 +67,7 @@ public class PanelMode : PanelBase
         });
         timetab2.onValueChanged.AddListener((bool ison) =>
         {
-            MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
+            AudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
             if (ison)
             {
                 PlayerPrefs.SetInt(PlayerPrefKey.TimeIndex, timelist[1]);

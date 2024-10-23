@@ -41,7 +41,7 @@ public class PanelNotice : PanelBase
     //@EndMark@
     public void btnCloseOnClick()
     {
-        MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
+        AudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
         Close();
     }
 

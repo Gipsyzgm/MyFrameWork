@@ -12,8 +12,9 @@ public class DataInfoMgr : Singleton<DataInfoMgr>
     public int firstGiftCount { get; private set; }
     public int gameOver { get; private set; }
     public string roundNum { get; private set; }
-
-
+    
+    public Dictionary<int, UserDataInfo> UserDataDict { get; private set; }
+    
     public void RegistEvent()
     {
         var msgpro = NetMgr.Instance.gameSocket.msgProcess;

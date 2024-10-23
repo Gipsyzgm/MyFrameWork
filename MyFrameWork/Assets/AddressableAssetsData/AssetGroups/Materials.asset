@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: Materials
   m_Data:
     m_SerializedData: []
-  m_GUID: 2e744605f02f6f94a94f229d52aa661b
+  m_GUID: 4a6744090302c6c47a07fb169d6c7f83
   m_SerializeEntries:
   - m_GUID: 58023fd94923ba042aa9c30b0f782118
     m_Address: Materials/TreeLeafs_red02

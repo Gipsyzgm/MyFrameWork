@@ -54,53 +54,53 @@ public class PanelSetting : PanelBase
     //@EndMark@
     public void btnCloseOnClick()
     {
-        MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
+        AudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
         Close();
     }
 
 
     public void CustomComponent()
     {
-        tab1.onValueChanged.AddListener((bool active) => { MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1); });
-        tab2.onValueChanged.AddListener((bool active) => { MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1); });
+        tab1.onValueChanged.AddListener((bool active) => { AudioMgr.Instance.PlayEffect(MyAudioName.gs_1); });
+        tab2.onValueChanged.AddListener((bool active) => { AudioMgr.Instance.PlayEffect(MyAudioName.gs_1); });
 
         tab2open.onValueChanged.AddListener((bool active) =>
         {
-            MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
+            AudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
             tab2open.isOn = active;
             tab2close.isOn = !active;
-            MyAudioMgr.Instance.OpenMusic(active);
+            AudioMgr.Instance.OpenMusic(active);
         });
         tab2close.onValueChanged.AddListener((bool active) =>
         {
-            MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
+            AudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
             tab2open.isOn = !active;
             tab2close.isOn = active;
-            MyAudioMgr.Instance.OpenMusic(!active);
+            AudioMgr.Instance.OpenMusic(!active);
         });
 
         tab3open.onValueChanged.AddListener((bool active) =>
         {
-            MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
+            AudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
             tab3open.isOn = active;
             tab3close.isOn = !active;
-            MyAudioMgr.Instance.OpenEffect(active);
+            AudioMgr.Instance.OpenEffect(active);
         });
         tab3close.onValueChanged.AddListener((bool active) =>
         {
-            MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
+            AudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
             tab3open.isOn = !active;
             tab3close.isOn = active;
-            MyAudioMgr.Instance.OpenEffect(!active);
+            AudioMgr.Instance.OpenEffect(!active);
         });
 
-        goMusicSlider.onValueChanged.AddListener((float Value) => { MyAudioMgr.Instance.SetMusicVolume(Value); });
+        goMusicSlider.onValueChanged.AddListener((float Value) => { AudioMgr.Instance.SetMusicVolume(Value); });
 
-        goSoundSlider.onValueChanged.AddListener((float Value) => { MyAudioMgr.Instance.SetEffectVolume(Value); });
+        goSoundSlider.onValueChanged.AddListener((float Value) => { AudioMgr.Instance.SetEffectVolume(Value); });
         btnResolution.AddOptions(ResolutionConfig);
         btnResolution.onValueChanged.AddListener((int value) =>
         {
-            MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
+            AudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
             string[] split = ResolutionConfig[value].Split('x');
             PlayerPrefs.SetInt(PlayerPrefKey.ScreenWidth, int.Parse(split[0]));
             PlayerPrefs.SetInt(PlayerPrefKey.ScreenHeight, int.Parse(split[1]));

@@ -63,6 +63,51 @@ public class AllNeedReadExcel
              CreateConfigData.configInfo.GameLang[i].en= (string) table[i]["en"];
          } 
      } 
+     public static void GiftEffectConfig()
+     { 
+         Debug.Log("读取表格:GiftEffectConfig"); 
+         List<Dictionary<string, object>> table = CreateConfigData.ReadExcelData("GiftEffectConfig", 0);
+         CreateConfigData.configInfo.GiftEffectConfig= new GiftEffectConfig[table.Count];
+         for (int i = 0; i < table.Count; i++)
+         { 
+             CreateConfigData.configInfo.GiftEffectConfig[i] = new GiftEffectConfig(); 
+             CreateConfigData.configInfo.GiftEffectConfig[i].Id= (int) table[i]["Id"];
+             CreateConfigData.configInfo.GiftEffectConfig[i].giftId= (int) table[i]["giftId"];
+             CreateConfigData.configInfo.GiftEffectConfig[i].name= (string) table[i]["name"];
+             CreateConfigData.configInfo.GiftEffectConfig[i].camp= (int) table[i]["camp"];
+             CreateConfigData.configInfo.GiftEffectConfig[i].model= (string) table[i]["model"];
+             CreateConfigData.configInfo.GiftEffectConfig[i].num= (int) table[i]["num"];
+             CreateConfigData.configInfo.GiftEffectConfig[i].life= (int) table[i]["life"];
+             CreateConfigData.configInfo.GiftEffectConfig[i].defense= (int) table[i]["defense"];
+             CreateConfigData.configInfo.GiftEffectConfig[i].time= (int) table[i]["time"];
+             CreateConfigData.configInfo.GiftEffectConfig[i].para= (string) table[i]["para"];
+             CreateConfigData.configInfo.GiftEffectConfig[i].voice= (int) table[i]["voice"];
+             CreateConfigData.configInfo.GiftEffectConfig[i].picName= (string) table[i]["picName"];
+             CreateConfigData.configInfo.GiftEffectConfig[i].heroName= (string) table[i]["heroName"];
+             CreateConfigData.configInfo.GiftEffectConfig[i].heroNameId= (string) table[i]["heroNameId"];
+         } 
+     } 
+     public static void GradeInnerConfig()
+     { 
+         Debug.Log("读取表格:GradeInnerConfig"); 
+         List<Dictionary<string, object>> table = CreateConfigData.ReadExcelData("GradeInnerConfig", 0);
+         CreateConfigData.configInfo.GradeInnerConfig= new GradeInnerConfig[table.Count];
+         for (int i = 0; i < table.Count; i++)
+         { 
+             CreateConfigData.configInfo.GradeInnerConfig[i] = new GradeInnerConfig(); 
+             CreateConfigData.configInfo.GradeInnerConfig[i].Id= (int) table[i]["Id"];
+             CreateConfigData.configInfo.GradeInnerConfig[i].needMoney= (int) table[i]["needMoney"];
+             CreateConfigData.configInfo.GradeInnerConfig[i].name= (string) table[i]["name"];
+             CreateConfigData.configInfo.GradeInnerConfig[i].xCoeffi= (float) table[i]["xCoeffi"];
+             CreateConfigData.configInfo.GradeInnerConfig[i].yCoeffi= (float) table[i]["yCoeffi"];
+             CreateConfigData.configInfo.GradeInnerConfig[i].blockLift= (int) table[i]["blockLift"];
+             CreateConfigData.configInfo.GradeInnerConfig[i].shootPara= (string) table[i]["shootPara"];
+             CreateConfigData.configInfo.GradeInnerConfig[i].fontSize= (float) table[i]["fontSize"];
+             CreateConfigData.configInfo.GradeInnerConfig[i].spreadAngle= (int) table[i]["spreadAngle"];
+             CreateConfigData.configInfo.GradeInnerConfig[i].frequency= (float) table[i]["frequency"];
+             CreateConfigData.configInfo.GradeInnerConfig[i].playerHead= (int) table[i]["playerHead"];
+         } 
+     } 
      public static void LevelInfo()
      { 
          Debug.Log("读取表格:LevelInfo"); 

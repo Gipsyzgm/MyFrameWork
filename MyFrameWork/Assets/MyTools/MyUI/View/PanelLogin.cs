@@ -42,25 +42,91 @@ public class PanelLogin : PanelBase
     //@EndMark@
     public void btnTimeSettingOnClick()
     {
-        MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
+        AudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
         PanelMgr.Instance.OpenPanel<PanelMode>();
         
     }
-
+    
+    private bool  isWaitConfirm = false;
     public void btnLoginOnClick()
     {
-        MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
+        
+        Debug.Log("点击启动");
+        AudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
+        if (isWaitConfirm)
+        {
+            OnUserLoginRsp();
+        }
+        else
+        {
+            
+            // if SceneManager:GetInstance():GetGameRootMgr().isFirstLogin then
+            // if IsButtonCD(self, 1) then return end
+            // PanelNetLoading.Start(3);
+            // local token = SceneManager:GetInstance():GetGameRootMgr().token;
+            // local appVersion = GameAppSetting:getValue("AppVersionDisplay"):asString();
+            // MsgSend.SendLogin(token, appVersion);
+            // SceneManager:GetInstance():GetGameRootMgr().isFirstLogin = false
+            // else
+            // if IsButtonCD(self, 1) then return end
+            // PanelNetLoading.Start(3);
+            // self:OnUserLoginRsp();
+            // MsgSend.SendGameStart(UPlayerPrefs.GetInt("timeIndex", 1) - 1); --
+            //     
+            //     print(SceneManager:GetInstance():GetGameRootMgr().countdown_2.."暖场时间---------------------")
+            // end
+            // SceneManager:GetInstance():GetGameRootMgr():RefreshTime3()
+            
+        }
+        
+        
+        
     }
+
+    public void OnUserLoginRsp()
+    {
+       
+        // --  if (dataInfoMgr.gameOver == 0 or LuaCommonData.IsLocalMode) and SceneManager:GetInstance():GetGameRootMgr():HasLocalCache() then
+        //     --     UIPromptHelper.ShowConfirm2("发现上局比赛还未结束，是否继续上一局的比赛?", function()
+        //     --         self:LoginFinish()
+        //     --     end, function()
+        //     --         SceneManager:GetInstance():GetGameRootMgr():ClearLocal();
+        // --         self:LoginFinish()
+        //     --     end, function()
+        //     --         self.isWaitConfirm = true;
+        // --     end, {
+        //     --         confirmText = "继续上局",
+        //     --         cancelText = "新开比赛",
+        //     --     })
+        // --  else
+        // --     self:LoginFinish()
+        //     --  end
+        
+        //PanelNetLoading.Stop();
+        //SceneManager:GetInstance():GetGameRootMgr():ClearLocal();
+        LoginFinish();
+
+    }
+
+    public void LoginFinish()
+    {
+        isWaitConfirm = false;
+       
+        //进入战斗场景
+        
+
+    }
+
 
     public void btnSettingOnClick()
     {
-        MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
+        AudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
         PanelMgr.Instance.OpenPanel<PanelSetting>();
     }
 
     public void btnNoticeOnClick()
     {
-        MyAudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
+        AudioMgr.Instance.PlayEffect(MyAudioName.gs_1);
         PanelMgr.Instance.OpenPanel<PanelNotice>();
     }
 

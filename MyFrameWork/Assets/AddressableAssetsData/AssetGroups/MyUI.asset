@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: MyUI
   m_Data:
     m_SerializedData: []
-  m_GUID: 85dbb9253c5fbc1489bc2e28b0465238
+  m_GUID: af1f061eb199abe49ab6827b49d986a9
   m_SerializeEntries:
   - m_GUID: 0928525cc40dbb146b593996d2bb2ea7
     m_Address: MyUI/View/StartPl

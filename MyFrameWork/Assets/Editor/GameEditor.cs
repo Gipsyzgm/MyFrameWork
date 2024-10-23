@@ -37,65 +37,7 @@ public class GameEditor : MonoBehaviour
         Time.timeScale = Time.timeScale == 5 ? 1 : 5;
         Debug.LogError("切换速度" + Time.timeScale.ToString());
     }
-
-    [MenuItem("我的工具/环境/测试模式")]
-    public static void InEditorEnv()
-    {
-        IsInRealEnv = !IsInRealEnv;
-        while (true)
-        {
-            if (GameObject.Find("Env_Mgr") != null)
-            {
-                DestroyImmediate(GameObject.Find("Env_Mgr"));
-            }
-            else
-            {
-                break;
-            }
-        }
-
-        GameObject go = new GameObject();
-        go.name = "Env_Mgr";
-        go.transform.position = Vector3.zero;
-
-        ToolsHelper.AddFileComment(go, MyDefaultPath.PublicEnvPath, ".cs");
-        ToolsHelper.AddFileComment(go, MyDefaultPath.EditorEnvPath, ".cs");
-
-        Debug.LogError("切换至测试模式");
-    }
-
-    [MenuItem("我的工具/环境/正式模式")]
-    public static void InRealEnv()
-    {
-        IsInRealEnv = !IsInRealEnv;
-        while (true)
-        {
-            if (GameObject.Find("Env_Mgr") != null)
-            {
-                DestroyImmediate(GameObject.Find("Env_Mgr"));
-            }
-            else
-            {
-                break;
-            }
-        }
-
-        GameObject go = new GameObject();
-        go.name = "Env_Mgr";
-        go.transform.position = Vector3.zero;
-        ToolsHelper.AddFileComment(go, MyDefaultPath.PublicEnvPath, ".cs");
-        ToolsHelper.AddFileComment(go, MyDefaultPath.FormalEnvPath, ".cs");
-        Debug.LogError("切换至正式模式");
-    }
-
-    [MenuItem("我的工具/环境/正式模式", true)]
-    public static bool InRealEnvValidate()
-    {
-        Menu.SetChecked("我的工具/环境/正式模式", IsInRealEnv);
-        Menu.SetChecked("我的工具/环境/测试模式", !IsInRealEnv);
-        return true;
-    }
-
+    
     [MenuItem("我的工具/快捷键/PlayAndClose _F1")]
     static void PlayAndClose()
     {
@@ -177,6 +119,35 @@ public class GameEditor : MonoBehaviour
         }
         //拼接保存自定义资源（.asset） 路径  
         string path = FilePathMgr.CustomAssetDir + string.Format("{0}.asset", (typeof(GameBasicInfoEditor).ToString()));
+        
+        // 检查路径下是否已经存在同名资源
+        if (AssetExists(path))
+        {
+            Debug.LogWarning($"资源 {path} 已经存在，无法创建新资源。");
+            return;
+        }
+        else
+        {
+            // 生成自定义资源到指定路径  
+            AssetDatabase.CreateAsset(BasicInfo, path);
+            // 刷新 AssetDatabase 以确保资源被正确添加
+            AssetDatabase.Refresh();
+            Debug.Log($"资源 {path} 创建成功。");
+        }
+        
+    }
+    
+    [MenuItem("我的工具/创建自定义资源/CreateGamePoolInfoEditor")]
+    public static void CreateGamePoolInfoEditor()
+    {
+        ScriptableObject BasicInfo = ScriptableObject.CreateInstance<GamePoolEditor>();
+        if (!BasicInfo)
+        {
+            Debug.LogWarning("GamePoolEditor not found");
+            return;
+        }
+        //拼接保存自定义资源（.asset） 路径  
+        string path = FilePathMgr.CustomAssetDir + string.Format("{0}.asset", (typeof(GamePoolEditor).ToString()));
         
         // 检查路径下是否已经存在同名资源
         if (AssetExists(path))

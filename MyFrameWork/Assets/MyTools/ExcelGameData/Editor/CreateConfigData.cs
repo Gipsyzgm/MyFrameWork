@@ -16,10 +16,12 @@ public class CreateConfigData : MonoBehaviour
     public static AllConfigInfo configInfo;
 
     static string _path = "";
+
     /// <summary>
     /// 从第几行开始有数据
     /// </summary>
     static int startRow = 4;
+
     /// <summary>
     /// 写入资源的生成资源的路径,不需要热更的资源放在Resources下
     /// </summary>
@@ -28,6 +30,7 @@ public class CreateConfigData : MonoBehaviour
     /// 写入资源的生成资源的路径,使用addressable用这个
     /// </summary>
     static string assetDir = FilePathMgr.ExcelAssetDir;
+
     /// 不需要热更的excel写入AllConfigInfo的文件夹地址
     /// </summary>
     static string scriptDir = FilePathMgr.ExcelScriptDir;
@@ -36,10 +39,12 @@ public class CreateConfigData : MonoBehaviour
     /// AllConfigInfo的文件存放地址
     /// </summary>
     static string AllConfigInfoDir = FilePathMgr.ExcelAllConfigInfoDir;
+
     /// <summary>
     /// ReadExcelInfo的文件存放地址,必须editor下
     /// </summary>
     static string ReadExcelInfoDir = FilePathMgr.ReadExcelInfoDir;
+
     /// <summary>
     /// 不需要热更读取读Excel的类名
     /// </summary>
@@ -50,16 +55,17 @@ public class CreateConfigData : MonoBehaviour
     /// </summary>
     static string AllConfigName = "AllConfigInfo";
 
-    
+
     /// <summary>
     /// AddressablePath加载地址
     /// </summary>
     static string AddressablePath = "GameData/AllConfigInfo";
-    
+
     /// <summary>
     /// 生成初始化Data的方法
     /// </summary>
     static string DataInitInfo = "DataMgr";
+
     /// <summary>
     /// DataMgr生成的路径
     /// </summary>
@@ -76,15 +82,15 @@ public class CreateConfigData : MonoBehaviour
         WriteAllConfigInfo();
 
         WriteReadExcelInfo();
- 
+
         AutoReadExcelInfo();
 
         AssetDatabase.CreateAsset(configInfo, assetDir + AllConfigName + ".asset");
 
-        Debug.Log("读取配置完成,"+ assetDir + AllConfigName + ".asset");
+        Debug.Log("读取配置完成," + assetDir + AllConfigName + ".asset");
         WriteDataInitInfo();
-
     }
+
     /// <summary>
     /// 自动写AllConfigInfo脚本
     /// </summary>
@@ -97,6 +103,7 @@ public class CreateConfigData : MonoBehaviour
             Debug.LogError("文件夹" + scriptDir + "不存在，请检查路径是否正确");
             return;
         }
+
         DirectoryInfo direction = new DirectoryInfo(scriptDir);
         FileInfo[] files = direction.GetFiles("*", SearchOption.AllDirectories);
         StringBuilder sbPath = new StringBuilder();
@@ -111,6 +118,7 @@ public class CreateConfigData : MonoBehaviour
             string prefabName = files[x].Name.Split('.')[0];
             sbPath.AppendLine("    public " + prefabName + "[] " + prefabName + ";");
         }
+
         sbPath.AppendLine("}");
         File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
         AssetDatabase.Refresh();
@@ -134,32 +142,38 @@ public class CreateConfigData : MonoBehaviour
         sbPath.AppendLine("using UnityEngine;");
         sbPath.AppendLine("using LitJson;");
         sbPath.AppendLine("using System.Collections.Generic;");
-        sbPath.AppendLine("//每次都会重新生成的脚本，不要删，覆盖就行了");       
+        sbPath.AppendLine("//每次都会重新生成的脚本，不要删，覆盖就行了");
         sbPath.AppendLine("public class " + ReadExcelName);
         sbPath.AppendLine("{");
         for (int i = 0; i < files.Length; i++)
         {
             if (files[i].Name.EndsWith(".meta")) continue;
-            string prefabName = files[i].Name.Split('.')[0];           
+            string prefabName = files[i].Name.Split('.')[0];
             sbPath.AppendLine("     public static void " + prefabName + "()");
             sbPath.AppendLine("     { ");
-            sbPath.AppendLine("         Debug.Log("+'"'+"读取表格:"+prefabName +'"' +"); ");          
-            sbPath.AppendLine("         List<Dictionary<string, object>> table = CreateConfigData.ReadExcelData(" + '"' + prefabName + '"' + ", 0);");
-            sbPath.AppendLine("         CreateConfigData.configInfo." + prefabName + "= new " + prefabName + "[table.Count];");
+            sbPath.AppendLine("         Debug.Log(" + '"' + "读取表格:" + prefabName + '"' + "); ");
+            sbPath.AppendLine("         List<Dictionary<string, object>> table = CreateConfigData.ReadExcelData(" +
+                              '"' + prefabName + '"' + ", 0);");
+            sbPath.AppendLine("         CreateConfigData.configInfo." + prefabName + "= new " + prefabName +
+                              "[table.Count];");
             sbPath.AppendLine("         for (int i = 0; i < table.Count; i++)");
             sbPath.AppendLine("         { ");
-            sbPath.AppendLine("             CreateConfigData.configInfo." + prefabName + "[i] = new " + prefabName + "(); ");
+            sbPath.AppendLine("             CreateConfigData.configInfo." + prefabName + "[i] = new " + prefabName +
+                              "(); ");
             Type tempClass = Assembly.Load("Assembly-CSharp").GetType(prefabName);
             FieldInfo[] fields = tempClass.GetFields();
             for (int x = 0; x < fields.Length; x++)
             {
                 string type = CreateExcel.GetDataBaseType(fields[x].FieldType.ToString());
                 if (type == "error") return;
-                sbPath.AppendLine("             CreateConfigData.configInfo." + prefabName + "[i]." + fields[x].Name + "= (" + type + ") table[i][" + '"' + fields[x].Name + '"' + "];");
+                sbPath.AppendLine("             CreateConfigData.configInfo." + prefabName + "[i]." + fields[x].Name +
+                                  "= (" + type + ") table[i][" + '"' + fields[x].Name + '"' + "];");
             }
+
             sbPath.AppendLine("         } ");
             sbPath.AppendLine("     } ");
         }
+
         sbPath.AppendLine("}");
         File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
         AssetDatabase.Refresh();
@@ -167,14 +181,12 @@ public class CreateConfigData : MonoBehaviour
     }
 
 
-   
-
     /// <summary>
     /// 自动读取自动生成读取方法
     /// </summary>
     public static void AutoReadExcelInfo()
     {
-        Type t = Type.GetType(ReadExcelName);      
+        Type t = Type.GetType(ReadExcelName);
 
         MethodInfo[] mt = t.GetMethods(BindingFlags.Public | BindingFlags.Static);
         if (mt != null)
@@ -185,7 +197,7 @@ public class CreateConfigData : MonoBehaviour
             }
         }
     }
-  
+
     /// <summary>
     /// 数据初始化脚本
     /// </summary>
@@ -208,12 +220,12 @@ public class CreateConfigData : MonoBehaviour
         // sbPath.AppendLine("             AllConfig = Resources.Load<AllConfigInfo>(" + '"' + AllConfigName + '"' + ");");
         // sbPath.AppendLine("             Deserialize(AllConfig);");
         // sbPath.AppendLine("             Resources.UnloadUnusedAssets();");
-        
+
         //Addressable的加载方式
-        sbPath.AppendLine("             AllConfig = Addressables.LoadAssetAsync<AllConfigInfo>(" + '"' + AddressablePath + '"' + ").WaitForCompletion();");
+        sbPath.AppendLine("             AllConfig = LoaderMgr.Instance.LoadAssetSync<AllConfigInfo>(" + '"' + AddressablePath + '"' + ").WaitForCompletion();");
         sbPath.AppendLine("             Deserialize(AllConfig);");
-        sbPath.AppendLine("             Addressables.Release(AllConfig);");
-        
+        sbPath.AppendLine("             LoaderMgr.Instance.Release(" + '"' + AddressablePath + '"' + ");");
+
         sbPath.AppendLine("         }");
         sbPath.AppendLine("         ");
         sbPath.AppendLine("         public static void Deserialize(AllConfigInfo set)");
@@ -225,24 +237,32 @@ public class CreateConfigData : MonoBehaviour
             sbPath.AppendLine("             for (int i = 0; i < set." + fields[i].Name + ".Length; i++)");
             sbPath.AppendLine("             {");
             sbPath.AppendLine("                  " + fields[i].FieldType.ToString().Replace("[]", "") + " ID;");
-            sbPath.AppendLine("                  " + fields[i].FieldType.ToString().Replace("[]", "") + ".GetDictionary().TryGetValue(set." + fields[i].Name + "[i].Id, out ID);");
+            sbPath.AppendLine("                  " + fields[i].FieldType.ToString().Replace("[]", "") +
+                              ".GetDictionary().TryGetValue(set." + fields[i].Name + "[i].Id, out ID);");
             sbPath.AppendLine("                    if (ID!=null)");
             sbPath.AppendLine("                    {");
-            sbPath.AppendLine("                         Debug.LogError(string.Format(" +'"' + "{0}数据唯一ID{1}重复,数据覆盖,数据不支持重复ID,请核实修正避免Bug!"+'"'+','+'"'+ fields[i].FieldType.ToString().Replace("[]", "")+'"'+", set."+ fields[i].Name + "[i].Id));");
+            sbPath.AppendLine("                         Debug.LogError(string.Format(" + '"' +
+                              "{0}数据唯一ID{1}重复,数据覆盖,数据不支持重复ID,请核实修正避免Bug!" + '"' + ',' + '"' +
+                              fields[i].FieldType.ToString().Replace("[]", "") + '"' + ", set." + fields[i].Name +
+                              "[i].Id));");
             sbPath.AppendLine("                    }");
             sbPath.AppendLine("                    else");
             sbPath.AppendLine("                    {");
-            sbPath.AppendLine("                         " + fields[i].FieldType.ToString().Replace("[]", "") + ".GetDictionary().Add(set." + fields[i].Name + "[i].Id, set." + fields[i].Name + "[i]);");
-            sbPath.AppendLine("                         " + fields[i].FieldType.ToString().Replace("[]", "") + ".GetList().Add(set." + fields[i].Name + "[i]);");
-            sbPath.AppendLine("                    }");      
+            sbPath.AppendLine("                         " + fields[i].FieldType.ToString().Replace("[]", "") +
+                              ".GetDictionary().Add(set." + fields[i].Name + "[i].Id, set." + fields[i].Name + "[i]);");
+            sbPath.AppendLine("                         " + fields[i].FieldType.ToString().Replace("[]", "") +
+                              ".GetList().Add(set." + fields[i].Name + "[i]);");
+            sbPath.AppendLine("                    }");
             sbPath.AppendLine("             }");
         }
+
         sbPath.AppendLine("         }");
         sbPath.AppendLine("}");
         File.WriteAllText(scriptFilePath, sbPath.ToString(), Encoding.UTF8);
         AssetDatabase.Refresh();
         Debug.Log("自动生成数据初始化脚本");
     }
+
     /// <summary>
     /// 测试读表0
     /// </summary>
@@ -271,8 +291,8 @@ public class CreateConfigData : MonoBehaviour
         //    hotConfigInfo.TestDicExcel[i].testDic4 = (float)table[i]["testDic4"];
         //    hotConfigInfo.TestDicExcel[i].testDic5 = (bool)table[i]["testDic5"];
         //}
-
     }
+
     /// <summary>
     /// 表格数据存入List<Dictionary<string, object>>
     /// </summary>
@@ -283,7 +303,7 @@ public class CreateConfigData : MonoBehaviour
     {
         DataTable mTables = GetExcelData(filename, tablesID);
         //列
-        int columns = mTables.Columns.Count;   
+        int columns = mTables.Columns.Count;
         //行
         int rows = mTables.Rows.Count;
         List<Dictionary<string, object>> table = new List<Dictionary<string, object>>();
@@ -302,16 +322,20 @@ public class CreateConfigData : MonoBehaviour
                 {
                     flag = true;
                 }
+
                 row[field] = GetRealData(type, value);
             }
+
             if (flag)
             {
                 flag = false;
                 table.Add(row);
             }
-        }        
+        }
+
         return table;
     }
+
     /// <summary>
     /// 获取表格
     /// </summary>
@@ -331,8 +355,10 @@ public class CreateConfigData : MonoBehaviour
         {
             return null;
         }
+
         return ds.Tables[tableID];
     }
+
     //数据转成对应的类型
     //list<int[]>这种类型无法序列化,不放入可选类型
     //把数据转成object类型返回，装箱操作。
@@ -344,8 +370,8 @@ public class CreateConfigData : MonoBehaviour
 
         switch (tempType)
         {
-            case "int":               
-                result = obj==""? 0 : Convert.ToInt32(obj);
+            case "int":
+                result = obj == "" ? 0 : Convert.ToInt32(obj);
                 break;
             case "string":
                 result = obj;
@@ -367,20 +393,22 @@ public class CreateConfigData : MonoBehaviour
                     else
                     {
                         result = true;
-                    };
+                    }
+
+                    ;
                 }
-               
+
                 break;
             case "int[]":
                 if (obj == "")
                 {
                     intAryData = null;
                 }
-                else 
+                else
                 {
                     intAryData = Array.ConvertAll(obj.Split(','), s => int.Parse(s));
                 }
-               
+
                 result = intAryData;
                 break;
             case "string[]":
@@ -391,14 +419,15 @@ public class CreateConfigData : MonoBehaviour
                 else
                 {
                     stringAryData = obj.Split(',');
-                }     
+                }
+
                 result = stringAryData;
                 break;
             default:
                 result = obj;
                 break;
         }
+
         return result;
     }
-
 }
