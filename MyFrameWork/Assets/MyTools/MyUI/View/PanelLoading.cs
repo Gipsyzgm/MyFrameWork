@@ -1,21 +1,24 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine.Events;
 
-public class PanelLoading : PanelBase {
-
+public class PanelLoading : PanelBase
+{
     public Text txtTip;
     public Image imgProgress;
     public Text txtProgress;
+
     public override void Init(params object[] _args)
     {
-         args = _args;
-         CurViewPath="MyUI/View/PanelLoading";
-         layer = PanelLayer.Top;
+        args = _args;
+        CurViewPath = "MyUI/View/PanelLoading";
+        layer = PanelLayer.Top;
     }
+
     public override void InitComponent()
     {
         txtTip = curView.transform.Find("goProgress/txtTip_Text").GetComponent<Text>();
@@ -24,21 +27,32 @@ public class PanelLoading : PanelBase {
         CustomComponent();
     }
     //——————————上面部分自动生成，每次生成都会替换掉，不要手写东西——————————
-                                                                                                
+
     //——————————以下为手写部分，初始化补充方法为CustomComponent()———————————
     //@EndMark@
     public void CustomComponent()
     {
+        
     }
 
     public override void OnShow()
     {
         base.OnShow();
+        EventMgr.Instance.AddEventListener(EventConst.UpdateProgressEvent, UpdateProgress);
     }
 
-    public void UpdateProgress(float value, float duration,bool autoclose = false)
+
+    public void StartLoading(Action callback)
     {
-        
+        callback?.Invoke();
+    }
+
+
+    public void UpdateProgress(params object[] arg)
+    {
+        float value = (float)args[0];
+        float duration = (float)args[1];
+        bool autoclose = (bool)args[2];
         float currentValue;
         if (duration == 0)
         {
@@ -48,6 +62,7 @@ public class PanelLoading : PanelBase {
         else
         {
             currentValue = imgProgress.fillAmount * 100;
+            txtProgress.text = string.Format("{0:F1}%", currentValue);
             imgProgress.DOFillAmount(value, duration).SetEase(Ease.OutBounce).OnComplete(() =>
             {
                 if (autoclose)
@@ -62,10 +77,12 @@ public class PanelLoading : PanelBase {
     public override void OnHide()
     {
         base.OnHide();
+        EventMgr.Instance.RemoveEventListener(EventConst.UpdateProgressEvent, UpdateProgress);
     }
 
     public override void OnClose()
     {
         base.OnClose();
+        EventMgr.Instance.RemoveEventListener(EventConst.UpdateProgressEvent, UpdateProgress);
     }
 }

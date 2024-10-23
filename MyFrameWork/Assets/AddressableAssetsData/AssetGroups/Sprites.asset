@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: Sprites
   m_Data:
     m_SerializedData: []
-  m_GUID: f3663880a1fc2a54e8cc8bf0b33d3a41
+  m_GUID: f72876fce869ff24b87b2426d2b78e05
   m_SerializeEntries:
   - m_GUID: 02baaf8b78eac3546a4aab849ece198a
     m_Address: Sprites/Common/frane_qieye

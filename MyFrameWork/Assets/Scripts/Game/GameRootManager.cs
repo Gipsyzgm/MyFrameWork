@@ -7,16 +7,8 @@ using UnityEngine;
 using XOProto;
 using Random = UnityEngine.Random;
 
-public class GameRootManager : MonoBehaviour
+public class GameRootManager : MonoSingleton<GameRootManager>
 {
-    private static GameRootManager instance;
-
-    public static GameRootManager Instance
-    {
-        get { return instance; }
-    }
-
-   
     public PushMessageData pushMsgSetting;
     public PushGiftData pushGiftSetting;
 
@@ -71,9 +63,44 @@ public class GameRootManager : MonoBehaviour
     bool isJingBao = true;
     bool isJingBao2 = true;
 
-    private void Awake()
+    public void InitScene()
     {
-        instance = this;
+        LoaderMgr.Instance.LoadAssetAsync<GameObject>("", (obj) =>
+        {
+            obj.name = "CampAtk";
+            obj.transform.SetParent(transform);
+            obj.transform.localPosition = new Vector3(0, 0, 38);
+            gameAtkCamp = obj.GetComponent<GameAtkCamp>();
+            gameAtkCamp.Init(0);
+        });
+        LoaderMgr.Instance.LoadAssetAsync<GameObject>("", (obj) =>
+        {
+            obj.name = "CampDef";
+            obj.transform.SetParent(transform);
+            obj.transform.localPosition = new Vector3(0, 0, -38);
+            gameDefCamp = obj.GetComponent<GameDefCamp>();
+            gameDefCamp.Init(1);
+        });
+        
+        if (DataInfoMgr.Instance.gameOver == 0)
+        {
+            LocalToCache();
+            if (IsUseCache())
+            {
+                Recovery();
+                // CoroutineManager:GetInstance():StartNextTime(function()
+                // GameMapManager:GetInstance():OnKeyDown(KeyId.CameraZoom, 3);
+                // end, 0.2)
+            }
+            
+        }
+
+        InitCamera();
+        //PanelMgr.Instance.OpenPanel<PanelMain>();
+        
+        
+        
+        
         // gameBasicSetting.Startup();
         // pushMsgSetting.Startup();
         // pushGiftSetting.Startup();
@@ -89,6 +116,19 @@ public class GameRootManager : MonoBehaviour
         InitStartupArgs();
         InitEvent();
     }
+
+    public void InitCamera()
+    {
+        CameraMgr.Instance.activeCamera.camera.transform.localPosition = new Vector3(0, 82, -84);
+        LoaderMgr.Instance.LoadAssetAsync<GameObject>("Prefab/GameMap", (obj) =>
+        {
+            obj.transform.SetParent(transform);
+            obj.transform.localPosition = Vector3.zero;
+        });
+    }
+
+
+
 
     private void InitEvent()
     {
@@ -282,7 +322,7 @@ public class GameRootManager : MonoBehaviour
                 DoTipMarquee(MarqueeType.TipCountdown5);
                 if (isJingBao)
                 {
-                    AudioMgr.Instance.PlayEffect( MyAudioName.gs_jingbao, 0.3f);
+                    AudioMgr.Instance.PlayEffect(MyAudioName.gs_jingbao, 0.3f);
                     isJingBao = false;
                 }
             }
@@ -291,7 +331,7 @@ public class GameRootManager : MonoBehaviour
                 DoTipMarquee(MarqueeType.TipKingDodgeLeft1);
                 if (isJingBao2)
                 {
-                    AudioMgr.Instance.PlayEffect( MyAudioName.gs_jingbao, 0.3f);
+                    AudioMgr.Instance.PlayEffect(MyAudioName.gs_jingbao, 0.3f);
                     isJingBao2 = false;
                 }
             }
@@ -526,7 +566,7 @@ public class GameRootManager : MonoBehaviour
             {
                 lastnum = 9;
             }
-            
+
             if (GameRootManager.Instance.gameAtkCamp.CurActiveNum + lastnum > 220)
             {
                 lastnum = 0;

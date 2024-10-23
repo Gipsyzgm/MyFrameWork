@@ -113,7 +113,18 @@ public class PanelLogin : PanelBase
         isWaitConfirm = false;
        
         //进入战斗场景
-        
+        PanelMgr.Instance.OpenPanel<PanelLoading>();
+        PanelMgr.Instance.GetPanel<PanelLoading>().StartLoading(() =>
+        {
+            EventMgr.Instance.InvokeEvent(EventConst.UpdateProgressEvent, 0.9, 6,false);
+  
+            GameRootManager.Instance.InitScene();
+            // GameManager:GetInstance():Init();
+            // GameMapManager:GetInstance():Init();
+            // PanelHelper.ShowPanel(UIPanelConst.PanelMain);
+            
+        });
+     
 
     }
 

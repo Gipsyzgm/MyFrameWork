@@ -15,10 +15,15 @@ MonoBehaviour:
   m_GroupName: GameData
   m_Data:
     m_SerializedData: []
-  m_GUID: c0b9c72f4b61dd54c992b85a0f010d94
+  m_GUID: b877c44dd7def794ba02062ff1ee6a02
   m_SerializeEntries:
   - m_GUID: 1699f138222ad844d9ea549f6eaa339b
     m_Address: GameData/AllConfigInfo
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1a1ad12aa753d4d4e9e6c926ec9f039d
+    m_Address: GameData/Custom/GamePoolEditor
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

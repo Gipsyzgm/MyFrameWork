@@ -203,9 +203,10 @@ public class PanelMgr : MonoSingleton<PanelMgr>
         return null;
     }
 
-    public T GetPanel<T>(PanelName _name) where T : PanelBase
+    public T GetPanel<T>() where T : PanelBase
     {
-        return GetPanel(_name) as T;
+        string name = typeof(T).ToString();
+        return GetPanel(name) as T;
     }
 
     public void ClosePanel(PanelName _name)

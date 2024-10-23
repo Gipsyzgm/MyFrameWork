@@ -88,4 +88,6 @@
     public const string GameUserShanghai = "GAME_USER_SHANGHAI";
 
     public const string GameMaxLengh = "GAME_MAX_LENGH";
+    
+    
 }
