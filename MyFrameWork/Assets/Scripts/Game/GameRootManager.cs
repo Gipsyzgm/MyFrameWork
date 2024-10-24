@@ -81,7 +81,7 @@ public class GameRootManager : MonoSingleton<GameRootManager>
             gameDefCamp = obj.GetComponent<GameDefCamp>();
             gameDefCamp.Init(1);
         });
-        
+
         if (DataInfoMgr.Instance.gameOver == 0)
         {
             LocalToCache();
@@ -92,15 +92,12 @@ public class GameRootManager : MonoSingleton<GameRootManager>
                 // GameMapManager:GetInstance():OnKeyDown(KeyId.CameraZoom, 3);
                 // end, 0.2)
             }
-            
         }
 
         InitCamera();
         //PanelMgr.Instance.OpenPanel<PanelMain>();
-        
-        
-        
-        
+
+
         // gameBasicSetting.Startup();
         // pushMsgSetting.Startup();
         // pushGiftSetting.Startup();
@@ -128,21 +125,19 @@ public class GameRootManager : MonoSingleton<GameRootManager>
     }
 
 
-
-
     private void InitEvent()
     {
-        EventMgr.Instance.AddEventListener(EventConst.GameStart, OnGameStart);
+        EventMgr.Instance.AddEventListener<string>(EventConst.GameStart, OnGameStart);
         EventMgr.Instance.AddEventListener(EventConst.GameCountdownOver, OnGameCountdownOver);
-        EventMgr.Instance.AddEventListener(EventConst.GameOver, OnGameOver);
-        EventMgr.Instance.AddEventListener(EventConst.GameRecord, OnGameRecord);
-        EventMgr.Instance.AddEventListener(EventConst.GamePushCrazy, OnGameCrazy);
-        EventMgr.Instance.AddEventListener(EventConst.GameChooseCamp, OnGameChooseCampSoldier);
-        EventMgr.Instance.AddEventListener(EventConst.GamePushComment, OnGamePushCommentSoldier);
-        EventMgr.Instance.AddEventListener(EventConst.GamePushLike, OnGamePushLikeSoldier);
-        EventMgr.Instance.AddEventListener(EventConst.GamePushGift, OnGamePushGiftSoldier);
-        EventMgr.Instance.AddEventListener(EventConst.GamePushFirstGift, OnGameFirstGiftSoldier);
-        EventMgr.Instance.AddEventListener(EventConst.DoRefreshRankUser, RefreshRankUser);
+        EventMgr.Instance.AddEventListener<CampType>(EventConst.GameOver, OnGameOver);
+        EventMgr.Instance.AddEventListener<long, long, long>(EventConst.GameRecord, OnGameRecord);
+        EventMgr.Instance.AddEventListener<int>(EventConst.GameChooseCamp, OnGameChooseCamp);
+        EventMgr.Instance.AddEventListener<int, int>(EventConst.GamePushComment, OnGamePushComment);
+        EventMgr.Instance.AddEventListener<int, int>(EventConst.GamePushLike, OnGamePushLikeSoldier);
+        EventMgr.Instance.AddEventListener<int, int, int, int, int>(EventConst.GamePushGift, OnGamePushGiftSoldier);
+        EventMgr.Instance.AddEventListener<int, PushGiftData, int, PushGiftData, int, int>(EventConst.GamePushFirstGift,
+            OnGameFirstGiftSoldier);
+        EventMgr.Instance.AddEventListener<bool>(EventConst.DoRefreshRankUser, RefreshRankUser);
     }
 
     private void InitStartupArgs()
@@ -373,38 +368,38 @@ public class GameRootManager : MonoSingleton<GameRootManager>
         EventMgr.Instance.InvokeEvent(EventConst.GameUpdateWinCount, leftWinCount, rightWinCount);
     }
 
-    private void RefreshRankUser(params object[] arg)
+    private void RefreshRankUser(bool isAnim = false)
     {
-        // var users = DataInfoMgr.Instance.UserDataDict.Values.ToList();
-        // int campLeft = (int)CampType.Atk;
-        // int campRight = (int)CampType.Def;
-        // var leftUsers = users.FindAll(p => p.campType == campLeft).OrderByDescending(p => p.score).ToList();
-        // var rightUsers = users.FindAll(p => p.campType == campRight).OrderByDescending(p => p.score).ToList();
-        //
-        // GameMap.Instance.SetTopThreeInfo(rightUsers);
-        // Messenger.Broadcast(EventConst.GAME_UPDATE_RANK_USER, leftUsers, rightUsers, isAnim);
+        var users = DataInfoMgr.Instance.UserDataDict.Values.ToList();
+        int campLeft = (int)CampType.Atk;
+        int campRight = (int)CampType.Def;
+        var leftUsers = users.FindAll(p => p.campType == campLeft).OrderByDescending(p => p.score).ToList();
+        var rightUsers = users.FindAll(p => p.campType == campRight).OrderByDescending(p => p.score).ToList();
+
+        GameMap.Instance.SetTopThreeInfo(rightUsers);
+        EventMgr.Instance.InvokeEvent(EventConst.GameUpdateRankUser, leftUsers, rightUsers, isAnim);
     }
 
-    private void OnGameStart(params object[] arg)
+    private void OnGameStart(string roundNum)
     {
-        this.roundNum = arg[0].ToString();
+        roundNum = roundNum;
         IsEnterReady = true;
     }
 
-    private void OnGameRecord(params object[] arg)
+    private void OnGameRecord(long scoreTotal, long scorePoolShow, long pointPoolShow)
     {
-        // this.totalScore = scoreTotal;
-        // PlayerPrefs.SetString("scoreTotal", scoreTotal.ToString());
-        // RefreshScore();
+        totalScore = scoreTotal;
+        PlayerPrefs.SetString("scoreTotal", scoreTotal.ToString());
+        RefreshScore();
     }
 
-    public void OnGameCountdownOver(params object[] arg)
+    public void OnGameCountdownOver()
     {
         Debug.Log("Game countdown over");
         EventMgr.Instance.InvokeEvent(EventConst.GameOver, CampType.Def);
     }
 
-    public void OnGameOver(params object[] arg)
+    public void OnGameOver(CampType loserCampType)
     {
         // isPlay = false;
         // Debug.LogFormat("Gameover, loser: {0}", loserCampType);
@@ -438,28 +433,28 @@ public class GameRootManager : MonoSingleton<GameRootManager>
     /// 加入阵营
     /// </summary>
     /// <param name="userId"></param>
-    private void OnGameChooseCampSoldier(params object[] arg)
+    private void OnGameChooseCamp(int userId)
     {
-        // if (IsEnterReady == false && !isPlay) return;
-        // UserDataInfo info = DataInfoMgr.Instance.UserDataDict.GetById(userId);
-        //
-        // if (info.campType == (int)CampType.Atk)
-        // {
-        //     leftUserCount++;
-        //     leftWinCount += info.costPoint;
-        //     gameAtkCamp.AddNewSoldier(info);
-        //     //Debug.Log(leftWinCount + "上方胜点池" + "------------" + info.costPoint + "玩家投入胜点");
-        // }
-        // else if (info.campType == (int)CampType.Def)
-        // {
-        //     rightUserCount++;
-        //     rightWinCount += info.costPoint;
-        //     gameDefCamp.GenerateSoldierById(info);
-        //     //Debug.Log(leftWinCount + "下方胜点池" + "------------" + info.costPoint + "玩家投入胜点");
-        // }
-        //
-        // RefreshWinCount();
-        // CacheToLocal();
+        if (IsEnterReady == false && !isPlay) return;
+        UserDataInfo info = DataInfoMgr.Instance.UserDataDict.GetById(userId);
+
+        if (info.campType == (int)CampType.Atk)
+        {
+            leftUserCount++;
+            leftWinCount += info.costPoint;
+            gameAtkCamp.AddNewSoldier(info);
+            //Debug.Log(leftWinCount + "上方胜点池" + "------------" + info.costPoint + "玩家投入胜点");
+        }
+        else if (info.campType == (int)CampType.Def)
+        {
+            rightUserCount++;
+            rightWinCount += info.costPoint;
+            gameDefCamp.GenerateSoldierById(info);
+            //Debug.Log(leftWinCount + "下方胜点池" + "------------" + info.costPoint + "玩家投入胜点");
+        }
+
+        RefreshWinCount();
+        CacheToLocal();
     }
 
 
@@ -468,30 +463,30 @@ public class GameRootManager : MonoSingleton<GameRootManager>
     /// </summary>
     /// <param name="userId"></param>
     /// <param name="num"></param>
-    private void OnGamePushCommentSoldier(params object[] arg)
+    private void OnGamePushComment(int userId, int num)
     {
-        // if (IsEnterReady == false && !isPlay) return;
-        // UserDataInfo info = DataInfoMgr.Instance.UserDataDict.GetById(userId);
-        // //评论666
-        // if (num == 6)
-        // {
-        //     int solidernum = 2;
-        //     int bulluetnum = 30;
-        //     if (GameRootManager.Instance.gameAtkCamp.CurActiveNum <= 400)
-        //     {
-        //         solidernum = 6;
-        //     }
-        //     else if (GameRootManager.Instance.gameAtkCamp.CurActiveNum <= 800)
-        //     {
-        //         solidernum = 3;
-        //     }
-        //     else
-        //     {
-        //         solidernum = 0;
-        //     }
-        //
-        //     DoPushCommentSoldier(info, bulluetnum, solidernum);
-        // }
+        if (IsEnterReady == false && !isPlay) return;
+        UserDataInfo info = DataInfoMgr.Instance.UserDataDict.GetById(userId);
+        //评论666
+        if (num == 6)
+        {
+            int solidernum = 2;
+            int bulluetnum = 30;
+            if (GameRootManager.Instance.gameAtkCamp.CurActiveNum <= 400)
+            {
+                solidernum = 6;
+            }
+            else if (GameRootManager.Instance.gameAtkCamp.CurActiveNum <= 800)
+            {
+                solidernum = 3;
+            }
+            else
+            {
+                solidernum = 0;
+            }
+
+            DoPushCommentSoldier(info, bulluetnum, solidernum);
+        }
     }
 
 
@@ -528,27 +523,27 @@ public class GameRootManager : MonoSingleton<GameRootManager>
     /// </summary>
     /// <param name="userId"></param>
     /// <param name="likeCount"></param>
-    private void OnGamePushLikeSoldier(params object[] arg)
+    private void OnGamePushLikeSoldier(int userId, int likeCount)
     {
-        // if (IsEnterReady == false && !isPlay) return;
-        // UserDataInfo info = DataInfoMgr.Instance.UserDataDict.GetById(userId);
-        // info.AddLike(likeCount);
-        // int solidernum = 2;
-        // int bulluetnum = 2;
-        // if (GameRootManager.Instance.gameAtkCamp.CurActiveNum <= 400)
-        // {
-        //     solidernum = 2;
-        // }
-        // else if (GameRootManager.Instance.gameAtkCamp.CurActiveNum <= 800)
-        // {
-        //     solidernum = 1;
-        // }
-        // else
-        // {
-        //     solidernum = 0;
-        // }
-        //
-        // DoPushLikeSoldier(info, bulluetnum, solidernum, likeCount);
+        if (IsEnterReady == false && !isPlay) return;
+        UserDataInfo info = DataInfoMgr.Instance.UserDataDict.GetById(userId);
+        info.AddLike(likeCount);
+        int solidernum = 2;
+        int bulluetnum = 2;
+        if (GameRootManager.Instance.gameAtkCamp.CurActiveNum <= 400)
+        {
+            solidernum = 2;
+        }
+        else if (GameRootManager.Instance.gameAtkCamp.CurActiveNum <= 800)
+        {
+            solidernum = 1;
+        }
+        else
+        {
+            solidernum = 0;
+        }
+
+        DoPushLikeSoldier(info, bulluetnum, solidernum, likeCount);
     }
 
     /// <summary>
@@ -615,36 +610,37 @@ public class GameRootManager : MonoSingleton<GameRootManager>
     /// <param name="giftCount"></param>
     /// <param name="price"></param>
     /// <param name="soldierCount"></param>
-    private void OnGamePushGiftSoldier(params object[] arg)
+    private void OnGamePushGiftSoldier(int userId, int superSoldierId, int giftCount, int price, int soldierCount)
     {
-        // if (IsEnterReady == false && !isPlay) return;
-        // UserDataInfo info = DataInfoMgr.Instance.UserDataDict.GetById(userId);
-        // AddScore((CampType)info.campType, price * giftCount);
-        // info.AddPrice(price * giftCount);
-        // info.AddScore(price * giftCount);
-        // if (info.campType == (int)CampType.Atk)
-        // {
-        //     StartCoroutine(gameAtkCamp.GetGiftInfo(info, superSoldierId, giftCount));
-        // }
-        // else if (info.campType == (int)CampType.Def)
-        // {
-        //     StartCoroutine(gameDefCamp.GetGiftInfo(info, superSoldierId, giftCount));
-        // }
+        if (IsEnterReady == false && !isPlay) return;
+        UserDataInfo info = DataInfoMgr.Instance.UserDataDict.GetById(userId);
+        AddScore((CampType)info.campType, price * giftCount);
+        info.AddPrice(price * giftCount);
+        info.AddScore(price * giftCount);
+        if (info.campType == (int)CampType.Atk)
+        {
+            StartCoroutine(gameAtkCamp.GetGiftInfo(info, superSoldierId, giftCount));
+        }
+        else if (info.campType == (int)CampType.Def)
+        {
+            StartCoroutine(gameDefCamp.GetGiftInfo(info, superSoldierId, giftCount));
+        }
     }
 
 
-    private void OnGameFirstGiftSoldier(params object[] arg)
+    private void OnGameFirstGiftSoldier(int userId, PushGiftData giftData1, int firstGiftID, PushGiftData giftData,
+        int count, int price)
     {
-        // if (IsEnterReady == false && !isPlay) return;
-        // UserDataInfo info = DataInfoMgr.Instance.UserDataDict.GetById(userId);
-        // if (info.campType == (int)CampType.Atk)
-        // {
-        //     StartCoroutine(gameAtkCamp.GetGiftInfo(info, firstGiftID, 1));
-        // }
-        // else if (info.campType == (int)CampType.Def)
-        // {
-        //     StartCoroutine(gameDefCamp.GetGiftInfo(info, firstGiftID, 1));
-        // }
+        if (IsEnterReady == false && !isPlay) return;
+        UserDataInfo info = DataInfoMgr.Instance.UserDataDict.GetById(userId);
+        if (info.campType == (int)CampType.Atk)
+        {
+            StartCoroutine(gameAtkCamp.GetGiftInfo(info, firstGiftID, 1));
+        }
+        else if (info.campType == (int)CampType.Def)
+        {
+            StartCoroutine(gameDefCamp.GetGiftInfo(info, firstGiftID, 1));
+        }
     }
 
 

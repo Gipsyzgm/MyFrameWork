@@ -53,7 +53,7 @@ public class GameAtkCamp : MonoBehaviour
 
     private void Awake()
     {
-        EventMgr.Instance.AddEventListener(EventConst.GameOver, OnGameOver);
+        
     }
 
 
@@ -552,10 +552,7 @@ public class GameAtkCamp : MonoBehaviour
         soldier.UnInit();
         PoolMgr.Instance.DisSpawnGo(SoldierPoolKey, soldier.gameObject);
     }
-
-    private void OnGameOver(params object[] arg)
-    {
-    }
+    
 
 
     public void Reset()

@@ -26,8 +26,6 @@ public class GameDefCamp : MonoBehaviour
 
     private void Awake()
     {
-        EventMgr.Instance.AddEventListener(EventConst.GameOver, OnGameOver);
-
         var table = GiftEffectConfig.Get(14);
         Gift7BuffCoef = float.Parse(table.para) / 100f;
     }
@@ -260,12 +258,7 @@ public class GameDefCamp : MonoBehaviour
         soldier.UnInit();
         PoolMgr.Instance.DisSpawnGo(SoldierPoolKey, soldier.gameObject);
     }
-
-
-    private void OnGameOver(params object[] args)
-    {
-        
-    }
+    
 
     public int CountScore()
     {

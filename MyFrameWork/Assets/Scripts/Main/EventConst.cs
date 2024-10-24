@@ -51,7 +51,7 @@
     public const string GameOver = "GAME_OVER";
     public const string GameRecord = "GAME_RECORD";
     public const string GameRank = "GAME_RANK";
-    
+    public const string GameNuanChangOver = "GAME_NUANCHANG_OVER";
 
     public const string GameChooseCamp = "GAME_CHOOSE_CAMP";
     public const string GameGenerateSoldier = "GAME_GENERATE_SOLDIER";
@@ -88,6 +88,9 @@
     public const string GameUserShanghai = "GAME_USER_SHANGHAI";
 
     public const string GameMaxLengh = "GAME_MAX_LENGH";
+    public const string Updatescorepool = "UPDATE_SCORE_POOL";
+    public const string PanelEnterDestroy = "PanelEnterDestroy";
+    
     
     
 }

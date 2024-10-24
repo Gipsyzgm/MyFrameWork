@@ -72,7 +72,7 @@ public class DataInfoMgr : Singleton<DataInfoMgr>
         Debug.Log(
             $"Login success, RoomId: {roomId}, firstGiftCount: {firstGiftCount}, gameOver: {gameOver}, roundNum： {roundNum} ");
 
-        // Loom.QueueOnMainThread(() => { Messenger.Broadcast(EventConst.USER_LOGIN); });
+        EventMgr.Instance.InvokeEvent(EventConst.UserLogin); 
         MsgSend.SendGameStart(0);
     }
 
