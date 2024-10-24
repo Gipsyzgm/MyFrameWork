@@ -12,9 +12,9 @@ public class DataInfoMgr : Singleton<DataInfoMgr>
     public int firstGiftCount { get; private set; }
     public int gameOver { get; private set; }
     public string roundNum { get; private set; }
-    
+
     public Dictionary<int, UserDataInfo> UserDataDict { get; private set; }
-    
+
     public void RegistEvent()
     {
         var msgpro = NetMgr.Instance.gameSocket.msgProcess;
@@ -72,14 +72,15 @@ public class DataInfoMgr : Singleton<DataInfoMgr>
         Debug.Log(
             $"Login success, RoomId: {roomId}, firstGiftCount: {firstGiftCount}, gameOver: {gameOver}, roundNum： {roundNum} ");
 
-        EventMgr.Instance.InvokeEvent(EventConst.UserLogin); 
+        EventMgr.Instance.InvokeEvent(EventConst.UserLogin);
         MsgSend.SendGameStart(0);
     }
 
     private void OnGameStart(S2C_Game_Start message)
     {
         Debug.Log($"Game start, roundNum： {message.RoundNum} ");
-        //Loom.QueueOnMainThread(() => { Messenger.Broadcast(EventConst.GAME_START, message.RoundNum); });
+        EventMgr.Instance.InvokeEvent(EventConst.GameStart, message.RoundNum);
+       
     }
 
 

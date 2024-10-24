@@ -215,10 +215,10 @@ public class GameRootManager : MonoSingleton<GameRootManager>
 
     public void ClearOtherGameobject()
     {
-        foreach (Transform child in GameObjectPar)
-        {
-            Destroy(child.gameObject);
-        }
+        // foreach (Transform child in GameObjectPar)
+        // {
+        //     Destroy(child.gameObject);
+        // }
     }
 
     public void UnInit()

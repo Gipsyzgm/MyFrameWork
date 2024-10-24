@@ -78,7 +78,9 @@ public class PanelLogin : PanelBase
 
     public void OnUserLoginRsp()
     {
-       
+        
+        Debug.Log("进入Login环节");
+        
         // --  if (dataInfoMgr.gameOver == 0 or LuaCommonData.IsLocalMode) and SceneManager:GetInstance():GetGameRootMgr():HasLocalCache() then
         //     --     UIPromptHelper.ShowConfirm2("发现上局比赛还未结束，是否继续上一局的比赛?", function()
         //     --         self:LoginFinish()

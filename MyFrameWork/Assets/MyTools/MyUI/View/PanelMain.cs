@@ -141,7 +141,7 @@ public class PanelMain : PanelBase {
         PanelMgr.Instance.HidePanel(PanelName.PanelSetting);
         //PanelMgr.Instance.HidePanel(PanelName.Rank);
         sliderHP.value = 2000;
-        GameRootManager.Instance.Reset();
+        //GameRootManager.Instance.Reset();
         GameRootManager.Instance.IsEnterReady = true;
         Debug.Log("暖场环节开始Lua");
     }
