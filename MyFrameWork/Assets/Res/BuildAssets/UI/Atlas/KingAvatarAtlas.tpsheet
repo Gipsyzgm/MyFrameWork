@@ -1,0 +1,24 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:af581adf52fd00643a13613c0741a67d:5a35f693c909ff2bad587a9a572a5851:5faf5fe73f6296c8517fb8e78b0bc8cd$
+#
+:format=40300
+:texture=KingAvatarAtlas.png
+:size=880x88
+:pivotpoints=enabled
+:borders=disabled
+
+1;1;1;86;86; 0.5;0.5; 0;0;0;0
+2;177;1;86;86; 0.5;0.5; 0;0;0;0
+3;265;1;86;86; 0.5;0.5; 0;0;0;0
+4;353;1;86;86; 0.5;0.5; 0;0;0;0
+5;441;1;86;86; 0.5;0.5; 0;0;0;0
+6;529;1;86;86; 0.5;0.5; 0;0;0;0
+7;617;1;86;86; 0.5;0.5; 0;0;0;0
+8;705;1;86;86; 0.5;0.5; 0;0;0;0
+9;793;1;86;86; 0.5;0.5; 0;0;0;0
+10;89;1;86;86; 0.5;0.5; 0;0;0;0

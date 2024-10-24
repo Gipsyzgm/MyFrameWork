@@ -1,0 +1,575 @@
+fileFormatVersion: 2
+guid: 199e5e4aa9b8aa0449e2ed3290376ae1
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ygcgbattack1_10013
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 1486
+        width: 413
+        height: 1036
+      alignment: 9
+      pivot: {x: 0.6077482, y: 0.4469112}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2927da79004bc724ea3a95c86d723b7a
+      internalID: -1009055606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ygcgbattack1_10015
+      rect:
+        serializedVersion: 2
+        x: 1860
+        y: 1475
+        width: 568
+        height: 1047
+      alignment: 9
+      pivot: {x: 0.4947183, y: 0.44221586}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2d2f14032df9754e9fcd6d2d93d2703
+      internalID: 472054846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ygcgbattack1_10016
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 1491
+        width: 598
+        height: 1032
+      alignment: 9
+      pivot: {x: 0.49331105, y: 0.44864342}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a04770836ae815549b8b047759b2bf4d
+      internalID: -1431496036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ygcgbattack1_10010
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1612
+        width: 348
+        height: 911
+      alignment: 9
+      pivot: {x: 0.5344828, y: 0.5082327}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dbc8f0f7ac980746ada83294c455cd2
+      internalID: -978580038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ygcgbattack1_10014
+      rect:
+        serializedVersion: 2
+        x: 1366
+        y: 1477
+        width: 492
+        height: 1045
+      alignment: 9
+      pivot: {x: 0.54268295, y: 0.4430622}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d19ea789b5a2b4479aa6388803742d5
+      internalID: 9474981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ygcgbattack1_10020
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2525
+        width: 675
+        height: 806
+      alignment: 9
+      pivot: {x: 0.54814816, y: 0.5744417}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd9c9c85a8ed70e48b5540fee0da900d
+      internalID: -222611760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ygcgbattack1_10021
+      rect:
+        serializedVersion: 2
+        x: 1233
+        y: 2524
+        width: 644
+        height: 807
+      alignment: 9
+      pivot: {x: 0.5372671, y: 0.5737299}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c723748264aac4a438f83b2cca5c3b28
+      internalID: 1311613985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ygcgbattack1_10022
+      rect:
+        serializedVersion: 2
+        x: 1879
+        y: 2524
+        width: 589
+        height: 807
+      alignment: 9
+      pivot: {x: 0.5008489, y: 0.5737299}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f1887c8b1a8ae8499e3d4bbc166dfe1
+      internalID: 618138647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ygcgbattack1_10023
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 2525
+        width: 553
+        height: 806
+      alignment: 9
+      pivot: {x: 0.47197106, y: 0.5744417}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b2fbbbef73820148b9ec1f4c12e92a0
+      internalID: -1939256282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ygcgbattack1_10024
+      rect:
+        serializedVersion: 2
+        x: 2470
+        y: 2523
+        width: 518
+        height: 808
+      alignment: 9
+      pivot: {x: 0.44594595, y: 0.5730198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d2e9e63339eb224cb9b85570e6457ce
+      internalID: 1531110495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ygcgbattack1_10025
+      rect:
+        serializedVersion: 2
+        x: 2990
+        y: 2516
+        width: 697
+        height: 815
+      alignment: 9
+      pivot: {x: 0.26111907, y: 0.5680982}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 572e2be63d84d1f429772ee15e75bce5
+      internalID: -1550776723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ygcgbattack2_10003
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 209
+        width: 680
+        height: 1275
+      alignment: 9
+      pivot: {x: 0.6485294, y: 0.4854902}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a34b692d4ce2986468d3b50bc6c4c987
+      internalID: -1431310924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ygcgbattack2_10004
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 177
+        width: 576
+        height: 1296
+      alignment: 9
+      pivot: {x: 0.734375, y: 0.47762346}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8d9a68c849b60a4a86d20a59ef66149
+      internalID: -823775979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ygcgbattack2_10005
+      rect:
+        serializedVersion: 2
+        x: 2050
+        y: 110
+        width: 500
+        height: 1299
+      alignment: 9
+      pivot: {x: 0.758, y: 0.4765204}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3280ef6b8016ec428aee735feb9e536
+      internalID: -865476716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ygcgbattack2_10007
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 223
+        width: 393
+        height: 1266
+      alignment: 9
+      pivot: {x: 0.69211197, y: 0.48894155}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd3b5a0380bc4fe4393bb422cb5914dc
+      internalID: -1596023382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ygcgbattack2_10008
+      rect:
+        serializedVersion: 2
+        x: 1078
+        y: 189
+        width: 392
+        height: 1286
+      alignment: 9
+      pivot: {x: 0.69132656, y: 0.4813375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39a2d1e2217240b49af40910ef1d490e
+      internalID: 1152396566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ygcgbattack2_10011
+      rect:
+        serializedVersion: 2
+        x: 2552
+        y: 79
+        width: 412
+        height: 1330
+      alignment: 9
+      pivot: {x: 0.7063107, y: 0.46541354}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86c6d9f28126cf84ca80cc2cc69a395d
+      internalID: -918980640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ygcgbattack2_10023
+      rect:
+        serializedVersion: 2
+        x: 2966
+        y: 4
+        width: 876
+        height: 1400
+      alignment: 9
+      pivot: {x: 0.59474885, y: 0.44214284}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0ede353fbb2caa498e219c4b1ef94b8
+      internalID: -987071554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ygcgbattack2_10025
+      rect:
+        serializedVersion: 2
+        x: 2430
+        y: 1411
+        width: 783
+        height: 1103
+      alignment: 9
+      pivot: {x: 0.57726693, y: 0.56119674}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a94f202c1a3668459e6f22f6ee6bf6d
+      internalID: 1796023221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ygcgbattack2_10026
+      rect:
+        serializedVersion: 2
+        x: 3215
+        y: 1406
+        width: 745
+        height: 1108
+      alignment: 9
+      pivot: {x: 0.5758389, y: 0.55866426}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98050995704aa2d4fbfae37b8524a027
+      internalID: 1081952809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: a4caed9d04c114748a1982d1b2e3952a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      ygcgbattack1_10010: -978580038
+      ygcgbattack1_10013: -1009055606
+      ygcgbattack1_10014: 9474981
+      ygcgbattack1_10015: 472054846
+      ygcgbattack1_10016: -1431496036
+      ygcgbattack1_10020: -222611760
+      ygcgbattack1_10021: 1311613985
+      ygcgbattack1_10022: 618138647
+      ygcgbattack1_10023: -1939256282
+      ygcgbattack1_10024: 1531110495
+      ygcgbattack1_10025: -1550776723
+      ygcgbattack2_10003: -1431310924
+      ygcgbattack2_10004: -823775979
+      ygcgbattack2_10005: -865476716
+      ygcgbattack2_10007: -1596023382
+      ygcgbattack2_10008: 1152396566
+      ygcgbattack2_10011: -918980640
+      ygcgbattack2_10023: -987071554
+      ygcgbattack2_10025: 1796023221
+      ygcgbattack2_10026: 1081952809
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

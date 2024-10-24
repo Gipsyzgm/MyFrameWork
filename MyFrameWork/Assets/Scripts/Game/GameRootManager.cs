@@ -23,7 +23,7 @@ public class GameRootManager : MonoSingleton<GameRootManager>
     public int rightWinCount;
     public int leftGiftPrice;
     public int rightGiftPrice;
-    public string token;
+    public string token = "";
     public int countdown_2 = 300;
 
     [Header("缓存数据")] public int saveInterval = 5;
@@ -65,22 +65,25 @@ public class GameRootManager : MonoSingleton<GameRootManager>
 
     public void InitScene()
     {
-        LoaderMgr.Instance.LoadAssetAsync<GameObject>("", (obj) =>
-        {
-            obj.name = "CampAtk";
-            obj.transform.SetParent(transform);
-            obj.transform.localPosition = new Vector3(0, 0, 38);
-            gameAtkCamp = obj.GetComponent<GameAtkCamp>();
-            gameAtkCamp.Init(0);
-        });
-        LoaderMgr.Instance.LoadAssetAsync<GameObject>("", (obj) =>
-        {
-            obj.name = "CampDef";
-            obj.transform.SetParent(transform);
-            obj.transform.localPosition = new Vector3(0, 0, -38);
-            gameDefCamp = obj.GetComponent<GameDefCamp>();
-            gameDefCamp.Init(1);
-        });
+        LoaderMgr.Instance.InstantiatePrefabAsync("Prefabs/Game/GameAtkCamp", Vector3.zero, Quaternion.identity,
+            transform, (gameObject) =>
+            {
+                gameObject.name = "GameAtkCamp";
+                gameObject.transform.localPosition = new Vector3(0, 0, 38);
+                gameAtkCamp = gameObject.GetComponent<GameAtkCamp>();
+                gameAtkCamp.Init(0);
+            });
+
+
+        LoaderMgr.Instance.InstantiatePrefabAsync("Prefabs/Game/GameDefCamp", Vector3.zero, Quaternion.identity,
+            transform, (gameObject) =>
+            {
+                gameObject.name = "GameDefCamp";
+                gameObject.transform.localPosition = new Vector3(0, 0, -38);
+                gameDefCamp = gameObject.GetComponent<GameDefCamp>();
+                gameDefCamp.Init(1);
+            });
+
 
         if (DataInfoMgr.Instance.gameOver == 0)
         {
@@ -116,12 +119,13 @@ public class GameRootManager : MonoSingleton<GameRootManager>
 
     public void InitCamera()
     {
-        CameraMgr.Instance.activeCamera.camera.transform.localPosition = new Vector3(0, 82, -84);
-        LoaderMgr.Instance.LoadAssetAsync<GameObject>("Prefab/GameMap", (obj) =>
-        {
-            obj.transform.SetParent(transform);
-            obj.transform.localPosition = Vector3.zero;
-        });
+        
+        LoaderMgr.Instance.InstantiatePrefabAsync("Prefabs/Game/GameMap", Vector3.zero, Quaternion.identity,
+            transform, (gameObject) =>
+            {
+              
+            });
+        
     }
 
 

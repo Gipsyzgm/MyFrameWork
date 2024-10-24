@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3626692734098006856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3626692734098006857}
+  - component: {fileID: 4134686344519924171}
+  m_Layer: 0
+  m_Name: GameRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3626692734098006857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3626692734098006856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1789822249584282815}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4134686344519924171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3626692734098006856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894544368b48585498f477a31c11d90d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameBasicSetting: {fileID: 11400000, guid: c3ea48890b3df1649b9d89234da42caf, type: 2}
+  pushMsgSetting: {fileID: 11400000, guid: 01ba9c8e5ebcf6a4d8ba9ea792a7b4cb, type: 2}
+  pushGiftSetting: {fileID: 11400000, guid: 3e1704ac04654794ba89e8d2dd2c56c9, type: 2}
+  isPlay: 0
+  countdown: 0
+  totalScore: 0
+  leftScore: 0
+  rightScore: 0
+  continueType: 0
+  continueCount: 0
+  leftWinCount: 0
+  rightWinCount: 0
+  leftGiftPrice: 0
+  rightGiftPrice: 0
+  token: 
+  countdown_2: 300
+  saveInterval: 5
+  roundNum: 
+  cacheData:
+    isEnable: 0
+    roundNum: 
+    countdown: 0
+    totalScore: 0
+    leftScore: 0
+    rightScore: 0
+    continueType: 0
+    continueCount: 0
+    leftWinCount: 0
+    rightWinCount: 0
+    leftGiftPrice: 0
+    rightGiftPrice: 0
+    maplength: 0
+    atkitemnum: 0
+    userList: []
+    atkItemList: []
+    defItemList: []
+  damageScale: 1
+  leftUserCount: 0
+  rightUserCount: 0
+  leftAutoSoldierCount: 0
+  rightAutoSoldierCount: 0
+  autoGroupId: 0
+  damage: 4
+  isFirstLogin: 1
+  gameAtkCamp: {fileID: 0}
+  gameDefCamp: {fileID: 0}
+  NEED_MIN_JIFEN: 0
+  GIFT_JIFEN: 0
+  DAMAGE_JIFEN: 0
+  GIFT_JIFEN_POOL: 0
+  DAMAGE_JIFEN_POOL: 0
+  IsEnterReady: 0
+  GameObjectPar: {fileID: 1789822249584282815}
+--- !u!1 &3932450680934605561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1789822249584282815}
+  m_Layer: 0
+  m_Name: ori
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1789822249584282815
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3932450680934605561}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3626692734098006857}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

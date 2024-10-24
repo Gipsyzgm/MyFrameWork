@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbba75801ea758946ac14804d3e8c432, type: 3}
+  m_Name: PushGiftSetting
+  m_EditorClassIdentifier: 
+  list:
+  - key: n1/Dg1905sj1FyoBlQBvmbaDZFBNaKuKZH6zxHkv8Lg5x2cRfrKUTb8gzMs=
+    soldierId: 21
+    name: "\u4ED9\u5973\u68D2"
+    price: 1
+    count: 1
+    number: 1
+  - key: 28rYzVFNyXEXFC8HI+f/WG+I7a6lfl3OyZZjUS+CVuwCgYZrPrUdytGHu0c=
+    soldierId: 10
+    name: "\u80FD\u529B\u836F\u4E38 "
+    price: 10
+    count: 3
+    number: 2
+  - key: PJ0FFeaDzXUreuUBZH6Hs+b56Jh0tQjrq0bIrrlZmv13GSAL9Q1hf59fjGk=
+    soldierId: 11
+    name: "\u751C\u751C\u5708"
+    price: 52
+    count: 5
+    number: 3
+  - key: IkkadLfz7O/a5UR45p/OOCCG6ewAWVbsuzR/Z+v1v76CBU+mTG/wPjqdpfg=
+    soldierId: 25
+    name: "\u80FD\u91CF\u7535\u6C60"
+    price: 99
+    count: 5
+    number: 4
+  - key: gx7pmjQfhBaDOG2XkWI2peZ66YFWkCWRjZXpTqb23O/epru+sxWyTV/3Ufs=
+    soldierId: 23
+    name: "\u7231\u7684\u7206\u70B8"
+    price: 199
+    count: 8
+    number: 5
+  - key: pGLo7HKNk1i4djkicmJXf6iWEyd+pfPBjbsHmd3WcX0Ierm2UdnRR7UINvI=
+    soldierId: 8
+    name: "\u795E\u79D8\u7A7A\u6295"
+    price: 520
+    count: 4
+    number: 6
+  - key: P7zDZzpeO215SpUptB+aURb1+zC14UC9MY1+MHszKoF0p5gzYk8CNEbey60=
+    soldierId: 15
+    name: "\u8D85\u80FD\u55B7\u5C04"
+    price: 1200
+    count: 3
+    number: 7

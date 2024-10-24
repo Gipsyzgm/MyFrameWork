@@ -1,0 +1,465 @@
+fileFormatVersion: 2
+guid: fc89b7d024731f14c92b882fc96cc47a
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: gaoligongbingattack1_80001
+      rect:
+        serializedVersion: 2
+        x: 3104
+        y: 2891
+        width: 830
+        height: 1160
+      alignment: 9
+      pivot: {x: 0.38072288, y: 0.4887931}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4361b070c31a1fe42900ef65ae10384b
+      internalID: 392648392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingattack1_80002
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 2917
+        width: 755
+        height: 1134
+      alignment: 9
+      pivot: {x: 0.50463575, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bb1fbdceefe7a743b11d9178ce2a552
+      internalID: -514899032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingattack1_80003
+      rect:
+        serializedVersion: 2
+        x: 1355
+        y: 1641
+        width: 657
+        height: 1270
+      alignment: 9
+      pivot: {x: 0.585997, y: 0.4464567}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21eabc2ff49a8dd42898a8117ce627f1
+      internalID: 380047680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingattack1_80005
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1674
+        width: 559
+        height: 1255
+      alignment: 9
+      pivot: {x: 0.6189624, y: 0.45179284}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 762ad12e604a6874fa65661264b984ac
+      internalID: 296696184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingattack1_80015
+      rect:
+        serializedVersion: 2
+        x: 2014
+        y: 1594
+        width: 644
+        height: 1296
+      alignment: 9
+      pivot: {x: 0.6459627, y: 0.4375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d503eae332fb9c344b4f4bc3fd5a8488
+      internalID: -439590287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingattack1_80022
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2931
+        width: 750
+        height: 1120
+      alignment: 9
+      pivot: {x: 0.524, y: 0.50625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c1894f4c23e2164f8bc832dc19f6a60
+      internalID: -744288238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingattack1_80023
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 2913
+        width: 771
+        height: 1138
+      alignment: 9
+      pivot: {x: 0.45006484, y: 0.49824253}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2671e13aa856984998a4203ed7daf50
+      internalID: -931493278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingattack1_80024
+      rect:
+        serializedVersion: 2
+        x: 2283
+        y: 2892
+        width: 819
+        height: 1159
+      alignment: 9
+      pivot: {x: 0.41758242, y: 0.48921484}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f864f8d2e62cae439b15b8464da911c
+      internalID: 1409078150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingattack2_60004
+      rect:
+        serializedVersion: 2
+        x: 3189
+        y: 1585
+        width: 575
+        height: 1304
+      alignment: 9
+      pivot: {x: 0.6452174, y: 0.4279141}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f98d7adce8bc794438717fd3299cf867
+      internalID: 272582304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingattack2_60005
+      rect:
+        serializedVersion: 2
+        x: 2660
+        y: 1588
+        width: 527
+        height: 1301
+      alignment: 9
+      pivot: {x: 0.63757116, y: 0.42890084}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c74a46e7eba3f05429f23e056cc46564
+      internalID: -535002050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingattack2_60016
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 82
+        width: 841
+        height: 1582
+      alignment: 9
+      pivot: {x: 0.7098692, y: 0.35271809}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35b02a6f956ffae4ba2173c41ece53da
+      internalID: 637580792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingattack2_60017
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 57
+        width: 910
+        height: 1582
+      alignment: 9
+      pivot: {x: 0.6703297, y: 0.35271809}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b42f7be2a165b1a46912f4b145d4f0f4
+      internalID: -346972849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingattack2_60018
+      rect:
+        serializedVersion: 2
+        x: 2627
+        y: 1
+        width: 921
+        height: 1582
+      alignment: 9
+      pivot: {x: 0.6286645, y: 0.35271809}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81d0317c913f3cf4d818877ec46a22a4
+      internalID: 1338853228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingattack2_60019
+      rect:
+        serializedVersion: 2
+        x: 1756
+        y: 10
+        width: 869
+        height: 1582
+      alignment: 9
+      pivot: {x: 0.58458, y: 0.35271809}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b4ae7c41dd645841b9fcee9ae18de20
+      internalID: -986975113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingattack2_60021
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 1666
+        width: 791
+        height: 1249
+      alignment: 9
+      pivot: {x: 0.53097343, y: 0.4467574}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9724305527f1da4791fea644e657d27
+      internalID: -1760853240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: c29cdd8ac6aba7d4aa7d181849c400ad
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      gaoligongbingattack1_80001: 392648392
+      gaoligongbingattack1_80002: -514899032
+      gaoligongbingattack1_80003: 380047680
+      gaoligongbingattack1_80005: 296696184
+      gaoligongbingattack1_80015: -439590287
+      gaoligongbingattack1_80022: -744288238
+      gaoligongbingattack1_80023: -931493278
+      gaoligongbingattack1_80024: 1409078150
+      gaoligongbingattack2_60004: 272582304
+      gaoligongbingattack2_60005: -535002050
+      gaoligongbingattack2_60016: 637580792
+      gaoligongbingattack2_60017: -346972849
+      gaoligongbingattack2_60018: 1338853228
+      gaoligongbingattack2_60019: -986975113
+      gaoligongbingattack2_60021: -1760853240
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

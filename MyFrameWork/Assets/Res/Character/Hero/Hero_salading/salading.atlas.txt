@@ -1,0 +1,7 @@
+salading.png
+size:496,924
+filter:Linear,Linear
+pma:true
+hero_152
+bounds:2,2,492,920
+offsets:341,85,1280,1079

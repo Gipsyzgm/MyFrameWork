@@ -1,0 +1,18 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:497e13c6acedbe520cf70489f60574b8:381523930aeb92ce6bace146ce8abfe9:c8a0b88bca7996aa64e17a1d629cd74a$
+#
+:format=40300
+:texture=soldier9_run-1.png
+:size=3132x1052
+:pivotpoints=enabled
+:borders=disabled
+
+yinglidunbingrun_60004;2306;22;825;1029; 0.44;0.6336248785228378; 0;0;0;0
+yinglidunbingrun_60011;761;6;776;1045; 0.4020618556701031;0.6526315789473685; 0;0;0;0
+yinglidunbingrun_60012;1539;6;765;1045; 0.39477124183006534;0.6449760765550239; 0;0;0;0
+yinglidunbingrun_60013;1;2;758;1049; 0.3891820580474934;0.6406101048617732; 0;0;0;0

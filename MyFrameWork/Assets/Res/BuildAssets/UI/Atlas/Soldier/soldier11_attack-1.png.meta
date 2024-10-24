@@ -1,0 +1,641 @@
+fileFormatVersion: 2
+guid: b7b01d51b7e872945a4e4348296e41dc
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: xibuniuzaiattack1_80001
+      rect:
+        serializedVersion: 2
+        x: 1865
+        y: 1540
+        width: 479
+        height: 1173
+      alignment: 9
+      pivot: {x: 0.2526096, y: 0.657289}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bc89b3490307c04c95c95e732c18fd0
+      internalID: 399847410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack1_80002
+      rect:
+        serializedVersion: 2
+        x: 1949
+        y: 2747
+        width: 469
+        height: 1176
+      alignment: 9
+      pivot: {x: 0.26226014, y: 0.65561223}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2e00ad457084b14dbf88107eebc0fb2
+      internalID: -1432510701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack1_80003
+      rect:
+        serializedVersion: 2
+        x: 2322
+        y: 366
+        width: 452
+        height: 1172
+      alignment: 9
+      pivot: {x: 0.25663716, y: 0.65784985}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 822d832b792a0a04ba71ae4d8d254a22
+      internalID: -1936069888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack1_80004
+      rect:
+        serializedVersion: 2
+        x: 2346
+        y: 1585
+        width: 450
+        height: 1160
+      alignment: 9
+      pivot: {x: 0.25333333, y: 0.66465515}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1715e42d686733140985c0f08c9250b4
+      internalID: 866374379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack1_80005
+      rect:
+        serializedVersion: 2
+        x: 2798
+        y: 1615
+        width: 450
+        height: 1154
+      alignment: 9
+      pivot: {x: 0.25333333, y: 0.6681109}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a1bdbe5c49b21243a75c5ad4cca79ca
+      internalID: 1065724812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack1_80006
+      rect:
+        serializedVersion: 2
+        x: 2776
+        y: 430
+        width: 451
+        height: 1153
+      alignment: 9
+      pivot: {x: 0.2549889, y: 0.6686904}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64a7ab2b76d6e5e40ae0582c59f2907b
+      internalID: -234004892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack1_80007
+      rect:
+        serializedVersion: 2
+        x: 2420
+        y: 2771
+        width: 451
+        height: 1152
+      alignment: 9
+      pivot: {x: 0.2549889, y: 0.6692708}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df7c593ac804db84b85ec9a9235a30ab
+      internalID: 434262816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack1_80008
+      rect:
+        serializedVersion: 2
+        x: 3229
+        y: 463
+        width: 451
+        height: 1150
+      alignment: 9
+      pivot: {x: 0.2549889, y: 0.6704348}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93e0791c318b9d34a86769b8457b7650
+      internalID: -1940260176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack1_80009
+      rect:
+        serializedVersion: 2
+        x: 2873
+        y: 2775
+        width: 451
+        height: 1148
+      alignment: 9
+      pivot: {x: 0.2549889, y: 0.6716028}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daa20af2dcb7c6e419bc6ff056960032
+      internalID: 1742863876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack1_80010
+      rect:
+        serializedVersion: 2
+        x: 3250
+        y: 1626
+        width: 451
+        height: 1147
+      alignment: 9
+      pivot: {x: 0.2549889, y: 0.67218834}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 450bfc24781047d42a11fa34ebdab64a
+      internalID: -1097263041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack1_80011
+      rect:
+        serializedVersion: 2
+        x: 1869
+        y: 302
+        width: 451
+        height: 1236
+      alignment: 9
+      pivot: {x: 0.2549889, y: 0.6237864}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96ac319d64f342c4abdfbb2399df5b20
+      internalID: -1678141456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack1_80012
+      rect:
+        serializedVersion: 2
+        x: 1416
+        y: 19
+        width: 451
+        height: 1320
+      alignment: 9
+      pivot: {x: 0.2549889, y: 0.5840909}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7ca1b05d2a218f4bb9f9593e4845922
+      internalID: -1211144425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack1_80013
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 1319
+        width: 451
+        height: 1330
+      alignment: 9
+      pivot: {x: 0.2549889, y: 0.5796993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbd8c967414d93e43a30f7174be1b20a
+      internalID: 165554764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack1_80014
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 1317
+        width: 452
+        height: 1332
+      alignment: 9
+      pivot: {x: 0.25663716, y: 0.5788288}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11f4ff39c84333646844345c5c0330f5
+      internalID: -1562322534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack1_80015
+      rect:
+        serializedVersion: 2
+        x: 1411
+        y: 1341
+        width: 452
+        height: 1327
+      alignment: 9
+      pivot: {x: 0.25663716, y: 0.5810098}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efd4e1a3cf5d28c42bc98d38f41a8a31
+      internalID: -1126453457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack1_80016
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 1
+        width: 452
+        height: 1314
+      alignment: 9
+      pivot: {x: 0.25663716, y: 0.586758}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07e1e7ee153fe4f4f99a756bdb2b8710
+      internalID: 1776997239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack1_80017
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 28
+        width: 456
+        height: 1289
+      alignment: 9
+      pivot: {x: 0.25438598, y: 0.5981381}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 782fa83a61c9b624f860a8b891094992
+      internalID: 1913305271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack1_80018
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 2670
+        width: 464
+        height: 1253
+      alignment: 9
+      pivot: {x: 0.24784483, y: 0.61532325}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 685b1571ca688fb41a272093695ea376
+      internalID: -1082565239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack1_80019
+      rect:
+        serializedVersion: 2
+        x: 1473
+        y: 2715
+        width: 474
+        height: 1208
+      alignment: 9
+      pivot: {x: 0.24261603, y: 0.63824505}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06218ab25da388f438a90e9c7ebec4c2
+      internalID: -589550611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack2_10002
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2631
+        width: 501
+        height: 1292
+      alignment: 9
+      pivot: {x: 0.4750499, y: 0.5843653}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1ad8336245866d4f940851cf6432ae2
+      internalID: 512842895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack2_10003
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1339
+        width: 501
+        height: 1290
+      alignment: 9
+      pivot: {x: 0.4750499, y: 0.5852713}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d37003385bc38e24686b8bc0d259c0d9
+      internalID: 1883054687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack2_10004
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 59
+        width: 501
+        height: 1278
+      alignment: 9
+      pivot: {x: 0.4750499, y: 0.58998436}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77934e345cca14949b88e57b434d70f4
+      internalID: -1944746057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xibuniuzaiattack2_10005
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 2651
+        width: 501
+        height: 1272
+      alignment: 9
+      pivot: {x: 0.4750499, y: 0.5927673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f4b4c60ca4d524448d8ce525b26ae00
+      internalID: -709057309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 1f741bdf35eff6047b33de2d8fd48c4f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      xibuniuzaiattack1_80001: 399847410
+      xibuniuzaiattack1_80002: -1432510701
+      xibuniuzaiattack1_80003: -1936069888
+      xibuniuzaiattack1_80004: 866374379
+      xibuniuzaiattack1_80005: 1065724812
+      xibuniuzaiattack1_80006: -234004892
+      xibuniuzaiattack1_80007: 434262816
+      xibuniuzaiattack1_80008: -1940260176
+      xibuniuzaiattack1_80009: 1742863876
+      xibuniuzaiattack1_80010: -1097263041
+      xibuniuzaiattack1_80011: -1678141456
+      xibuniuzaiattack1_80012: -1211144425
+      xibuniuzaiattack1_80013: 165554764
+      xibuniuzaiattack1_80014: -1562322534
+      xibuniuzaiattack1_80015: -1126453457
+      xibuniuzaiattack1_80016: 1776997239
+      xibuniuzaiattack1_80017: 1913305271
+      xibuniuzaiattack1_80018: -1082565239
+      xibuniuzaiattack1_80019: -589550611
+      xibuniuzaiattack2_10002: 512842895
+      xibuniuzaiattack2_10003: 1883054687
+      xibuniuzaiattack2_10004: -1944746057
+      xibuniuzaiattack2_10005: -709057309
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

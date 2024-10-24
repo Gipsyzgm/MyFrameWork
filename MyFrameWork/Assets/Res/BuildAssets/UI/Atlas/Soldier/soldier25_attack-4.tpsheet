@@ -1,0 +1,20 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:4fa37239d15cba640f4109c63e769dda:cd0bae990c3212c9a1bb64b5c9b2ee74:3b50ff9dad0d113107c87fd0cc186540$
+#
+:format=40300
+:texture=soldier25_attack-4.png
+:size=1548x3132
+:pivotpoints=enabled
+:borders=disabled
+
+mayaqiangbingattack1_10000;1047;18;469;1616; 0.3837953091684435;0.4455445544554455; 0;0;0;0
+mayaqiangbingattack1_10001;1031;1636;515;1495; 0.49902912621359224;0.47157190635451507; 0;0;0;0
+mayaqiangbingattack1_10021;559;38;486;1582; 0.38271604938271603;0.44943109987357777; 0;0;0;0
+mayaqiangbingattack1_10022;1;1515;470;1616; 0.3829787234042553;0.4455445544554455; 0;0;0;0
+mayaqiangbingattack2_10000;473;1622;556;1509; 0.37589928057553956;0.3618290258449304; 0;0;0;0
+mayaqiangbingattack2_10020;1;3;556;1510; 0.37589928057553956;0.3615894039735099; 0;0;0;0

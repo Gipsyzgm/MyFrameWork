@@ -1,0 +1,15 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:e2a16f7bdedda6a8ba402178df5e82f5:d9644caaaf771bf385b036b6b534e20b:a13ac3ede6ab85e2568ef2193f4610ab$
+#
+:format=40300
+:texture=soldier9_attack-4.png
+:size=768x1240
+:pivotpoints=enabled
+:borders=disabled
+
+yinglidunbingattack2_60000;1;2;763;1237; 0.598951507208388;0.6742118027485853; 0;0;0;0

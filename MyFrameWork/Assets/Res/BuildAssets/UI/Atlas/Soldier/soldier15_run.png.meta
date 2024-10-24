@@ -1,0 +1,509 @@
+fileFormatVersion: 2
+guid: c2becbfc0c7e453449450d0deec0e5b5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tiaodunqishirun_10000
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 2298
+        width: 571
+        height: 1177
+      alignment: 9
+      pivot: {x: 0.28896672, y: 0.5828377}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7985287875962a74fbc938563ccb4dd5
+      internalID: -1288727788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishirun_10001
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 2299
+        width: 571
+        height: 1176
+      alignment: 9
+      pivot: {x: 0.2872154, y: 0.5816327}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43ba5b38a5a424f4b9f7a75978fdd24f
+      internalID: -1272799906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishirun_10002
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2296
+        width: 574
+        height: 1179
+      alignment: 9
+      pivot: {x: 0.2839721, y: 0.57845634}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5febcb1a9f3d8a245bdbd3c78ab3d0c9
+      internalID: 817823249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishirun_10003
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1104
+        width: 561
+        height: 1190
+      alignment: 9
+      pivot: {x: 0.2798574, y: 0.5773109}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 638bd61c2faed724fada1063237a4712
+      internalID: 381743717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishirun_10004
+      rect:
+        serializedVersion: 2
+        x: 2290
+        y: 2289
+        width: 545
+        height: 1186
+      alignment: 9
+      pivot: {x: 0.2733945, y: 0.5699831}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fd0b554963fe7e479b6f86a1a37db02
+      internalID: 1373372694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishirun_10005
+      rect:
+        serializedVersion: 2
+        x: 1091
+        y: 1122
+        width: 529
+        height: 1174
+      alignment: 9
+      pivot: {x: 0.26275992, y: 0.5596252}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfd575ea8115249448ff3ae0ebbdd705
+      internalID: 449835213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishirun_10006
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 1110
+        width: 525
+        height: 1184
+      alignment: 9
+      pivot: {x: 0.25714287, y: 0.5591216}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1da164119a7772d429f713951d164365
+      internalID: -1234781969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishirun_10007
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 39
+        width: 534
+        height: 1063
+      alignment: 9
+      pivot: {x: 0.25468165, y: 0.5070555}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb7893cab3fcb114b8c1ef5f61de46d1
+      internalID: 1234839825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishirun_10008
+      rect:
+        serializedVersion: 2
+        x: 1076
+        y: 49
+        width: 536
+        height: 1059
+      alignment: 9
+      pivot: {x: 0.25373134, y: 0.50708216}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6e66d9392fcd2243b63155b235bb6b5
+      internalID: 644572971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishirun_10009
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 6
+        width: 537
+        height: 1096
+      alignment: 9
+      pivot: {x: 0.25325885, y: 0.5218978}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8ff3880677fd884893e7418f99624d5
+      internalID: 536850279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishirun_10010
+      rect:
+        serializedVersion: 2
+        x: 1622
+        y: 4
+        width: 535
+        height: 1129
+      alignment: 9
+      pivot: {x: 0.25233644, y: 0.53498673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3216b798db914143bf1b5da365a8fb2
+      internalID: -732664898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishirun_10011
+      rect:
+        serializedVersion: 2
+        x: 2159
+        y: 5
+        width: 529
+        height: 1128
+      alignment: 9
+      pivot: {x: 0.25141776, y: 0.5398936}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bd5c5700ca537447a75d7bb7dd9a45d
+      internalID: 1234500057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishirun_10012
+      rect:
+        serializedVersion: 2
+        x: 2718
+        y: 1153
+        width: 524
+        height: 1134
+      alignment: 9
+      pivot: {x: 0.25381678, y: 0.55026454}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1caeacc5b1bd1b4fac2d1bed3fc4746
+      internalID: 874045290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishirun_10013
+      rect:
+        serializedVersion: 2
+        x: 2690
+        y: 3
+        width: 532
+        height: 1134
+      alignment: 9
+      pivot: {x: 0.2669173, y: 0.5564374}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fb76f31a933c714a9088d1201fa2eba
+      internalID: 1360666312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishirun_10014
+      rect:
+        serializedVersion: 2
+        x: 2175
+        y: 1139
+        width: 541
+        height: 1148
+      alignment: 9
+      pivot: {x: 0.27911276, y: 0.56707317}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2694b1f8eca4c704f8f2df96b5ef088d
+      internalID: 1770635764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishirun_10015
+      rect:
+        serializedVersion: 2
+        x: 1622
+        y: 1135
+        width: 551
+        height: 1161
+      alignment: 9
+      pivot: {x: 0.29038113, y: 0.57622737}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9f20b9e7a5dd104b81fcae8cf01c663
+      internalID: -607432952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishirun_10016
+      rect:
+        serializedVersion: 2
+        x: 1723
+        y: 2298
+        width: 565
+        height: 1177
+      alignment: 9
+      pivot: {x: 0.2902655, y: 0.5828377}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0169e655c729a24439d99482a4637e8e
+      internalID: -193062487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: ad2d829d0bb59764eb240e28578382d2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      tiaodunqishirun_10000: -1288727788
+      tiaodunqishirun_10001: -1272799906
+      tiaodunqishirun_10002: 817823249
+      tiaodunqishirun_10003: 381743717
+      tiaodunqishirun_10004: 1373372694
+      tiaodunqishirun_10005: 449835213
+      tiaodunqishirun_10006: -1234781969
+      tiaodunqishirun_10007: 1234839825
+      tiaodunqishirun_10008: 644572971
+      tiaodunqishirun_10009: 536850279
+      tiaodunqishirun_10010: -732664898
+      tiaodunqishirun_10011: 1234500057
+      tiaodunqishirun_10012: 874045290
+      tiaodunqishirun_10013: 1360666312
+      tiaodunqishirun_10014: 1770635764
+      tiaodunqishirun_10015: -607432952
+      tiaodunqishirun_10016: -193062487
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

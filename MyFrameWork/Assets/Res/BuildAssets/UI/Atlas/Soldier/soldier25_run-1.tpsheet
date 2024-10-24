@@ -1,0 +1,15 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:27fb1cfa7e8418369af8dfc40fe46f19:79e05e972e0ee89c9fd899fe98afcbb6:c9ba231dbbdf75e4efdf22b6e7e3e10c$
+#
+:format=40300
+:texture=soldier25_run-1.png
+:size=500x1420
+:pivotpoints=enabled
+:borders=disabled
+
+mayaqiangbingrun_10003;1;3;497;1416; 0.38028169014084506;0.34251412429378536; 0;0;0;0

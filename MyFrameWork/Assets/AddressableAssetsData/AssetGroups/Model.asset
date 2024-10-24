@@ -15,18 +15,8 @@ MonoBehaviour:
   m_GroupName: Model
   m_Data:
     m_SerializedData: []
-  m_GUID: 55fa70aed26826d4ba0331a474f1303a
-  m_SerializeEntries:
-  - m_GUID: 76e54bd907f37eb45ae807bc8c11896b
-    m_Address: Model/SceneModel/Tree_02
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8c33780611a6e3640aa867bc770f2be5
-    m_Address: Model/SceneModel/Tree_01
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_GUID: 44c5f654485b8054fa4f5457717a7640
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: afc6c9bc5e36ff34babf0992ee372095, type: 2}
   m_SchemaSet:

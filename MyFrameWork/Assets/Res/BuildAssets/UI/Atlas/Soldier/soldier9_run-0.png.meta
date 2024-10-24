@@ -1,0 +1,465 @@
+fileFormatVersion: 2
+guid: 84f3fb53943b68941b66661e71b2f94b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: yinglidunbingrun_60000
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 1085
+        width: 782
+        height: 1094
+      alignment: 9
+      pivot: {x: 0.40153453, y: 0.6773309}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cd2ff0722efec64abea8bb3790869ab
+      internalID: 1214734415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingrun_60001
+      rect:
+        serializedVersion: 2
+        x: 3157
+        y: 37
+        width: 794
+        height: 1079
+      alignment: 9
+      pivot: {x: 0.4118388, y: 0.66728455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30618ab00bbe28049af2a9dc3016ace9
+      internalID: 514486041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingrun_60002
+      rect:
+        serializedVersion: 2
+        x: 2478
+        y: 2222
+        width: 806
+        height: 1061
+      alignment: 9
+      pivot: {x: 0.42307693, y: 0.6550424}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64766ba8b9b79f943850e6a2a2a23582
+      internalID: 1554119360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingrun_60003
+      rect:
+        serializedVersion: 2
+        x: 1554
+        y: 23
+        width: 817
+        height: 1045
+      alignment: 9
+      pivot: {x: 0.43329254, y: 0.6430622}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbb417e8d8cba65469332d9a58107156
+      internalID: -2043192843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingrun_60005
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 2223
+        width: 829
+        height: 1060
+      alignment: 9
+      pivot: {x: 0.44390833, y: 0.64245284}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab9ff8db8de826d40ba029727ab13c8d
+      internalID: 84761677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingrun_60006
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 2190
+        width: 825
+        height: 1093
+      alignment: 9
+      pivot: {x: 0.44121212, y: 0.6569076}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f25bdcaaa26975499b2898e96c81967
+      internalID: 1084829691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingrun_60007
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2181
+        width: 817
+        height: 1102
+      alignment: 9
+      pivot: {x: 0.43329254, y: 0.6678766}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78c68c0ceb7a61a40b8bbdc6e912dc2d
+      internalID: 1710954563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingrun_60008
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1078
+        width: 805
+        height: 1101
+      alignment: 9
+      pivot: {x: 0.4236025, y: 0.6757493}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf7584dfe40a44e4aa3fe665905eb45d
+      internalID: 803552889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingrun_60009
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 6
+        width: 795
+        height: 1070
+      alignment: 9
+      pivot: {x: 0.41509435, y: 0.6700935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41fffe13edd638244a79a43df28b796f
+      internalID: -192611311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingrun_60010
+      rect:
+        serializedVersion: 2
+        x: 3134
+        y: 1118
+        width: 786
+        height: 1058
+      alignment: 9
+      pivot: {x: 0.40839696, y: 0.66351604}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f5de8fd5e7e2fd4d8e459909176585d
+      internalID: -366383051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingrun_60014
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 754
+        height: 1075
+      alignment: 9
+      pivot: {x: 0.38594165, y: 0.6465116}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e81d0b1c3f569bf4aba8b8e18fea4df0
+      internalID: -633263993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingrun_60015
+      rect:
+        serializedVersion: 2
+        x: 3286
+        y: 2178
+        width: 755
+        height: 1105
+      alignment: 9
+      pivot: {x: 0.38675496, y: 0.65882355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d37cfb5167d61e45a1d8cef92afa53d
+      internalID: -1441961289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingrun_60016
+      rect:
+        serializedVersion: 2
+        x: 2368
+        y: 1107
+        width: 764
+        height: 1113
+      alignment: 9
+      pivot: {x: 0.39136127, y: 0.66756517}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6404d715820b9724abe4f3960d68908f
+      internalID: -1121449708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingrun_60017
+      rect:
+        serializedVersion: 2
+        x: 1592
+        y: 1070
+        width: 774
+        height: 1118
+      alignment: 9
+      pivot: {x: 0.39664084, y: 0.67710197}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8af3031b6fc257c4c96521d705c062ef
+      internalID: -742560798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingrun_60018
+      rect:
+        serializedVersion: 2
+        x: 2373
+        y: 11
+        width: 782
+        height: 1094
+      alignment: 9
+      pivot: {x: 0.40153453, y: 0.6773309}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f104c3c2fa14b145be68d81c64ac9e7
+      internalID: 1923523011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 100e63eb539140645ba8b310ecb01e01
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      yinglidunbingrun_60000: 1214734415
+      yinglidunbingrun_60001: 514486041
+      yinglidunbingrun_60002: 1554119360
+      yinglidunbingrun_60003: -2043192843
+      yinglidunbingrun_60005: 84761677
+      yinglidunbingrun_60006: 1084829691
+      yinglidunbingrun_60007: 1710954563
+      yinglidunbingrun_60008: 803552889
+      yinglidunbingrun_60009: -192611311
+      yinglidunbingrun_60010: -366383051
+      yinglidunbingrun_60014: -633263993
+      yinglidunbingrun_60015: -1441961289
+      yinglidunbingrun_60016: -1121449708
+      yinglidunbingrun_60017: -742560798
+      yinglidunbingrun_60018: 1923523011
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,311 @@
+fileFormatVersion: 2
+guid: ed2532852fd81f744a8d267e94f9b0ca
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: mayaqiangbingattack1_10009
+      rect:
+        serializedVersion: 2
+        x: 3549
+        y: 213
+        width: 396
+        height: 1538
+      alignment: 9
+      pivot: {x: 0.3131313, y: 0.45708713}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f27f2904a8f8e134cb8848dabe187d72
+      internalID: 1826009406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingattack1_10010
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1302
+        width: 583
+        height: 1805
+      alignment: 9
+      pivot: {x: 0.28301886, y: 0.43268698}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6e82b221b548cc4481a500fdcc3b2ee
+      internalID: -1550747679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingattack1_10015
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2
+        width: 1266
+        height: 1298
+      alignment: 9
+      pivot: {x: 0.66745657, y: 0.78890604}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ac6b5a1c8476524d986d9d44723d469
+      internalID: -950089844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingattack1_10017
+      rect:
+        serializedVersion: 2
+        x: 2616
+        y: 1753
+        width: 1366
+        height: 1354
+      alignment: 9
+      pivot: {x: 0.71742314, y: 0.7562777}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5ef51d145d53b347b7063fdb208e08f
+      internalID: -1434340664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingattack1_10020
+      rect:
+        serializedVersion: 2
+        x: 2291
+        y: 107
+        width: 1256
+        height: 1428
+      alignment: 9
+      pivot: {x: 0.74681526, y: 0.71708685}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 958c961708e461542bdeb04091a188db
+      internalID: 465639886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingattack2_10005
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 1537
+        width: 1135
+        height: 1570
+      alignment: 9
+      pivot: {x: 0.16211453, y: 0.3477707}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04dc361ae83d0dc4b8dfea7e5c16ca53
+      internalID: -1819014500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingattack2_10010
+      rect:
+        serializedVersion: 2
+        x: 1723
+        y: 1537
+        width: 891
+        height: 1570
+      alignment: 9
+      pivot: {x: 0.15600449, y: 0.3477707}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c611524097b9474397d86564b709e7b
+      internalID: -1088057965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingattack2_10012
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 7
+        width: 1020
+        height: 1528
+      alignment: 9
+      pivot: {x: 0.43235293, y: 0.35732985}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 997b6768eccf61742b0fca70e1495a0b
+      internalID: 1935788423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 412ffba9bdca8214ab648bab02ec4310
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      mayaqiangbingattack1_10009: 1826009406
+      mayaqiangbingattack1_10010: -1550747679
+      mayaqiangbingattack1_10015: -950089844
+      mayaqiangbingattack1_10017: -1434340664
+      mayaqiangbingattack1_10020: 465639886
+      mayaqiangbingattack2_10005: -1819014500
+      mayaqiangbingattack2_10010: -1088057965
+      mayaqiangbingattack2_10012: 1935788423
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

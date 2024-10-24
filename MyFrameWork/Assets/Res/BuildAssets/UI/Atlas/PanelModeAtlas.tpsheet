@@ -1,0 +1,22 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:5e0c7f74c6cce638a178c3ba7f4def41:c43a74c090a8a1b8778d36a561299538:4e452f698510cad42907f94c716dec2a$
+#
+:format=40300
+:texture=PanelModeAtlas.png
+:size=224x1232
+:pivotpoints=enabled
+:borders=enabled
+
+btn_jiandan;1;945;220;286; 0.5;0.5; 0;0;0;0
+btn_jingdian;1;657;220;286; 0.5;0.5; 0;0;0;0
+btn_kuangbao;1;369;220;286; 0.5;0.5; 0;0;0;0
+btn_kunnan;1;81;220;286; 0.5;0.5; 0;0;0;0
+frame_moshixuanzhong_9g;1;1;82;78; 0.5;0.5; 33;28;26;28
+frame_shijianxuanze_9g;85;27;54;52; 0.5;0.5; 14;13;13;13
+frame_weixuanzhong;141;33;44;46; 0.5;0.5; 0;0;0;0
+frame_xuanzhong;187;43;36;36; 0.5;0.5; 0;0;0;0

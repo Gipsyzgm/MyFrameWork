@@ -59,28 +59,21 @@ public class PanelLogin : PanelBase
         }
         else
         {
-            
-            // if SceneManager:GetInstance():GetGameRootMgr().isFirstLogin then
-            // if IsButtonCD(self, 1) then return end
-            // PanelNetLoading.Start(3);
-            // local token = SceneManager:GetInstance():GetGameRootMgr().token;
-            // local appVersion = GameAppSetting:getValue("AppVersionDisplay"):asString();
-            // MsgSend.SendLogin(token, appVersion);
-            // SceneManager:GetInstance():GetGameRootMgr().isFirstLogin = false
-            // else
-            // if IsButtonCD(self, 1) then return end
-            // PanelNetLoading.Start(3);
-            // self:OnUserLoginRsp();
-            // MsgSend.SendGameStart(UPlayerPrefs.GetInt("timeIndex", 1) - 1); --
-            //     
-            //     print(SceneManager:GetInstance():GetGameRootMgr().countdown_2.."暖场时间---------------------")
-            // end
-            // SceneManager:GetInstance():GetGameRootMgr():RefreshTime3()
-            
+
+            if (GameRootManager.Instance.isFirstLogin)
+            {
+                GameRootManager.Instance.isFirstLogin = false;
+                //PanelNetLoading.Start(3);
+                MsgSend.SendLogin( GameRootManager.Instance.token,"1.0.1" );
+            }
+            else
+            {
+                //PanelNetLoading.Start(3);
+                OnUserLoginRsp();
+                MsgSend.SendGameStart(1);
+            }
+            GameRootManager.Instance.RefreshTime3();
         }
-        
-        
-        
     }
 
     public void OnUserLoginRsp()
@@ -116,7 +109,7 @@ public class PanelLogin : PanelBase
         PanelMgr.Instance.OpenPanel<PanelLoading>();
         PanelMgr.Instance.GetPanel<PanelLoading>().StartLoading(() =>
         {
-            EventMgr.Instance.InvokeEvent(EventConst.UpdateProgressEvent, 0.9, 6,false);
+            EventMgr.Instance.InvokeEvent(EventConst.UpdateProgressEvent, 0.9, 6f,false);
   
             GameRootManager.Instance.InitScene();
             // GameManager:GetInstance():Init();
@@ -144,8 +137,15 @@ public class PanelLogin : PanelBase
 
     public void CustomComponent()
     {
+        EventMgr.Instance.AddEventListener(EventConst.UserLogin, OnUserLoginRsp);
+        EventMgr.Instance.AddEventListener(EventConst.PanelEnterDestroy, OnPanelEnterDestroy);
+        
     }
-
+    public void OnPanelEnterDestroy()
+    {
+       
+        
+    }
     public override void OnShow()
     {
         base.OnShow();

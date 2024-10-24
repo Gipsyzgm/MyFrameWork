@@ -1,0 +1,487 @@
+fileFormatVersion: 2
+guid: ebfa51536c812df4f9ec3c2897751b63
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: mayaqiangbingrun_10000
+      rect:
+        serializedVersion: 2
+        x: 2004
+        y: 1466
+        width: 497
+        height: 1469
+      alignment: 9
+      pivot: {x: 0.41046277, y: 0.36623552}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 963560923c648aa46a4b13574c3c7219
+      internalID: -503518820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingrun_10001
+      rect:
+        serializedVersion: 2
+        x: 3504
+        y: 3
+        width: 497
+        height: 1465
+      alignment: 9
+      pivot: {x: 0.39839035, y: 0.3774744}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 287e82bd6aac27a4aaf4c8fe260543c4
+      internalID: 488815884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingrun_10002
+      rect:
+        serializedVersion: 2
+        x: 3006
+        y: 45
+        width: 496
+        height: 1420
+      alignment: 9
+      pivot: {x: 0.38709676, y: 0.3669014}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44a324e44a4808b45b8ba4addb6f6ab9
+      internalID: -1675922212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingrun_10004
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 1459
+        width: 497
+        height: 1476
+      alignment: 9
+      pivot: {x: 0.38229376, y: 0.35027102}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edafc07ef78ddec46b6a616268d9f77a
+      internalID: 1432094385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingrun_10005
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 2
+        width: 497
+        height: 1455
+      alignment: 9
+      pivot: {x: 0.3863179, y: 0.32920963}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb7f6070bf4d4e841af2ba5c75c17b85
+      internalID: 1727852015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingrun_10006
+      rect:
+        serializedVersion: 2
+        x: 3002
+        y: 1467
+        width: 497
+        height: 1468
+      alignment: 9
+      pivot: {x: 0.39235413, y: 0.33787465}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 944af7a45ecb2694d8721b839c89435d
+      internalID: 729248816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingrun_10007
+      rect:
+        serializedVersion: 2
+        x: 1506
+        y: 1461
+        width: 496
+        height: 1474
+      alignment: 9
+      pivot: {x: 0.39919356, y: 0.35074627}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a85f521c714cb642911a294f53ae519
+      internalID: -891639830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingrun_10008
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1456
+        width: 496
+        height: 1479
+      alignment: 9
+      pivot: {x: 0.40524194, y: 0.3637593}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf71a1cc78b6c664093a34dbdfdcd8ce
+      internalID: -1044380459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingrun_10009
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 9
+        width: 496
+        height: 1445
+      alignment: 9
+      pivot: {x: 0.41129032, y: 0.3633218}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 663b26ba5863eb240ac5e197c007691e
+      internalID: -780555825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingrun_10010
+      rect:
+        serializedVersion: 2
+        x: 2508
+        y: 40
+        width: 496
+        height: 1424
+      alignment: 9
+      pivot: {x: 0.41935483, y: 0.3630618}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3392a91b8c6b3124a87b39fe3421a841
+      internalID: 1489779782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingrun_10011
+      rect:
+        serializedVersion: 2
+        x: 2010
+        y: 32
+        width: 496
+        height: 1432
+      alignment: 9
+      pivot: {x: 0.42540324, y: 0.35614526}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16553440f6607a5499513a2c287ef202
+      internalID: 85298085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingrun_10012
+      rect:
+        serializedVersion: 2
+        x: 1505
+        y: 11
+        width: 503
+        height: 1443
+      alignment: 9
+      pivot: {x: 0.42345923, y: 0.34650034}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 026e80277dc7948408b6e9fe9607deb1
+      internalID: -1160616602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingrun_10013
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1461
+        width: 506
+        height: 1474
+      alignment: 9
+      pivot: {x: 0.41897234, y: 0.3493894}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32e443c2004eb5a41a90acb21cf9952c
+      internalID: -1611387725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingrun_10014
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 10
+        width: 505
+        height: 1449
+      alignment: 9
+      pivot: {x: 0.41584158, y: 0.32781228}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7895bd31128f32047a800f6963f548a5
+      internalID: -1734829785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingrun_10015
+      rect:
+        serializedVersion: 2
+        x: 3501
+        y: 1470
+        width: 499
+        height: 1465
+      alignment: 9
+      pivot: {x: 0.41482967, y: 0.33174062}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bad32eed2351314087afcaa7016dc39
+      internalID: 206646028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mayaqiangbingrun_10016
+      rect:
+        serializedVersion: 2
+        x: 2503
+        y: 1466
+        width: 497
+        height: 1469
+      alignment: 9
+      pivot: {x: 0.41046277, y: 0.36623552}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08a00434562882640a2fed6abc4717e1
+      internalID: -1999452218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 08c428e331dd5a4418f2bc2a2c4aa83f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      mayaqiangbingrun_10000: -503518820
+      mayaqiangbingrun_10001: 488815884
+      mayaqiangbingrun_10002: -1675922212
+      mayaqiangbingrun_10004: 1432094385
+      mayaqiangbingrun_10005: 1727852015
+      mayaqiangbingrun_10006: 729248816
+      mayaqiangbingrun_10007: -891639830
+      mayaqiangbingrun_10008: -1044380459
+      mayaqiangbingrun_10009: -780555825
+      mayaqiangbingrun_10010: 1489779782
+      mayaqiangbingrun_10011: 85298085
+      mayaqiangbingrun_10012: -1160616602
+      mayaqiangbingrun_10013: -1611387725
+      mayaqiangbingrun_10014: -1734829785
+      mayaqiangbingrun_10015: 206646028
+      mayaqiangbingrun_10016: -1999452218
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

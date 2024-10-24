@@ -182,4 +182,18 @@ public class ToolsHelper
 
         Debug.LogError(string.Format("XObject.SetRawImage failed, params: {0}, {1}, {2}", go, url, resetSize), go);
     }
+    
+    
+    /// <summary>
+    /// 字符串转颜色
+    /// </summary>
+    /// <param name="color"></param>
+    /// <returns></returns>
+    public static Color ToColor(string color)
+    {
+        Color c;
+        color = !string.IsNullOrEmpty(color) && color[0] == '#' ? color : '#' + color;
+        ColorUtility.TryParseHtmlString(color, out c);
+        return c;
+    }
 }

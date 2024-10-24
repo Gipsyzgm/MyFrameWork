@@ -1,0 +1,43 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:6e95c08545c5e4b64f65365e0068271d:4ccc448b1a7d0b688a50e8cb6c073ba6:c6e82b09a4f46edc5f93e1324f4d8219$
+#
+:format=40300
+:texture=PanelRankAtlas.png
+:size=1004x888
+:pivotpoints=enabled
+:borders=enabled
+
+btn_liansheng;871;191;102;32; 0.5;0.5; 0;0;0;0
+frame_bg_s;1;535;1000;352; 0.5;0.5; 0;0;0;0
+frame_frist_01;1;325;212;208; 0.5;0.5; 0;0;0;0
+frame_frist_02;429;457;238;76; 0.5;0.5; 0;0;0;0
+frame_frist_03;863;131;60;58; 0.5;0.5; 0;0;0;0
+frame_second_01;1;115;212;208; 0.5;0.5; 0;0;0;0
+frame_second_02;429;379;238;76; 0.5;0.5; 0;0;0;0
+frame_second_03;925;131;60;58; 0.5;0.5; 0;0;0;0
+frame_third_01;215;325;212;208; 0.5;0.5; 0;0;0;0
+frame_third_02;673;53;238;76; 0.5;0.5; 0;0;0;0
+frame_third_03;913;71;60;58; 0.5;0.5; 0;0;0;0
+icon_down;641;351;14;26; 0.5;0.5; 0;0;0;0
+icon_frist;669;131;98;78; 0.5;0.5; 0;0;0;0
+icon_jiangtai_first;1;1;334;112; 0.5;0.5; 0;0;0;0
+icon_jiangtai_first_mvp;215;211;334;112; 0.5;0.5; 0;0;0;0
+icon_jiangtai_second;673;297;318;84; 0.5;0.5; 0;0;0;0
+icon_jiangtai_third;673;459;324;74; 0.5;0.5; 0;0;0;0
+icon_mascot_frist;337;3;334;112; 0.5;0.5; 0;0;0;0
+icon_mascot_second;551;211;318;84; 0.5;0.5; 0;0;0;0
+icon_mascot_third;673;383;324;74; 0.5;0.5; 0;0;0;0
+icon_nml;595;127;72;82; 0.5;0.5; 0;0;0;0
+icon_second;769;131;92;78; 0.5;0.5; 0;0;0;0
+icon_third;551;297;88;80; 0.5;0.5; 0;0;0;0
+icon_up;657;351;14;26; 0.5;0.5; 0;0;0;0
+img_mvp_defated;215;117;188;92; 0.5;0.5; 0;0;0;0
+img_mvp_victor;405;117;188;92; 0.5;0.5; 0;0;0;0
+list_blue_3g;429;327;68;50; 0.5;0.5; 0;0;0;0
+list_orange;913;11;60;58; 0.5;0.5; 0;0;0;0
+list_paiming_3g;871;225;114;70; 0.5;0.5; 39;39;0;0

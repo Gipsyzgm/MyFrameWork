@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3593aec2bbc63a74faeb8988e538f663, type: 3}
+  m_Name: PushMsgSetting
+  m_EditorClassIdentifier: 
+  list:
+  - key: 1
+    value: left
+    name: 
+    useType: 0
+  - key: 2
+    value: right
+    name: 
+    useType: 0
+  - key: 4
+    value: 1
+    name: 
+    useType: 2
+  - key: 5
+    value: 2
+    name: 
+    useType: 2
+  - key: 6
+    value: 3
+    name: 
+    useType: 2
+  - key: "\u9EC4"
+    value: left
+    name: 
+    useType: 0
+  - key: "\u84DD"
+    value: right
+    name: 
+    useType: 0
+  - key: "\u4E0A"
+    value: 1
+    name: 
+    useType: 2
+  - key: "\u4E2D"
+    value: 2
+    name: 
+    useType: 2
+  - key: "\u4E0B"
+    value: 3
+    name: 
+    useType: 2
+  - key: 888
+    value: 0
+    name: 
+    useType: 1
+  - key: "\u72C2"
+    value: 30
+    name: 
+    useType: 3
+  - key: "\u6012"
+    value: 120
+    name: 
+    useType: 4
+  - key: 666
+    value: 6
+    name: 
+    useType: 1

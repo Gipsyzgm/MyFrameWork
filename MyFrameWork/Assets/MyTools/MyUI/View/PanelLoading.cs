@@ -38,7 +38,7 @@ public class PanelLoading : PanelBase
     public override void OnShow()
     {
         base.OnShow();
-        EventMgr.Instance.AddEventListener(EventConst.UpdateProgressEvent, UpdateProgress);
+        EventMgr.Instance.AddEventListener< float,float,bool>(EventConst.UpdateProgressEvent, UpdateProgress);
     }
 
 
@@ -48,11 +48,8 @@ public class PanelLoading : PanelBase
     }
 
 
-    public void UpdateProgress(params object[] arg)
+    public void UpdateProgress( float value,float duration,bool autoclose)
     {
-        float value = (float)args[0];
-        float duration = (float)args[1];
-        bool autoclose = (bool)args[2];
         float currentValue;
         if (duration == 0)
         {
@@ -77,12 +74,12 @@ public class PanelLoading : PanelBase
     public override void OnHide()
     {
         base.OnHide();
-        EventMgr.Instance.RemoveEventListener(EventConst.UpdateProgressEvent, UpdateProgress);
+        EventMgr.Instance.RemoveEventListener< float,float,bool>(EventConst.UpdateProgressEvent, UpdateProgress);
     }
 
     public override void OnClose()
     {
         base.OnClose();
-        EventMgr.Instance.RemoveEventListener(EventConst.UpdateProgressEvent, UpdateProgress);
+        EventMgr.Instance.RemoveEventListener< float,float,bool>(EventConst.UpdateProgressEvent, UpdateProgress);
     }
 }

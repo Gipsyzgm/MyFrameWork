@@ -1,0 +1,30 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:f0710af1edd6ed4ca19049c087c4e46c:50d50b04ebd9c43c4ce076555ca6d6c4:40a7647dedd476131390e5231f214f9d$
+#
+:format=40300
+:texture=PanelUserEnterAtlas.png
+:size=908x2000
+:pivotpoints=enabled
+:borders=disabled
+
+frame_name_blue;1;1;340;96; 0.5;0.5; 0;0;0;0
+frame_name_yellow;475;271;340;96; 0.5;0.5; 0;0;0;0
+icon_m_01;1;345;250;250; 0.5;0.5; 0;0;0;0
+icon_m_02;1;99;234;244; 0.5;0.5; 0;0;0;0
+icon_m_03;253;351;220;244; 0.5;0.5; 0;0;0;0
+icon_m_04;475;369;222;226; 0.5;0.5; 0;0;0;0
+icon_m_05;699;379;206;216; 0.5;0.5; 0;0;0;0
+icon_m_06;237;127;210;216; 0.5;0.5; 0;0;0;0
+icon_name_01;1;1767;890;232; 0.5;0.5; 0;0;0;0
+icon_name_02;1;1533;890;232; 0.5;0.5; 0;0;0;0
+icon_name_03;1;1299;890;232; 0.5;0.5; 0;0;0;0
+icon_name_04;1;1065;890;232; 0.5;0.5; 0;0;0;0
+icon_name_05;1;831;890;232; 0.5;0.5; 0;0;0;0
+icon_name_06;1;597;890;232; 0.5;0.5; 0;0;0;0
+iocn_moon;449;75;228;194; 0.5;0.5; 0;0;0;0
+iocn_week;679;77;228;192; 0.5;0.5; 0;0;0;0

@@ -1,0 +1,27 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:7e32fcd7c42715e20c13c621e84993c1:120954ed5fb2d6853dc0196d525c6b73:96cae21e923e3c9f8b91139fd2bb56a6$
+#
+:format=40300
+:texture=PanelStartAtlas.png
+:size=1388x1776
+:pivotpoints=enabled
+:borders=disabled
+
+icon_selet_left;925;381;152;176; 0.5;0.5; 0;0;0;0
+icon_selet_right;1079;381;152;176; 0.5;0.5; 0;0;0;0
+icon_vs;925;559;276;328; 0.5;0.5; 0;0;0;0
+soldier_6;463;1;460;442; 0.5;0.5; 0;0;0;0
+soldier_7;925;1333;460;442; 0.5;0.5; 0;0;0;0
+soldier_8;925;889;460;442; 0.5;0.5; 0;0;0;0
+soldier_12;1;1333;460;442; 0.5;0.5; 0;0;0;0
+soldier_13;1;889;460;442; 0.5;0.5; 0;0;0;0
+soldier_16;1;445;460;442; 0.5;0.5; 0;0;0;0
+soldier_17;1;1;460;442; 0.5;0.5; 0;0;0;0
+soldier_18;463;1333;460;442; 0.5;0.5; 0;0;0;0
+soldier_19;463;889;460;442; 0.5;0.5; 0;0;0;0
+soldier_24;463;445;460;442; 0.5;0.5; 0;0;0;0

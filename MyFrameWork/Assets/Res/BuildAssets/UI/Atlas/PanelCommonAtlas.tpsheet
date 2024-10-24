@@ -1,0 +1,27 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:83477dc94ae20b1c9feefbc23d7c4dbe:dec7061ca574279cfbb5347d200b4ddd:a67428158126ab06d3e38d2bb13ff705$
+#
+:format=40300
+:texture=PanelCommonAtlas.png
+:size=868x484
+:pivotpoints=enabled
+:borders=disabled
+
+bg_net_loading;1;32;304;225; 0.5;0.5; 0;0;0;0
+btn_blue;1;259;394;122; 0.5;0.5; 0;0;0;0
+btn_blue_1;233;383;316;100; 0.5;0.5; 0;0;0;0
+btn_yellow;397;259;394;122; 0.5;0.5; 0;0;0;0
+btn_yellow_1;551;383;316;100; 0.5;0.5; 0;0;0;0
+frame_white;1;467;16;16; 0.5;0.5; 0;0;0;0
+frame_white_3;19;451;32;32; 0.5;0.5; 0;0;0;0
+frame_white_5;53;451;32;32; 0.5;0.5; 0;0;0;0
+frame_white_5_256;307;1;256;256; 0.5;0.5; 0;0;0;0
+frame_white_8;87;451;32;32; 0.5;0.5; 0;0;0;0
+frame_white_circle;565;1;256;256; 0.5;0.5; 0;0;0;0
+icon_gift_01;121;437;50;46; 0.5;0.5; 0;0;0;0
+icon_x;173;425;58;58; 0.5;0.5; 0;0;0;0

@@ -1,0 +1,16 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:dc757324a6de318eae99ae204e682690:fa28fa2de37ad60a19e40aa2e520e456:185dc28b6d0a00bd1971f9ab866219c2$
+#
+:format=40300
+:texture=soldier23_run-1.png
+:size=728x2160
+:pivotpoints=enabled
+:borders=disabled
+
+ptyhqbrun1_10009;1;1077;725;1082; 0.30896551724137933;0.39741219963031427; 0;0;0;0
+ptyhqbrun1_10010;1;4;725;1071; 0.3103448275862069;0.3996265172735761; 0;0;0;0

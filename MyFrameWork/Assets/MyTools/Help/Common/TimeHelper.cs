@@ -158,4 +158,29 @@ public class TimeHelper : MonoBehaviour {
         return formattedDate;
     }
     
+    /// <summary>
+    /// 把x秒 转化成X小时X分X秒
+    /// </summary>
+    /// <param name="totalSeconds"></param>
+    /// <returns></returns>
+    public static string FormatTimeToString(int totalSeconds)
+    {
+        if (totalSeconds >= 3600)
+        {
+            int hours = totalSeconds / 3600;
+            int minutes = (totalSeconds % 3600) / 60;
+            int seconds = totalSeconds % 60;
+            return $"{hours}小时{minutes}分{seconds}秒";
+        }
+        else if (totalSeconds >= 60)
+        {
+            int minutes = totalSeconds / 60;
+            int seconds = totalSeconds % 60;
+            return $"{minutes}分{seconds}秒";
+        }
+        else
+        {
+            return $"{totalSeconds}秒";
+        }
+    }
 }

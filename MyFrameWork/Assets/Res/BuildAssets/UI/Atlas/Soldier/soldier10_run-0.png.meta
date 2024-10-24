@@ -1,0 +1,377 @@
+fileFormatVersion: 2
+guid: b947b814b31e01f489ece99a51e44e40
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: gaoligongbingrun_60000
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2418
+        width: 973
+        height: 1201
+      alignment: 9
+      pivot: {x: 0.6495375, y: 0.23313905}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25c56eb8e8d0cb64592c27d7e4d256c8
+      internalID: 828353539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingrun_60001
+      rect:
+        serializedVersion: 2
+        x: 975
+        y: 1231
+        width: 970
+        height: 1185
+      alignment: 9
+      pivot: {x: 0.65257734, y: 0.2371308}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c04ac97c3cc6434b9eed65dcb14767e
+      internalID: -199771561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingrun_60002
+      rect:
+        serializedVersion: 2
+        x: 1946
+        y: 2445
+        width: 965
+        height: 1174
+      alignment: 9
+      pivot: {x: 0.65595853, y: 0.23679727}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 688e2b6c654382c4f8b93b3b9822216f
+      internalID: 1062848706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingrun_60005
+      rect:
+        serializedVersion: 2
+        x: 1937
+        y: 1
+        width: 934
+        height: 1228
+      alignment: 9
+      pivot: {x: 0.67558885, y: 0.2198697}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a50adf498ae284448a31daf0526101a1
+      internalID: 233510583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingrun_60006
+      rect:
+        serializedVersion: 2
+        x: 1947
+        y: 1237
+        width: 920
+        height: 1206
+      alignment: 9
+      pivot: {x: 0.6826087, y: 0.19568823}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45f3bf26da34a4646a1290315f9aad4b
+      internalID: 538881826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingrun_60007
+      rect:
+        serializedVersion: 2
+        x: 2869
+        y: 1242
+        width: 910
+        height: 1201
+      alignment: 9
+      pivot: {x: 0.6868132, y: 0.2048293}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d7cd841df9dd7d488021826a6a5cce3
+      internalID: -159273879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingrun_60008
+      rect:
+        serializedVersion: 2
+        x: 2873
+        y: 23
+        width: 907
+        height: 1217
+      alignment: 9
+      pivot: {x: 0.6868798, y: 0.23336072}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf04706be93386041970ab8712246e5d
+      internalID: -586985683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingrun_60013
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 13
+        width: 961
+        height: 1200
+      alignment: 9
+      pivot: {x: 0.64620185, y: 0.205}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f790d5e5e3cddcf4e969519083359fd7
+      internalID: 1032532915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingrun_60014
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 2438
+        width: 968
+        height: 1181
+      alignment: 9
+      pivot: {x: 0.64772725, y: 0.18458933}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 176c6882af0a3694db3505a663ee7bbc
+      internalID: -1620291880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingrun_60015
+      rect:
+        serializedVersion: 2
+        x: 964
+        y: 29
+        width: 971
+        height: 1184
+      alignment: 9
+      pivot: {x: 0.64881563, y: 0.2018581}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f6b383991bdb0446895b5cf45a8e04c
+      internalID: -2028995288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gaoligongbingrun_60016
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1215
+        width: 972
+        height: 1201
+      alignment: 9
+      pivot: {x: 0.6502058, y: 0.23313905}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd835c8fa78bb714c9100ad7d93d7126
+      internalID: 1936833954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 1b8015ac845732d4987725f902da1f49
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      gaoligongbingrun_60000: 828353539
+      gaoligongbingrun_60001: -199771561
+      gaoligongbingrun_60002: 1062848706
+      gaoligongbingrun_60005: 233510583
+      gaoligongbingrun_60006: 538881826
+      gaoligongbingrun_60007: -159273879
+      gaoligongbingrun_60008: -586985683
+      gaoligongbingrun_60013: 1032532915
+      gaoligongbingrun_60014: -1620291880
+      gaoligongbingrun_60015: -2028995288
+      gaoligongbingrun_60016: 1936833954
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

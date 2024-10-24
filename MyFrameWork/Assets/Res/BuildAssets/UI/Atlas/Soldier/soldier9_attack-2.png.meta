@@ -1,0 +1,377 @@
+fileFormatVersion: 2
+guid: a518b498fec18184c8cf44a713c4b4a2
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: yinglidunbingattack1_80013
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 1276
+        width: 1139
+        height: 1293
+      alignment: 9
+      pivot: {x: 0.3784021, y: 0.4818252}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0815aba01fa2541449fc3ea31004fe26
+      internalID: 528479508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingattack1_80014
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 2571
+        width: 1080
+        height: 1300
+      alignment: 9
+      pivot: {x: 0.4324074, y: 0.47923076}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df844ef49894cde42a837cddfc826acc
+      internalID: -963770299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingattack1_80015
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1256
+        width: 1077
+        height: 1305
+      alignment: 9
+      pivot: {x: 0.46053854, y: 0.47739464}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06b4f7e4000ec004a807d3b274826676
+      internalID: 1589386405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingattack1_80016
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2563
+        width: 1060
+        height: 1308
+      alignment: 9
+      pivot: {x: 0.4764151, y: 0.4762997}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c310ad96ee8ee7469680ab3db808704
+      internalID: 1977126232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingattack2_60003
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 6
+        width: 911
+        height: 1248
+      alignment: 9
+      pivot: {x: 0.46103182, y: 0.6682692}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b31203343a86cdc4b9ccd9ed08d730cc
+      internalID: -546980533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingattack2_60004
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 4
+        width: 883
+        height: 1250
+      alignment: 9
+      pivot: {x: 0.45753115, y: 0.6672}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 513332c7e8fc7db4da01f8f1d9e6e46b
+      internalID: -731615173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingattack2_60006
+      rect:
+        serializedVersion: 2
+        x: 2145
+        y: 2624
+        width: 826
+        height: 1247
+      alignment: 9
+      pivot: {x: 0.4818402, y: 0.6688051}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a14cf180e25c5f44f943b43bf333a5ed
+      internalID: 905885448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingattack2_60007
+      rect:
+        serializedVersion: 2
+        x: 1799
+        y: 28
+        width: 881
+        height: 1246
+      alignment: 9
+      pivot: {x: 0.46197504, y: 0.6693419}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 333c6e841a731474095b0c1d83d9481c
+      internalID: 1157229294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingattack2_60008
+      rect:
+        serializedVersion: 2
+        x: 2682
+        y: 140
+        width: 1164
+        height: 1243
+      alignment: 9
+      pivot: {x: 0.46391752, y: 0.6709574}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a0a827448c374849b06dfdcab4bf33a
+      internalID: 454031490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingattack2_60009
+      rect:
+        serializedVersion: 2
+        x: 2682
+        y: 1385
+        width: 1175
+        height: 1237
+      alignment: 9
+      pivot: {x: 0.4451064, y: 0.6742118}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea7a49caa202eda4bb7f6de6ec25b323
+      internalID: -1909452987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yinglidunbingattack2_60015
+      rect:
+        serializedVersion: 2
+        x: 2973
+        y: 2630
+        width: 951
+        height: 1241
+      alignment: 9
+      pivot: {x: 0.6077813, y: 0.6720387}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa61980b5e7ec354aa24d5bc28824d43
+      internalID: -991380225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 2e05ba2e79e34124f87654a7decbd4f1
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      yinglidunbingattack1_80013: 528479508
+      yinglidunbingattack1_80014: -963770299
+      yinglidunbingattack1_80015: 1589386405
+      yinglidunbingattack1_80016: 1977126232
+      yinglidunbingattack2_60003: -546980533
+      yinglidunbingattack2_60004: -731615173
+      yinglidunbingattack2_60006: 905885448
+      yinglidunbingattack2_60007: 1157229294
+      yinglidunbingattack2_60008: 454031490
+      yinglidunbingattack2_60009: -1909452987
+      yinglidunbingattack2_60015: -991380225
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,531 @@
+fileFormatVersion: 2
+guid: 8e3b09069cea0a24cb5fb3338136e93c
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tiaodunqishiattack1_10003
+      rect:
+        serializedVersion: 2
+        x: 3445
+        y: 2
+        width: 594
+        height: 1213
+      alignment: 9
+      pivot: {x: 0.60942763, y: 0.45836768}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8be10f615d879e0459334c688198b405
+      internalID: 1016763924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishiattack1_10005
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 441
+        width: 718
+        height: 1206
+      alignment: 9
+      pivot: {x: 0.67827296, y: 0.4610282}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0e821a7959493746a50e0b1434492a2
+      internalID: 427458129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishiattack1_10006
+      rect:
+        serializedVersion: 2
+        x: 1556
+        y: 446
+        width: 697
+        height: 1201
+      alignment: 9
+      pivot: {x: 0.5968436, y: 0.46294755}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cead6f25ea94a084591eba839574f240
+      internalID: 484512618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishiattack1_10008
+      rect:
+        serializedVersion: 2
+        x: 1597
+        y: 1649
+        width: 628
+        height: 1060
+      alignment: 9
+      pivot: {x: 0.5589172, y: 0.5245283}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc342c7566b00744ab082872213bd229
+      internalID: 418400439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishiattack1_10009
+      rect:
+        serializedVersion: 2
+        x: 3497
+        y: 2758
+        width: 556
+        height: 1037
+      alignment: 9
+      pivot: {x: 0.5143885, y: 0.536162}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 210cad57209903d428cdfaa5d665a173
+      internalID: 1269317039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishiattack1_10010
+      rect:
+        serializedVersion: 2
+        x: 2902
+        y: 2751
+        width: 593
+        height: 1044
+      alignment: 9
+      pivot: {x: 0.5514334, y: 0.5316092}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 751b5286e653c4542b5e115c006e5986
+      internalID: -1029133353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishiattack1_10011
+      rect:
+        serializedVersion: 2
+        x: 2238
+        y: 2734
+        width: 662
+        height: 1061
+      alignment: 9
+      pivot: {x: 0.6042296, y: 0.52309144}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec116bef35543a147a4429612d39614d
+      internalID: -2134739236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishiattack1_10012
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 2730
+        width: 706
+        height: 1065
+      alignment: 9
+      pivot: {x: 0.6331445, y: 0.52112675}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db611520670fa64409772ac4ef403dbc
+      internalID: -1267679895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishiattack1_10013
+      rect:
+        serializedVersion: 2
+        x: 1547
+        y: 2711
+        width: 689
+        height: 1084
+      alignment: 9
+      pivot: {x: 0.628447, y: 0.51199263}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7130e8cd5ea02cb4393e77bb90bfc9f3
+      internalID: 1855570088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishiattack1_10018
+      rect:
+        serializedVersion: 2
+        x: 2994
+        y: 306
+        width: 449
+        height: 1353
+      alignment: 9
+      pivot: {x: 0.4922049, y: 0.41093865}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 367e4995965bf7145add6b42cc56f24c
+      internalID: -1281042085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishiattack2_10009
+      rect:
+        serializedVersion: 2
+        x: 3447
+        y: 1217
+        width: 524
+        height: 1532
+      alignment: 9
+      pivot: {x: 0.5629771, y: 0.33159268}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8acce344ef7c2a14096a54f5fe620c87
+      internalID: -1149930631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishiattack2_10010
+      rect:
+        serializedVersion: 2
+        x: 2227
+        y: 1650
+        width: 587
+        height: 1059
+      alignment: 9
+      pivot: {x: 0.5775128, y: 0.53729934}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e33b5038633eea84eb46ef43edf97d75
+      internalID: 1387814216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishiattack2_10011
+      rect:
+        serializedVersion: 2
+        x: 2816
+        y: 1661
+        width: 629
+        height: 1071
+      alignment: 9
+      pivot: {x: 0.6073132, y: 0.5546219}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d0e3c60cd727c146bf1f88c81972261
+      internalID: 2126082980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishiattack2_10012
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 1649
+        width: 776
+        height: 1060
+      alignment: 9
+      pivot: {x: 0.64819586, y: 0.54150945}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fd181a7fe43e7a47b871c4abb2e5d86
+      internalID: 2051324515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishiattack2_10013
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 525
+        width: 833
+        height: 1075
+      alignment: 9
+      pivot: {x: 0.6614646, y: 0.53302324}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 335b5d36056be0443a46dd079ebba449
+      internalID: -1471873359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishiattack2_10014
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2711
+        width: 836
+        height: 1084
+      alignment: 9
+      pivot: {x: 0.65789473, y: 0.51476014}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9623bb805551ff45bd1c602e89058cb
+      internalID: -1012647445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishiattack2_10015
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1602
+        width: 816
+        height: 1107
+      alignment: 9
+      pivot: {x: 0.6519608, y: 0.49864498}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac7346b33ee4a85419e75e1a531f575d
+      internalID: -1372868807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiaodunqishiattack2_10016
+      rect:
+        serializedVersion: 2
+        x: 2255
+        y: 519
+        width: 737
+        height: 1129
+      alignment: 9
+      pivot: {x: 0.62550884, y: 0.48449954}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c641a469825143741813f222b5d57a57
+      internalID: -21648422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 65a878d17eb8b23419ae1ea005c40400
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      tiaodunqishiattack1_10003: 1016763924
+      tiaodunqishiattack1_10005: 427458129
+      tiaodunqishiattack1_10006: 484512618
+      tiaodunqishiattack1_10008: 418400439
+      tiaodunqishiattack1_10009: 1269317039
+      tiaodunqishiattack1_10010: -1029133353
+      tiaodunqishiattack1_10011: -2134739236
+      tiaodunqishiattack1_10012: -1267679895
+      tiaodunqishiattack1_10013: 1855570088
+      tiaodunqishiattack1_10018: -1281042085
+      tiaodunqishiattack2_10009: -1149930631
+      tiaodunqishiattack2_10010: 1387814216
+      tiaodunqishiattack2_10011: 2126082980
+      tiaodunqishiattack2_10012: 2051324515
+      tiaodunqishiattack2_10013: -1471873359
+      tiaodunqishiattack2_10014: -1012647445
+      tiaodunqishiattack2_10015: -1372868807
+      tiaodunqishiattack2_10016: -21648422
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

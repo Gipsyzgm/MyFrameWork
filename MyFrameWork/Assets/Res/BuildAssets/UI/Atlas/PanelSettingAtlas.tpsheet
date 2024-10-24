@@ -1,0 +1,39 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:93fb511594720b5fd26c68962a50a938:8663425ab1156ebd16ab23e92063ab69:80014dfac725e1c4def663501bc9d9b4$
+#
+:format=40300
+:texture=PanelSettingAtlas.png
+:size=644x504
+:pivotpoints=enabled
+:borders=enabled
+
+btn_fenbianlv;143;147;318;78; 0.5;0.5; 0;0;0;0
+btn_jichu;1;35;320;108; 0.5;0.5; 0;0;0;0
+btn_kauijie;323;37;310;108; 0.5;0.5; 0;0;0;0
+btn_off;453;371;64;64; 0.5;0.5; 0;0;0;0
+btn_on;437;243;64;64; 0.5;0.5; 0;0;0;0
+btn_sanjiaoxing;595;7;38;28; 0.5;0.5; 0;0;0;0
+btn_tiezhi_3g;533;419;110;84; 0.5;0.5; 47;44;0;0
+btn_yingliang;453;437;66;66; 0.5;0.5; 0;0;0;0
+frame_blue;533;287;104;58; 0.5;0.5; 26;26;15;14
+frame_chicun_9g;551;161;76;64; 0.5;0.5; 19;19;16;16
+frame_fenbianlv_3g;143;285;164;102; 0.5;0.5; 58;60;0;0
+frame_jichukuaijei_3g;143;389;172;114; 0.5;0.5; 43;43;0;0
+frame_jinhua;369;229;44;58; 0.5;0.5; 0;0;0;0
+frame_nml_3g;211;253;52;30; 0.5;0.5; 13;13;0;0
+frame_nml_9g;437;309;80;60; 0.5;0.5; 20;20;15;15
+frame_off_3g;463;162;86;63; 0.5;0.5; 33;33;0;0
+frame_on_3g;533;347;92;70; 0.5;0.5; 39;38;0;0
+frame_orange_9g;533;227;104;58; 0.5;0.5; 26;26;15;14
+frame_shubantishi_3g;1;145;140;358; 0.5;0.5; 59;55;90;89
+frame_tiezhitaxiao_3g;309;289;126;80; 0.5;0.5; 32;31;0;0
+frame_tishi_9g;317;371;134;132; 0.5;0.5; 34;33;33;33
+frame_yinglaing_3g_02;1;1;530;32; 0.5;0.5; 0;0;0;0
+frame_yingliang_3g_01;533;1;60;34; 0.5;0.5; 15;15;0;0
+frame_zhaohuang_3g;143;235;66;48; 0.5;0.5; 0;0;0;0
+icon_x;309;229;58;58; 0.5;0.5; 0;0;0;0
