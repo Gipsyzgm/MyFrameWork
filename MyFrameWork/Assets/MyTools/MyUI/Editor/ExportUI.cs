@@ -177,6 +177,7 @@ public class ExportUI
     {
         StringBuilder sb = new StringBuilder();
         //Append是不加回车的拼接；AppendLine是加回车的拼接。
+        sb.AppendLine("using System;");
         sb.AppendLine("using UnityEngine;");
         sb.AppendLine("using UnityEngine.UI;");
         sb.AppendLine("using System.Collections;");
