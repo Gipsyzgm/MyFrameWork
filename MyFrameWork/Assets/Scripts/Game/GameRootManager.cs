@@ -98,7 +98,7 @@ public class GameRootManager : MonoSingleton<GameRootManager>
         }
 
         InitCamera();
-        //PanelMgr.Instance.OpenPanel<PanelMain>();
+        PanelMgr.Instance.OpenPanel<PanelMain>();
 
 
         // gameBasicSetting.Startup();
@@ -119,13 +119,8 @@ public class GameRootManager : MonoSingleton<GameRootManager>
 
     public void InitCamera()
     {
-        
         LoaderMgr.Instance.InstantiatePrefabAsync("Prefabs/Game/GameMap", Vector3.zero, Quaternion.identity,
-            transform, (gameObject) =>
-            {
-              
-            });
-        
+            transform, (gameObject) => { });
     }
 
 
@@ -307,7 +302,7 @@ public class GameRootManager : MonoSingleton<GameRootManager>
 
     private void RefreshScore()
     {
-        EventMgr.Instance.InvokeEvent(EventConst.UpdateScorePool, totalScore);
+        PanelMgr.Instance.GetPanel<PanelMain>().OnUpdateScorePool(totalScore);
     }
 
 
@@ -359,6 +354,7 @@ public class GameRootManager : MonoSingleton<GameRootManager>
             if (countdown_2 <= 0)
             {
                 EventMgr.Instance.InvokeEvent(EventConst.GameNuanchangOver);
+                PanelMgr.Instance.GetPanel<PanelMain>().btnStartOnClick();
 
                 CancelInvoke(nameof(RefreshTime2));
             }
@@ -369,7 +365,7 @@ public class GameRootManager : MonoSingleton<GameRootManager>
 
     private void RefreshWinCount()
     {
-        EventMgr.Instance.InvokeEvent(EventConst.GameUpdateWinCount, leftWinCount, rightWinCount);
+        PanelMgr.Instance.GetPanel<PanelMain>().OnUpdateWinCount(leftWinCount, rightWinCount);
     }
 
     private void RefreshRankUser(bool isAnim = false)
@@ -379,19 +375,20 @@ public class GameRootManager : MonoSingleton<GameRootManager>
         int campRight = (int)CampType.Def;
         var leftUsers = users.FindAll(p => p.campType == campLeft).OrderByDescending(p => p.score).ToList();
         var rightUsers = users.FindAll(p => p.campType == campRight).OrderByDescending(p => p.score).ToList();
-
         GameMap.Instance.SetTopThreeInfo(rightUsers);
-        EventMgr.Instance.InvokeEvent(EventConst.GameUpdateRankUser, leftUsers, rightUsers, isAnim);
+        PanelMgr.Instance.GetPanel<PanelMain>().OnGameUpdateRankUser(leftUsers, rightUsers, isAnim);
     }
 
     private void OnGameStart(string roundNum)
     {
         roundNum = roundNum;
         IsEnterReady = true;
+        PanelMgr.Instance.GetPanel<PanelMain>().OnGameStart(roundNum);
     }
 
     private void OnGameRecord(long scoreTotal, long scorePoolShow, long pointPoolShow)
     {
+        PanelMgr.Instance.GetPanel<PanelMain>().OnGameRecordRsp(scoreTotal, scorePoolShow, pointPoolShow);
         totalScore = scoreTotal;
         PlayerPrefs.SetString("scoreTotal", scoreTotal.ToString());
         RefreshScore();
@@ -405,24 +402,17 @@ public class GameRootManager : MonoSingleton<GameRootManager>
 
     public void OnGameOver(CampType loserCampType)
     {
-        // isPlay = false;
-        // Debug.LogFormat("Gameover, loser: {0}", loserCampType);
-        //
-        // CampType winnerType = loserCampType == CampType.Atk ? CampType.Def : CampType.Atk;
-        // long remainScore = 0;
-        // MsgSend.SendGameRecord(totalScore, remainScore, GameBasicSetting.Instance.scoreThrethold, winnerType);
-        // // if (winnerType == CampType.Atk)
-        // // {
-        // //     leftWinCount++;
-        // // }
-        // // else
-        // // {
-        // //     rightWinCount++;
-        // // }
-        // RefreshWinCount();
-        // continueType = loserCampType == CampType.Atk ? 2 : 1;
-        // Messenger.Broadcast(EventConst.GAME_CONTINUE_WIN, continueType, continueCount);
-        // Stop();
+        isPlay = false;
+        Debug.LogFormat("Gameover, loser: {0}", loserCampType);
+
+        CampType winnerType = loserCampType == CampType.Atk ? CampType.Def : CampType.Atk;
+        long remainScore = 0;
+        //MsgSend.SendGameRecord(totalScore, remainScore, GameBasicSetting.Instance.scoreThrethold, winnerType);
+
+        RefreshWinCount();
+        continueType = loserCampType == CampType.Atk ? 2 : 1;
+        PanelMgr.Instance.GetPanel<PanelMain>().OnGameContinueWin(loserCampType, continueCount);
+        Stop();
     }
 
     private void OnGameCrazy(params object[] arg)
@@ -439,6 +429,8 @@ public class GameRootManager : MonoSingleton<GameRootManager>
     /// <param name="userId"></param>
     private void OnGameChooseCamp(int userId)
     {
+        PanelMgr.Instance.GetPanel<PanelMain>().OnChooseCamp(userId);
+
         if (IsEnterReady == false && !isPlay) return;
         UserDataInfo info = DataInfoMgr.Instance.UserDataDict.GetById(userId);
 
@@ -645,6 +637,9 @@ public class GameRootManager : MonoSingleton<GameRootManager>
         {
             StartCoroutine(gameDefCamp.GetGiftInfo(info, firstGiftID, 1));
         }
+
+        PanelMgr.Instance.GetPanel<PanelMain>()
+            .OnGamePushFirstGift(userId, giftData1, firstGiftID, giftData, count, price);
     }
 
 
@@ -653,7 +648,7 @@ public class GameRootManager : MonoSingleton<GameRootManager>
         if (!tipMarquee.ContainsKey(marqueeType) || !tipMarquee[marqueeType])
         {
             tipMarquee[marqueeType] = true;
-            EventMgr.Instance.InvokeEvent(EventConst.GameTipMarquee, (int)marqueeType);
+            PanelMgr.Instance.GetPanel<PanelMain>().OnGameTipMarquee((int)marqueeType);
         }
     }
 

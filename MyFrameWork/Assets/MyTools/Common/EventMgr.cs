@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
 /// <summary>
 ///简单的事件处理系统，即通过添加Event和移除Event来实现。事件名须添加到对应的EventConst类内
 /// </summary>
@@ -13,11 +12,17 @@ using System.Collections.Generic;
 public class EventMgr : MonoSingleton<EventMgr>
 {
     public delegate void Action0();
+
     public delegate void Action1<T1>(T1 p1);
+
     public delegate void Action2<T1, T2>(T1 p1, T2 p2);
+
     public delegate void Action3<T1, T2, T3>(T1 p1, T2 p2, T3 p3);
+
     public delegate void Action4<T1, T2, T3, T4>(T1 p1, T2 p2, T3 p3, T4 p4);
+
     public delegate void Action5<T1, T2, T3, T4, T5>(T1 p1, T2 p2, T3 p3, T4 p4, T5 p5);
+
     public delegate void Action6<T1, T2, T3, T4, T5, T6>(T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6);
 
     private Dictionary<string, Delegate> delegates = new Dictionary<string, Delegate>();
@@ -142,64 +147,85 @@ public class EventMgr : MonoSingleton<EventMgr>
     // 泛型方法用于触发事件
     public void InvokeEvent(string key)
     {
-        Delegate d = delegates[key];
-        if (d is Action0)
+        if (delegates.ContainsKey(key))
         {
-            ((Action0)d)();
+            Delegate d = delegates[key];
+            if (d is Action0 action)
+            {
+                action();
+            }
         }
     }
 
     public void InvokeEvent<T1>(string key, T1 arg1)
     {
-        Delegate d = delegates[key];
-        if (d is Action1<T1>)
+        if (delegates.ContainsKey(key))
         {
-            ((Action1<T1>)d)(arg1);
+            Delegate d = delegates[key];
+            if (d is Action1<T1> action)
+            {
+                action(arg1);
+            }
         }
     }
 
     public void InvokeEvent<T1, T2>(string key, T1 arg1, T2 arg2)
     {
-        Delegate d = delegates[key];
-        if (d is Action2<T1, T2>)
+        if (delegates.ContainsKey(key))
         {
-            ((Action2<T1, T2>)d)(arg1, arg2);
+            Delegate d = delegates[key];
+            if (d is Action2<T1, T2> action)
+            {
+                action(arg1, arg2);
+            }
         }
     }
 
     public void InvokeEvent<T1, T2, T3>(string key, T1 arg1, T2 arg2, T3 arg3)
     {
-        Delegate d = delegates[key];
-        if (d is Action3<T1, T2, T3>)
+        if (delegates.ContainsKey(key))
         {
-            ((Action3<T1, T2, T3>)d)(arg1, arg2, arg3);
+            Delegate d = delegates[key];
+            if (d is Action3<T1, T2, T3> action)
+            {
+                action(arg1, arg2, arg3);
+            }
         }
     }
 
     public void InvokeEvent<T1, T2, T3, T4>(string key, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
     {
-        Delegate d = delegates[key];
-        if (d is Action4<T1, T2, T3, T4>)
+        if (delegates.ContainsKey(key))
         {
-            ((Action4<T1, T2, T3, T4>)d)(arg1, arg2, arg3, arg4);
+            Delegate d = delegates[key];
+            if (d is Action4<T1, T2, T3, T4> action)
+            {
+                action(arg1, arg2, arg3, arg4);
+            }
         }
     }
 
     public void InvokeEvent<T1, T2, T3, T4, T5>(string key, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
     {
-        Delegate d = delegates[key];
-        if (d is Action5<T1, T2, T3, T4, T5>)
+        if (delegates.ContainsKey(key))
         {
-            ((Action5<T1, T2, T3, T4, T5>)d)(arg1, arg2, arg3, arg4, arg5);
+            Delegate d = delegates[key];
+            if (d is Action5<T1, T2, T3, T4, T5> action)
+            {
+                action(arg1, arg2, arg3, arg4, arg5);
+            }
         }
     }
 
     public void InvokeEvent<T1, T2, T3, T4, T5, T6>(string key, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
     {
-        Delegate d = delegates[key];
-        if (d is Action6<T1, T2, T3, T4, T5, T6>)
+        if (delegates.ContainsKey(key))
         {
-            ((Action6<T1, T2, T3, T4, T5, T6>)d)(arg1, arg2, arg3, arg4, arg5, arg6);
+            Delegate d = delegates[key];
+            if (d is Action6<T1, T2, T3, T4, T5, T6> action)
+            {
+                action(arg1, arg2, arg3, arg4, arg5, arg6);
+            }
         }
     }
 
