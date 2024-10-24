@@ -1342,7 +1342,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1886939165898800679
 Transform:
   m_ObjectHideFlags: 0
@@ -55118,7 +55118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1886939167391078383
 Transform:
   m_ObjectHideFlags: 0
@@ -109184,6 +109184,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mist
       objectReference: {fileID: 0}
+    - target: {fileID: 5871401018289522561, guid: 5518b2ffafdac244a86ccf76a26ee940,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5871401018312519505, guid: 5518b2ffafdac244a86ccf76a26ee940,
         type: 3}
       propertyPath: m_RootOrder
@@ -109566,6 +109571,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Runes_qiangbi
+      objectReference: {fileID: 0}
+    - target: {fileID: 6631864578238465662, guid: 358969dad4301e149b299380cd8fdc09,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6631864578669007152, guid: 358969dad4301e149b299380cd8fdc09,
         type: 3}

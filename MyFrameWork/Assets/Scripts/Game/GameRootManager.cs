@@ -65,24 +65,18 @@ public class GameRootManager : MonoSingleton<GameRootManager>
 
     public void InitScene()
     {
-        LoaderMgr.Instance.InstantiatePrefabAsync("Prefabs/Game/GameAtkCamp", Vector3.zero, Quaternion.identity,
-            transform, (gameObject) =>
-            {
-                gameObject.name = "GameAtkCamp";
-                gameObject.transform.localPosition = new Vector3(0, 0, 38);
-                gameAtkCamp = gameObject.GetComponent<GameAtkCamp>();
-                gameAtkCamp.Init(0);
-            });
-
-
-        LoaderMgr.Instance.InstantiatePrefabAsync("Prefabs/Game/GameDefCamp", Vector3.zero, Quaternion.identity,
-            transform, (gameObject) =>
-            {
-                gameObject.name = "GameDefCamp";
-                gameObject.transform.localPosition = new Vector3(0, 0, -38);
-                gameDefCamp = gameObject.GetComponent<GameDefCamp>();
-                gameDefCamp.Init(1);
-            });
+        var gameObject = LoaderMgr.Instance.InstantiatePrefabSync("Prefabs/Game/GameAtkCamp", Vector3.zero,
+            Quaternion.identity, transform);
+        gameObject.name = "GameAtkCamp";
+        gameObject.transform.localPosition = new Vector3(0, 0, 38);
+        gameAtkCamp = gameObject.GetComponent<GameAtkCamp>();
+        gameAtkCamp.Init(0);
+        var gameObject2 = LoaderMgr.Instance.InstantiatePrefabSync("Prefabs/Game/GameDefCamp", Vector3.zero,
+            Quaternion.identity, transform);
+        gameObject2.name = "GameDefCamp";
+        gameObject2.transform.localPosition = new Vector3(0, 0, -38);
+        gameDefCamp = gameObject2.GetComponent<GameDefCamp>();
+        gameDefCamp.Init(1);
 
 
         if (DataInfoMgr.Instance.gameOver == 0)
@@ -119,8 +113,7 @@ public class GameRootManager : MonoSingleton<GameRootManager>
 
     public void InitCamera()
     {
-        LoaderMgr.Instance.InstantiatePrefabAsync("Prefabs/Game/GameMap", Vector3.zero, Quaternion.identity,
-            transform, (gameObject) => { });
+        var gameObject2 = LoaderMgr.Instance.InstantiatePrefabSync("Prefabs/Game/GameMap", Vector3.zero, Quaternion.identity, transform);
     }
 
 

@@ -113,7 +113,8 @@ public class PanelLogin : PanelBase
         GameRootManager.Instance.InitScene();
         // GameManager:GetInstance():Init();
         // GameMapManager:GetInstance():Init();
-        // PanelHelper.ShowPanel(UIPanelConst.PanelMain);
+        PanelMgr.Instance.HidePanel(PanelName.PanelLogin);
+        PanelMgr.Instance.GetPanel<PanelLoading>().UpdateProgress( 1f, 0.3f,true);
     }
 
 
