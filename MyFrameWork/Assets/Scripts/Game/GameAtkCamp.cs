@@ -11,13 +11,13 @@ using Random = UnityEngine.Random;
 
 public class GameAtkCamp : MonoBehaviour
 {
-    public const string SoldierPoolKey = "Prefab/AtkItem";
-    public const string DaShenShiKey = "Prefab/dafangkuai";
-    public const string MoGuanKey = "Prefab/moguan";
-    public const string XuKongJingKey = "Prefab/xukonjing";
-    public const string MuQingDingKey = "Prefab/muqiding";
-    public const string HuangTaKey = "Prefab/HuangTa";
-    public const string PlayerPoolKey = "Prefab/GameAtkPlayer";
+    public const string SoldierPoolKey = "AtkItem";
+    public const string DaShenShiKey = "dafangkuai";
+    public const string MoGuanKey = "moguan";
+    public const string XuKongJingKey = "xukonjing";
+    public const string MuQingDingKey = "muqiding";
+    public const string HuangTaKey = "HuangTa";
+    public const string PlayerPoolKey = "GameAtkPlayer";
     public List<GameObject> SpwanPos;
     public List<GameObject> PlayerSpwanPos;
     public GameObject PlayerDefaultPos;

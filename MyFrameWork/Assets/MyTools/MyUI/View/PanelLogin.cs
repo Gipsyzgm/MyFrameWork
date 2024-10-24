@@ -72,7 +72,7 @@ public class PanelLogin : PanelBase
                 OnUserLoginRsp();
                 MsgSend.SendGameStart(1);
             }
-            GameRootManager.Instance.RefreshTime3();
+          
         }
     }
 
@@ -113,8 +113,14 @@ public class PanelLogin : PanelBase
         GameRootManager.Instance.InitScene();
         // GameManager:GetInstance():Init();
         // GameMapManager:GetInstance():Init();
+        GamePoolEditor pool = LoaderMgr.Instance.LoadAssetSync<GamePoolEditor>("GameData/Custom/GamePoolCustom");
+        
+        PoolMgr.Instance.InitializePools(pool.GamePool);
+        
         PanelMgr.Instance.HidePanel(PanelName.PanelLogin);
         PanelMgr.Instance.GetPanel<PanelLoading>().UpdateProgress( 1f, 0.3f,true);
+        GameRootManager.Instance.RefreshTime3();
+        
     }
 
 

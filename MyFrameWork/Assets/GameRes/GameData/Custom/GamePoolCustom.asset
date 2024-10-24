@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f6d371debbd764caf64f14077cb458, type: 3}
+  m_Name: GamePoolCustom
+  m_EditorClassIdentifier: 
+  GamePool:
+  - GoName: AtkItem
+    MaxCount: 200
+    Prefab: {fileID: 484246835588509413, guid: 59f50e7cf2893a040a525b895cd04631, type: 3}
+    IsAutoHide: 0
+    AutoHideTimer: 0
+  - GoName: DaShenShi
+    MaxCount: 50
+    Prefab: {fileID: 484246835588509413, guid: 5d6b6c8e6dde5994ba9d4adb7651f81a, type: 3}
+    IsAutoHide: 0
+    AutoHideTimer: 0
+  - GoName: MoGuan
+    MaxCount: 50
+    Prefab: {fileID: 6030201242375412615, guid: c65e0d77e1ddc4f41b43653ca4891d10,
+      type: 3}
+    IsAutoHide: 0
+    AutoHideTimer: 0
